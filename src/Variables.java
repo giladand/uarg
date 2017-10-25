@@ -14,8 +14,8 @@ import java.util.TreeMap;
 // Import Section
 /**
  * <p>
- * the construction of variables
- *
+ * This class constructs variables
+ * for the class Variable
  * </p>
  * 
  * @author Grant Richards
@@ -26,46 +26,8 @@ public class Variables<V> {
 
 
 	/**
-     * constructor
-     * 
-     * @param _integerMap
-     *            a treeMap of the variable type integer
-     * 
-     * @param _integerArrayMap
-     *            a treeMap of the variable type integerArray
-     * 
-     * @param _StringMap
-     *            a treeMap of the variable type String
-     * 
-     * @param _StringArrayMap
-     *            a treeMap of the variable type StringArray
-     * 
-     * 
-     * @param _floatMap
-     *            a treeMap of the variable type float
-     * 
-     * @param _floatArrayMap
-     *            a treeMap of the variable type floatArray
-     * 
-     * @param _longMap
-     *            a treeMap of the variable type long
-     * 
-     * @param _longArrayMap
-     *            a treeMap of the variable type longArray
-     * 
-     * @param _doubleMap
-     *            a treeMap of the variable type double
-     * 
-     * @param _doubleArrayMap
-     *            a treeMap of the variable type doubleArray
-     * 
-     * @param _booleanMap
-     *            a treeMap of the variable type boolean
-     * 
-     * @param _booleanArrayMap
-     *            a treeMap of the variable type booleanArray
-     * 
-     * @return <code> identifies value <code> class returns specified value
+   	 * TreeMap variables to be used later in the program
+   	 *
      * @since 1.0
      */
 
@@ -92,6 +54,12 @@ public class Variables<V> {
     private TreeMap<String, Variable<Boolean>> _booleanMap;
 
     private TreeMap<String, Variable<Boolean[]>> _booleanArrayMap;
+    
+    /**
+   	 * Not needed
+   	 *
+     * @since 1.0
+     */
 
     public Variables() throws Exception {
         try {
@@ -102,14 +70,11 @@ public class Variables<V> {
     }
 
     /**
-     * 
-     * Gets the id for _integerMap
-     * 
-     * 
-     * @return id
-     *
+   	 * Creates treeMap objects
+   	 *
      * @since 1.0
      */
+ 
     private void _build() {
         this._integerMap = new TreeMap<String, Variable<Integer>>();
         this._integerArrayMap = new TreeMap<String, Variable<Integer[]>>();
@@ -126,30 +91,43 @@ public class Variables<V> {
 
     }
    
-  
     /**
-     * SetInteger method
-     *
-     * sets _integermap
      * 
+     * Gets the id for _integerMap
      * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
-     * 
-     **/
+     */
+  
+    
     public Variable<Integer> GetInteger(String id) {
         return this._integerMap.get(id);
 
     }
+    
+    /**
+     * SetInteger method
+     *
+     * puts the specified variable
+     * with its specified key
+     * in the map
+     *
+     * @since 1.0
+     * 
+     **/
 
     private void _setIntegerMap(String key, Variable<Integer> variable) {
         this._integerMap.put(key,variable);
     }
-
+   
     /**
      * 
      * Gets the id for _integerArrayMap
      * 
+     * @param id the id associated with the map
      * 
      * @return id
      *
@@ -160,53 +138,75 @@ public class Variables<V> {
     }
 
     /**
-     * sets _integerArrayMap
-     * 
+     * SetIntegerArrayMap method
+     *
+     * puts the specified variable
+     * with its specified key
+     * in the map
+     *
      * @since 1.0
      * 
-     */
+     **/
     public void _setIntegerArrayMap(String key, Variable<Integer[]> variable) {
         this._integerArrayMap.put(key, variable);
     }
     
+    /**
+     * 
+     * Gets the id for _stringArrayMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
+     *
+     * @since 1.0
+     */
 
     public Variable<String[]> GetString(String id) {
         return this._stringArrayMap.get(id);
     }
 
     /**
-     * 
-     * Gets the id for StringMap
-     * 
-     * 
-     * @return id
+     * SetStringMap method
+     *
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
      * @since 1.0
-     */
+     * 
+     **/
+    
     public void _setStringMap(String key, Variable<String> variable) {
         this._stringMap.put(key, variable);
     }
 
     /**
-     * SetString method
      * 
-     * sets _StringMap
-     *
-     * @since 1.0
-     */
-    public Variable<String[]> GetStringArray(String id) {
-        return this._stringArrayMap.get(id);
-    }
-
-    /**
+     * Gets the id for _stringArrayMap
      * 
-     * Gets the id for _StringArrayMap
-     * 
+     * @param id the id associated with the map
      * 
      * @return id
      *
      * @since 1.0
      */
+ 
+    public Variable<String[]> GetStringArray(String id) {
+        return this._stringArrayMap.get(id);
+    }
+
+    /**
+     * SetStringArrayMap method
+     *
+     * puts the specified variable
+     * with its specified key
+     * in the map
+     *
+     * @since 1.0
+     * 
+     **/
+     
 
     public void _setStringArrayMap(String key, Variable<String[]> variable) {
         this._stringArrayMap.put(key, variable);
@@ -214,172 +214,222 @@ public class Variables<V> {
 
     /**
      * 
-     * sets _StringArrayMap
+     * Gets the id for _floatMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
      */
+    
 
     public Variable<Float> GetFloat(String id) {
         return this._floatMap.get(id);
     }
 
     /**
-     * Gets the id for _floatMap
+     * SetfloatMap method
      *
-     * @return id
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
      * @since 1.0
      * 
-     */
+     **/
+    
     public void _setFloatMap(String key, Variable<Float> variable) {
         this._floatMap.put(key, variable);
     }
 
     /**
-     * sets _floatmap
      * 
+     * Gets the id for _floatArrayMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
      */
+    
     public Variable<Float[]> GetFloatArray(String id) {
         return this._floatArrayMap.get(id);
     }
 
     /**
-     * Gets id for _floatArrayMap
+     * SetfloatArrayMap method
      *
-     *
-     * @return id
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
      * @since 1.0
      * 
-     */
+     **/
+    
     public void _setFloatArrayMap(String key, Variable<Float[]> variable) {
         this._floatArrayMap.put(key, variable);
     }
 
     /**
-     * set floatArrayMap
      * 
+     * Gets the id for _longMap
      * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
      */
+    
     public Variable<Long> GetLong(String id) {
         return this._longMap.get(id);
     }
 
     /**
-     * Gets id for _longMap
+     * SetlongMap method
      *
-     * @return id
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
      * @since 1.0
      * 
-     */
+     **/
+    
     public void _setLongMap(String key, Variable<Long> variable) {
         this._longMap.put(key, variable);
     }
 
     /**
-     *
-     * sets _longmap
+     * 
+     * Gets the id for _longArrayMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
      */
+    
     public Variable<Long[]> GetLongArray(String id) {
         return this._longArrayMap.get(id);
     }
 
     /**
-     * gets id for longArrayMap
+     * SetlongArrayMap method
      *
-     * @return id
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
      * @since 1.0
      * 
-     */
+     **/
+    
     public void _setLongArrayMap(String key, Variable<Long[]> variable) {
         this._longArrayMap.put(key, variable);
     }
 
     /**
-     * SetLongArray method
      * 
-     * sets _longArrayMap
+     * Gets the id for _doubleMap
      * 
+     * @param id the id associated with the map
+     * 
+     * @return id
+     *
      * @since 1.0
      */
+    
     public Variable<Double> GetDouble(String id) {
         return this._doubleMap.get(id);
     }
 
     /**
-     * gets id for _doublemap
+     * SetdoubleMap method
      *
-     * 
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
-     * @return id
-     * 
      * @since 1.0
      * 
-     */
+     **/
     public void _setDoubleMap(String key, Variable<Double> variable) {
         this._doubleMap.put(key, variable);
     }
 
     /**
      * 
-     * sets _doubleMap
+     * Gets the id for _doubleArrayMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
      */
+    
     public Variable<Double[]> GetDoubleArray(String id) {
         return this._doubleArrayMap.get(id);
     }
 
     /**
-     * gets id for _doubleArrayMap
+     * SetdoubleArrayMap method
      *
-     * @return id
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
      * @since 1.0
      * 
-     */
+     **/
+    
     public void _setDoubleArrayMap(String key, Variable<Double[]> variable) {
         this._doubleArrayMap.put(key, variable);
     }
 
     /**
-     *
-     * sets _doubleArrayMap
+     * 
+     * Gets the id for _booleanMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
      * @since 1.0
      */
+    
     public Variable<Boolean> GetBoolean(String id) {
         return this._booleanMap.get(id);
     }
 
     /**
-     * gets id for _booleanMap
+     * SetbooleanMap method
      *
-     * 
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
-     * @return id
-     * 
      * @since 1.0
      * 
-     */
+     **/
     public void _setBooleanMap(String key, Variable<Boolean> variable) {
         this._booleanMap.put(key, variable);
     }
 
     /**
+     * 
+     * Gets the id for _booleanArrayMap
+     * 
+     * @param id the id associated with the map
+     * 
+     * @return id
      *
-     * sets _booleanMap
-     * 
      * @since 1.0
-     * 
      */
 
     public Variable<Boolean[]> GetBooleanArray(String id) {
@@ -387,15 +437,16 @@ public class Variables<V> {
     }
 
     /**
-     * gets id for _booleanArrayMap
+     * SetbooleanArrayMap method
      *
-     * 
+     * puts the specified variable
+     * with its specified key
+     * in the map
      *
-     * @return id
-     * 
      * @since 1.0
      * 
-     */
+     **/
+    
     public void _setBooleanArrayMap(String key, Variable<Boolean[]>variable) {
         this._booleanArrayMap.put(key, variable);
     }
@@ -450,11 +501,3 @@ public class Variables<V> {
   }
 
 }
-/**
- * setBoolean method
- *
- * sets _booleanArrayMap
- * 
- * @since 1.0
- * 
- **/

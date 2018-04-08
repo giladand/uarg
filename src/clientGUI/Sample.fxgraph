@@ -1,7 +1,7 @@
-package application
+package clientGUI
 
 import javafx.scene.layout.BorderPane
-import application.SampleController
+import clientGUI.SampleController
 
 component Sample controlledby SampleController {
 	BorderPane {

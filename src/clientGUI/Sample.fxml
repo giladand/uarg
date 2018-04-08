@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane prefHeight="645.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+<BorderPane prefHeight="645.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientGUI.SampleController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>

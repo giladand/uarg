@@ -1,4 +1,4 @@
-package clientGUI;
+package com.roguedevstudio.uarg.UI;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;

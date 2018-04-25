@@ -1,9 +1,10 @@
 // TODO change package when framework layout chosen
-package com.roguedevstudios.uarg.System.Core.Elements;
-// TODO will need to include import once framework package chosen
-// import com.roguedevstudios.uarg.System.Core.Elements;
+package com.roguedevstudios.uarg.System.Framework.Elements;
+
+import com.roguedevstudios.uarg.System.Core.Elements.*;
 
 // TODO update details of package
+
 /*****************************************
  * 	InterfaceObjects Class               *
  * 	File Name: InterfaceObjectsTest.java *

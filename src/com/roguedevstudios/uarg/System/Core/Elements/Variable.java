@@ -5,9 +5,11 @@
 *   Variable Representation     *
 *   with meta data.		        *
 *                               *
-*  ©2017 Rogue Dev Studios, LLC *
+*  ï¿½2017 Rogue Dev Studios, LLC *
 ********************************/
 package com.roguedevstudios.uarg.System.Core.Elements;
+
+import java.util.List;
 
 // Import Section
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
@@ -16,6 +18,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * A representation of variables implementing IVariable with added metadata.
  * @author Terry Roberson
  * @author Christopher E. Howard
+ * @author Rasu Neupane
  * @since 1.0
  */
 public class Variable<V> 
@@ -36,6 +39,10 @@ public class Variable<V>
 	
 	/* Whether this Variable is independent or dependent */
 	private Boolean _requiresInput;
+	
+	/* The format(s) of this variable */
+	private List<String> _format;
+	
 
 	/**
 	 * 
@@ -45,6 +52,7 @@ public class Variable<V>
 	 * @param id	String ID of this variable
 	 * @param requiresInput	Whether this variable is dependent         
 	 * @param description	Description of this variable
+	 * @param format Format(s) of this variable
 	 * @param value	Initial value of this variable
 	 * @since 1.0
 	 */
@@ -53,6 +61,7 @@ public class Variable<V>
 					 String id, 
 					 Boolean requiresInput, 
 					 String description, 
+					 List<String> format,
 					 V value
 				   ) 
 	{
@@ -62,6 +71,7 @@ public class Variable<V>
 					id, 
 					requiresInput, 
 					description, 
+					format,
 					value
 				  );
 
@@ -75,6 +85,7 @@ public class Variable<V>
 	 * @param id String ID of this variable
 	 * @param requiresInput Whether this variable is dependent
 	 * @param description Description of this variable
+	 * @param format Format(s) of this variable
 	 * @throws Exception Passes back unknown exceptions in case of incompatible null typing of Generic
 	 * @since 1.0
 	 */
@@ -82,12 +93,13 @@ public class Variable<V>
 					 String name, 
 					 String id, 
 					 Boolean requiresInput, 
+					 List<String> format,
 					 String description
 					) 
 					 
 	{
 			// Call the build method with null as the value
-			this._build(name, id, requiresInput, description, null);
+			this._build(name, id, requiresInput, description, format, null);
 		
 	}
 
@@ -123,6 +135,7 @@ public class Variable<V>
 	 * @param id String ID of this variable
 	 * @param requiresInput Whether this variable is independent
 	 * @param description Description of this variable
+	 * @param format Format(s) of this variable
 	 * @param value Initial value of this variable
 	 * @since 1.0
 	 */
@@ -131,6 +144,7 @@ public class Variable<V>
 						 String id, 
 						 Boolean requiresInput, 
 						 String description, 
+						 List<String> format,
 						 V value)
 	{
 		
@@ -138,6 +152,7 @@ public class Variable<V>
 		this._id = id;
 		this._requiresInput = requiresInput;
 		this._value = value;
+		this._format= format;
 		this._description = description;
 		
 	}
@@ -193,7 +208,19 @@ public class Variable<V>
 		return this._value;
 		
 	}
-
+	
+	/**
+	 * 
+	 * Gets the value of this variable
+	 * 
+	 * @return Format
+	 * @since 1.0
+	 */
+	
+	public List<String> GetFormat() {
+		return this._format;
+	}
+	
 	/**
 	 * 
 	 * Checks if variable is independent
@@ -201,6 +228,7 @@ public class Variable<V>
 	 * @return RequiresInput
 	 * @since 1.0
 	 */
+	
 	public Boolean IsRequiredInput() {
 		
 		return this._requiresInput;
@@ -271,5 +299,15 @@ public class Variable<V>
 		this._value = value;
 		
 	}
-
+	
+	/**
+	 * 
+	 * Sets the value of this variable
+	 * 
+	 * @param format Format(s) of this variable
+	 * @since 1.0
+	 */
+	public void SetFormat(List<String> format) {
+		this._format = format;
+	}
 }

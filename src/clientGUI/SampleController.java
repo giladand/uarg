@@ -3,6 +3,7 @@ package clientGUI;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,6 +15,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+=======
+import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+>>>>>>> UARG-241
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
+<<<<<<< HEAD
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
@@ -30,11 +37,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+=======
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+>>>>>>> UARG-241
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+<<<<<<< HEAD
 import javafx.util.Callback;
+=======
+>>>>>>> UARG-241
 import javafx.scene.text.Text; // Added
 import javafx.scene.text.Font; // Added
 
@@ -43,11 +59,18 @@ import javafx.scene.text.Font; // Added
  * 
  * @author Marko Bachynsky
  * @author Dylan Richardson
+<<<<<<< HEAD
  * @param <V>
  * @since 1.0
  */
 
 public class SampleController<V> implements Initializable {
+=======
+ * @since 1.0
+ */
+
+public class SampleController implements Initializable {
+>>>>>>> UARG-241
     @FXML
     public BorderPane Root;
     @FXML
@@ -71,7 +94,11 @@ public class SampleController<V> implements Initializable {
     @FXML
     public MenuItem EditPaste;
     @FXML
+<<<<<<< HEAD
     public TableView<VariableTableView<V>> ResidentialServiceLines;
+=======
+    public TableView<Person> ResidentialServiceLines;
+>>>>>>> UARG-241
     @FXML
     public TextField LastName;
     @FXML
@@ -91,10 +118,15 @@ public class SampleController<V> implements Initializable {
 
     public Text t = new Text(); // Added
 
+<<<<<<< HEAD
     /*
     * @author Marko Bachynsky
     */
     @FXML
+=======
+    @FXML
+
+>>>>>>> UARG-241
     public void FileNewAction(ActionEvent event) {
 	// TODO
     }
@@ -191,10 +223,15 @@ public class SampleController<V> implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+<<<<<<< HEAD
 	testAddColumnsToTableView();
 	testAddGivenCellsToColumns();
 	
 	
+=======
+	AddColumnsToTableView();
+
+>>>>>>> UARG-241
 	AddEntry.setOnAction(new EventHandler<ActionEvent>() {
 	    @Override
 	    public void handle(ActionEvent evt) {
@@ -202,6 +239,7 @@ public class SampleController<V> implements Initializable {
 		AddEntryToTableView();
 	    }
 	});
+<<<<<<< HEAD
 	
 	
 	/*
@@ -211,12 +249,24 @@ public class SampleController<V> implements Initializable {
 		if (newSelection != null) {
 		    LastName.setText(newSelection.getVariable<V>().toString());
 		    /*
+=======
+
+	ResidentialServiceLines.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
+	    @Override
+	    public void changed(ObservableValue<? extends Person> obs, Person oldSelection, Person newSelection) {
+		if (newSelection != null) {
+		    LastName.setText(newSelection.get_lastName());
+>>>>>>> UARG-241
 		    FirstName.setText(newSelection.get_firstName());
 		    Date.setValue(newSelection.get_date());
 		    Cash.setText(Double.toString(newSelection.get_cash()));
 		    City.setText(newSelection.get_city());
 		    State.setText(newSelection.get_state());
+<<<<<<< HEAD
 		     
+=======
+
+>>>>>>> UARG-241
 		    AddEntry.setText("Update");
 		    AddEntry.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -227,6 +277,7 @@ public class SampleController<V> implements Initializable {
 		}
 	    }
 	});
+<<<<<<< HEAD
 	*/
     }
 
@@ -510,10 +561,37 @@ public class SampleController<V> implements Initializable {
 	*/
 	//ResidentialServiceLines.getColumns().addAll(firstColumn, secondColumn, thirdColumn);
 	ResidentialServiceLines.getColumns().add(lastNameColumn);
+=======
+
+    }
+
+    public void AddColumnsToTableView() {
+	TableColumn<Person, String> lastNameColumn = new TableColumn<Person, String>("Last Name");
+	lastNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_lastName"));
+
+	TableColumn<Person, String> firstNameColumn = new TableColumn<Person, String>("First Name");
+	firstNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_firstName"));
+
+	TableColumn<Person, LocalDate> dateColumn = new TableColumn<Person, LocalDate>("Date");
+	dateColumn.setCellValueFactory(new PropertyValueFactory<Person, LocalDate>("_date"));
+
+	TableColumn<Person, Double> cashColumn = new TableColumn<Person, Double>("Cash");
+	cashColumn.setCellValueFactory(new PropertyValueFactory<Person, Double>("_cash"));
+
+	TableColumn<Person, String> cityColumn = new TableColumn<Person, String>("City");
+	cityColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_city"));
+
+	TableColumn<Person, String> stateColumn = new TableColumn<Person, String>("State");
+	stateColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_state"));
+
+	ResidentialServiceLines.getColumns().addAll(lastNameColumn, firstNameColumn, dateColumn, cashColumn, cityColumn,
+		stateColumn);
+>>>>>>> UARG-241
     }
 
     public void AddEntryToTableView() {
 
+<<<<<<< HEAD
 	/*
 	Variable<V> varObject = new Variable<V>("", "", false, LastName.getText());
 	//VariableTableView<V> cellObject = new VariableTableView<V>(varObject, LastName.getText());
@@ -527,20 +605,47 @@ public class SampleController<V> implements Initializable {
 	LastName.clear();
 
 	/*
+=======
+	// ObservableList<Person> data = FXCollections.observableArrayList();
+	// data.add(new Person(LastName.getText(), FirstName.getText(), Date.getValue(),
+	// Double.parseDouble(Cash.getText()), City.getText(), State.getText()));
+	ResidentialServiceLines.getItems().add(new Person(LastName.getText(), FirstName.getText(), Date.getValue(),
+		Double.parseDouble(Cash.getText()), City.getText(), State.getText()));
+	// ResidentialServiceLines.setItems(data);
+	ResidentialServiceLines.getSelectionModel().clearSelection();
+	// AddEntry.setText("Save");
+	LastName.clear();
+>>>>>>> UARG-241
 	FirstName.clear();
 	Date.setValue(null);
 	Cash.clear();
 	City.clear();
+<<<<<<< HEAD
 	State.clear(); */
+=======
+	State.clear();
+>>>>>>> UARG-241
     }
 
     public void UpdateEntryToTableView() {
 	System.out.println("Wow it worked, good job");
+<<<<<<< HEAD
 	
 	//Person cellObject = ResidentialServiceLines.getSelectionModel().getSelectedItem();
 	Variable<V> newVariableObject = new Variable<V>("Last Name", "Last Name", true, "", (V) LastName.getText());
 	//cellObject.setVariable<V>(newVariable<V>Object);
 	
+=======
+	Person person = ResidentialServiceLines.getSelectionModel().getSelectedItem();
+
+	person.set_firstName(FirstName.getText());
+	person.set_lastName(LastName.getText());
+	person.set_date(Date.getValue());
+	person.set_cash(Double.parseDouble(Cash.getText()));
+	person.set_city(City.getText());
+	person.set_state(State.getText());
+
+>>>>>>> UARG-241
 	// Clear Selection
 	LastName.clear();
 	FirstName.clear();

@@ -11,7 +11,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 	try {
+<<<<<<< HEAD
 	    primaryStage.setTitle("Untitled1");
+=======
+	    primaryStage.setTitle("Untitled");
+>>>>>>> UARG-241
 	    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
 	    Scene scene = new Scene(root, 900, 700);
 

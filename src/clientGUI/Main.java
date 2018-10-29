@@ -10,8 +10,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
 	try {
-	    primaryStage.setTitle("Untitled1");
+
+	    // Splash Screen
+	    FXSpashScreen.CreateSpashScreen();
+
+	    // Main application
+	    primaryStage.setTitle("Untitled");
 	    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
 	    Scene scene = new Scene(root, 900, 700);
 

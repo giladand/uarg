@@ -1,1 +1,53 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root{
+	-fx-background-color: black;
+}
+
+.borderpane{
+	-fx-background-color: black;
+	-fx-border-color: purple;
+}
+
+.titled-pane{
+	-fx-background-color: black;
+	-fx-border-color: white;
+}
+
+
+.tab{
+	-fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: black;
+}
+
+.table-view{
+	-fx-background-color: black;
+
+	-fx-border-color: white;
+}
+
+.buttonbar{
+	-fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: black;
+}
+
+.text-field{
+	-fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: black;
+    -fx-control-inner-background: black;
+}
+
+.button{
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: black;
+    
+}
+
+.combobox{
+	-fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: black;
+}

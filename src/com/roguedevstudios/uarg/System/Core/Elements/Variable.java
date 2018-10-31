@@ -9,6 +9,7 @@
 ********************************/
 package com.roguedevstudios.uarg.System.Core.Elements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Import Section
@@ -41,7 +42,8 @@ public class Variable<V>
 	private Boolean _requiresInput;
 	
 	/* The format(s) of this variable */
-	private List<String> _format;
+	private ArrayList<String> _format;
+
 	
 
 	/**
@@ -61,7 +63,7 @@ public class Variable<V>
 					 String id, 
 					 Boolean requiresInput, 
 					 String description, 
-					 List<String> format,
+					 ArrayList<String> format,
 					 V value
 				   ) 
 	{
@@ -93,8 +95,9 @@ public class Variable<V>
 					 String name, 
 					 String id, 
 					 Boolean requiresInput, 
-					 List<String> format,
-					 String description
+					 String description,
+					 ArrayList<String> format
+					 
 					) 
 					 
 	{
@@ -144,7 +147,7 @@ public class Variable<V>
 						 String id, 
 						 Boolean requiresInput, 
 						 String description, 
-						 List<String> format,
+						 ArrayList<String> format,
 						 V value)
 	{
 		
@@ -217,7 +220,7 @@ public class Variable<V>
 	 * @since 1.0
 	 */
 	
-	public List<String> GetFormat() {
+	public ArrayList<String> GetFormat() {
 		return this._format;
 	}
 	
@@ -307,7 +310,7 @@ public class Variable<V>
 	 * @param format Format(s) of this variable
 	 * @since 1.0
 	 */
-	public void SetFormat(List<String> format) {
+	public void SetFormat(ArrayList<String> format) {
 		this._format = format;
 	}
 }

@@ -18,6 +18,7 @@ import java.util.*;
 *
 *@author Christopher E. Howard
 *@author Terry Roberson
+*@author Rasu Neupane
 *@since 1.0
 */
 public class VariableTest{
@@ -37,12 +38,13 @@ public class VariableTest{
 		String description = "A Test Variable";
 		boolean requiresInput = false;
 		Integer value = 10;
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Integer> testVarNoValue = new Variable<Integer>(name, id, requiresInput, description);
-				Variable<Integer> testVarWithValue = new Variable<Integer>(name, id, requiresInput, description, value);
+				Variable<Integer> testVarNoValue = new Variable<Integer>(name, id, requiresInput, description, format);
+				Variable<Integer> testVarWithValue = new Variable<Integer>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -55,6 +57,10 @@ public class VariableTest{
 				//Test the description is correct
 				assertEquals(description, testVarNoValue.GetDescription());
 				assertEquals(description, testVarWithValue.GetDescription());
+				
+				//Test the format is correct
+				assertEquals(format, testVarNoValue.GetFormat());
+				assertEquals(format, testVarWithValue.GetFormat());
 			
 				//Test the value set properly or is properly null
 				assertEquals(value, testVarWithValue.GetValue());
@@ -80,12 +86,14 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Integer value = 2;
 		Integer newValue = 5;
 		
+		
 		//Set up a valid test variable with a value 
-		Variable<Integer> testVarValueUpdate = new Variable<Integer>(name, id, requiresInput, description, value);
+		Variable<Integer> testVarValueUpdate = new Variable<Integer>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -95,6 +103,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertEquals(description, testVarValueUpdate.GetDescription());
+		
+		//Test the format is correct
+		assertEquals(format, testVarValueUpdate.GetFormat());
 		
 		//Test the value set properly
 		assertEquals(value, testVarValueUpdate.GetValue());
@@ -117,7 +128,8 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		Integer value = null;
-		Variable<Integer> testNullValue = new Variable<Integer>("TEST", "TEST", false, "TEST", value);
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<Integer> testNullValue = new Variable<Integer>("TEST", "TEST", false, "TEST", format,value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -133,11 +145,13 @@ public class VariableTest{
 		String name = null;
 		String id = null;
 		String description = null;
+		ArrayList<String> format = null;
 		boolean requiresInput = false;
 		Integer value = null;
 		
+		
 		//Set up a valid test variable with a value 
-		Variable<Integer> nullIntegerObjectVariable = new Variable<Integer>(name, id, requiresInput, description, value);
+		Variable<Integer> nullIntegerObjectVariable = new Variable<Integer>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -147,6 +161,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertNull(nullIntegerObjectVariable.GetDescription());
+		
+		//Test the format is correct
+		assertNull(nullIntegerObjectVariable.GetFormat());
 		
 		//Test the value set properly
 		assertNull(nullIntegerObjectVariable.GetValue());
@@ -159,7 +176,8 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoIntegerObjectType() {
-		Variable<Integer> testVarWithPrimitive = new Variable<Integer>("TEST", "TEST", false, "TEST", 5);
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<Integer> testVarWithPrimitive = new Variable<Integer>("TEST", "TEST", false, "TEST", format, 5);
 		assertEquals(5, (int) testVarWithPrimitive.GetValue());
 		
 	}
@@ -177,14 +195,17 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		String value = "A";
+		
+		
 		
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<String> testVarNoValue = new Variable<String>(name, id, requiresInput, description);
-				Variable<String> testVarWithValue = new Variable<String>(name, id, requiresInput, description, value);
+				Variable<String> testVarNoValue = new Variable<String>(name, id, requiresInput, description, format);
+				Variable<String> testVarWithValue = new Variable<String>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -197,6 +218,10 @@ public class VariableTest{
 				//Test the description is correct
 				assertEquals(description, testVarNoValue.GetDescription());
 				assertEquals(description, testVarWithValue.GetDescription());
+				
+				//Test the format is correct
+				assertEquals(format, testVarNoValue.GetFormat());
+				assertEquals(format, testVarWithValue.GetFormat());
 			
 				//Test the value set properly or is properly null
 				assertEquals(value, testVarWithValue.GetValue());
@@ -222,12 +247,14 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		String value = "A";
 		String newValue = "B";
 		
+		
 		//Set up a valid test variable with a value 
-		Variable<String> testVarValueUpdate = new Variable<String>(name, id, requiresInput, description, value);
+		Variable<String> testVarValueUpdate = new Variable<String>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -237,6 +264,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertEquals(description, testVarValueUpdate.GetDescription());
+		
+		//Test the format is correct
+		assertEquals(format, testVarValueUpdate.GetFormat());
 		
 		//Test the value set properly
 		assertEquals(value, testVarValueUpdate.GetValue());
@@ -257,8 +287,9 @@ public class VariableTest{
 	public void nullValueOfStringObjectVariable() {
 		
 		//Set value of variable to null
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		String value = null;
-		Variable<String> testNullValue = new Variable<String>("TEST", "TEST", false, "TEST", value);
+		Variable<String> testNullValue = new Variable<String>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -274,11 +305,14 @@ public class VariableTest{
 		String name = null;
 		String id = null;
 		String description = null;
+		ArrayList<String> format = null;
 		boolean requiresInput = false;
 		String value = null;
 		
+		
+		
 		//Set up a valid test variable with a value 
-		Variable<String> nullIntegerObjectVariable = new Variable<String>(name, id, requiresInput, description, value);
+		Variable<String> nullIntegerObjectVariable = new Variable<String>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -288,6 +322,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertNull(nullIntegerObjectVariable.GetDescription());
+		
+		//Test the format is correct
+		assertNull(nullIntegerObjectVariable.GetFormat());
 		
 		//Test the value set properly
 		assertNull(nullIntegerObjectVariable.GetValue());
@@ -300,7 +337,8 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoStringObjectType() {
-		Variable<String> testVarWithPrimitive = new Variable<String>("TEST", "TEST", false, "TEST", "A");
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<String> testVarWithPrimitive = new Variable<String>("TEST", "TEST", false, "TEST", format, "A");
 		assertEquals("A", (String) testVarWithPrimitive.GetValue());
 		
 	}
@@ -318,14 +356,15 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Double value = 5.8;
 		
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Double> testVarNoValue = new Variable<Double>(name, id, requiresInput, description);
-				Variable<Double> testVarWithValue = new Variable<Double>(name, id, requiresInput, description, value);
+				Variable<Double> testVarNoValue = new Variable<Double>(name, id, requiresInput, description, format );
+				Variable<Double> testVarWithValue = new Variable<Double>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -338,6 +377,10 @@ public class VariableTest{
 				//Test the description is correct
 				assertEquals(description, testVarNoValue.GetDescription());
 				assertEquals(description, testVarWithValue.GetDescription());
+				
+				//Test the format is correct
+				assertEquals(format, testVarNoValue.GetFormat());
+				assertEquals(format, testVarWithValue.GetFormat());
 			
 				//Test the value set properly or is properly null
 				assertEquals(value, testVarWithValue.GetValue());
@@ -363,12 +406,13 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Double value = 4.3;
 		Double newValue = 5.4;
 		
 		//Set up a valid test variable with a value 
-		Variable<Double> testVarValueUpdate = new Variable<Double>(name, id, requiresInput, description, value);
+		Variable<Double> testVarValueUpdate = new Variable<Double>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -378,6 +422,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertEquals(description, testVarValueUpdate.GetDescription());
+		
+		//Test the format is correct
+		assertEquals(format, testVarValueUpdate.GetFormat());
 		
 		//Test the value set properly
 		assertEquals(value, testVarValueUpdate.GetValue());
@@ -398,8 +445,9 @@ public class VariableTest{
 	public void nullValueOfDoubleObjectVariable() {
 		
 		//Set value of variable to null
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Double value = null;
-		Variable<Double> testNullValue = new Variable<Double>("TEST", "TEST", false, "TEST", value);
+		Variable<Double> testNullValue = new Variable<Double>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -415,11 +463,12 @@ public class VariableTest{
 		String name = null;
 		String id = null;
 		String description = null;
+		ArrayList<String> format = null;
 		boolean requiresInput = false;
 		Double value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Double> nullIntegerObjectVariable = new Variable<Double>(name, id, requiresInput, description, value);
+		Variable<Double> nullIntegerObjectVariable = new Variable<Double>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -429,6 +478,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertNull(nullIntegerObjectVariable.GetDescription());
+		
+		//Test the format is correct
+		assertNull(nullIntegerObjectVariable.GetFormat());
 		
 		//Test the value set properly
 		assertNull(nullIntegerObjectVariable.GetValue());
@@ -441,7 +493,9 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoDoubleObjectType() {
-		Variable<Double> testVarWithPrimitive = new Variable<Double>("TEST", "TEST", false, "TEST", 1e-15);
+		
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<Double> testVarWithPrimitive = new Variable<Double>("TEST", "TEST", false, "TEST", format, 1e-15);
 		assertEquals(1e-15, (double) testVarWithPrimitive.GetValue(), 0);
 		
 	}
@@ -459,14 +513,15 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Long value = 50000000L;
 		
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Long> testVarNoValue = new Variable<Long>(name, id, requiresInput, description);
-				Variable<Long> testVarWithValue = new Variable<Long>(name, id, requiresInput, description, value);
+				Variable<Long> testVarNoValue = new Variable<Long>(name, id, requiresInput, description, format);
+				Variable<Long> testVarWithValue = new Variable<Long>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -479,6 +534,10 @@ public class VariableTest{
 				//Test the description is correct
 				assertEquals(description, testVarNoValue.GetDescription());
 				assertEquals(description, testVarWithValue.GetDescription());
+				
+				//Test the format is correct
+				assertEquals(format, testVarNoValue.GetFormat());
+				assertEquals(format, testVarWithValue.GetFormat());
 			
 				//Test the value set properly or is properly null
 				assertEquals(value, testVarWithValue.GetValue());
@@ -504,12 +563,13 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Long value = 53L;
 		Long newValue = 68L;
 		
 		//Set up a valid test variable with a value 
-		Variable<Long> testVarValueUpdate = new Variable<Long>(name, id, requiresInput, description, value);
+		Variable<Long> testVarValueUpdate = new Variable<Long>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -520,6 +580,9 @@ public class VariableTest{
 		//Test the description is correct
 		assertEquals(description, testVarValueUpdate.GetDescription());
 		
+		//Test the format is correct
+		assertEquals(format, testVarValueUpdate.GetFormat());
+				
 		//Test the value set properly
 		assertEquals(value, testVarValueUpdate.GetValue());
 		
@@ -539,8 +602,9 @@ public class VariableTest{
 	public void nullValueOfLongObjectVariable() {
 		
 		//Set value of variable to null
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Long value = null;
-		Variable<Long> testNullValue = new Variable<Long>("TEST", "TEST", false, "TEST", value);
+		Variable<Long> testNullValue = new Variable<Long>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -556,11 +620,12 @@ public class VariableTest{
 		String name = null;
 		String id = null;
 		String description = null;
+		ArrayList<String> format =null;
 		boolean requiresInput = false;
 		Long value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Long> nullIntegerObjectVariable = new Variable<Long>(name, id, requiresInput, description, value);
+		Variable<Long> nullIntegerObjectVariable = new Variable<Long>(name, id, requiresInput, description,format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -570,6 +635,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertNull(nullIntegerObjectVariable.GetDescription());
+		
+		//Test the format is correct
+		assertNull(nullIntegerObjectVariable.GetFormat());
 		
 		//Test the value set properly
 		assertNull(nullIntegerObjectVariable.GetValue());
@@ -582,7 +650,8 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoLongObjectType() {
-		Variable<Long> testVarWithPrimitive = new Variable<Long>("TEST", "TEST", false, "TEST", 300L);
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<Long> testVarWithPrimitive = new Variable<Long>("TEST", "TEST", false, "TEST", format, 300L);
 		assertEquals(300L, (long) testVarWithPrimitive.GetValue());
 		
 	}
@@ -600,14 +669,15 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Float value = 2.50F;
 		
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Float> testVarNoValue = new Variable<Float>(name, id, requiresInput, description);
-				Variable<Float> testVarWithValue = new Variable<Float>(name, id, requiresInput, description, value);
+				Variable<Float> testVarNoValue = new Variable<Float>(name, id, requiresInput, description, format);
+				Variable<Float> testVarWithValue = new Variable<Float>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -620,6 +690,10 @@ public class VariableTest{
 				//Test the description is correct
 				assertEquals(description, testVarNoValue.GetDescription());
 				assertEquals(description, testVarWithValue.GetDescription());
+				
+				//Test the format is correct
+				assertEquals(format, testVarNoValue.GetFormat());
+				assertEquals(format, testVarWithValue.GetFormat());
 			
 				//Test the value set properly or is properly null
 				assertEquals(value, testVarWithValue.GetValue());
@@ -645,12 +719,13 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Float value = 5.3F;
 		Float newValue = 6.8F;
 		
 		//Set up a valid test variable with a value 
-		Variable<Float> testVarValueUpdate = new Variable<Float>(name, id, requiresInput, description, value);
+		Variable<Float> testVarValueUpdate = new Variable<Float>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -660,6 +735,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertEquals(description, testVarValueUpdate.GetDescription());
+		
+		//Test the format is correct
+		assertEquals(format, testVarValueUpdate.GetFormat());
 		
 		//Test the value set properly
 		assertEquals(value, testVarValueUpdate.GetValue());
@@ -680,8 +758,9 @@ public class VariableTest{
 	public void nullValueOfFloatObjectVariable() {
 		
 		//Set value of variable to null
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Float value = null;
-		Variable<Float> testNullValue = new Variable<Float>("TEST", "TEST", false, "TEST", value);
+		Variable<Float> testNullValue = new Variable<Float>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -697,11 +776,12 @@ public class VariableTest{
 		String name = null;
 		String id = null;
 		String description = null;
+		ArrayList<String> format = null;
 		boolean requiresInput = false;
 		Float value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Float> nullIntegerObjectVariable = new Variable<Float>(name, id, requiresInput, description, value);
+		Variable<Float> nullIntegerObjectVariable = new Variable<Float>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -711,6 +791,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertNull(nullIntegerObjectVariable.GetDescription());
+		
+		//Test the format is correct
+		assertNull(nullIntegerObjectVariable.GetFormat());
 		
 		//Test the value set properly
 		assertNull(nullIntegerObjectVariable.GetValue());
@@ -724,7 +807,9 @@ public class VariableTest{
 	
 	@Test
 	public void setPrimitiveIntoFloatObjectType() {
-		Variable<Float> testVarWithPrimitive = new Variable<Float>("TEST", "TEST", false, "TEST", 3.28F);
+		
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<Float> testVarWithPrimitive = new Variable<Float>("TEST", "TEST", false, "TEST", format, 3.28F);
 		assertEquals(3.28F, (float) testVarWithPrimitive.GetValue(), 0);
 		
 	}
@@ -742,14 +827,15 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Boolean value = true;
 		
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Boolean> testVarNoValue = new Variable<Boolean>(name, id, requiresInput, description);
-				Variable<Boolean> testVarWithValue = new Variable<Boolean>(name, id, requiresInput, description, value);
+				Variable<Boolean> testVarNoValue = new Variable<Boolean>(name, id, requiresInput, description, format);
+				Variable<Boolean> testVarWithValue = new Variable<Boolean>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -762,6 +848,10 @@ public class VariableTest{
 				//Test the description is correct
 				assertEquals(description, testVarNoValue.GetDescription());
 				assertEquals(description, testVarWithValue.GetDescription());
+				
+				//Test the format is correct
+				assertEquals(format, testVarNoValue.GetFormat());
+				assertEquals(format, testVarWithValue.GetFormat());
 			
 				//Test the value set properly or is properly null
 				assertEquals(value, testVarWithValue.GetValue());
@@ -787,12 +877,13 @@ public class VariableTest{
 		String name = "TestVar";
 		String id = "TestID";
 		String description = "A Test Variable";
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("dd/MM/yyyy", "hh:mm:ss"));
 		boolean requiresInput = false;
 		Boolean value = true;
 		Boolean newValue = false;
 		
 		//Set up a valid test variable with a value 
-		Variable<Boolean> testVarValueUpdate = new Variable<Boolean>(name, id, requiresInput, description, value);
+		Variable<Boolean> testVarValueUpdate = new Variable<Boolean>(name, id, requiresInput, description,format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -802,6 +893,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertEquals(description, testVarValueUpdate.GetDescription());
+		
+		//Test the format is correct
+		assertEquals(format, testVarValueUpdate.GetFormat());
 		
 		//Test the value set properly
 		assertEquals(value, testVarValueUpdate.GetValue());
@@ -822,8 +916,9 @@ public class VariableTest{
 	public void nullValueOfBooleanObjectVariable() {
 		
 		//Set value of variable to null
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Boolean value = false;
-		Variable<Boolean> testNullValue = new Variable<Boolean>("TEST", "TEST", false, "TEST", value);
+		Variable<Boolean> testNullValue = new Variable<Boolean>("TEST", "TEST", false, "TEST", format, value);
 		assertEquals(value, testNullValue.GetValue());
 
 	}
@@ -839,11 +934,12 @@ public class VariableTest{
 		String name = null;
 		String id = null;
 		String description = null;
+		ArrayList<String> format = null;
 		boolean requiresInput = false;
 		Boolean value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Boolean> nullIntegerObjectVariable = new Variable<Boolean>(name, id, requiresInput, description, value);
+		Variable<Boolean> nullIntegerObjectVariable = new Variable<Boolean>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -853,6 +949,9 @@ public class VariableTest{
 		
 		//Test the description is correct
 		assertNull(nullIntegerObjectVariable.GetDescription());
+		
+		//Test the format is correct
+		assertNull(nullIntegerObjectVariable.GetFormat());
 		
 		//Test the value set properly
 		assertNull(nullIntegerObjectVariable.GetValue());
@@ -865,9 +964,9 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoBooleanObjectType() {
-		Variable<Boolean> testVarWithPrimitive = new Variable<Boolean>("TEST", "TEST", false, "TEST", false);
+		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
+		Variable<Boolean> testVarWithPrimitive = new Variable<Boolean>("TEST", "TEST", false, "TEST", format, false);
 		assertEquals(false, (boolean) testVarWithPrimitive.GetValue());
 		
 	}
-	
 }

@@ -9,9 +9,18 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application
 {
 
-	@Override
-	public void start(Stage primaryStage)
-	{
+    @Override
+    public void start(Stage primaryStage) {
+
+	try {
+
+	    // Splash Screen
+	    FXSpashScreen.CreateSpashScreen();
+
+	    // Main application
+	    primaryStage.setTitle("Untitled");
+	    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
+	    Scene scene = new Scene(root, 900, 700);
 
 		try
 		{

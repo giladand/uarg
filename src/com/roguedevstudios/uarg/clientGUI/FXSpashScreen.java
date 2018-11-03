@@ -13,7 +13,7 @@ import javafx.stage.*;
 import javafx.util.Duration;
 
 /**
- * The JavaFX Spash Screen class.
+ * The JavaFX Splash Screen class.
  * 
  * @author Marko Bachynsky
  * @since 1.0
@@ -34,9 +34,15 @@ public class FXSpashScreen {
     public static void CreateSpashScreen() throws Exception{
 	initFX();
 	startFX();
-
     }
     
+	/**
+	 * 
+	 * Initializes all fields, and sets the style of the splash layout
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
     public static void initFX() {
 	ImageView splash = new ImageView(new Image(SPLASH_IMAGE));
 	mainStage = new Stage();
@@ -52,6 +58,13 @@ public class FXSpashScreen {
 	splashLayout.setEffect(new DropShadow());
     }
     
+	/**
+	 * 
+	 * Creates the starting message for the splash screen
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
     public static void startFX() throws Exception {
 	final Task<ObservableList<String>> datasetTask = new Task<ObservableList<String>>() {
 	    @Override
@@ -79,6 +92,13 @@ public class FXSpashScreen {
 	new Thread(datasetTask).start();
     }
 
+	/**
+	 * 
+	 * Reveals the splash screen
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
     public static void showSplash(final Stage initStage, Task<?> task) {
 	progressText.textProperty().bind(task.messageProperty());
 	loadProgress.progressProperty().bind(task.progressProperty());
@@ -106,7 +126,4 @@ public class FXSpashScreen {
 	initStage.show();
     }
 
-    public interface InitCompletionHandler {
-	void complete();
-    }
 }

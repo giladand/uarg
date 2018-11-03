@@ -21,14 +21,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.scene.text.Text;
 
 /**
- * A class the User Interface handling.
+ * The controller class for SampleFXML.
  * 
- * @author Marko Bachynsky
+ * @author Marko S. Bachynsky
  * @author Dylan Richardson
- * @param
  * @since 1.0
  */
 
@@ -59,7 +57,7 @@ public class SampleController implements Initializable
 	@FXML
 	public MenuItem ViewHighContrastYellowOnBlack;
 	@FXML
-	public TableView<Person> ResidentialServiceLines;
+	public TableView<FXPerson> ResidentialServiceLines;
 	@FXML
 	public TextField LastName;
 	@FXML
@@ -75,19 +73,25 @@ public class SampleController implements Initializable
 	@FXML
 	public Button AddEntry;
 
-	// private Stack<Memento> _savedStates = new Stack<Memento>();
-
-	public Text t = new Text(); // Added
-
-	/*
-	 * @author Marko Bachynsky
+	/**
+	 * 
+	 * Clears all inputs
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
 	 */
-	@FXML
 	public void FileNewAction(ActionEvent event)
 	{
 		// TODO
 	}
 
+	/**
+	 * 
+	 * Opens a XBRL file, filling inputs with given data
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void FileOpenAction(ActionEvent event)
 	{
 		FileChooser fileChooser = new FileChooser();
@@ -100,6 +104,13 @@ public class SampleController implements Initializable
 		}
 	}
 
+	/**
+	 * 
+	 * Imports a supported file, filling inputs with given data
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void FileImportAction(ActionEvent event)
 	{
 		FileChooser fileChooser = new FileChooser();
@@ -112,11 +123,25 @@ public class SampleController implements Initializable
 		}
 	}
 
+	/**
+	 * 
+	 * Saves all data to a .xbrl file to the current file
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void FileSaveAction(ActionEvent event)
 	{
 		// TODO
 	}
 
+	/**
+	 * 
+	 * Saves all data to a .xbrl file, lets the user select a file to save to
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void FileSaveAsAction(ActionEvent event)
 	{
 		FileChooser fileChooser = new FileChooser();
@@ -129,6 +154,13 @@ public class SampleController implements Initializable
 		}
 	}
 
+	/**
+	 * 
+	 * Cuts the selected text
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void EditCutAction(ActionEvent event)
 	{
 		// TODO
@@ -141,6 +173,13 @@ public class SampleController implements Initializable
 		}
 	}
 
+	/**
+	 * 
+	 * Copies the selected text
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void EditCopyAction(ActionEvent event)
 	{
 		Scene scene = LastName.getScene();
@@ -151,6 +190,13 @@ public class SampleController implements Initializable
 		}
 	}
 
+	/**
+	 * 
+	 * Pastes into the selected text or position
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void EditPasteAction(ActionEvent event)
 	{
 		Scene scene = LastName.getScene();
@@ -162,6 +208,13 @@ public class SampleController implements Initializable
 
 	}
 
+	/**
+	 * 
+	 * Switches to the WhiteonBlack .css file
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void ViewHighContrastWhiteOnBlackAction(ActionEvent event)
 	{
 		Scene scene = LastName.getScene();
@@ -169,6 +222,13 @@ public class SampleController implements Initializable
 		scene.getStylesheets().add(getClass().getResource("WhiteOnBlack.css").toExternalForm());
 	}
 
+	/**
+	 * 
+	 * Switches to the BlackOnWhite .css file
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void ViewHighContrastBlackOnWhiteAction(ActionEvent event)
 	{
 		Scene scene = LastName.getScene();
@@ -176,6 +236,13 @@ public class SampleController implements Initializable
 		scene.getStylesheets().add(getClass().getResource("BlackOnWhite.css").toExternalForm());
 	}
 
+	/**
+	 * 
+	 * Switches to the YellowOnBlack .css file
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void ViewHighContrastYellowOnBlackAction(ActionEvent event)
 	{
 		Scene scene = LastName.getScene();
@@ -183,6 +250,14 @@ public class SampleController implements Initializable
 		scene.getStylesheets().add(getClass().getResource("YellowOnBlack.css").toExternalForm());
 	}
 
+	/**
+	 * 
+	 * Calls the method to add columns to TableView, and a update listener to
+	 * TableView
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
@@ -198,10 +273,10 @@ public class SampleController implements Initializable
 			}
 		});
 
-		ResidentialServiceLines.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>()
+		ResidentialServiceLines.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FXPerson>()
 		{
 			@Override
-			public void changed(ObservableValue<? extends Person> obs, Person oldSelection, Person newSelection)
+			public void changed(ObservableValue<? extends FXPerson> obs, FXPerson oldSelection, FXPerson newSelection)
 			{
 				if (newSelection != null)
 				{
@@ -227,33 +302,47 @@ public class SampleController implements Initializable
 
 	}
 
+	/**
+	 * 
+	 * Adds columns to TableView
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void AddColumnsToTableView()
 	{
-		TableColumn<Person, String> lastNameColumn = new TableColumn<Person, String>("Last Name");
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_lastName"));
+		TableColumn<FXPerson, String> lastNameColumn = new TableColumn<FXPerson, String>("Last Name");
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_lastName"));
 
-		TableColumn<Person, String> firstNameColumn = new TableColumn<Person, String>("First Name");
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_firstName"));
+		TableColumn<FXPerson, String> firstNameColumn = new TableColumn<FXPerson, String>("First Name");
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_firstName"));
 
-		TableColumn<Person, LocalDate> dateColumn = new TableColumn<Person, LocalDate>("Date");
-		dateColumn.setCellValueFactory(new PropertyValueFactory<Person, LocalDate>("_date"));
+		TableColumn<FXPerson, LocalDate> dateColumn = new TableColumn<FXPerson, LocalDate>("Date");
+		dateColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, LocalDate>("_date"));
 
-		TableColumn<Person, Double> cashColumn = new TableColumn<Person, Double>("Cash");
-		cashColumn.setCellValueFactory(new PropertyValueFactory<Person, Double>("_cash"));
+		TableColumn<FXPerson, Double> cashColumn = new TableColumn<FXPerson, Double>("Cash");
+		cashColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, Double>("_cash"));
 
-		TableColumn<Person, String> cityColumn = new TableColumn<Person, String>("City");
-		cityColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_city"));
+		TableColumn<FXPerson, String> cityColumn = new TableColumn<FXPerson, String>("City");
+		cityColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_city"));
 
-		TableColumn<Person, String> stateColumn = new TableColumn<Person, String>("State");
-		stateColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("_state"));
+		TableColumn<FXPerson, String> stateColumn = new TableColumn<FXPerson, String>("State");
+		stateColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_state"));
 
 		ResidentialServiceLines.getColumns().addAll(lastNameColumn, firstNameColumn, dateColumn, cashColumn, cityColumn, stateColumn);
 	}
 
+	/**
+	 * 
+	 * Adds a lineitem to the TableView
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void AddEntryToTableView()
 	{
-		ResidentialServiceLines.getItems()
-				.add(new Person(LastName.getText(), FirstName.getText(), Date.getValue(), Double.parseDouble(Cash.getText()), City.getText(), State.getText()));
+		ResidentialServiceLines.getItems().add(
+				new FXPerson(LastName.getText(), FirstName.getText(), Date.getValue(), Double.parseDouble(Cash.getText()), City.getText(), State.getText()));
 		ResidentialServiceLines.getSelectionModel().clearSelection();
 		LastName.clear();
 		FirstName.clear();
@@ -263,9 +352,16 @@ public class SampleController implements Initializable
 		State.clear();
 	}
 
+	/**
+	 * 
+	 * Updates a lineitem to the TableView
+	 * 
+	 * @since 1.0
+ 	 * @author Marko S. Bachynsky
+	 */
 	public void UpdateEntryToTableView()
 	{
-		Person person = ResidentialServiceLines.getSelectionModel().getSelectedItem();
+		FXPerson person = ResidentialServiceLines.getSelectionModel().getSelectedItem();
 
 		person.set_firstName(FirstName.getText());
 		person.set_lastName(LastName.getText());

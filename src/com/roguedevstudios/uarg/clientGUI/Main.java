@@ -6,9 +6,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * The main class, where it all starts
+ * 
+ * @author Marko S. Bachynsky
+ * @since 1.0
+ */
 public class Main extends Application
 {
 
+	/**
+	 * 
+	 * Creates the splash screen, and main program with a untitled window
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	@Override
 	public void start(Stage primaryStage)
 	{

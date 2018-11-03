@@ -6,27 +6,33 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
-public class Main extends Application {
+public class Main extends Application
+{
 
-    @Override
-    public void start(Stage primaryStage) {
-	// Splash Screen
-	FXSpashScreen.CreateSpashScreen();
-	// Main Application
-	try {
-	    primaryStage.setTitle("Untitled");
-	    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
-	    Scene scene = new Scene(root, 900, 700);
+	@Override
+	public void start(Stage primaryStage)
+	{
 
-	    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-	    primaryStage.setScene(scene);
-	    primaryStage.show();
-	} catch (Exception e) {
-	    e.printStackTrace();
+		try
+		{
+			// Splash Screen
+			FXSpashScreen.CreateSpashScreen();
+			// Main Program
+			primaryStage.setTitle("Untitled");
+			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			Scene scene = new Scene(root, 900, 700);
+
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
-    }
 
-    public static void main(String[] args) {
-	launch(args);
-    }
+	public static void main(String[] args)
+	{
+		launch(args);
+	}
 }

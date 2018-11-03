@@ -1,4 +1,4 @@
-package com.roguedevstudios.uarg.clientGUI;
+package com.roguedevstudios.uarg.System.UI;
 
 import java.io.File;
 import java.net.URL;

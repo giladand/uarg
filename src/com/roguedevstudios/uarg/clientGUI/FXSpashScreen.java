@@ -1,4 +1,4 @@
-package clientGUI;
+package com.roguedevstudios.uarg.clientGUI;
 import javafx.animation.FadeTransition;
 import javafx.collections.*;
 import javafx.concurrent.*;

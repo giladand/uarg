@@ -12,6 +12,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -21,7 +22,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="Root" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientGUI.SampleController">
+<BorderPane fx:id="Root" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.roguedevstudios.uarg.clientGUI.SampleController">
   <center>
     <BorderPane fx:id="Root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <center>
@@ -35,7 +36,7 @@
                       <content>
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
                           <center>
-                            <TableView fx:id="ResidentialServiceLines" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <TableView fx:id="ResidentialServiceLines" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                              <columnResizePolicy>
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy></TableView>
@@ -128,8 +129,6 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
           <items>
-            <MenuItem fx:id="EditUndo" mnemonicParsing="false" onAction="#EditUndoAction" text="Undo" />
-            <MenuItem fx:id="EditRedo" mnemonicParsing="false" onAction="#EditRedoAction" text="Redo" />
             <MenuItem fx:id="EditCut" mnemonicParsing="false" onAction="#EditCutAction" text="Cut" />
             <MenuItem fx:id="EditCopy" mnemonicParsing="false" onAction="#EditCopyAction" text="Copy" />
             <MenuItem fx:id="EditPaste" mnemonicParsing="false" onAction="#EditPasteAction" text="Paste" />
@@ -145,6 +144,17 @@
             <MenuItem mnemonicParsing="false" text="About" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <Menu mnemonicParsing="false" text="High Contrast">
+                    <items>
+                        <RadioMenuItem id="ViewHighContrastWhiteOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastWhiteOnBlackAction" text="White On Black" />
+                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" />
+                        <RadioMenuItem id="ViewHighContrastYellowOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" />
+                    </items>
+                  </Menu>
+               </items>
+            </Menu>
       </menus>
     </MenuBar>
   </top>

@@ -12,6 +12,7 @@ package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 *********************************************/
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gson.*;
@@ -24,6 +25,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * <p>
  * 
  * @author Terry Roberson
+ * @author Rasu Neupane
  * @since 1.0
  */
 public class BooleanArrayVariableDeserializer implements JsonDeserializer<IVariable<Boolean[]>> {
@@ -43,12 +45,14 @@ public class BooleanArrayVariableDeserializer implements JsonDeserializer<IVaria
 		String _name = null;
 		/*Temp slot for variable ID*/
 		String _id = null;
-		/*Temp slot for variable value*/
-		Boolean[] _value = null;
-		/*Temp slot for variable description*/
-		String _description = null;
 		/*Temp slot for variable requiresInput*/
 		boolean _requiresInput = false;
+		/*Temp slot for variable description*/
+		String _description = null;
+		/*Temp slot for variable value*/
+		ArrayList<String> _format = null;
+		/*Temp slot for variable value*/
+		Boolean[] _value = null;
 		/*Temp output object holder*/
 		IVariable<Boolean[]> v;
 		
@@ -87,8 +91,19 @@ public class BooleanArrayVariableDeserializer implements JsonDeserializer<IVaria
 			_description = o.get("Description").getAsString();
 		}
 		
+		//If the object has a format, then we grab it
+		if(o.has("Format")) {
+			//Retrieve format as json array
+			JsonArray t = o.get("Format").getAsJsonArray();
+			//Array contains formats of t size
+			int length = t.size();
+			//While there exists more formats, loop through
+			for (int i = 0; i < length; i++) {
+		      t.put(_format[i]);
+		      }
+		}
 		//Build the Variable object to return
-		v = new Variable<Boolean[]>(_name, _id, _requiresInput, _description, _value);
+		v = new Variable<Boolean[]>(_name, _id, _requiresInput, _description, _format, _value);
 			
 		return v;
 	}

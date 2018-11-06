@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+
+import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,21 +21,29 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.Printer;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
 import javafx.scene.text.Text; // Added
@@ -86,6 +97,10 @@ public class SampleController<V> implements Initializable {
     public TextField State;
     @FXML
     public Button AddEntry;
+    // Added Code: Print Function - Dylan 
+    @FXML
+    public MenuItem FilePrint;
+    
 
     // private Stack<Memento> _savedStates = new Stack<Memento>();
 
@@ -512,7 +527,8 @@ public class SampleController<V> implements Initializable {
 	ResidentialServiceLines.getColumns().add(lastNameColumn);
     }
 
-    public void AddEntryToTableView() {
+    public void AddEntryToTableView() 
+    {
 
 	/*
 	Variable<V> varObject = new Variable<V>("", "", false, LastName.getText());
@@ -559,12 +575,85 @@ public class SampleController<V> implements Initializable {
 	ResidentialServiceLines.refresh();
     }
 
-    public void ChangeFontSize() {
+    
+    // Code Added: Font Type & Text Size - Dylan
+    public void ChangeFontSize() 
+    {
 	t.setText("This is a text sample");
 	t.setFont(Font.font("Times New Roman", 12));
 	t.setFill(Color.RED);
 	// TextFieldTest.setFont(t.getFont());
 
     }
+    
+    
+    // Test Code: Print Button - Dylan 
+    
+    public class FxPrint extends Application 
+    {
 
+		@Override
+		public void start(Stage primaryStage) throws Exception 
+		{
+			final TextArea textArea = new TextArea();
+			//Button
+			Button button = new Button("Get the Default Printer");
+			// Button: Actions
+			button.setOnAction(new EventHandler <ActionEvent>()
+			{
+				public void handle(ActionEvent event)
+				{
+					//Get Default Printer
+					Printer defaultprinter = Printer.getDefaultPrinter();
+	
+					if (defaultprinter != null)
+					{
+						String name = defaultprinter.getName();
+						textArea.appendText("Default printer name: " + name);
+					}
+					else
+					{
+						textArea.appendText("No printers installed.");
+	
+					}      
+	
+	            }
+	
+			});
+			
+			// Code Added: Print Dialog Box - Dylan
+			 // Create the VBox with a 10px spacing
+			    VBox root = new VBox(10);  
+			    
+			    root.getChildren().addAll(button,textArea);
+			    root.setPrefSize(400, 250);
+			    root.setStyle("-fx-padding: 10;" +
+			    		"-fx-border-style: solid inside;" +
+			    		"-fx-border-width: 2;" +
+			    		"-fx-border-insets: 5;" +
+			    		"-fx-border-radius: 5;" +
+			    		"-fx-border-color: blue;");
+
+			    // Create the Scene
+			    Scene scene = new Scene(root);
+			    // Add the scene to the Stage
+			    primaryStage.setScene(scene);
+			    // Set the title of the Stage
+			    primaryStage.setTitle("Show the default Printer");
+			    // Display the Stage
+			    primaryStage.show();      
+				}
+			}
+			
 }
+
+    
+    
+  	
+    
+    
+    
+    
+    
+    
+

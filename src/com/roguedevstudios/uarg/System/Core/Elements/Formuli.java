@@ -6,9 +6,9 @@ package com.roguedevstudios.uarg.System.Core.Elements;
 *   Formuli Class               *
 *   File Name: Formuli.java     *
 *                               *
-*   The container for each 		*
-*   formula created in 			*
-*   Formula.java				*
+*   The generic template to		*
+*   to provide Formula with		*
+*    the required arguments		*
 *                               *
 *  ©2017 Rogue Dev Studios, LLC *
 ********************************/
@@ -22,9 +22,10 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
 
 /**
  * <p>
- * This class implements IFormuli and tracks formulas and formula sets
+ * This class implements IFormuli and will be a generic template to provide Formula with the required arguments.
  * @author Terry Roberson
  * @author Christopher Howard
+ * @author John Mai
  * @since 1.0
  */
 public class Formuli implements IFormuli {

@@ -49,7 +49,7 @@ public class BooleanArrayVariableDeserializer implements JsonDeserializer<IVaria
 		boolean _requiresInput = false;
 		/*Temp slot for variable description*/
 		String _description = null;
-		/*Temp slot for variable value*/
+		/*Temp slot for variable format*/
 		ArrayList<String> _format = null;
 		/*Temp slot for variable value*/
 		Boolean[] _value = null;
@@ -96,11 +96,16 @@ public class BooleanArrayVariableDeserializer implements JsonDeserializer<IVaria
 			//Retrieve format as json array
 			JsonArray t = o.get("Format").getAsJsonArray();
 			//Array contains formats of t size
-			int length = t.size();
+			_format = new ArrayList<String>(t.size());
+			//Iterate through json array
+			Iterator <JsonElement> it = t.iterator();
+			//Start at first location in array
+			int counter = 0;
 			//While there exists more formats, loop through
-			for (int i = 0; i < length; i++) {
-		      t.put(_format[i]);
-		      }
+			while(it.hasNext()) {
+				_format.add(counter, it.next().getAsString());
+				counter++;
+			}
 		}
 		//Build the Variable object to return
 		v = new Variable<Boolean[]>(_name, _id, _requiresInput, _description, _format, _value);

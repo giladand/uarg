@@ -12,6 +12,8 @@ package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 *****************************************/
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.google.gson.*;
 import com.roguedevstudios.uarg.System.Core.Elements.Variable;
@@ -23,6 +25,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * 
  * @author Terry Roberson
  * @author Christopher E. Howard
+ * @author Rasu Neupane
  * @since 1.0
  */
 public class FloatVariableDeserializer 
@@ -57,6 +60,9 @@ public class FloatVariableDeserializer
 		/*Temp slot for variable description*/
 		String _description = null;
 		
+		/*Temp slot for variable format*/
+		ArrayList<String> _format = null;
+		
 		/*Temp slot for variable requiresInput*/
 		boolean _requiresInput = false;
 		
@@ -84,12 +90,29 @@ public class FloatVariableDeserializer
 		if(o.has("Description")) {
 			_description = o.get("Description").getAsString();
 		}
+		//If the object has a format, then we grab it
+				if(o.has("Format")) {
+					//Retrieve format as json array
+					JsonArray t = o.get("Format").getAsJsonArray();
+					//Array contains formats of t size
+					_format = new ArrayList<String>(t.size());
+					//Iterate through json array
+					Iterator <JsonElement> it = t.iterator();
+					//Start at first location in array
+					int counter = 0;
+					//While there exists more formats, loop through
+					while(it.hasNext()) {
+						_format.add(counter, it.next().getAsString());
+						counter++;
+					}
+				}
 		
 		// Build the Variable object to return
 		v = new Variable<Float>(  _name,
 								  _id, 
 								  _requiresInput, 
 								  _description,
+								  _format,
 								  _value 
 							   );
 

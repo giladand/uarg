@@ -619,7 +619,7 @@ public class SampleController<V> implements Initializable {
 	
 			});
 			
-			// Code Added: Print Dialog Box - Dylan
+			// Code Added: Print Dialog Box - Dylan (11/06/2018)
 			VBox root = new VBox(10);  
 			root.getChildren().addAll(button,textArea);
 			root.setPrefSize(400, 250);

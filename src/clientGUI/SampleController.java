@@ -587,8 +587,7 @@ public class SampleController<V> implements Initializable {
     }
     
     
-    // Test Code: Print Button - Dylan 
-    
+    // Test Code: Print Button - Dylan (11/06/2018)
     public class FxPrint extends Application 
     {
 
@@ -605,7 +604,6 @@ public class SampleController<V> implements Initializable {
 				{
 					//Get Default Printer
 					Printer defaultprinter = Printer.getDefaultPrinter();
-	
 					if (defaultprinter != null)
 					{
 						String name = defaultprinter.getName();
@@ -622,28 +620,23 @@ public class SampleController<V> implements Initializable {
 			});
 			
 			// Code Added: Print Dialog Box - Dylan
-			 // Create the VBox with a 10px spacing
-			    VBox root = new VBox(10);  
-			    
-			    root.getChildren().addAll(button,textArea);
-			    root.setPrefSize(400, 250);
-			    root.setStyle("-fx-padding: 10;" +
+			VBox root = new VBox(10);  
+			root.getChildren().addAll(button,textArea);
+			root.setPrefSize(400, 250);
+			root.setStyle("-fx-padding: 10;" +
 			    		"-fx-border-style: solid inside;" +
 			    		"-fx-border-width: 2;" +
 			    		"-fx-border-insets: 5;" +
 			    		"-fx-border-radius: 5;" +
 			    		"-fx-border-color: blue;");
-
-			    // Create the Scene
-			    Scene scene = new Scene(root);
-			    // Add the scene to the Stage
-			    primaryStage.setScene(scene);
-			    // Set the title of the Stage
-			    primaryStage.setTitle("Show the default Printer");
-			    // Display the Stage
-			    primaryStage.show();      
-				}
-			}
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			// Set the title of the Stage
+			primaryStage.setTitle("Show the default Printer");
+			// Display the Stage
+			primaryStage.show();      
+		}
+	}
 			
 }
 

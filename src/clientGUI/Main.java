@@ -6,6 +6,7 @@ import java.util.Optional;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.JobSettings;
 import javafx.print.PageLayout;
@@ -17,9 +18,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -30,6 +34,9 @@ import javafx.stage.WindowEvent;
  
 public class Main extends Application 
 { 
+	// Added Code: Print
+	@FXML
+	public Button Print;
 	
 	
 
@@ -66,11 +73,19 @@ public class Main extends Application
 	    Button closeButton = new Button("Save Document"); 
 	    closeButton.setOnAction(event -> 
 	    mainStage.fireEvent(new WindowEvent(mainStage,WindowEvent.WINDOW_CLOSE_REQUEST))); 
+	    
+	    
+	    // Code Added: Print Function - Dylan (11/09/2018) TEST
+	    
+	    
+	    										
+	    
+	  }
+
 		 
-	} 
+	
 	 
 	 
-		// Test Code Added: Close Event - Dylan (11/04/2018) WORKS
 		private EventHandler<WindowEvent> confirmCloseEventHandler = event ->  
 		{ 
         Alert closeConfirmation = new Alert( 
@@ -116,15 +131,8 @@ public class Main extends Application
 			Application.launch(args); 
 		}
 
- 
-	 
-	// Test Code: Print Function Class - Dylan (11/07/2018)  NOT WORKING 
-	
-	
-	
-	
 }
-	
+
 	
 	
 

@@ -1,5 +1,7 @@
 package clientGUI;
 
+import javafx.scene.control.ContextMenu;
+
 public class VariableTableView<V> {
     private String text; // for some reason this HAS to be named without a '_' or the table breaks
     private Double number1;
@@ -64,6 +66,6 @@ public class VariableTableView<V> {
     public void setNumber5(Double number5) {
         this.number5 = number5;
     }
-
+    
     
 }

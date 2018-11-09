@@ -6,6 +6,9 @@ import java.io.PrintStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.print.attribute.standard.JobState;
+
 import com.roguedevstudios.uarg.System.Core.Elements.Variable;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -17,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.print.PageOrientation;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
+import javafx.print.PrinterJob.JobStatus;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -93,6 +97,9 @@ public class SampleController<V> implements Initializable {
     public TextField State;
     @FXML
     public Button AddEntry;
+    // Code Added: Print Function - Dylan 
+    @FXML
+    public Button Print;
     
    
     
@@ -578,13 +585,34 @@ public class SampleController<V> implements Initializable {
 	t.setFont(Font.font("Times New Roman", 12));
 	t.setFill(Color.RED);
 	// TextFieldTest.setFont(t.getFont());
-
     }
     
-    // 
+ 
     
     
-}
+    
+    
+
+         
+
+    	
+
+    		
+    
+    
+ }
+
+    
+
+
+
+
+
+
+
+
+
+
     
     
     

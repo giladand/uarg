@@ -1,50 +1,149 @@
-/************************************************
- * Formula Set Class File                       *
- * File name: FormulaSet.java                   *
- * The class file for a formula set.            *
- ***********************************************/
-
 package com.roguedevstudios.uarg.System.Core.Elements;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormula;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
+
 /**
- * This class is the formula set class.
- * @author Chel
+ * This is the FormulaSet class. This class implements IFormula and is used to track formula sets and formulas. 
+ * 
+ * @author Tristan Falcon
+ * @author Christopher Howard
+ * @author Terry Roberson
+ * 
  * @since 1.0
  */
-public class FormulaSet {
-	/*Class Attributes*/
+public class FormulaSet implements IFormuli {
 	
-	/*Name of the formula set*/
-	private String _formulaSetName;
-	/*Description of the formula set*/
-	private String _formulaSetDescription;
-	
-	/*Class Methods */
+	/* Declare empty tree maps to hold the formulas and formula sets */
+	private TreeMap<String, IFormula> _formulaMap;
+	private TreeMap<String, List<String>> _formulaSetMap;
 	
 	/**
-	 * Constructor for FormulaSet class. Sets values for the set name and set description.
-	 * @param setName	The name of the formula set.
-	 * @param setDescription	The formula set description.
+	 * Construct initial state for FormulaSet container
+	 * 
+	 * @author Tristan Falcon
+	 * @author Terry Roberson
+	 * @author Christopher Howard
+	 * 
+	 * @since 1.0
 	 */
-	public FormulaSet(String setName, String setDescription) {
-		this._formulaSetName = setName;
-		this._formulaSetDescription = setDescription;
+	public FormulaSet() {
+		this._build();
+	}
+	
+	/**
+	 * Construct FormulaSet container with formula and formula set maps
+	 * 
+	 * @param formulaMap
+	 * @param formulaSetMap
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public FormulaSet(TreeMap<String, IFormula> formulaMap, TreeMap<String, List<String>> formulaSetMap) {
+		this._formulaMap = formulaMap;
+		this._formulaSetMap = formulaSetMap;
+	}
+	
+	/**
+	 * Initialize the tree maps that will be used to store formulas and formula sets
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	private void _build() {
+		this._formulaMap = new TreeMap<String, IFormula>();
+		this._formulaSetMap = new TreeMap<String, List<String>>();
+	}
+	
+	/**
+	 * IFormuli method used to return the formulas in a given set
+	 * 
+	 * @param ID
+	 * @return List<String>
+	 * 
+	 * @author Tristan Falcon
+	 * @author Christopher Howard
+	 * 
+	 * @sinc 1.0
+	 */
+	public List<String> GetFormulaSet(String ID) {
+		return this._formulaSetMap.get(ID);
+	}
+	
+	
+	/**
+	 * IFormuli method used to add a formula set to FormulaSetMap 
+	 * 
+	 * @param ID
+	 * 
+	 * @author Tristan Falcon
+	 * @author Christopher Howard
+	 * 
+	 * @since 1.0
+	 */
+	public void SetFormulaSet(String ID) {
+		if(this._formulaSetMap.containsKey(ID))
+			return;
+		this._formulaSetMap.put(ID, new ArrayList<String>());		
+	}
+	
+	/**
+	 * IFormuli method used to return the IFormula object from a given formula id
+	 * 
+	 * @param ID
+	 * @return IFormula
+	 * 
+	 * @author Tristan Falcon
+	 * @author Christopher Howard
+	 * 
+	 * @since 1.0
+	 */
+	public IFormula GetFormula(String ID) {
+		return this._formulaMap.get(ID);
+	}
+	
+	/**
+	 * IFormuli Method used to add a formula to a formula set
+	 * 
+	 * @param SetID
+	 * @param FormulaID
+	 * 
+	 * @author Tristan Falcon
+	 * @author Christopher Howard
+	 * 
+	 * @since 1.0
+	 */
+	public void AddFormulaToSet(String SetID, String FormulaID) {
+		if(!this._formulaSetMap.containsKey(SetID))
+			this.SetFormulaSet(SetID);
+		if(this._formulaSetMap.get(SetID).contains(FormulaID))
+			return;
+		this._formulaSetMap.get(SetID).add(FormulaID);
 		
 	}
 	
 	/**
-	 * Gets the formula set name.
-	 * @return The formula set name String.
+	 * IFormuli interface method used to add a Formula to the formulaMap
+	 * 
+	 * @param ID
+	 * @param formula
+	 * 
+	 * @author Tristan Falcon
+	 * @author Christopher Howard
+	 * 
+	 * @since 1.0
 	 */
-	public String GetFormulaSetName() {
-		return this._formulaSetName;
+	public void AddFormula(String ID, IFormula formula) {
+		if(this._formulaMap.containsKey(ID))
+			return;
+		this._formulaMap.put(ID, formula);
 	}
-	
-	/**
-	 * Gets the formula set description.
-	 * @return The formula set description String.
-	 */
-	public String GetFormulaSetDesc() {
-		return this._formulaSetDescription;
-	}
+
 }

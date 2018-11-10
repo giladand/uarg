@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormula;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
 
 /**
  * This is the FormulaSet class. This class implements IFormula and is used to track formula sets and formulas. 
@@ -144,6 +145,37 @@ public class FormulaSet implements IFormuli {
 		if(this._formulaMap.containsKey(ID))
 			return;
 		this._formulaMap.put(ID, formula);
+	}
+	
+	/**
+	 * This is the method used to calculate the value of the formula chain 
+	 * 
+	 * @param ID
+	 * @param formula
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public Double GetSetValue(String setID) {
+		// Declare variables needed to calculate the set value
+		List<String> formulas;
+		String formulaID;
+		IFormula formula;
+		Double value;
+	
+		// set formulas to the the formula id's  
+		formulas = GetFormulaSet(setID);
+		// set formulaID to the first formula id in the set
+		formulaID = formulas.get(0);
+		// set formula to the formula object 
+		formula = GetFormula(formulaID);
+		// var initialized as a place holder until proper implementation is developed
+		IVariable<? extends Number>[] vars = null;
+		// set the value by calculating the formula
+		value = formula.CalculateToDouble(vars );
+		
+		return value;
 	}
 
 }

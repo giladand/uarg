@@ -5,25 +5,45 @@ import java.io.File;
 import java.io.PrintStream;
 import java.net.URL;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+>>>>>>> UARG-156
 import java.util.ResourceBundle;
 
 import javax.print.attribute.standard.JobState;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+<<<<<<< HEAD
 import javafx.application.Application;
+=======
+
+import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+>>>>>>> UARG-156
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.print.PageOrientation;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.print.PrinterJob.JobStatus;
 import javafx.scene.Node;
+=======
+import javafx.print.Printer;
+>>>>>>> UARG-156
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -36,13 +56,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
+<<<<<<< HEAD
 import javafx.scene.layout.HBox;
+=======
+>>>>>>> UARG-156
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 // Code: Font
 import javafx.scene.text.Font; 
 import javafx.scene.text.Text; 
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -97,11 +123,17 @@ public class SampleController<V> implements Initializable {
     public TextField State;
     @FXML
     public Button AddEntry;
+<<<<<<< HEAD
     // Code Added: Print Function - Dylan 
     @FXML
     public Button Print;
     
    
+=======
+    // Added Code: Print Function - Dylan 
+    @FXML
+    public MenuItem FilePrint;
+>>>>>>> UARG-156
     
 
     // private Stack<Memento> _savedStates = new Stack<Memento>();
@@ -587,6 +619,7 @@ public class SampleController<V> implements Initializable {
 	// TextFieldTest.setFont(t.getFont());
     }
     
+<<<<<<< HEAD
  
     
     
@@ -633,6 +666,61 @@ public class SampleController<V> implements Initializable {
 			
 
 
+=======
+    
+    // Test Code: Print Button - Dylan (11/06/2018)
+    public class FxPrint extends Application 
+    {
+
+		@Override
+		public void start(Stage primaryStage) throws Exception 
+		{
+			final TextArea textArea = new TextArea();
+			//Button
+			Button button = new Button("Get the Default Printer");
+			// Button: Actions
+			button.setOnAction(new EventHandler <ActionEvent>()
+			{
+				public void handle(ActionEvent event)
+				{
+					//Get Default Printer
+					Printer defaultprinter = Printer.getDefaultPrinter();
+					if (defaultprinter != null)
+					{
+						String name = defaultprinter.getName();
+						textArea.appendText("Default printer name: " + name);
+					}
+					else
+					{
+						textArea.appendText("No printers installed.");
+	
+					}      
+	
+	            }
+	
+			});
+			
+			// Code Added: Print Dialog Box - Dylan (11/06/2018)
+			VBox root = new VBox(10);  
+			root.getChildren().addAll(button,textArea);
+			root.setPrefSize(400, 250);
+			root.setStyle("-fx-padding: 10;" +
+			    		"-fx-border-style: solid inside;" +
+			    		"-fx-border-width: 2;" +
+			    		"-fx-border-insets: 5;" +
+			    		"-fx-border-radius: 5;" +
+			    		"-fx-border-color: blue;");
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			// Set the title of the Stage
+			primaryStage.setTitle("Show the default Printer");
+			// Display the Stage
+			primaryStage.show();      
+		}
+	}
+			
+}
+>>>>>>> UARG-156
 
     
     

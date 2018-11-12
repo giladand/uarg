@@ -2,31 +2,32 @@ package com.roguedevstudios.uarg.System.UI;
 
 import java.io.File;
 import java.net.URL;
-import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.util.Callback;
 
 /**
  * The controller class for SampleFXML.
  * 
  * @author Marko S. Bachynsky
- * @author Dylan Richardson
  * @since 1.0
  */
 
@@ -57,7 +58,7 @@ public class SampleController implements Initializable
 	@FXML
 	public MenuItem ViewHighContrastYellowOnBlack;
 	@FXML
-	public TableView<FXPerson> ResidentialServiceLines;
+	public TableView<AttributeRow> ResidentialServiceLines;
 	@FXML
 	public TextField LastName;
 	@FXML
@@ -262,44 +263,6 @@ public class SampleController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		AddColumnsToTableView();
-
-		AddEntry.setOnAction(new EventHandler<ActionEvent>()
-		{
-			@Override
-			public void handle(ActionEvent evt)
-			{
-
-				AddEntryToTableView();
-			}
-		});
-
-		ResidentialServiceLines.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FXPerson>()
-		{
-			@Override
-			public void changed(ObservableValue<? extends FXPerson> obs, FXPerson oldSelection, FXPerson newSelection)
-			{
-				if (newSelection != null)
-				{
-					LastName.setText(newSelection.get_lastName());
-					FirstName.setText(newSelection.get_firstName());
-					Date.setValue(newSelection.get_date());
-					Cash.setText(Double.toString(newSelection.get_cash()));
-					City.setText(newSelection.get_city());
-					State.setText(newSelection.get_state());
-
-					AddEntry.setText("Update");
-					AddEntry.setOnAction(new EventHandler<ActionEvent>()
-					{
-						@Override
-						public void handle(ActionEvent evt)
-						{
-							UpdateEntryToTableView();
-						}
-					});
-				}
-			}
-		});
-
 	}
 
 	/**
@@ -311,83 +274,40 @@ public class SampleController implements Initializable
 	 */
 	public void AddColumnsToTableView()
 	{
-		TableColumn<FXPerson, String> lastNameColumn = new TableColumn<FXPerson, String>("Last Name");
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_lastName"));
-
-		TableColumn<FXPerson, String> firstNameColumn = new TableColumn<FXPerson, String>("First Name");
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_firstName"));
-
-		TableColumn<FXPerson, LocalDate> dateColumn = new TableColumn<FXPerson, LocalDate>("Date");
-		dateColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, LocalDate>("_date"));
-
-		TableColumn<FXPerson, Double> cashColumn = new TableColumn<FXPerson, Double>("Cash");
-		cashColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, Double>("_cash"));
-
-		TableColumn<FXPerson, String> cityColumn = new TableColumn<FXPerson, String>("City");
-		cityColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_city"));
-
-		TableColumn<FXPerson, String> stateColumn = new TableColumn<FXPerson, String>("State");
-		stateColumn.setCellValueFactory(new PropertyValueFactory<FXPerson, String>("_state"));
-
-		ResidentialServiceLines.getColumns().addAll(lastNameColumn, firstNameColumn, dateColumn, cashColumn, cityColumn, stateColumn);
-	}
-
-	/**
-	 * 
-	 * Adds a lineitem to the TableView
-	 * 
-	 * @since 1.0
-	 * @author Marko S. Bachynsky
-	 */
-	public void AddEntryToTableView()
-	{
-		ResidentialServiceLines.getItems().add(
-				new FXPerson(LastName.getText(), FirstName.getText(), Date.getValue(), Double.parseDouble(Cash.getText()), City.getText(), State.getText()));
-		ResidentialServiceLines.getSelectionModel().clearSelection();
-		LastName.clear();
-		FirstName.clear();
-		Date.setValue(null);
-		Cash.clear();
-		City.clear();
-		State.clear();
-	}
-
-	/**
-	 * 
-	 * Updates a lineitem to the TableView
-	 * 
-	 * @since 1.0
- 	 * @author Marko S. Bachynsky
-	 */
-	public void UpdateEntryToTableView()
-	{
-		FXPerson person = ResidentialServiceLines.getSelectionModel().getSelectedItem();
-
-		person.set_firstName(FirstName.getText());
-		person.set_lastName(LastName.getText());
-		person.set_date(Date.getValue());
-		person.set_cash(Double.parseDouble(Cash.getText()));
-		person.set_city(City.getText());
-		person.set_state(State.getText());
-
-		// Clear Selection
-		LastName.clear();
-		FirstName.clear();
-		Date.setValue(null);
-		Cash.clear();
-		City.clear();
-		State.clear();
-
-		AddEntry.setText("Add");
-		AddEntry.setOnAction(new EventHandler<ActionEvent>()
+		
+		Callback<TableColumn<AttributeRow, String>, TableCell<AttributeRow, String>> cellFactory = new Callback<TableColumn<AttributeRow, String>, TableCell<AttributeRow, String>>()
 		{
-			@Override
-			public void handle(ActionEvent evt)
+			public TableCell<AttributeRow, String> call(TableColumn<AttributeRow, String> arg)
 			{
-				AddEntryToTableView();
+				return new EditingCell();
 			}
-		});
-		ResidentialServiceLines.refresh();
+		};
+		
+		// create columns
+		List<String> columnList = Arrays.asList("Column 1", "Column 2", "Column 3", "Column 4", "Column 5");
+		for (String column : columnList)
+		{
+			TableColumn<AttributeRow, String> groupColumn = new TableColumn<>(column);
+			groupColumn.setCellFactory(cellFactory);
+			groupColumn.setCellValueFactory(cellData -> cellData.getValue().SetValueByColumn(column));
+			groupColumn.setOnEditCommit((CellEditEvent<AttributeRow, String> cellEditEvent) ->
+			{
+				TableView<AttributeRow> tableView = cellEditEvent.getTableView();
+				TablePosition<AttributeRow, String> tablePostion = cellEditEvent.getTablePosition();
+				int rowIndex = tablePostion.getRow();
+
+				ObservableList<AttributeRow> items = tableView.getItems();
+				((AttributeRow) items.get(rowIndex)).SetCellValue(cellEditEvent.getNewValue());
+			});
+			ResidentialServiceLines.getColumns().add(groupColumn);
+		}
+
+		// Add rows to the columns
+		for (int i = 0; i < 10; i++)
+		{
+			AttributeRow row = new AttributeRow(columnList);
+			ResidentialServiceLines.getItems().add(row);
+		}
 	}
 
 }

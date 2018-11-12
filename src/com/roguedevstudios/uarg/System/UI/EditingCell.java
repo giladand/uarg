@@ -5,6 +5,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 
+/**
+ * Supporting class for AttributeRow. Creates a new kind of EditingCell for direct editing.
+ * 
+ * @author Marko S. Bachynsky
+ * @since 1.0
+ */
+
 public class EditingCell extends TableCell<AttributeRow, String>
 {
 	private TextField textField;

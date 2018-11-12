@@ -25,7 +25,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
 
 /**
- * The controller class for SampleFXML.
+ * The controller class for GUI.FXML.
  * 
  * @author Marko S. Bachynsky
  * @since 1.0
@@ -284,7 +284,7 @@ public class SampleController implements Initializable
 		};
 		
 		// create columns
-		List<String> columnList = Arrays.asList("Column 1", "Column 2", "Column 3", "Column 4", "Column 5");
+		List<String> columnList = Arrays.asList("Actual No. of Monthly Customers", "Service Frequencey Per Month", "Service Frequencey Per Year");
 		for (String column : columnList)
 		{
 			TableColumn<AttributeRow, String> groupColumn = new TableColumn<>(column);

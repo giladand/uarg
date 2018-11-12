@@ -34,7 +34,7 @@ public class Main extends Application
 			primaryStage.setTitle("Untitled");
 			// Set Icon
 			primaryStage.getIcons().add(new Image("/com/roguedevstudios/uarg/System/UI/Resources/Uarg Icon.jpg"));
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/Sample.fxml"));
+			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/GUI.fxml"));
 			Scene scene = new Scene(root, 900, 700);
 			scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/application.css").toExternalForm());
 			primaryStage.setScene(scene);

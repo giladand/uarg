@@ -5,10 +5,8 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -17,7 +15,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -41,19 +38,6 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy></TableView>
                           </center>
-                                       <bottom>
-                                          <ButtonBar buttonOrder="U+L_HE+FBIX_NCYOA_R" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                            <buttons>
-                                                <TextField fx:id="LastName" promptText="LAST NAME" />
-                                                <TextField fx:id="FirstName" promptText="FIRST NAME" />
-                                                <DatePicker fx:id="Date" promptText="MM/DD/YYYY" />
-                                                <TextField fx:id="Cash" promptText="\$$$" />
-                                                <TextField fx:id="City" promptText="CITY" />
-                                                <TextField fx:id="State" promptText="STATE" />
-                                                <Button fx:id="AddEntry" mnemonicParsing="false" text="Add" />
-                                            </buttons>
-                                          </ButtonBar>
-                                       </bottom>
                         </BorderPane>
                       </content>
                     </Tab>

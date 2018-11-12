@@ -12,6 +12,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -21,7 +22,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="Root" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientGUI.SampleController">
+<BorderPane fx:id="Root" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.roguedevstudios.uarg.System.UI.SampleController">
   <center>
     <BorderPane fx:id="Root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <center>
@@ -143,6 +144,17 @@
             <MenuItem mnemonicParsing="false" text="About" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <Menu mnemonicParsing="false" text="High Contrast">
+                    <items>
+                        <RadioMenuItem id="ViewHighContrastWhiteOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastWhiteOnBlackAction" text="White On Black" />
+                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" />
+                        <RadioMenuItem id="ViewHighContrastYellowOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" />
+                    </items>
+                  </Menu>
+               </items>
+            </Menu>
       </menus>
     </MenuBar>
   </top>

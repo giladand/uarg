@@ -1,5 +1,6 @@
 package clientGUI;
 
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -99,7 +101,7 @@ public class SampleController<V> implements Initializable {
     public Button AddEntry;
     // Added Code: Print Function - Dylan 
     @FXML
-    public MenuItem FilePrint;
+    public Button print;
     
 
     // private Stack<Memento> _savedStates = new Stack<Memento>();
@@ -586,59 +588,29 @@ public class SampleController<V> implements Initializable {
 
     }
     
-    
-    // Test Code: Print Button - Dylan (11/06/2018)
-    public class FxPrint extends Application 
-    {
+ // Added Code: Print Function
+ 
+     public void print() 
+     {
+    	 print.setOnAction(new EventHandler<ActionEvent>() {
+    		    @Override
+    		    public void handle(ActionEvent evt) 
+    		    {
 
-		@Override
-		public void start(Stage primaryStage) throws Exception 
-		{
-			final TextArea textArea = new TextArea();
-			//Button
-			Button button = new Button("Get the Default Printer");
-			// Button: Actions
-			button.setOnAction(new EventHandler <ActionEvent>()
-			{
-				public void handle(ActionEvent event)
-				{
-					//Get Default Printer
-					Printer defaultprinter = Printer.getDefaultPrinter();
-					if (defaultprinter != null)
-					{
-						String name = defaultprinter.getName();
-						textArea.appendText("Default printer name: " + name);
-					}
-					else
-					{
-						textArea.appendText("No printers installed.");
-	
-					}      
-	
-	            }
-	
-			});
-			
-			// Code Added: Print Dialog Box - Dylan (11/06/2018)
-			VBox root = new VBox(10);  
-			root.getChildren().addAll(button,textArea);
-			root.setPrefSize(400, 250);
-			root.setStyle("-fx-padding: 10;" +
-			    		"-fx-border-style: solid inside;" +
-			    		"-fx-border-width: 2;" +
-			    		"-fx-border-insets: 5;" +
-			    		"-fx-border-radius: 5;" +
-			    		"-fx-border-color: blue;");
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			// Set the title of the Stage
-			primaryStage.setTitle("Show the default Printer");
-			// Display the Stage
-			primaryStage.show();      
-		}
-	}
-			
-}
+    		    	PrinterJob printerJob = PrinterJob.createPrinterJob(); 
+    	     	    if(printerJob.showPrintDialog(primaryStage.getOwner()) && printerJob.printPage(???))
+    	     	        printerJob.endJob();
+    		    }
+    		});
+     	
+     }
+     
+     	
+    
+    
+    }
+
+
 
     
     

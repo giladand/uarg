@@ -22,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 
 public class Main extends Application
 {
@@ -105,6 +106,9 @@ public class Main extends Application
         
         
 	};
+	
+	
+    
 
 	public static void main(String[] args)
 	{

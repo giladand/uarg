@@ -4,6 +4,11 @@
  *                                                                             *
  ******************************************************************************/
 
+* {
+	-fx-font-family: arial;
+	-fx-font-size: 12;
+}
+
 .root {
     -fx-base: white;
     -fx-background: -fx-base;

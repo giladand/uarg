@@ -19,41 +19,41 @@ import java.util.ArrayList;
 
 public interface IFormula {
 	/**
-	 * Takes in an array of Number based Variables and
+	 * Takes in an array of Number based Cells and
 	 * processes them through this formula returning an
 	 * Integer representation of the resulting answer.
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Integer CalculateToInteger(IVariable<? extends Number>[] vars);
-	Integer[] CalculateToInteger(IVariable<?>[] vars, boolean ArrayPresent);
+	Integer CalculateToInteger(ICell<? extends Number>[] vars);
+	Integer[] CalculateToInteger(ICell<?>[] vars, boolean ArrayPresent);
 	/**
-	 * Takes in an array of Number based Variables and
+	 * Takes in an array of Number based Cells and
 	 * processes them through this formula returning a
 	 * Double representation of the resulting answer.
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Double CalculateToDouble(IVariable<? extends Number>[] vars);
-	Double[] CalculateToDouble(IVariable<?>[] vars, boolean ArrayPresent);
+	Double CalculateToDouble(ICell<? extends Number>[] vars);
+	Double[] CalculateToDouble(ICell<?>[] vars, boolean ArrayPresent);
 	/**
-	 * Takes in an array of Number based Variables and
+	 * Takes in an array of Number based Cells and
 	 * processes them through this formula returning a
 	 * Float representation of the resulting answer.
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Float CalculateToFloat(IVariable<? extends Number>[] vars);
-	Float[] CalculateToFloat(IVariable<?>[] vars, boolean ArrayPresent);
+	Float CalculateToFloat(ICell<? extends Number>[] vars);
+	Float[] CalculateToFloat(ICell<?>[] vars, boolean ArrayPresent);
 	/**
-	 * Takes in an array of Number based Variables and
+	 * Takes in an array of Number based Cells and
 	 * processes them through this formula returning a
 	 * Long representation of the resulting answer.
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Long CalculateToLong(IVariable<? extends Number>[] vars);
-	Long[] CalculateToLong(IVariable<?>[] vars, boolean ArrayPresent);
+	Long CalculateToLong(ICell<? extends Number>[] vars);
+	Long[] CalculateToLong(ICell<?>[] vars, boolean ArrayPresent);
 	/**
 	 * Gets the array size expected when passing arguments
 	 * to be processed by this formula.

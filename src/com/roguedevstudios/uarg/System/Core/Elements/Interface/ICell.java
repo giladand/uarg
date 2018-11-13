@@ -1,28 +1,28 @@
 package com.roguedevstudios.uarg.System.Core.Elements.Interface;
 /********************************
-*   IVariable Interface		    *
-*   File Name: IVariable.java   *
+*   ICell Interface		    *
+*   File Name: ICell.java   *
 *                               *
 *   Inversion of Control		*
-*   for Variable		 		*
+*   for Cell		 		*
 *                               *
 *  ©2017 Rogue Dev Studios, LLC *
 ********************************/
 
 /**
  * 
- * Interface representing Variable requirements
+ * Interface representing Cell requirements
  * 
  * @author Christopher E. Howard
  * @author Terry Roberson
  * @since 1.0
  */
-public interface IVariable<V>
+public interface ICell<V>
 {
 	
 	/**
 	 * 
-	 * Gets the name of this variable
+	 * Gets the name of this Cell
 	 * 
 	 * @return Name
 	 * @since 1.0
@@ -31,7 +31,7 @@ public interface IVariable<V>
 	
 	/**
 	 * 
-	 * Gets the description of this variable
+	 * Gets the description of this Cell
 	 * 
 	 * @return Description
 	 * @since 1.0
@@ -40,7 +40,7 @@ public interface IVariable<V>
 	
 	/**
 	 * 
-	 * Gets the ID of this variable
+	 * Gets the ID of this Cell
 	 * 
 	 * @return ID
 	 * @since 1.0
@@ -49,7 +49,7 @@ public interface IVariable<V>
 	
 	/**
 	 * 
-	 * Gets the value of this variable
+	 * Gets the value of this Cell
 	 * 
 	 * @return Value
 	 * @since 1.0
@@ -58,7 +58,7 @@ public interface IVariable<V>
 	
 	/**
 	 * 
-	 * Checks if variable is independent
+	 * Checks if Cell is independent
 	 * 
 	 * @return RequiresInput
 	 * @since 1.0
@@ -67,45 +67,45 @@ public interface IVariable<V>
 	
 	/**
 	 * 
-	 * Sets the description of this variable
+	 * Sets the description of this Cell
 	 * 
-	 * @param description Description of this variable
+	 * @param description Description of this Cell
 	 * @since 1.0
 	 */
 	void SetDescription( String description );
 	
 	/**
 	 * 
-	 * Sets the ID of the variable
+	 * Sets the ID of the Cell
 	 * 
-	 * @param id String id of this variable
+	 * @param id String id of this Cell
 	 * @since 1.0
 	 */
 	void SetId( String id );
 	
 	/**
 	 * 
-	 * Sets the name of this variable
+	 * Sets the name of this Cell
 	 * 
-	 * @param name String name of this variable
+	 * @param name String name of this Cell
 	 * @since 1.0
 	 */
 	void SetName( String name );
 	
 	/**
 	 * 
-	 * Sets whether the variable is independent
+	 * Sets whether the Cell is independent
 	 * 
-	 * @param requiresInput boolean dependency check of this variable
+	 * @param requiresInput boolean dependency check of this Cell
 	 * @since 1.0
 	 */
 	void SetRequiresInput( Boolean required );
 	
 	/**
 	 * 
-	 * Sets the value of this variable
+	 * Sets the value of this Cell
 	 * 
-	 * @param value Value of this variable
+	 * @param value Value of this Cell
 	 * @since 1.0
 	 */
 	void SetValue( V value );

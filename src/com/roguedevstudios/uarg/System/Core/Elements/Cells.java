@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /********************************
-*   Variables Class             *
-*   File Name: Variables.java   *
+*   Cells Class             *
+*   File Name: Cells.java   *
 *                               *
 *   The container for each 		*
 *   Variable created in 		*
@@ -18,83 +18,83 @@ import java.util.List;
 //Import Section
 import java.util.TreeMap;
 
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
-import com.roguedevstudios.uarg.System.Core.Enum.VariableType;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICells;
+import com.roguedevstudios.uarg.System.Core.Enum.CellType;
 
 /**
  * <p>
- * This class implements IVariables and constructs variables for the class Variable
+ * This class implements ICells and constructs variables for the class Variable
  * <p>
  * 
  * @author Grant Richards
  * @author Terry Roberson
  * @since 1.0
  */
-public class Variables implements IVariables {
+public class Cells implements ICells {
 
-	private TreeMap<String, IVariable<Integer>> _integerMap;
+	private TreeMap<String, ICell<Integer>> _integerMap;
 
-	private TreeMap<String, IVariable<Integer[]>> _integerArrayMap;
+	private TreeMap<String, ICell<Integer[]>> _integerArrayMap;
 
-	private TreeMap<String, IVariable<String>> _stringMap;
+	private TreeMap<String, ICell<String>> _stringMap;
 
-	private TreeMap<String, IVariable<String[]>> _stringArrayMap;
+	private TreeMap<String, ICell<String[]>> _stringArrayMap;
 
-	private TreeMap<String, IVariable<Float>> _floatMap;
+	private TreeMap<String, ICell<Float>> _floatMap;
 
-	private TreeMap<String, IVariable<Float[]>> _floatArrayMap;
+	private TreeMap<String, ICell<Float[]>> _floatArrayMap;
 
-	private TreeMap<String, IVariable<Long>> _longMap;
+	private TreeMap<String, ICell<Long>> _longMap;
 
-	private TreeMap<String, IVariable<Long[]>> _longArrayMap;
+	private TreeMap<String, ICell<Long[]>> _longArrayMap;
 
-	private TreeMap<String, IVariable<Double>> _doubleMap;
+	private TreeMap<String, ICell<Double>> _doubleMap;
 
-	private TreeMap<String, IVariable<Double[]>> _doubleArrayMap;
+	private TreeMap<String, ICell<Double[]>> _doubleArrayMap;
 
-	private TreeMap<String, IVariable<Boolean>> _booleanMap;
+	private TreeMap<String, ICell<Boolean>> _booleanMap;
 
-	private TreeMap<String, IVariable<Boolean[]>> _booleanArrayMap;
+	private TreeMap<String, ICell<Boolean[]>> _booleanArrayMap;
 	
-	private TreeMap<String, VariableType> _variableTypeMap;
+	private TreeMap<String, CellType> _variableTypeMap;
 
-	/**Constructs the initial state of the Variables container
+	/**Constructs the initial state of the Cells container
 	 *
 	 * @since 1.0
 	 */
 
-	public Variables() {
+	public Cells() {
 		
 			this._build();
 	}
 	
 	
 	/**
-	 * Constructs the Variables container with all Variable Sections
+	 * Constructs the Cells container with all Variable Sections
 	 * 
 	 * @since 1.0
 	 */
-	public Variables(TreeMap<String, IVariable<Integer>> _integerMap, TreeMap<String, IVariable<Integer[]>> _integerArrayMap, 
-					TreeMap<String, IVariable<String>> _stringMap, TreeMap<String, IVariable<String[]>> _stringArrayMap, 
-					TreeMap<String, IVariable<Float>> _floatMap, TreeMap<String, IVariable<Float[]>> _floatArrayMap, 
-					TreeMap<String, IVariable<Long>> _longMap, TreeMap<String, IVariable<Long[]>> _longArrayMap, 
-					TreeMap<String, IVariable<Double>> _doubleMap, TreeMap<String, IVariable<Double[]>> _doubleArrayMap, 
-					TreeMap<String, IVariable<Boolean>> _booleanMap, TreeMap<String, IVariable<Boolean[]>> _booleanArrayMap) 
+	public Cells(TreeMap<String, ICell<Integer>> _integerMap, TreeMap<String, ICell<Integer[]>> _integerArrayMap, 
+					TreeMap<String, ICell<String>> _stringMap, TreeMap<String, ICell<String[]>> _stringArrayMap, 
+					TreeMap<String, ICell<Float>> _floatMap, TreeMap<String, ICell<Float[]>> _floatArrayMap, 
+					TreeMap<String, ICell<Long>> _longMap, TreeMap<String, ICell<Long[]>> _longArrayMap, 
+					TreeMap<String, ICell<Double>> _doubleMap, TreeMap<String, ICell<Double[]>> _doubleArrayMap, 
+					TreeMap<String, ICell<Boolean>> _booleanMap, TreeMap<String, ICell<Boolean[]>> _booleanArrayMap) 
 					{
 	// For each of the twelve lines below. If a null Variable object is passed, a blank TreeMap is created
-					this._integerMap = (_integerMap != null)?_integerMap:new TreeMap<String, IVariable<Integer>>();
-					this._integerArrayMap = (_integerArrayMap != null)?_integerArrayMap:new TreeMap<String, IVariable<Integer[]>>();
-					this._stringMap = (_stringMap != null)?_stringMap:new TreeMap<String, IVariable<String>>();
-					this._stringArrayMap = (_stringArrayMap != null)?_stringArrayMap:new TreeMap<String, IVariable<String[]>>();
-					this._doubleMap = (_doubleMap != null)?_doubleMap:new TreeMap<String, IVariable<Double>>();
-					this._doubleArrayMap = (_doubleArrayMap != null)?_doubleArrayMap:new TreeMap<String, IVariable<Double[]>>();
-					this._longMap = (_longMap != null)?_longMap:new TreeMap<String, IVariable<Long>>();
-					this._longArrayMap = (_longArrayMap != null)?_longArrayMap:new TreeMap<String, IVariable<Long[]>>();
-					this._floatMap = (_floatMap != null)?_floatMap:new TreeMap<String, IVariable<Float>>();
-					this._floatArrayMap = (_floatArrayMap != null)?_floatArrayMap:new TreeMap<String, IVariable<Float[]>>();
-					this._booleanMap = (_booleanMap != null)?_booleanMap:new TreeMap<String, IVariable<Boolean>>();
-					this._booleanArrayMap = (_booleanArrayMap != null)?_booleanArrayMap:new TreeMap<String, IVariable<Boolean[]>>();
+					this._integerMap = (_integerMap != null)?_integerMap:new TreeMap<String, ICell<Integer>>();
+					this._integerArrayMap = (_integerArrayMap != null)?_integerArrayMap:new TreeMap<String, ICell<Integer[]>>();
+					this._stringMap = (_stringMap != null)?_stringMap:new TreeMap<String, ICell<String>>();
+					this._stringArrayMap = (_stringArrayMap != null)?_stringArrayMap:new TreeMap<String, ICell<String[]>>();
+					this._doubleMap = (_doubleMap != null)?_doubleMap:new TreeMap<String, ICell<Double>>();
+					this._doubleArrayMap = (_doubleArrayMap != null)?_doubleArrayMap:new TreeMap<String, ICell<Double[]>>();
+					this._longMap = (_longMap != null)?_longMap:new TreeMap<String, ICell<Long>>();
+					this._longArrayMap = (_longArrayMap != null)?_longArrayMap:new TreeMap<String, ICell<Long[]>>();
+					this._floatMap = (_floatMap != null)?_floatMap:new TreeMap<String, ICell<Float>>();
+					this._floatArrayMap = (_floatArrayMap != null)?_floatArrayMap:new TreeMap<String, ICell<Float[]>>();
+					this._booleanMap = (_booleanMap != null)?_booleanMap:new TreeMap<String, ICell<Boolean>>();
+					this._booleanArrayMap = (_booleanArrayMap != null)?_booleanArrayMap:new TreeMap<String, ICell<Boolean[]>>();
 					this._variableTypeMap = new TreeMap<>();
 					this._populateTypeMap();
 				}
@@ -103,18 +103,18 @@ public class Variables implements IVariables {
  * Initializes the TreeMaps for internal variable storage	
  */
 	private void _build() {
-		this._integerMap = new TreeMap<String, IVariable<Integer>>();
-		this._integerArrayMap = new TreeMap<String, IVariable<Integer[]>>();
-		this._stringMap = new TreeMap<String, IVariable<String>>();
-		this._stringArrayMap = new TreeMap<String, IVariable<String[]>>();
-		this._floatMap = new TreeMap<String, IVariable<Float>>();
-		this._floatArrayMap = new TreeMap<String, IVariable<Float[]>>();
-		this._longMap = new TreeMap<String, IVariable<Long>>();
-		this._longArrayMap = new TreeMap<String, IVariable<Long[]>>();
-		this._doubleMap = new TreeMap<String, IVariable<Double>>();
-		this._doubleArrayMap = new TreeMap<String, IVariable<Double[]>>();
-		this._booleanMap = new TreeMap<String, IVariable<Boolean>>();
-		this._booleanArrayMap = new TreeMap<String, IVariable<Boolean[]>>();
+		this._integerMap = new TreeMap<String, ICell<Integer>>();
+		this._integerArrayMap = new TreeMap<String, ICell<Integer[]>>();
+		this._stringMap = new TreeMap<String, ICell<String>>();
+		this._stringArrayMap = new TreeMap<String, ICell<String[]>>();
+		this._floatMap = new TreeMap<String, ICell<Float>>();
+		this._floatArrayMap = new TreeMap<String, ICell<Float[]>>();
+		this._longMap = new TreeMap<String, ICell<Long>>();
+		this._longArrayMap = new TreeMap<String, ICell<Long[]>>();
+		this._doubleMap = new TreeMap<String, ICell<Double>>();
+		this._doubleArrayMap = new TreeMap<String, ICell<Double[]>>();
+		this._booleanMap = new TreeMap<String, ICell<Boolean>>();
+		this._booleanArrayMap = new TreeMap<String, ICell<Boolean[]>>();
 		this._variableTypeMap = new TreeMap<>();
 
 	}
@@ -126,40 +126,40 @@ public class Variables implements IVariables {
 	 */
 	private void _populateTypeMap() {
 		for(String key: this._booleanArrayMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.BOOLEANARRAY);
+			this._variableTypeMap.put(key, CellType.BOOLEANARRAY);
 		}
 		for(String key: this._booleanMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.BOOLEAN);
+			this._variableTypeMap.put(key, CellType.BOOLEAN);
 		}
 		for(String key: this._doubleArrayMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.DOUBLEARRAY);
+			this._variableTypeMap.put(key, CellType.DOUBLEARRAY);
 		}
 		for(String key: this._doubleMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.DOUBLE);
+			this._variableTypeMap.put(key, CellType.DOUBLE);
 		}
 		for(String key: this._floatArrayMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.FLOATARRAY);
+			this._variableTypeMap.put(key, CellType.FLOATARRAY);
 		}
 		for(String key: this._floatMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.FLOAT);
+			this._variableTypeMap.put(key, CellType.FLOAT);
 		}
 		for(String key: this._integerArrayMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.INTEGERARRAY);
+			this._variableTypeMap.put(key, CellType.INTEGERARRAY);
 		}
 		for(String key: this._integerMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.INTEGER);
+			this._variableTypeMap.put(key, CellType.INTEGER);
 		}
 		for(String key: this._longArrayMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.LONGARRAY);
+			this._variableTypeMap.put(key, CellType.LONGARRAY);
 		}
 		for(String key: this._longMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.LONG);
+			this._variableTypeMap.put(key, CellType.LONG);
 		}
 		for(String key: this._stringArrayMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.STRINGARRAY);
+			this._variableTypeMap.put(key, CellType.STRINGARRAY);
 		}
 		for(String key: this._stringMap.keySet()) {
-			this._variableTypeMap.put(key, VariableType.STRING);
+			this._variableTypeMap.put(key, CellType.STRING);
 		}
 	}
 
@@ -170,9 +170,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	public void _setBooleanArrayMap(String key, IVariable<Boolean[]> variable) {
+	public void _setBooleanArrayMap(String key, ICell<Boolean[]> variable) {
 		this._booleanArrayMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.BOOLEANARRAY);
+		this._variableTypeMap.put(key, CellType.BOOLEANARRAY);
 	}
 
 	/**
@@ -181,9 +181,9 @@ public class Variables implements IVariables {
 	 * @since 1.0
 	 * 
 	 **/
-	private void _setBooleanMap(String key, IVariable<Boolean> variable) {
+	private void _setBooleanMap(String key, ICell<Boolean> variable) {
 		this._booleanMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.BOOLEAN);
+		this._variableTypeMap.put(key, CellType.BOOLEAN);
 	}
 
 	/**
@@ -193,9 +193,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setDoubleArrayMap(String key, IVariable<Double[]> variable) {
+	private void _setDoubleArrayMap(String key, ICell<Double[]> variable) {
 		this._doubleArrayMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.DOUBLEARRAY);
+		this._variableTypeMap.put(key, CellType.DOUBLEARRAY);
 	}
 
 	/**
@@ -204,9 +204,9 @@ public class Variables implements IVariables {
 	 * @since 1.0
 	 * 
 	 **/
-	private void _setDoubleMap(String key, IVariable<Double> variable) {
+	private void _setDoubleMap(String key, ICell<Double> variable) {
 		this._doubleMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.DOUBLE);
+		this._variableTypeMap.put(key, CellType.DOUBLE);
 	}
 
 	/**
@@ -216,9 +216,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setFloatArrayMap(String key, IVariable<Float[]> variable) {
+	private void _setFloatArrayMap(String key, ICell<Float[]> variable) {
 		this._floatArrayMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.FLOATARRAY);
+		this._variableTypeMap.put(key, CellType.FLOATARRAY);
 	}
 
 	/**
@@ -228,9 +228,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setFloatMap(String key, IVariable<Float> variable) {
+	private void _setFloatMap(String key, ICell<Float> variable) {
 		this._floatMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.FLOAT);
+		this._variableTypeMap.put(key, CellType.FLOAT);
 	}
 
 	/**
@@ -239,9 +239,9 @@ public class Variables implements IVariables {
 	 * @since 1.0
 	 * 
 	 **/
-	private void _setIntegerArrayMap(String key, IVariable<Integer[]> variable) {
+	private void _setIntegerArrayMap(String key, ICell<Integer[]> variable) {
 		this._integerArrayMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.INTEGERARRAY);
+		this._variableTypeMap.put(key, CellType.INTEGERARRAY);
 	}
 
 	/**
@@ -251,9 +251,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setIntegerMap(String key, IVariable<Integer> variable) {
+	private void _setIntegerMap(String key, ICell<Integer> variable) {
 		this._integerMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.INTEGER);
+		this._variableTypeMap.put(key, CellType.INTEGER);
 	}
 
 	/**
@@ -263,9 +263,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setLongArrayMap(String key, IVariable<Long[]> variable) {
+	private void _setLongArrayMap(String key, ICell<Long[]> variable) {
 		this._longArrayMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.LONGARRAY);
+		this._variableTypeMap.put(key, CellType.LONGARRAY);
 	}
 
 	/**
@@ -275,9 +275,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setLongMap(String key, IVariable<Long> variable) {
+	private void _setLongMap(String key, ICell<Long> variable) {
 		this._longMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.LONG);
+		this._variableTypeMap.put(key, CellType.LONG);
 	}
 
 	/**
@@ -287,9 +287,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setStringArrayMap(String key, IVariable<String[]> variable) {
+	private void _setStringArrayMap(String key, ICell<String[]> variable) {
 		this._stringArrayMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.STRINGARRAY);
+		this._variableTypeMap.put(key, CellType.STRINGARRAY);
 	}
 
 	/**
@@ -299,9 +299,9 @@ public class Variables implements IVariables {
 	 * 
 	 **/
 
-	private void _setStringMap(String key, IVariable<String> variable) {
+	private void _setStringMap(String key, ICell<String> variable) {
 		this._stringMap.put(key, variable);
-		this._variableTypeMap.put(key, VariableType.STRING);
+		this._variableTypeMap.put(key, CellType.STRING);
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Boolean> GetBoolean(String id) {
+	public ICell<Boolean> GetBoolean(String id) {
 		return this._booleanMap.get(id);
 	}
 
@@ -321,7 +321,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Boolean[]> GetBooleanArray(String id) {
+	public ICell<Boolean[]> GetBooleanArray(String id) {
 		return this._booleanArrayMap.get(id);
 	}
 
@@ -331,7 +331,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Double> GetDouble(String id) {
+	public ICell<Double> GetDouble(String id) {
 		return this._doubleMap.get(id);
 	}
 
@@ -341,7 +341,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Double[]> GetDoubleArray(String id) {
+	public ICell<Double[]> GetDoubleArray(String id) {
 		return this._doubleArrayMap.get(id);
 	}
 
@@ -351,7 +351,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Float> GetFloat(String id) {
+	public ICell<Float> GetFloat(String id) {
 		return this._floatMap.get(id);
 	}
 
@@ -361,7 +361,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Float[]> GetFloatArray(String id) {
+	public ICell<Float[]> GetFloatArray(String id) {
 		return this._floatArrayMap.get(id);
 	}
 
@@ -371,7 +371,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Integer> GetInteger(String id) {
+	public ICell<Integer> GetInteger(String id) {
 		return this._integerMap.get(id);
 
 	}
@@ -381,7 +381,7 @@ public class Variables implements IVariables {
 	 * @param id	 the id associated with the map
 	 * @since 1.0
 	 */
-	public IVariable<Integer[]> GetIntegerArray(String id) {
+	public ICell<Integer[]> GetIntegerArray(String id) {
 		return this._integerArrayMap.get(id);
 	}
 
@@ -391,7 +391,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Long> GetLong(String id) {
+	public ICell<Long> GetLong(String id) {
 		return this._longMap.get(id);
 	}
 
@@ -401,7 +401,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<Long[]> GetLongArray(String id) {
+	public ICell<Long[]> GetLongArray(String id) {
 		return this._longArrayMap.get(id);
 	}
 
@@ -411,7 +411,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<String> GetString(String id) {
+	public ICell<String> GetString(String id) {
 		return this._stringMap.get(id);
 	}
 
@@ -421,7 +421,7 @@ public class Variables implements IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	public IVariable<String[]> GetStringArray(String id) {
+	public ICell<String[]> GetStringArray(String id) {
 		return this._stringArrayMap.get(id);
 	}
 
@@ -432,43 +432,43 @@ public class Variables implements IVariables {
 	 * @param variable
 	 * @param Type
 	 */
-	public void SetVariable(String key, IVariable<?> variable, VariableType Type) {
+	public void SetVariable(String key, ICell<?> variable, CellType Type) {
 		switch (Type) {
 		case INTEGER:
-			this._setIntegerMap(key, (IVariable<Integer>) variable);
+			this._setIntegerMap(key, (ICell<Integer>) variable);
 			break;
 		case INTEGERARRAY:
-			this._setIntegerArrayMap(key, (IVariable<Integer[]>) variable);
+			this._setIntegerArrayMap(key, (ICell<Integer[]>) variable);
 			break;
 		case STRING:
-			this._setStringMap(key, (IVariable<String>) variable);
+			this._setStringMap(key, (ICell<String>) variable);
 			break;
 		case STRINGARRAY:
-			this._setStringArrayMap(key, (IVariable<String[]>) variable);
+			this._setStringArrayMap(key, (ICell<String[]>) variable);
 			break;
 		case FLOAT:
-			this._setFloatMap(key, (IVariable<Float>) variable);
+			this._setFloatMap(key, (ICell<Float>) variable);
 			break;
 		case FLOATARRAY:
-			this._setFloatArrayMap(key, (IVariable<Float[]>) variable);
+			this._setFloatArrayMap(key, (ICell<Float[]>) variable);
 			break;
 		case LONG:
-			this._setLongMap(key, (IVariable<Long>) variable);
+			this._setLongMap(key, (ICell<Long>) variable);
 			break;
 		case LONGARRAY:
-			this._setLongArrayMap(key, (IVariable<Long[]>) variable);
+			this._setLongArrayMap(key, (ICell<Long[]>) variable);
 			break;
 		case DOUBLE:
-			this._setDoubleMap(key, (IVariable<Double>) variable);
+			this._setDoubleMap(key, (ICell<Double>) variable);
 			break;
 		case DOUBLEARRAY:
-			this._setDoubleArrayMap(key, (IVariable<Double[]>) variable);
+			this._setDoubleArrayMap(key, (ICell<Double[]>) variable);
 			break;
 		case BOOLEAN:
-			this._setBooleanMap(key, (IVariable<Boolean>) variable);
+			this._setBooleanMap(key, (ICell<Boolean>) variable);
 			break;
 		case BOOLEANARRAY:
-			this._setBooleanArrayMap(key, (IVariable<Boolean[]>) variable);
+			this._setBooleanArrayMap(key, (ICell<Boolean[]>) variable);
 			break;
 		default:
 			return;
@@ -602,12 +602,12 @@ public class Variables implements IVariables {
 	/**
 	 * Gets the registered type for a variable ID
 	 * @param ID The variable ID
-	 * @return VariableType The Type this Variable is registered under
+	 * @return CellType The Type this Variable is registered under
 	 * @author Christopher Howard
 	 */
-	public VariableType GetVariableType(String ID) {
+	public CellType GetVariableType(String ID) {
 		if(!this._variableTypeMap.containsKey(ID))
-			return VariableType.NULL;
+			return CellType.NULL;
 		//System.out.println("VarID: "+ID+", Type: "+this._variableTypeMap.get(ID));
 		return this._variableTypeMap.get(ID);
 	}
@@ -616,7 +616,7 @@ public class Variables implements IVariables {
 		return this._integerMap.size();
 	}
 	
-	public IVariable<?> GetVariable(String ID){
+	public ICell<?> GetVariable(String ID){
 		switch(this.GetVariableType(ID)) {
 		case INTEGER:
 			return this.GetInteger(ID);
@@ -647,8 +647,8 @@ public class Variables implements IVariables {
 		}
 	}
 	
-	public List<IVariable<?>> GetVariables(List<String> IDSet){
-		List<IVariable<?>> out = new ArrayList<>();
+	public List<ICell<?>> GetVariables(List<String> IDSet){
+		List<ICell<?>> out = new ArrayList<>();
 		for(String ID: IDSet) {
 			out.add(this.GetVariable(ID));
 		}

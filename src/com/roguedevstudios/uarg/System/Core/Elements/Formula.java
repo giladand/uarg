@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormula;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
 
 import java.util.TreeMap;
 import java.util.ArrayList;
@@ -205,7 +205,7 @@ public class Formula implements IFormula
     * @author Chelsea Hunter
     * @author Christopher E. Howard
     */
-    private double _calculateExpression( IVariable<? extends Number>[] vars ) 
+    private double _calculateExpression( ICell<? extends Number>[] vars ) 
     		throws IllegalArgumentException 
     
     {
@@ -295,7 +295,7 @@ public class Formula implements IFormula
      * @throws IllegalArgumentException	If the evaluation of the formula's expression fails.
      * @author Chelsea Hunter
      */
-    public Double CalculateToDouble( IVariable<? extends Number>[] vars )
+    public Double CalculateToDouble( ICell<? extends Number>[] vars )
 		   throws IllegalArgumentException
 	    {
 	    	try {
@@ -309,7 +309,7 @@ public class Formula implements IFormula
     /**
      * Gets a Double Array result of calculating the Formula object's Exp4j Expression
      * @param vars	The Variable objects with the desired input values in array format.
-     * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Variables to be used for input.
+     * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Cells to be used for input.
      * @return Double[]	The Double array result of calculating the formula's expression.
      * @throws ClassCastException	If some array cannot be classified as a Double array.
      * @throws IllegalStateException	If there is no array input type detected in the Variable object input array when the ArrayPresent boolean is true.
@@ -318,7 +318,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @author Christopher Howard
      */
-    public Double[] CalculateToDouble( IVariable<?>[] vars, 
+    public Double[] CalculateToDouble( ICell<?>[] vars, 
     								   boolean ArrayPresent
     								   ) 
     	   throws ClassCastException,
@@ -336,7 +336,7 @@ public class Formula implements IFormula
     		
     		try {
     			
-    			ret[0] = CalculateToDouble( ( (IVariable<? extends Number>[]) vars ) );
+    			ret[0] = CalculateToDouble( ( (ICell<? extends Number>[]) vars ) );
     			
     		}catch ( ClassCastException eCCE ) {
     			
@@ -356,7 +356,7 @@ public class Formula implements IFormula
     	int len = -1;
     	
     	// Find the first array and grab it's length value
-    	for(IVariable<?> var: vars) {
+    	for(ICell<?> var: vars) {
     		
     		if( var.GetValue().getClass().isArray() ) 
     		{
@@ -377,7 +377,7 @@ public class Formula implements IFormula
     	Integer order = 0;
     	
     	// Detect and handle the setup of arrays for matrix processing
-    	for(IVariable<?> var: vars) 
+    	for(ICell<?> var: vars) 
     	{
     		
     		// Array Detection
@@ -581,7 +581,7 @@ public class Formula implements IFormula
      * @return Integer	The result of calculating the Formula object's Expression in Integer format.
      * @throws IllegalArgumentException	If the evaluation of the formula's expression fails.
      */
-    public Integer CalculateToInteger( IVariable<? extends Number>[] vars ) 
+    public Integer CalculateToInteger( ICell<? extends Number>[] vars ) 
     	   throws IllegalArgumentException
     {
     	try {
@@ -597,7 +597,7 @@ public class Formula implements IFormula
     /**
      * Gets an Integer Array result from the Formula Results
      * @param vars	The Variable objects with the desired input values in array format.
-	 * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Variables to be used for input.
+	 * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Cells to be used for input.
      * @return Integer[]	The Integer array result of calculating the formula's expression.
      * @throws ClassCastException	If some array cannot be classified as a Double or Integer array.
      * @throws IllegalStateException	If there is no array input type detected in the Variable object input array when the ArrayPresent boolean is true.
@@ -606,7 +606,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @author Christopher Howard
      */
-    public Integer[] CalculateToInteger( IVariable<?>[] vars, 
+    public Integer[] CalculateToInteger( ICell<?>[] vars, 
 						   				 boolean ArrayPresent
 						   			   ) 
 			throws  ClassCastException,
@@ -647,7 +647,7 @@ public class Formula implements IFormula
      * @return Float	The result of calculating the Formula object's Expression in Float format.
      * @throws IllegalArgumentException If the evaluation of the formula's expression fails.
      */
-    public Float CalculateToFloat(IVariable<? extends Number>[] vars)
+    public Float CalculateToFloat(ICell<? extends Number>[] vars)
 		   throws IllegalArgumentException
 	    {
 	    	try {
@@ -662,7 +662,7 @@ public class Formula implements IFormula
     /**
      * Gets a Float Array result from the Formula Results
      * @param vars	The Variable objects with the desired input values in array format.
-     * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Variables to be used for input.
+     * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Cells to be used for input.
      * @return Float[]	The Float array result of calculating the formula's expression.
      * @throws ClassCastException	If some array cannot be classified as a Double or Float array.
      * @throws IllegalStateException	If there is no array input type detected in the Variable object input array when the ArrayPresent boolean is true.
@@ -671,7 +671,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @return
      */
-    public Float[] CalculateToFloat( IVariable<?>[] vars, 
+    public Float[] CalculateToFloat( ICell<?>[] vars, 
 								 	 boolean ArrayPresent
     							   ) 
     	   throws   ClassCastException,
@@ -711,7 +711,7 @@ public class Formula implements IFormula
      * @throws IllegalArgumentException	If the evaluation of the formula's expression fails.
      * @author Chelsea Hunter
      */
-    public Long CalculateToLong(IVariable<? extends Number>[] vars)
+    public Long CalculateToLong(ICell<? extends Number>[] vars)
 		   throws IllegalArgumentException
 	    {
 	    	try {
@@ -726,7 +726,7 @@ public class Formula implements IFormula
     
     /**
      * Gets a Long Array result from the Formula Results
-     * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Variables to be used for input.
+     * @param ArrayPresent	A boolean that says whether or not an input of array-type is present in an array of Cells to be used for input.
      * @return Float[]	The Float array result of calculating the formula's expression.
      * @throws ClassCastException	If some array cannot be classified as a Double or Float array.
      * @throws IllegalStateException	If there is no array input type detected in the Variable object input array when the ArrayPresent boolean is true.
@@ -735,7 +735,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @author Christopher Howard
      */
-    public Long[] CalculateToLong( IVariable<?>[] vars, 
+    public Long[] CalculateToLong( ICell<?>[] vars, 
 		 	 					   boolean ArrayPresent
 			   				     ) 
 		   throws   ClassCastException,
@@ -775,13 +775,13 @@ public class Formula implements IFormula
     * @throws IndexOutOfBoundsException	If there is an error in the temporary input array's indices.
     * @author Christopher E. Howard
     */
-    private void _tempArrayDoubleConversion( IVariable<? extends Number>[] vars ) 
+    private void _tempArrayDoubleConversion( ICell<? extends Number>[] vars ) 
     		throws NullPointerException, IndexOutOfBoundsException 
     {
    
         int i = 0;
         try{
-        	for( IVariable<? extends Number> var: 
+        	for( ICell<? extends Number> var: 
         									 vars
         		)
         	{

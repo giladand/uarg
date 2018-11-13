@@ -1,11 +1,11 @@
 //TODO: Cleanup #2
 package com.roguedevstudios.uarg.System.Core.Enum;
 /********************************
-*   VariableType Class          *
-*   File Name: VariableType.java*
+*   CellType Class          *
+*   File Name: CellType.java*
 *                               *
-*   VariableType will enumerate *
-*   the variables needed        *
+*   CellType will enumerate *
+*   the cells needed        *
 *                               *
 *  ©2017 Rogue Dev Studios, LLC *
 ********************************/
@@ -14,7 +14,7 @@ package com.roguedevstudios.uarg.System.Core.Enum;
 
 /**
  * <p>
- * this enumerates the variables in the variables.java class file
+ * this enumerates the cells in the cells.java class file
  * <p>
  * 
  * @author Terry Roberson
@@ -22,7 +22,7 @@ package com.roguedevstudios.uarg.System.Core.Enum;
  *@since 1.0
  */
 
-public enum VariableType{
+public enum CellType{
         INTEGER("Integer"),
         INTEGERARRAY("Integer Array"),
         FLOAT("Float"),
@@ -40,7 +40,7 @@ public enum VariableType{
         
         private final String _value;
         
-        private VariableType(String v){
+        private CellType(String v){
             this._value = v;
           
        }

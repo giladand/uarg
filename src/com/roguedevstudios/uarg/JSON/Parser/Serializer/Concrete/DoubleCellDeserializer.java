@@ -1,8 +1,8 @@
 package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 /****************************************
-*  Integer Variable Deserializer		*
+*  Double Cell Deserializer			*
 *   File Name: 							*
-*   IntegerVariableDeserializer.java 	*
+*   DoubleCellDeserializer.java 	*
 *                            	   	    *
 *   Deserializes JSON					*
 *   information and converts			*
@@ -16,63 +16,61 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Cell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
 
 /**
+ *
+ * Adapter class to Deserialize Cell objects of subtype Double
  * 
- * Adapter class to Deserialize Variable objects of subtype Integer
- * 
- * @author Christopher Howard
  * @author Terry Roberson
+ * @author Christopher E. Howard
  * @author Rasu Neupane
  * @since 1.0
  */
-public class IntegerVariableDeserializer 
-	   implements JsonDeserializer<IVariable<Integer>> 
+public class DoubleCellDeserializer 
+	   implements JsonDeserializer<ICell<Double>> 
 {
-
 	/**
-	 * Deserializes into a Variable<Integer> type
+	 * Deserializes into a Cell<Double> type
 	 * from a given JsonElement, Type, and context
 	 * @param JsonElement
 	 * @param Type
 	 * @param JsonDeserializationContext
-	 * @return Variable<Integer>
+	 * @return Cell<Double>
 	 */
-	public IVariable<Integer> deserialize(
-										  JsonElement json, 
-										  Type typeOfT, 
-										  JsonDeserializationContext context
+	
+	public ICell<Double> deserialize(
+										JsonElement json, 
+										Type typeOfT, 
+										JsonDeserializationContext context
 										)
 										throws JsonParseException 
 	{
-		
-
-		/*Temp slot for variable name*/
+		/*Temp slot for Cell name*/
 		String _name = null;
 		
-		/*Temp slot for variable ID*/
+		/*Temp slot for Cell ID*/
 		String _id = null;
 		
-		/*Temp slot for variable value*/
-		Integer _value = null;
+		/*Temp slot for Cell value*/
+		Double _value = null;
 		
-		/*Temp slot for variable description*/
+		/*Temp slot for Cell description*/
 		String _description = null;
 		
-		/*Temp slot for variable format*/
+		/*Temp slot for Cell format*/
 		ArrayList<String> _format = null;
 		
-		/*Temp slot for variable requiresInput*/
+		/*Temp slot for Cell requiresInput*/
 		boolean _requiresInput = false;
 		
 		/*Temp output object holder*/
-		IVariable<Integer> v;
+		ICell<Double> v;
 		
-		// Convert JsonElement into JsonObject 
+		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
-		
+
 		//If the object has a name, then we grab it
 		if(o.has("Name")) {
 			_name = o.get("Name").getAsString();
@@ -84,7 +82,7 @@ public class IntegerVariableDeserializer
 		
 		//If the object has a value, then we grab it
 		if(o.has("Value")) {
-			_value = o.get("Value").getAsInt();
+			_value = o.get("Value").getAsDouble();
 		}
 		
 		//If the object has a description, then we grab it
@@ -108,15 +106,16 @@ public class IntegerVariableDeserializer
 					}
 				}
 		
-		v = new Variable<Integer>(  _name,
-				  					_id, 
-				  					_requiresInput, 
-				  					_description,
-				  					_format,
-				  					_value 
-								 );
-
-		// Return the constructed variable object	
+		// Build the Cell object to return
+		v = new Cell<Double>(  _name,
+								   _id, 
+								   _requiresInput, 
+								   _description,
+								   _format,
+								   _value 
+								);
+		
+		// Return the constructed Cell object	
 		return v;
 	}
 }

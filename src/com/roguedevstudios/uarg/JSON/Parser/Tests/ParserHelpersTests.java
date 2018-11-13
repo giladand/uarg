@@ -6,8 +6,8 @@ import org.junit.*;
 import java.util.*;
 import com.google.gson.*;
 import com.roguedevstudios.uarg.JSON.Parser.Serializer.ParserHelpers;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICells;
 /**
  * <p>
  * This will test the ParserHelper.java file
@@ -19,120 +19,120 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 
 public class ParserHelpersTests {
 	
-	//***** Variables Initial Condition Properties *****\\
-	private JsonElement _initialVariableCond;
-	private ArrayList<Integer> _initialVariableCondIntVals;
-	private ArrayList<Float> _initialVariableCondFloatVals;
-	private ArrayList<String> _initialVariableCondStringVals;
-	private ArrayList<Double> _initialVariableCondDoubleVals;
-	private ArrayList<Long> _initialVariableCondLongVals;
-	private ArrayList<Boolean> _initialVariableCondBoolVals;
-	private ArrayList<Integer[]> _initialVariableCondIntArrVals;
-	private ArrayList<Float[]> _initialVariableCondFloatArrVals;
-	private ArrayList<Double[]> _initialVariableCondDoubleArrVals;
-	private ArrayList<String[]> _initialVariableCondStringArrVals;
-	private ArrayList<Long[]> _initialVariableCondLongArrVals;
-	private ArrayList<Boolean[]> _initialVariableCondBoolArrVals;
+	//***** Cells Initial Condition Properties *****\\
+	private JsonElement _initialCellCond;
+	private ArrayList<Integer> _initialCellCondIntVals;
+	private ArrayList<Float> _initialCellCondFloatVals;
+	private ArrayList<String> _initialCellCondStringVals;
+	private ArrayList<Double> _initialCellCondDoubleVals;
+	private ArrayList<Long> _initialCellCondLongVals;
+	private ArrayList<Boolean> _initialCellCondBoolVals;
+	private ArrayList<Integer[]> _initialCellCondIntArrVals;
+	private ArrayList<Float[]> _initialCellCondFloatArrVals;
+	private ArrayList<Double[]> _initialCellCondDoubleArrVals;
+	private ArrayList<String[]> _initialCellCondStringArrVals;
+	private ArrayList<Long[]> _initialCellCondLongArrVals;
+	private ArrayList<Boolean[]> _initialCellCondBoolArrVals;
 	
 	//***** INITIAL BUILDERS *****\\
 	@Before 
-	public void VariablesStart() {
+	public void CellsStart() {
 		//Populate initial int values
-		this._initialVariableCondIntVals = new ArrayList<Integer>();
+		this._initialCellCondIntVals = new ArrayList<Integer>();
 		// 0 slot = 99
-		this._initialVariableCondIntVals.add(99);
+		this._initialCellCondIntVals.add(99);
 		// 1 slot = 10
-		this._initialVariableCondIntVals.add(10);
+		this._initialCellCondIntVals.add(10);
 		// 2 slot = 15
-		this._initialVariableCondIntVals.add(15);
+		this._initialCellCondIntVals.add(15);
 		//Populate initial String values
-		this._initialVariableCondStringVals = new ArrayList<String>();
+		this._initialCellCondStringVals = new ArrayList<String>();
 		// 0 slot = A
-		this._initialVariableCondStringVals.add("A");
+		this._initialCellCondStringVals.add("A");
 		// 1 slot = B
-		this._initialVariableCondStringVals.add("B");
+		this._initialCellCondStringVals.add("B");
 		// 2 slot = C
-		this._initialVariableCondStringVals.add("C");
+		this._initialCellCondStringVals.add("C");
 		//Populate initial Float values
-		this._initialVariableCondDoubleVals = new ArrayList<Double>();
+		this._initialCellCondDoubleVals = new ArrayList<Double>();
 		// 0 slot = 990.2
-		this._initialVariableCondDoubleVals.add(990.2);
+		this._initialCellCondDoubleVals.add(990.2);
 		// 1 slot = 10.1
-		this._initialVariableCondDoubleVals.add(10.1);
+		this._initialCellCondDoubleVals.add(10.1);
 		// 2 slot = 15.36
-		this._initialVariableCondDoubleVals.add(15.36);
+		this._initialCellCondDoubleVals.add(15.36);
 		//Populate initial Long values
-		this._initialVariableCondLongVals = new ArrayList<Long>();
+		this._initialCellCondLongVals = new ArrayList<Long>();
 		// 0 slot = 99
-		this._initialVariableCondLongVals.add(99L);
+		this._initialCellCondLongVals.add(99L);
 		// 1 slot = 10
-		this._initialVariableCondLongVals.add(10L);
+		this._initialCellCondLongVals.add(10L);
 		// 2 slot = 15
-		this._initialVariableCondLongVals.add(15L);
+		this._initialCellCondLongVals.add(15L);
 		//Populate initial Float values
-		this._initialVariableCondFloatVals = new ArrayList<Float>();
+		this._initialCellCondFloatVals = new ArrayList<Float>();
 		// 0 slot = 99
-		this._initialVariableCondFloatVals.add(99F);
+		this._initialCellCondFloatVals.add(99F);
 		// 1 slot = 10
-		this._initialVariableCondFloatVals.add(10F);
+		this._initialCellCondFloatVals.add(10F);
 		// 2 slot = 15
-		this._initialVariableCondFloatVals.add(15F);
+		this._initialCellCondFloatVals.add(15F);
 		//Populate initial Float values
-		this._initialVariableCondBoolVals = new ArrayList<Boolean>();
+		this._initialCellCondBoolVals = new ArrayList<Boolean>();
 		// 0 slot = true
-		this._initialVariableCondBoolVals.add(true);
+		this._initialCellCondBoolVals.add(true);
 		// 1 slot = false
-		this._initialVariableCondBoolVals.add(false);
+		this._initialCellCondBoolVals.add(false);
 		// 2 slot = false
-		this._initialVariableCondBoolVals.add(false);
+		this._initialCellCondBoolVals.add(false);
 		//Populate initial int[] values
-		this._initialVariableCondIntArrVals = new ArrayList<Integer[]>();
+		this._initialCellCondIntArrVals = new ArrayList<Integer[]>();
 		// 0 slot = [99,12,3]
-		this._initialVariableCondIntArrVals.add(new Integer[] {99,12,3});
+		this._initialCellCondIntArrVals.add(new Integer[] {99,12,3});
 		// 1 slot = [10,11,12]
-		this._initialVariableCondIntArrVals.add(new Integer[] {10,11,12});
+		this._initialCellCondIntArrVals.add(new Integer[] {10,11,12});
 		// 2 slot = [15,20,25]
-		this._initialVariableCondIntArrVals.add(new Integer[] {15,20,25});
+		this._initialCellCondIntArrVals.add(new Integer[] {15,20,25});
 		//Populate initial String[] values
-		this._initialVariableCondStringArrVals = new ArrayList<String[]>();
+		this._initialCellCondStringArrVals = new ArrayList<String[]>();
 		// 0 slot = [A,B,C]
-		this._initialVariableCondStringArrVals.add(new String[] {"A","B","C"});
+		this._initialCellCondStringArrVals.add(new String[] {"A","B","C"});
 		// 1 slot = [B,C,D]
-		this._initialVariableCondStringArrVals.add(new String[] {"B","C","D"});
+		this._initialCellCondStringArrVals.add(new String[] {"B","C","D"});
 		// 2 slot = [C,D,E]
-		this._initialVariableCondStringArrVals.add(new String[] {"C","D","E"});
+		this._initialCellCondStringArrVals.add(new String[] {"C","D","E"});
 		//Populate initial Float[] values
-		this._initialVariableCondDoubleArrVals = new ArrayList<Double[]>();
+		this._initialCellCondDoubleArrVals = new ArrayList<Double[]>();
 		// 0 slot = [990.2,30.5,.04]
-		this._initialVariableCondDoubleArrVals.add(new Double[] {990.2,30.5,.04});
+		this._initialCellCondDoubleArrVals.add(new Double[] {990.2,30.5,.04});
 		// 1 slot = [10.1,35.5,401.5]
-		this._initialVariableCondDoubleArrVals.add(new Double[] {10.1,35.5,401.5});
+		this._initialCellCondDoubleArrVals.add(new Double[] {10.1,35.5,401.5});
 		// 2 slot = [15.36,5.2,4.8]
-		this._initialVariableCondDoubleArrVals.add(new Double[] {15.36,5.2,4.8});
+		this._initialCellCondDoubleArrVals.add(new Double[] {15.36,5.2,4.8});
 		//Populate initial Long[] values
-		this._initialVariableCondLongArrVals = new ArrayList<Long[]>();
+		this._initialCellCondLongArrVals = new ArrayList<Long[]>();
 		// 0 slot = [99,50,8]
-		this._initialVariableCondLongArrVals.add(new Long[] {99L,50L,8L});
+		this._initialCellCondLongArrVals.add(new Long[] {99L,50L,8L});
 		// 1 slot = [10,5,8000]
-		this._initialVariableCondLongArrVals.add(new Long[] {10L,5L,8000L});
+		this._initialCellCondLongArrVals.add(new Long[] {10L,5L,8000L});
 		// 2 slot = [15,8,56]
-		this._initialVariableCondLongArrVals.add(new Long[] {15L,8L,56L});
+		this._initialCellCondLongArrVals.add(new Long[] {15L,8L,56L});
 		//Populate initial Float[] values
-		this._initialVariableCondFloatArrVals = new ArrayList<Float[]>();
+		this._initialCellCondFloatArrVals = new ArrayList<Float[]>();
 		// 0 slot = [99, 12,5.2]
-		this._initialVariableCondFloatArrVals.add(new Float[] {99F, 12F,5.2F});
+		this._initialCellCondFloatArrVals.add(new Float[] {99F, 12F,5.2F});
 		// 1 slot = [10, 58.2,500.1]
-		this._initialVariableCondFloatArrVals.add(new Float[] {10F, 58.2F,500.1F});
+		this._initialCellCondFloatArrVals.add(new Float[] {10F, 58.2F,500.1F});
 		// 2 slot = [15, 64.2,69.1]
-		this._initialVariableCondFloatArrVals.add(new Float[] {15F, 64.2F,69.1F});
+		this._initialCellCondFloatArrVals.add(new Float[] {15F, 64.2F,69.1F});
 		//Populate initial Boolean[] values
-		this._initialVariableCondBoolArrVals = new ArrayList<Boolean[]>();
+		this._initialCellCondBoolArrVals = new ArrayList<Boolean[]>();
 		// 0 slot = [true, false, true]
-		this._initialVariableCondBoolArrVals.add(new Boolean[] {true, false, true});
+		this._initialCellCondBoolArrVals.add(new Boolean[] {true, false, true});
 		// 1 slot = [false, true, false]
-		this._initialVariableCondBoolArrVals.add(new Boolean[] {false, true, false});
+		this._initialCellCondBoolArrVals.add(new Boolean[] {false, true, false});
 		// 2 slot = [false, true, true]
-		this._initialVariableCondBoolArrVals.add(new Boolean[] {false, true, true});
+		this._initialCellCondBoolArrVals.add(new Boolean[] {false, true, true});
 		// Let us create 1 large JsonElement using the format that
 		// we would actually see in a config file.
 		String initVars =
@@ -142,21 +142,21 @@ public class ParserHelpersTests {
 							"\"IntX\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondIntVals.get(0)+","+
+									"\"Value\":"+this._initialCellCondIntVals.get(0)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"IntY\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondIntVals.get(1)+","+
+									"\"Value\":"+this._initialCellCondIntVals.get(1)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"IntZ\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondIntVals.get(2)+","+
+									"\"Value\":"+this._initialCellCondIntVals.get(2)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"}"+
@@ -166,21 +166,21 @@ public class ParserHelpersTests {
 							"\"StringX\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondStringVals.get(0)+","+
+									"\"Value\":"+this._initialCellCondStringVals.get(0)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"StringY\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondStringVals.get(1)+","+
+									"\"Value\":"+this._initialCellCondStringVals.get(1)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"StringZ\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondStringVals.get(2)+","+
+									"\"Value\":"+this._initialCellCondStringVals.get(2)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"}"+
@@ -190,21 +190,21 @@ public class ParserHelpersTests {
 							"\"DoubleX\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondDoubleVals.get(0)+","+
+									"\"Value\":"+this._initialCellCondDoubleVals.get(0)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"DoubleY\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondDoubleVals.get(1)+","+
+									"\"Value\":"+this._initialCellCondDoubleVals.get(1)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"DoubleZ\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondDoubleVals.get(2)+","+
+									"\"Value\":"+this._initialCellCondDoubleVals.get(2)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"}"+
@@ -214,21 +214,21 @@ public class ParserHelpersTests {
 							"\"LongX\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondLongVals.get(0)+","+
+									"\"Value\":"+this._initialCellCondLongVals.get(0)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"LongY\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondLongVals.get(1)+","+
+									"\"Value\":"+this._initialCellCondLongVals.get(1)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"LongZ\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondLongVals.get(2)+","+
+									"\"Value\":"+this._initialCellCondLongVals.get(2)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"}"+
@@ -238,21 +238,21 @@ public class ParserHelpersTests {
 							"\"FloatX\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondFloatVals.get(0)+","+
+									"\"Value\":"+this._initialCellCondFloatVals.get(0)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"FloatY\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondFloatVals.get(1)+","+
+									"\"Value\":"+this._initialCellCondFloatVals.get(1)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"FloatZ\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondFloatVals.get(2)+","+
+									"\"Value\":"+this._initialCellCondFloatVals.get(2)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"}"+
@@ -262,21 +262,21 @@ public class ParserHelpersTests {
 							"\"BoolX\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondBoolVals.get(0)+","+
+									"\"Value\":"+this._initialCellCondBoolVals.get(0)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":true"+
 								"},"+
 							"\"BoolY\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondBoolVals.get(1)+","+
+									"\"Value\":"+this._initialCellCondBoolVals.get(1)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"},"+
 							"\"BoolZ\":"+
 								"{"+
 									"\"Name\":\"TestName\","+
-									"\"Value\":"+this._initialVariableCondBoolVals.get(2)+","+
+									"\"Value\":"+this._initialCellCondBoolVals.get(2)+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
 								"}"+
@@ -287,9 +287,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondIntArrVals.get(0)[0]+","+
-									this._initialVariableCondIntArrVals.get(0)[1]+","+
-									this._initialVariableCondIntArrVals.get(0)[2]+
+									this._initialCellCondIntArrVals.get(0)[0]+","+
+									this._initialCellCondIntArrVals.get(0)[1]+","+
+									this._initialCellCondIntArrVals.get(0)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -298,9 +298,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondIntArrVals.get(1)[0]+","+
-									this._initialVariableCondIntArrVals.get(1)[1]+","+
-									this._initialVariableCondIntArrVals.get(1)[2]+
+									this._initialCellCondIntArrVals.get(1)[0]+","+
+									this._initialCellCondIntArrVals.get(1)[1]+","+
+									this._initialCellCondIntArrVals.get(1)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -309,9 +309,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondIntArrVals.get(2)[0]+","+
-									this._initialVariableCondIntArrVals.get(2)[1]+","+
-									this._initialVariableCondIntArrVals.get(2)[2]+
+									this._initialCellCondIntArrVals.get(2)[0]+","+
+									this._initialCellCondIntArrVals.get(2)[1]+","+
+									this._initialCellCondIntArrVals.get(2)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -323,9 +323,9 @@ public class ParserHelpersTests {
 							"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondStringArrVals.get(0)[0]+","+
-									this._initialVariableCondStringArrVals.get(0)[1]+","+
-									this._initialVariableCondStringArrVals.get(0)[2]+
+									this._initialCellCondStringArrVals.get(0)[0]+","+
+									this._initialCellCondStringArrVals.get(0)[1]+","+
+									this._initialCellCondStringArrVals.get(0)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -334,9 +334,9 @@ public class ParserHelpersTests {
 							"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondStringArrVals.get(1)[0]+","+
-									this._initialVariableCondStringArrVals.get(1)[1]+","+
-									this._initialVariableCondStringArrVals.get(1)[2]+
+									this._initialCellCondStringArrVals.get(1)[0]+","+
+									this._initialCellCondStringArrVals.get(1)[1]+","+
+									this._initialCellCondStringArrVals.get(1)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -345,9 +345,9 @@ public class ParserHelpersTests {
 							"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondStringArrVals.get(2)[0]+","+
-									this._initialVariableCondStringArrVals.get(2)[1]+","+
-									this._initialVariableCondStringArrVals.get(2)[2]+
+									this._initialCellCondStringArrVals.get(2)[0]+","+
+									this._initialCellCondStringArrVals.get(2)[1]+","+
+									this._initialCellCondStringArrVals.get(2)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -359,9 +359,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondDoubleArrVals.get(0)[0]+","+
-									this._initialVariableCondDoubleArrVals.get(0)[1]+","+
-									this._initialVariableCondDoubleArrVals.get(0)[2]+
+									this._initialCellCondDoubleArrVals.get(0)[0]+","+
+									this._initialCellCondDoubleArrVals.get(0)[1]+","+
+									this._initialCellCondDoubleArrVals.get(0)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -370,9 +370,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondDoubleArrVals.get(1)[0]+","+
-									this._initialVariableCondDoubleArrVals.get(1)[1]+","+
-									this._initialVariableCondDoubleArrVals.get(1)[2]+
+									this._initialCellCondDoubleArrVals.get(1)[0]+","+
+									this._initialCellCondDoubleArrVals.get(1)[1]+","+
+									this._initialCellCondDoubleArrVals.get(1)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -381,9 +381,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondDoubleArrVals.get(2)[0]+","+
-									this._initialVariableCondDoubleArrVals.get(2)[1]+","+
-									this._initialVariableCondDoubleArrVals.get(2)[2]+
+									this._initialCellCondDoubleArrVals.get(2)[0]+","+
+									this._initialCellCondDoubleArrVals.get(2)[1]+","+
+									this._initialCellCondDoubleArrVals.get(2)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -395,9 +395,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondLongArrVals.get(0)[0]+","+
-									this._initialVariableCondLongArrVals.get(0)[1]+","+
-									this._initialVariableCondLongArrVals.get(0)[2]+
+									this._initialCellCondLongArrVals.get(0)[0]+","+
+									this._initialCellCondLongArrVals.get(0)[1]+","+
+									this._initialCellCondLongArrVals.get(0)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -406,9 +406,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondLongArrVals.get(1)[0]+","+
-									this._initialVariableCondLongArrVals.get(1)[1]+","+
-									this._initialVariableCondLongArrVals.get(1)[2]+
+									this._initialCellCondLongArrVals.get(1)[0]+","+
+									this._initialCellCondLongArrVals.get(1)[1]+","+
+									this._initialCellCondLongArrVals.get(1)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -417,9 +417,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondLongArrVals.get(2)[0]+","+
-									this._initialVariableCondLongArrVals.get(2)[1]+","+
-									this._initialVariableCondLongArrVals.get(2)[2]+
+									this._initialCellCondLongArrVals.get(2)[0]+","+
+									this._initialCellCondLongArrVals.get(2)[1]+","+
+									this._initialCellCondLongArrVals.get(2)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -431,9 +431,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondFloatArrVals.get(0)[0]+","+
-									this._initialVariableCondFloatArrVals.get(0)[1]+","+
-									this._initialVariableCondFloatArrVals.get(0)[2]+
+									this._initialCellCondFloatArrVals.get(0)[0]+","+
+									this._initialCellCondFloatArrVals.get(0)[1]+","+
+									this._initialCellCondFloatArrVals.get(0)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -442,9 +442,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondFloatArrVals.get(1)[0]+","+
-									this._initialVariableCondFloatArrVals.get(1)[1]+","+
-									this._initialVariableCondFloatArrVals.get(1)[2]+
+									this._initialCellCondFloatArrVals.get(1)[0]+","+
+									this._initialCellCondFloatArrVals.get(1)[1]+","+
+									this._initialCellCondFloatArrVals.get(1)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -453,9 +453,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondFloatArrVals.get(2)[0]+","+
-									this._initialVariableCondFloatArrVals.get(2)[1]+","+
-									this._initialVariableCondFloatArrVals.get(2)[2]+
+									this._initialCellCondFloatArrVals.get(2)[0]+","+
+									this._initialCellCondFloatArrVals.get(2)[1]+","+
+									this._initialCellCondFloatArrVals.get(2)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -467,9 +467,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondBoolArrVals.get(0)[0]+","+
-									this._initialVariableCondBoolArrVals.get(0)[1]+","+
-									this._initialVariableCondBoolArrVals.get(0)[2]+
+									this._initialCellCondBoolArrVals.get(0)[0]+","+
+									this._initialCellCondBoolArrVals.get(0)[1]+","+
+									this._initialCellCondBoolArrVals.get(0)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":true"+
@@ -478,9 +478,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondBoolArrVals.get(1)[0]+","+
-									this._initialVariableCondBoolArrVals.get(1)[1]+","+
-									this._initialVariableCondBoolArrVals.get(1)[2]+
+									this._initialCellCondBoolArrVals.get(1)[0]+","+
+									this._initialCellCondBoolArrVals.get(1)[1]+","+
+									this._initialCellCondBoolArrVals.get(1)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -489,9 +489,9 @@ public class ParserHelpersTests {
 								"{"+
 									"\"Name\":\"TestName\","+
 									"\"Value\":["+
-									this._initialVariableCondBoolArrVals.get(2)[0]+","+
-									this._initialVariableCondBoolArrVals.get(1)[1]+","+
-									this._initialVariableCondBoolArrVals.get(2)[2]+
+									this._initialCellCondBoolArrVals.get(2)[0]+","+
+									this._initialCellCondBoolArrVals.get(1)[1]+","+
+									this._initialCellCondBoolArrVals.get(2)[2]+
 									"]"+","+
 									"\"Description\":\"TestDescription\","+
 									"\"Requires Input\":false"+
@@ -503,40 +503,40 @@ public class ParserHelpersTests {
 		// in the programs loading stages. This emulates actual
 		// initial condition states.
 		JsonParser p = new JsonParser();
-		this._initialVariableCond = p.parse(initVars);
+		this._initialCellCond = p.parse(initVars);
 	}
 	
 	//***** HELPERS *****\\
 	/**
-	 * Grabs a section from the Variable conditions for use in tests
+	 * Grabs a section from the Cell conditions for use in tests
 	 * @param key
 	 * @return JsonElement
 	 */
 	public JsonElement getSectionCondition(String key){
-			return this._initialVariableCond.getAsJsonObject().get(key);
+			return this._initialCellCond.getAsJsonObject().get(key);
 		}
 	/**
-	 * Gets a specific variable from a section in the Variable conditions for use in teset
+	 * Gets a specific Cell from a section in the Cell conditions for use in teset
 	 * @param sectionKey
-	 * @param variableKey
+	 * @param CellKey
 	 * @return JsonElement
 	 */
-	public JsonElement getVariableCondition(String sectionKey, String variableKey) {
-		return this.getSectionCondition(sectionKey).getAsJsonObject().get(variableKey);
+	public JsonElement getCellCondition(String sectionKey, String CellKey) {
+		return this.getSectionCondition(sectionKey).getAsJsonObject().get(CellKey);
 	}
 	
 	//***** INTEGER TESTING SECTION ******\\
 	@Test
-	public void TestParseIntegerVariable() {
+	public void TestParseIntegerCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse IntX from the Integers section into an IVariable<Integer> compliant container
-		IVariable<Integer> testVar = ParserHelpers.
-										ParseIntegerVariable(
-												this.getVariableCondition(
+		// Parse IntX from the Integers section into an ICell<Integer> compliant container
+		ICell<Integer> testVar = ParserHelpers.
+										ParseIntegerCell(
+												this.getCellCondition(
 														"Integers", "IntX"), 
 														"IntX");
-		// Fetch Information about Integer Variable
+		// Fetch Information about Integer Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -553,7 +553,7 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondIntVals.get(0), 
+						this._initialCellCondIntVals.get(0), 
 						testVar.GetValue()
 					);
 		// Display results
@@ -562,17 +562,17 @@ public class ParserHelpersTests {
 	
 
 	@Test
-	public void TestParseIntegerArrayVariable() {
+	public void TestParseIntegerArrayCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse IntX from the Integers section into an IVariable<Integer> compliant container
-		IVariable<Integer[]> testVar = ParserHelpers.
-										ParseIntegerArrayVariable(
-												this.getVariableCondition(
+		// Parse IntX from the Integers section into an ICell<Integer> compliant container
+		ICell<Integer[]> testVar = ParserHelpers.
+										ParseIntegerArrayCell(
+												this.getCellCondition(
 														"IntegerArrays", "Int[]X"), 
 														"Int[]X");
 		
-		// Fetch Information about Integer Variable
+		// Fetch Information about Integer Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -589,15 +589,15 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondIntArrVals.get(0)[0], 
+						this._initialCellCondIntArrVals.get(0)[0], 
 						testVar.GetValue()[0]
 					);
 		assertEquals(
-						this._initialVariableCondIntArrVals.get(0)[1], 
+						this._initialCellCondIntArrVals.get(0)[1], 
 						testVar.GetValue()[1]
 					);
 		assertEquals(
-						this._initialVariableCondIntArrVals.get(0)[2], 
+						this._initialCellCondIntArrVals.get(0)[2], 
 						testVar.GetValue()[2]
 					);
 		// Display results
@@ -609,11 +609,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Integer Section into a TreeMap
-		TreeMap<String, IVariable<Integer>> section = ParserHelpers.
-														ParseIntegerVariableSection(
+		TreeMap<String, ICell<Integer>> section = ParserHelpers.
+														ParseIntegerCellSection(
 																this.getSectionCondition(
 																		"Integers"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("IntX", section.firstKey());
 		assertEquals("IntZ", section.lastKey());
 		// Display results
@@ -625,11 +625,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Integer Section into a TreeMap
-		TreeMap<String, IVariable<Integer[]>> section = ParserHelpers.
-														ParseIntegerArrayVariableSection(
+		TreeMap<String, ICell<Integer[]>> section = ParserHelpers.
+														ParseIntegerArrayCellSection(
 																this.getSectionCondition(
 																		"IntegerArrays"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("Int[]X", section.firstKey());
 		assertEquals("Int[]Z", section.lastKey());
 		// Display results
@@ -638,17 +638,17 @@ public class ParserHelpersTests {
 
 	//***** STRING TESTING SECTION *****\\
 	@Test
-	public void TestParseStringVariable() {
+	public void TestParseStringCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
-		// Parse StringX, StringY, StringZ from the Strings section into an IVariable<String> compliant container
-		IVariable<String> testVar = ParserHelpers.
-										ParseStringVariable(
-												this.getVariableCondition(
+		// Parse StringX, StringY, StringZ from the Strings section into an ICell<String> compliant container
+		ICell<String> testVar = ParserHelpers.
+										ParseStringCell(
+												this.getCellCondition(
 														"Strings", "StringX"), 
 														"StringX");
 		
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -662,7 +662,7 @@ public class ParserHelpersTests {
 						testVar.GetDescription()
 					);
 		assertEquals(
-						this._initialVariableCondStringVals.get(0),
+						this._initialCellCondStringVals.get(0),
 						testVar.GetValue()
 					);
 	
@@ -671,17 +671,17 @@ public class ParserHelpersTests {
 	}
 	
 	@Test
-	public void TestParseStringArrayVariable() {
+	public void TestParseStringArrayCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse StringX from the Strings section into an IVariable<String> compliant container
-		IVariable<String[]> testVar = ParserHelpers.
-										ParseStringArrayVariable(
-												this.getVariableCondition(
+		// Parse StringX from the Strings section into an ICell<String> compliant container
+		ICell<String[]> testVar = ParserHelpers.
+										ParseStringArrayCell(
+												this.getCellCondition(
 														"StringArrays", "String[]X"), 
 														"String[]X");
 		
-		// Fetch Information about String Variable
+		// Fetch Information about String Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -698,15 +698,15 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondStringArrVals.get(0)[0], 
+						this._initialCellCondStringArrVals.get(0)[0], 
 						testVar.GetValue()[0]
 					);
 		assertEquals(
-						this._initialVariableCondStringArrVals.get(0)[1], 
+						this._initialCellCondStringArrVals.get(0)[1], 
 						testVar.GetValue()[1]
 					);
 		assertEquals(
-						this._initialVariableCondStringArrVals.get(0)[2], 
+						this._initialCellCondStringArrVals.get(0)[2], 
 						testVar.GetValue()[2]
 					);
 		// Display results
@@ -718,11 +718,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse String Section into a TreeMap
-		TreeMap<String, IVariable<String>> section = ParserHelpers.
-														ParseStringVariableSection(
+		TreeMap<String, ICell<String>> section = ParserHelpers.
+														ParseStringCellSection(
 																this.getSectionCondition(
 																		"Strings"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("StringX", section.firstKey());
 		assertEquals("StringZ", section.lastKey());
 		
@@ -735,11 +735,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse String Section into a TreeMap
-		TreeMap<String, IVariable<String[]>> section = ParserHelpers.
-														ParseStringArrayVariableSection(
+		TreeMap<String, ICell<String[]>> section = ParserHelpers.
+														ParseStringArrayCellSection(
 																this.getSectionCondition(
 																		"StringArrays"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("String[]X", section.firstKey());
 		assertEquals("String[]Z", section.lastKey());
 		// Display results
@@ -748,16 +748,16 @@ public class ParserHelpersTests {
 	
 	//***** DOUBLE TESTING SECTION *****\\
 	@Test
-	public void TestParseDoubleVariable() {
+	public void TestParseDoubleCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse DoubleX from the Doubles section into an IVariable<Double> compliant container
-		IVariable<Double> testVar = ParserHelpers.
-										ParseDoubleVariable(
-												this.getVariableCondition(
+		// Parse DoubleX from the Doubles section into an ICell<Double> compliant container
+		ICell<Double> testVar = ParserHelpers.
+										ParseDoubleCell(
+												this.getCellCondition(
 														"Doubles", "DoubleX"), 
 														"DoubleX");
-		// Fetch Information about Integer Variable
+		// Fetch Information about Integer Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -774,7 +774,7 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondDoubleVals.get(0), 
+						this._initialCellCondDoubleVals.get(0), 
 						testVar.GetValue()
 					);
 		// Display results
@@ -782,17 +782,17 @@ public class ParserHelpersTests {
 	}
 	
 	@Test
-	public void TestParseDoubleArrayVariable() {
+	public void TestParseDoubleArrayCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse IntX from the Doubles section into an IVariable<Double> compliant container
-		IVariable<Double[]> testVar = ParserHelpers.
-										ParseDoubleArrayVariable(
-												this.getVariableCondition(
+		// Parse IntX from the Doubles section into an ICell<Double> compliant container
+		ICell<Double[]> testVar = ParserHelpers.
+										ParseDoubleArrayCell(
+												this.getCellCondition(
 														"DoubleArrays", "Double[]X"), 
 														"Double[]X");
 		
-		// Fetch Information about Double Variable
+		// Fetch Information about Double Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -809,15 +809,15 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondDoubleArrVals.get(0)[0], 
+						this._initialCellCondDoubleArrVals.get(0)[0], 
 						testVar.GetValue()[0]
 					);
 		assertEquals(
-						this._initialVariableCondDoubleArrVals.get(0)[1], 
+						this._initialCellCondDoubleArrVals.get(0)[1], 
 						testVar.GetValue()[1]
 					);
 		assertEquals(
-						this._initialVariableCondDoubleArrVals.get(0)[2], 
+						this._initialCellCondDoubleArrVals.get(0)[2], 
 						testVar.GetValue()[2]
 					);
 		// Display results
@@ -830,11 +830,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Double Section into a TreeMap
-		TreeMap<String, IVariable<Double>> section = ParserHelpers.
-														ParseDoubleVariableSection(
+		TreeMap<String, ICell<Double>> section = ParserHelpers.
+														ParseDoubleCellSection(
 																this.getSectionCondition(
 																		"Doubles"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("DoubleX", section.firstKey());
 		assertEquals("DoubleZ", section.lastKey());
 		
@@ -847,11 +847,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Double Section into a TreeMap
-		TreeMap<String, IVariable<Double[]>> section = ParserHelpers.
-														ParseDoubleArrayVariableSection(
+		TreeMap<String, ICell<Double[]>> section = ParserHelpers.
+														ParseDoubleArrayCellSection(
 																this.getSectionCondition(
 																		"DoubleArrays"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("Double[]X", section.firstKey());
 		assertEquals("Double[]Z", section.lastKey());
 		// Display results
@@ -860,16 +860,16 @@ public class ParserHelpersTests {
 	
 	//***** LONG TESTING SECTION *****\\
 	@Test
-	public void TestParseLongVariable() {
+	public void TestParseLongCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse LongX from the Longs section into an IVariable<Long> compliant container
-		IVariable<Long> testVar = ParserHelpers.
-										ParseLongVariable(
-												this.getVariableCondition(
+		// Parse LongX from the Longs section into an ICell<Long> compliant container
+		ICell<Long> testVar = ParserHelpers.
+										ParseLongCell(
+												this.getCellCondition(
 														"Longs", "LongX"), 
 														"LongX");
-		// Fetch Information about Long Variable
+		// Fetch Information about Long Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -886,7 +886,7 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondLongVals.get(0), 
+						this._initialCellCondLongVals.get(0), 
 						testVar.GetValue()
 					);
 		// Display results
@@ -895,17 +895,17 @@ public class ParserHelpersTests {
 	
 
 	@Test
-	public void TestParseLongArrayVariable() {
+	public void TestParseLongArrayCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse LongX from the Longs section into an IVariable<Long> compliant container
-		IVariable<Long[]> testVar = ParserHelpers.
-										ParseLongArrayVariable(
-												this.getVariableCondition(
+		// Parse LongX from the Longs section into an ICell<Long> compliant container
+		ICell<Long[]> testVar = ParserHelpers.
+										ParseLongArrayCell(
+												this.getCellCondition(
 														"LongArrays", "Long[]X"), 
 														"Long[]X");
 		
-		// Fetch Information about Long Variable
+		// Fetch Information about Long Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -922,15 +922,15 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondLongArrVals.get(0)[0], 
+						this._initialCellCondLongArrVals.get(0)[0], 
 						testVar.GetValue()[0]
 					);
 		assertEquals(
-						this._initialVariableCondLongArrVals.get(0)[1], 
+						this._initialCellCondLongArrVals.get(0)[1], 
 						testVar.GetValue()[1]
 					);
 		assertEquals(
-						this._initialVariableCondLongArrVals.get(0)[2], 
+						this._initialCellCondLongArrVals.get(0)[2], 
 						testVar.GetValue()[2]
 					);
 		// Display results
@@ -942,11 +942,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Long Section into a TreeMap
-		TreeMap<String, IVariable<Long>> section = ParserHelpers.
-														ParseLongVariableSection(
+		TreeMap<String, ICell<Long>> section = ParserHelpers.
+														ParseLongCellSection(
 																this.getSectionCondition(
 																		"Longs"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("LongX", section.firstKey());
 		assertEquals("LongZ", section.lastKey());
 		
@@ -959,11 +959,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Long Section into a TreeMap
-		TreeMap<String, IVariable<Long[]>> section = ParserHelpers.
-														ParseLongArrayVariableSection(
+		TreeMap<String, ICell<Long[]>> section = ParserHelpers.
+														ParseLongArrayCellSection(
 																this.getSectionCondition(
 																		"LongArrays"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("Long[]X", section.firstKey());
 		assertEquals("Long[]Z", section.lastKey());
 		// Display results
@@ -972,16 +972,16 @@ public class ParserHelpersTests {
 	
 	//***** FLOAT TESTING SECTION *****\\
 	@Test
-	public void TestParseFloatVariable() {
+	public void TestParseFloatCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse FloatX from the Floats section into an IVariable<Float> compliant container
-		IVariable<Float> testVar = ParserHelpers.
-										ParseFloatVariable(
-												this.getVariableCondition(
+		// Parse FloatX from the Floats section into an ICell<Float> compliant container
+		ICell<Float> testVar = ParserHelpers.
+										ParseFloatCell(
+												this.getCellCondition(
 														"Floats", "FloatX"), 
 														"FloatX");
-		// Fetch Information about Float Variable
+		// Fetch Information about Float Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -998,7 +998,7 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondFloatVals.get(0), 
+						this._initialCellCondFloatVals.get(0), 
 						testVar.GetValue()
 					);
 		// Display results
@@ -1007,17 +1007,17 @@ public class ParserHelpersTests {
 	
 
 	@Test
-	public void TestParseFloatArrayVariable() {
+	public void TestParseFloatArrayCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse Floats section into an IVariable<Float> compliant container
-		IVariable<Float[]> testVar = ParserHelpers.
-										ParseFloatArrayVariable(
-												this.getVariableCondition(
+		// Parse Floats section into an ICell<Float> compliant container
+		ICell<Float[]> testVar = ParserHelpers.
+										ParseFloatArrayCell(
+												this.getCellCondition(
 														"FloatArrays", "Float[]X"), 
 														"Float[]X");
 		
-		// Fetch Information about Float Variable
+		// Fetch Information about Float Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -1034,15 +1034,15 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondFloatArrVals.get(0)[0], 
+						this._initialCellCondFloatArrVals.get(0)[0], 
 						testVar.GetValue()[0]
 					);
 		assertEquals(
-						this._initialVariableCondFloatArrVals.get(0)[1], 
+						this._initialCellCondFloatArrVals.get(0)[1], 
 						testVar.GetValue()[1]
 					);
 		assertEquals(
-						this._initialVariableCondFloatArrVals.get(0)[2], 
+						this._initialCellCondFloatArrVals.get(0)[2], 
 						testVar.GetValue()[2]
 					);
 		// Display results
@@ -1054,11 +1054,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Float Section into a TreeMap
-		TreeMap<String, IVariable<Float>> section = ParserHelpers.
-														ParseFloatVariableSection(
+		TreeMap<String, ICell<Float>> section = ParserHelpers.
+														ParseFloatCellSection(
 																this.getSectionCondition(
 																		"Floats"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("FloatX", section.firstKey());
 		assertEquals("FloatZ", section.lastKey());
 		
@@ -1071,11 +1071,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Float Section into a TreeMap
-		TreeMap<String, IVariable<Float[]>> section = ParserHelpers.
-														ParseFloatArrayVariableSection(
+		TreeMap<String, ICell<Float[]>> section = ParserHelpers.
+														ParseFloatArrayCellSection(
 																this.getSectionCondition(
 																		"FloatArrays"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("Float[]X", section.firstKey());
 		assertEquals("Float[]Z", section.lastKey());
 		// Display results
@@ -1084,16 +1084,16 @@ public class ParserHelpersTests {
 	
 	//***** BOOLEAN TESTING SECTION *****\\
 	@Test
-	public void TestParseBooleanVariable() {
+	public void TestParseBooleanCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse BoolX from the Booleans section into an IVariable<Boolean> compliant container
-		IVariable<Boolean> testVar = ParserHelpers.
-										ParseBooleanVariable(
-												this.getVariableCondition(
+		// Parse BoolX from the Booleans section into an ICell<Boolean> compliant container
+		ICell<Boolean> testVar = ParserHelpers.
+										ParseBooleanCell(
+												this.getCellCondition(
 														"Booleans", "BoolX"), 
 														"BoolX");
-		// Fetch Information about Boolean Variable
+		// Fetch Information about Boolean Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -1110,7 +1110,7 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondBoolVals.get(0), 
+						this._initialCellCondBoolVals.get(0), 
 						testVar.GetValue()
 					);
 		// Display results
@@ -1119,17 +1119,17 @@ public class ParserHelpersTests {
 	
 
 	@Test
-	public void TestParseBooleanArrayVariable() {
+	public void TestParseBooleanArrayCell() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
-		// Parse BoolX from the Booleans section into an IVariable<Boolean> compliant container
-		IVariable<Boolean[]> testVar = ParserHelpers.
-										ParseBooleanArrayVariable(
-												this.getVariableCondition(
+		// Parse BoolX from the Booleans section into an ICell<Boolean> compliant container
+		ICell<Boolean[]> testVar = ParserHelpers.
+										ParseBooleanArrayCell(
+												this.getCellCondition(
 														"BooleanArrays", "Bool[]X"), 
 														"Bool[]X");
 		
-		// Fetch Information about Boolean Variable
+		// Fetch Information about Boolean Cell
 		assertEquals(
 						"TestName",
 						testVar.GetName()
@@ -1146,15 +1146,15 @@ public class ParserHelpersTests {
 					);
 		
 		assertEquals(
-						this._initialVariableCondBoolArrVals.get(0)[0], 
+						this._initialCellCondBoolArrVals.get(0)[0], 
 						testVar.GetValue()[0]
 					);
 		assertEquals(
-						this._initialVariableCondBoolArrVals.get(0)[1], 
+						this._initialCellCondBoolArrVals.get(0)[1], 
 						testVar.GetValue()[1]
 					);
 		assertEquals(
-						this._initialVariableCondBoolArrVals.get(0)[2], 
+						this._initialCellCondBoolArrVals.get(0)[2], 
 						testVar.GetValue()[2]
 					);
 		// Display results
@@ -1166,11 +1166,11 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Boolean Section into a TreeMap
-		TreeMap<String, IVariable<Boolean>> section = ParserHelpers.
-														ParseBooleanVariableSection(
+		TreeMap<String, ICell<Boolean>> section = ParserHelpers.
+														ParseBooleanCellSection(
 																this.getSectionCondition(
 																		"Booleans"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("BoolX", section.firstKey());
 		assertEquals("BoolZ", section.lastKey());
 		
@@ -1183,204 +1183,204 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Boolean Section into a TreeMap
-		TreeMap<String, IVariable<Boolean[]>> section = ParserHelpers.
-														ParseBooleanArrayVariableSection(
+		TreeMap<String, ICell<Boolean[]>> section = ParserHelpers.
+														ParseBooleanArrayCellSection(
 																this.getSectionCondition(
 																		"BooleanArrays"));
-		// Fetch key information for variables
+		// Fetch key information for Cells
 		assertEquals("Bool[]X", section.firstKey());
 		assertEquals("Bool[]Z", section.lastKey());
 		// Display results
 		System.out.println(g.toJson(section));
 	}
 	
-	//***** VARIABLES TESTING SECTION *****\\
+	//***** CellS TESTING SECTION *****\\
 	@Test
-	public void TestVariables() {
+	public void TestCells() {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
-		// Parse JsonElement into a Variables compliant container
-		IVariables TestElement = ParserHelpers.ParseVariables(this._initialVariableCond);
-		// Fetch information about all variables inside Json Element
+		// Parse JsonElement into a Cells compliant container
+		ICells TestElement = ParserHelpers.ParseCells(this._initialCellCond);
+		// Fetch information about all Cells inside Json Element
 		assertEquals(
-				_initialVariableCondIntVals.get(0), TestElement.GetInteger("IntX").GetValue()
+				_initialCellCondIntVals.get(0), TestElement.GetInteger("IntX").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondIntVals.get(1), TestElement.GetInteger("IntY").GetValue()
+				_initialCellCondIntVals.get(1), TestElement.GetInteger("IntY").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondIntVals.get(2), TestElement.GetInteger("IntZ").GetValue()
+				_initialCellCondIntVals.get(2), TestElement.GetInteger("IntZ").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondStringVals.get(0), TestElement.GetString("StringX").GetValue()
+				_initialCellCondStringVals.get(0), TestElement.GetString("StringX").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondStringVals.get(1), TestElement.GetString("StringY").GetValue()
+				_initialCellCondStringVals.get(1), TestElement.GetString("StringY").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondStringVals.get(2), TestElement.GetString("StringZ").GetValue()
+				_initialCellCondStringVals.get(2), TestElement.GetString("StringZ").GetValue()
 					);		
 		assertEquals(
-				_initialVariableCondDoubleVals.get(0), TestElement.GetDouble("DoubleX").GetValue()
+				_initialCellCondDoubleVals.get(0), TestElement.GetDouble("DoubleX").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondDoubleVals.get(1), TestElement.GetDouble("DoubleY").GetValue()
+				_initialCellCondDoubleVals.get(1), TestElement.GetDouble("DoubleY").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondDoubleVals.get(2), TestElement.GetDouble("DoubleZ").GetValue()
+				_initialCellCondDoubleVals.get(2), TestElement.GetDouble("DoubleZ").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondFloatVals.get(0), TestElement.GetFloat("FloatX").GetValue()
+				_initialCellCondFloatVals.get(0), TestElement.GetFloat("FloatX").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondFloatVals.get(1), TestElement.GetFloat("FloatY").GetValue()
+				_initialCellCondFloatVals.get(1), TestElement.GetFloat("FloatY").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondFloatVals.get(2), TestElement.GetFloat("FloatZ").GetValue()
+				_initialCellCondFloatVals.get(2), TestElement.GetFloat("FloatZ").GetValue()
 					);	
 		assertEquals(
-				_initialVariableCondBoolVals.get(0), TestElement.GetBoolean("BoolX").GetValue()
+				_initialCellCondBoolVals.get(0), TestElement.GetBoolean("BoolX").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondBoolVals.get(1), TestElement.GetBoolean("BoolY").GetValue()
+				_initialCellCondBoolVals.get(1), TestElement.GetBoolean("BoolY").GetValue()
 					);
 		assertEquals(
-				_initialVariableCondBoolVals.get(2), TestElement.GetBoolean("BoolZ").GetValue()
+				_initialCellCondBoolVals.get(2), TestElement.GetBoolean("BoolZ").GetValue()
 					);	
 		assertEquals(
-				_initialVariableCondIntArrVals.get(0)[0], TestElement.GetIntegerArray("Int[]X").GetValue()[0]
+				_initialCellCondIntArrVals.get(0)[0], TestElement.GetIntegerArray("Int[]X").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(0)[1], TestElement.GetIntegerArray("Int[]X").GetValue()[1]
+				_initialCellCondIntArrVals.get(0)[1], TestElement.GetIntegerArray("Int[]X").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(0)[2], TestElement.GetIntegerArray("Int[]X").GetValue()[2]
+				_initialCellCondIntArrVals.get(0)[2], TestElement.GetIntegerArray("Int[]X").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(1)[0], TestElement.GetIntegerArray("Int[]Y").GetValue()[0]
+				_initialCellCondIntArrVals.get(1)[0], TestElement.GetIntegerArray("Int[]Y").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(1)[1], TestElement.GetIntegerArray("Int[]Y").GetValue()[1]
+				_initialCellCondIntArrVals.get(1)[1], TestElement.GetIntegerArray("Int[]Y").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(1)[2], TestElement.GetIntegerArray("Int[]Y").GetValue()[2]
+				_initialCellCondIntArrVals.get(1)[2], TestElement.GetIntegerArray("Int[]Y").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(2)[0], TestElement.GetIntegerArray("Int[]Z").GetValue()[0]
+				_initialCellCondIntArrVals.get(2)[0], TestElement.GetIntegerArray("Int[]Z").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(2)[1], TestElement.GetIntegerArray("Int[]Z").GetValue()[1]
+				_initialCellCondIntArrVals.get(2)[1], TestElement.GetIntegerArray("Int[]Z").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondIntArrVals.get(2)[2], TestElement.GetIntegerArray("Int[]Z").GetValue()[2]
+				_initialCellCondIntArrVals.get(2)[2], TestElement.GetIntegerArray("Int[]Z").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(0)[0], TestElement.GetStringArray("String[]X").GetValue()[0]
+				_initialCellCondStringArrVals.get(0)[0], TestElement.GetStringArray("String[]X").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(0)[1], TestElement.GetStringArray("String[]X").GetValue()[1]
+				_initialCellCondStringArrVals.get(0)[1], TestElement.GetStringArray("String[]X").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(0)[2], TestElement.GetStringArray("String[]X").GetValue()[2]
+				_initialCellCondStringArrVals.get(0)[2], TestElement.GetStringArray("String[]X").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(1)[0], TestElement.GetStringArray("String[]Y").GetValue()[0]
+				_initialCellCondStringArrVals.get(1)[0], TestElement.GetStringArray("String[]Y").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(1)[1], TestElement.GetStringArray("String[]Y").GetValue()[1]
+				_initialCellCondStringArrVals.get(1)[1], TestElement.GetStringArray("String[]Y").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(1)[2], TestElement.GetStringArray("String[]Y").GetValue()[2]
+				_initialCellCondStringArrVals.get(1)[2], TestElement.GetStringArray("String[]Y").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondStringArrVals.get(2)[0], TestElement.GetStringArray("String[]Z").GetValue()[0]
+				_initialCellCondStringArrVals.get(2)[0], TestElement.GetStringArray("String[]Z").GetValue()[0]
 					);	
 		assertEquals(
-				_initialVariableCondStringArrVals.get(2)[1], TestElement.GetStringArray("String[]Z").GetValue()[1]
+				_initialCellCondStringArrVals.get(2)[1], TestElement.GetStringArray("String[]Z").GetValue()[1]
 					);		
 		assertEquals(
-				_initialVariableCondStringArrVals.get(2)[2], TestElement.GetStringArray("String[]Z").GetValue()[2]
+				_initialCellCondStringArrVals.get(2)[2], TestElement.GetStringArray("String[]Z").GetValue()[2]
 					);		
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(0)[0], TestElement.GetDoubleArray("Double[]X").GetValue()[0]
+				_initialCellCondDoubleArrVals.get(0)[0], TestElement.GetDoubleArray("Double[]X").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(0)[1], TestElement.GetDoubleArray("Double[]X").GetValue()[1]
+				_initialCellCondDoubleArrVals.get(0)[1], TestElement.GetDoubleArray("Double[]X").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(0)[2], TestElement.GetDoubleArray("Double[]X").GetValue()[2]
+				_initialCellCondDoubleArrVals.get(0)[2], TestElement.GetDoubleArray("Double[]X").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(1)[0], TestElement.GetDoubleArray("Double[]Y").GetValue()[0]
+				_initialCellCondDoubleArrVals.get(1)[0], TestElement.GetDoubleArray("Double[]Y").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(1)[1], TestElement.GetDoubleArray("Double[]Y").GetValue()[1]
+				_initialCellCondDoubleArrVals.get(1)[1], TestElement.GetDoubleArray("Double[]Y").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(1)[2], TestElement.GetDoubleArray("Double[]Y").GetValue()[2]
+				_initialCellCondDoubleArrVals.get(1)[2], TestElement.GetDoubleArray("Double[]Y").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(2)[0], TestElement.GetDoubleArray("Double[]Z").GetValue()[0]
+				_initialCellCondDoubleArrVals.get(2)[0], TestElement.GetDoubleArray("Double[]Z").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(2)[1], TestElement.GetDoubleArray("Double[]Z").GetValue()[1]
+				_initialCellCondDoubleArrVals.get(2)[1], TestElement.GetDoubleArray("Double[]Z").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondDoubleArrVals.get(2)[2], TestElement.GetDoubleArray("Double[]Z").GetValue()[2]
+				_initialCellCondDoubleArrVals.get(2)[2], TestElement.GetDoubleArray("Double[]Z").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(0)[0], TestElement.GetFloatArray("Float[]X").GetValue()[0]
+				_initialCellCondFloatArrVals.get(0)[0], TestElement.GetFloatArray("Float[]X").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(0)[1], TestElement.GetFloatArray("Float[]X").GetValue()[1]
+				_initialCellCondFloatArrVals.get(0)[1], TestElement.GetFloatArray("Float[]X").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(0)[2], TestElement.GetFloatArray("Float[]X").GetValue()[2]
+				_initialCellCondFloatArrVals.get(0)[2], TestElement.GetFloatArray("Float[]X").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(1)[0], TestElement.GetFloatArray("Float[]Y").GetValue()[0]
+				_initialCellCondFloatArrVals.get(1)[0], TestElement.GetFloatArray("Float[]Y").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(1)[1], TestElement.GetFloatArray("Float[]Y").GetValue()[1]
+				_initialCellCondFloatArrVals.get(1)[1], TestElement.GetFloatArray("Float[]Y").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(1)[2], TestElement.GetFloatArray("Float[]Y").GetValue()[2]
+				_initialCellCondFloatArrVals.get(1)[2], TestElement.GetFloatArray("Float[]Y").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(2)[0], TestElement.GetFloatArray("Float[]Z").GetValue()[0]
+				_initialCellCondFloatArrVals.get(2)[0], TestElement.GetFloatArray("Float[]Z").GetValue()[0]
 					);	
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(2)[1], TestElement.GetFloatArray("Float[]Z").GetValue()[1]
+				_initialCellCondFloatArrVals.get(2)[1], TestElement.GetFloatArray("Float[]Z").GetValue()[1]
 					);	
 		assertEquals(
-				_initialVariableCondFloatArrVals.get(2)[2], TestElement.GetFloatArray("Float[]Z").GetValue()[2]
+				_initialCellCondFloatArrVals.get(2)[2], TestElement.GetFloatArray("Float[]Z").GetValue()[2]
 					);	
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(0)[0], TestElement.GetBooleanArray("Bool[]X").GetValue()[0]
+				_initialCellCondBoolArrVals.get(0)[0], TestElement.GetBooleanArray("Bool[]X").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(0)[1], TestElement.GetBooleanArray("Bool[]X").GetValue()[1]
+				_initialCellCondBoolArrVals.get(0)[1], TestElement.GetBooleanArray("Bool[]X").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(0)[2], TestElement.GetBooleanArray("Bool[]X").GetValue()[2]
+				_initialCellCondBoolArrVals.get(0)[2], TestElement.GetBooleanArray("Bool[]X").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(1)[0], TestElement.GetBooleanArray("Bool[]Y").GetValue()[0]
+				_initialCellCondBoolArrVals.get(1)[0], TestElement.GetBooleanArray("Bool[]Y").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(1)[1], TestElement.GetBooleanArray("Bool[]Y").GetValue()[1]
+				_initialCellCondBoolArrVals.get(1)[1], TestElement.GetBooleanArray("Bool[]Y").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(1)[2], TestElement.GetBooleanArray("Bool[]Y").GetValue()[2]
+				_initialCellCondBoolArrVals.get(1)[2], TestElement.GetBooleanArray("Bool[]Y").GetValue()[2]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(2)[0], TestElement.GetBooleanArray("Bool[]Z").GetValue()[0]
+				_initialCellCondBoolArrVals.get(2)[0], TestElement.GetBooleanArray("Bool[]Z").GetValue()[0]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(2)[1], TestElement.GetBooleanArray("Bool[]Z").GetValue()[1]
+				_initialCellCondBoolArrVals.get(2)[1], TestElement.GetBooleanArray("Bool[]Z").GetValue()[1]
 					);
 		assertEquals(
-				_initialVariableCondBoolArrVals.get(2)[2], TestElement.GetBooleanArray("Bool[]Z").GetValue()[2]
+				_initialCellCondBoolArrVals.get(2)[2], TestElement.GetBooleanArray("Bool[]Z").GetValue()[2]
 					);
 		// Display results
 		System.out.println(g.toJson(TestElement));

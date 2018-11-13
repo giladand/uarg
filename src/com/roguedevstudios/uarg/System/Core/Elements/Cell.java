@@ -1,5 +1,5 @@
 /********************************
-*   Variable Class			    *
+*   Cell Class			    *
 *   File Name: Variable.java    *
 *                               *
 *   Variable Representation     *
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Import Section
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
 
 /**
  * A representation of variables implementing IVariable with added metadata.
@@ -22,8 +22,8 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @author Rasu Neupane
  * @since 1.0
  */
-public class Variable<V> 
-	   implements IVariable<V> 
+public class Cell<V> 
+	   implements ICell<V> 
 {
 	
 	/* The name meta of this Variable */
@@ -48,7 +48,7 @@ public class Variable<V>
 
 	/**
 	 * 
-	 * Constructs a Variable object with a known value
+	 * Constructs a Cell object with a known value
 	 * 
 	 * @param name	String name of this variable   
 	 * @param id	String ID of this variable
@@ -58,7 +58,7 @@ public class Variable<V>
 	 * @param value	Initial value of this variable
 	 * @since 1.0
 	 */
-	public Variable(
+	public Cell(
 					 String name, 
 					 String id, 
 					 Boolean requiresInput, 
@@ -91,7 +91,7 @@ public class Variable<V>
 	 * @throws Exception Passes back unknown exceptions in case of incompatible null typing of Generic
 	 * @since 1.0
 	 */
-	public Variable(
+	public Cell(
 					 String name, 
 					 String id, 
 					 Boolean requiresInput, 

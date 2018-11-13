@@ -1,8 +1,8 @@
 package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 /****************************************
-*  Boolean Variable Deserializer		*
+*  Boolean Cell Deserializer			*
 *   File Name: 							*
-*   BooleanVariableDeserializer.java 	*
+*   BooleanCellDeserializer.java 	*
 *                            	   	    *
 *   Deserializes JSON					*
 *   information and converts			*
@@ -16,31 +16,31 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Cell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
 
 /**
  * 
- * Adapter class to Deserialize Variable objects of subtype Boolean
+ * Adapter class to Deserialize Cell objects of subtype Boolean
  * 
  * @author Terry Roberson
  * @author Christopher E. Howard
  * @author Rasu Neupane
  * @since 1.0
  */
-public class BooleanVariableDeserializer 
-	   implements JsonDeserializer<IVariable<Boolean>> 
+public class BooleanCellDeserializer 
+	   implements JsonDeserializer<ICell<Boolean>> 
 {
 	
 	/**
-	 * Deserializes into a Variable<Boolean> type
+	 * Deserializes into a Cell<Boolean> type
 	 * from a given JsonElement, Type, and context
 	 * @param JsonElement
 	 * @param Type
 	 * @param JsonDeserializationContext
-	 * @return Variable<Boolean>
+	 * @return Cell<Boolean>
 	 */
-	public IVariable<Boolean> deserialize( 
+	public ICell<Boolean> deserialize( 
 										  JsonElement json, 
 										  Type typeOfT, 
 										  JsonDeserializationContext context
@@ -49,26 +49,26 @@ public class BooleanVariableDeserializer
 	{
 		
 
-		/*Temp slot for variable name*/
+		/*Temp slot for Cell name*/
 		String _name = null;
 		
-		/*Temp slot for variable ID*/
+		/*Temp slot for Cell ID*/
 		String _id = null;
 		
-		/*Temp slot for variable requiresInput*/
+		/*Temp slot for Cell requiresInput*/
 		boolean _requiresInput = false;
 		
-		/*Temp slot for variable description*/
+		/*Temp slot for Cell description*/
 		String _description = null;
 		
-		/*Temp slot for variable description*/
+		/*Temp slot for Cell description*/
 		ArrayList<String> _format = null;
 		
-		/*Temp slot for variable value*/
+		/*Temp slot for Cell value*/
 		Boolean _value = null;
 		
 		/*Temp output object holder*/
-		IVariable<Boolean> v;
+		ICell<Boolean> v;
 		
 		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
@@ -110,15 +110,15 @@ public class BooleanVariableDeserializer
 			}
 		}
 		
-		// Build the Variable object to return
-		v = new Variable<Boolean>(  _name,
+		// Build the Cell object to return
+		v = new Cell<Boolean>(  _name,
 									_id, 
 									_requiresInput, 
 									_description,
 									_format,
 									_value 
 								);
-		// Return the constructed variable object
+		// Return the constructed Cell object
 		return v;
 	}
 }

@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeMap;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICells;
 
 /**
  * Cascade Map Implementation class to represent the
@@ -34,14 +34,14 @@ public class CascadeMap
 	/**
 	 * Shakes the Cascade Tree with a Variable Update
 	 * @param UpdatedVariableID The ID of the variable that got updated causing the shake.
-	 * @param vars the Variables container to function against.
+	 * @param vars the Cells container to function against.
 	 * @param formulas the Formuli container to function against
 	 * @return List<String> A list of all the variables that cascade updated.
 	 * @author Christopher Howard
 	 */
 	public List<String> ShakeTree(
 							String UpdatedVariableID, 
-							IVariables vars, 
+							ICells vars, 
 							IFormuli formulas
 							) 
 	{

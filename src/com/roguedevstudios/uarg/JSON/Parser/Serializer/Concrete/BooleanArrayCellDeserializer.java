@@ -1,8 +1,8 @@
 package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 /********************************************
-*  Double[] Variable Deserializer			*
+*  Boolean[] Cell Deserializer			*
 *   File Name: 								*
-*   DoubleArrayVariableDeserializer.java 	*
+*   BooleanArrayCellDeserializer.java 	*
 *                            	   	    	*
 *   Deserializes JSON						*
 *   information and converts				*
@@ -16,45 +16,45 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Cell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
 
 /**
  * <p>
- * converts Variable.json information into Java Objects
+ * converts Cell.json information into Java Objects
  * <p>
  * 
  * @author Terry Roberson
  * @author Rasu Neupane
  * @since 1.0
  */
-public class DoubleArrayVariableDeserializer implements JsonDeserializer<IVariable<Double[]>> {
+public class BooleanArrayCellDeserializer implements JsonDeserializer<ICell<Boolean[]>> {
 
 	/**
-	 * Deserializes into a Variable<Double> type
+	 * Deserializes into a Cell<Boolean> type
 	 * from a given JsonElement, Type, and context
 	 * @param JsonElement
 	 * @param Type
 	 * @param JsonDeserializationContext
-	 * @return Variable<Double>
+	 * @return Cell<Boolean>
 	 */
 	
-	public IVariable<Double[]> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+	public ICell<Boolean[]> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		/*Temp slot for variable name*/
+		/*Temp slot for Cell name*/
 		String _name = null;
-		/*Temp slot for variable ID*/
+		/*Temp slot for Cell ID*/
 		String _id = null;
-		/*Temp slot for variable value*/
-		Double[] _value = null;
-		/*Temp slot for variable description*/
-		String _description = null;
-		/*Temp slot for variable format*/
-		ArrayList<String> _format = null;
-		/*Temp slot for variable requiresInput*/
+		/*Temp slot for Cell requiresInput*/
 		boolean _requiresInput = false;
+		/*Temp slot for Cell description*/
+		String _description = null;
+		/*Temp slot for Cell format*/
+		ArrayList<String> _format = null;
+		/*Temp slot for Cell value*/
+		Boolean[] _value = null;
 		/*Temp output object holder*/
-		IVariable<Double[]> v;
+		ICell<Boolean[]> v;
 		
 		/* Convert JsonElement into JsonObject */
 		JsonObject o = json.getAsJsonObject();
@@ -74,14 +74,14 @@ public class DoubleArrayVariableDeserializer implements JsonDeserializer<IVariab
 			//Retrieve value as json array
 			JsonArray t = o.get("Value").getAsJsonArray();
 			//Array contains values of t size
-			_value = new Double[t.size()];
+			_value = new Boolean[t.size()];
 			//Iterate through json array
 			Iterator <JsonElement> it = t.iterator();
 			//Start at first location in array
 			int counter = 0;
 			//While there exists more values, loop through
 			while(it.hasNext()) {
-				_value[counter] = it.next().getAsDouble();
+				_value[counter] = it.next().getAsBoolean();
 				counter++;
 			}
 		}
@@ -92,24 +92,23 @@ public class DoubleArrayVariableDeserializer implements JsonDeserializer<IVariab
 		}
 		
 		//If the object has a format, then we grab it
-				if(o.has("Format")) {
-					//Retrieve format as json array
-					JsonArray t = o.get("Format").getAsJsonArray();
-					//Array contains formats of t size
-					_format = new ArrayList<String>(t.size());
-					//Iterate through json array
-					Iterator <JsonElement> it = t.iterator();
-					//Start at first location in array
-					int counter = 0;
-					//While there exists more formats, loop through
-					while(it.hasNext()) {
-						_format.add(counter, it.next().getAsString());
-						counter++;
-					}
-				}
-		
-		//Build the Variable object to return
-		v = new Variable<Double[]>(_name, _id, _requiresInput, _description, _format, _value);
+		if(o.has("Format")) {
+			//Retrieve format as json array
+			JsonArray t = o.get("Format").getAsJsonArray();
+			//Array contains formats of t size
+			_format = new ArrayList<String>(t.size());
+			//Iterate through json array
+			Iterator <JsonElement> it = t.iterator();
+			//Start at first location in array
+			int counter = 0;
+			//While there exists more formats, loop through
+			while(it.hasNext()) {
+				_format.add(counter, it.next().getAsString());
+				counter++;
+			}
+		}
+		//Build the Cell object to return
+		v = new Cell<Boolean[]>(_name, _id, _requiresInput, _description, _format, _value);
 			
 		return v;
 	}

@@ -1,8 +1,8 @@
 package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 /****************************************
-*  Long Variable Deserializer			*
+*  Float Cell Deserializer			*
 *   File Name: 							*
-*   LongVariableDeserializer.java 	*
+*   FloatCellDeserializer.java 	*
 *                            	   	    *
 *   Deserializes JSON					*
 *   information and converts			*
@@ -16,57 +16,58 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Cell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
 
 /**
  * 
- * Adapter class to Deserialize Variable objects of subtype Long
+ * Adapter class to Deserialize Cell objects of subtype Float
  * 
  * @author Terry Roberson
  * @author Christopher E. Howard
  * @author Rasu Neupane
  * @since 1.0
  */
-public class LongVariableDeserializer 
-	   implements JsonDeserializer<IVariable<Long>> 
+public class FloatCellDeserializer 
+	   implements JsonDeserializer<ICell<Float>> 
 {
+
 	/**
-	 * Deserializes into a Variable<Long> type
+	 * Deserializes into a Cell<Float> type
 	 * from a given JsonElement, Type, and context
 	 * @param JsonElement
 	 * @param Type
 	 * @param JsonDeserializationContext
-	 * @return Variable<Long>
+	 * @return Cell<Float>
 	 */
-	public IVariable<Long> deserialize(
+	public ICell<Float> deserialize(
 										JsonElement json, 
 										Type typeOfT, 
 										JsonDeserializationContext context
-									 )
-									throws JsonParseException 
+									  )
+									  throws JsonParseException 
 	{
 		
-		/*Temp slot for variable name*/
+		/*Temp slot for Cell name*/
 		String _name = null;
 		
-		/*Temp slot for variable ID*/
+		/*Temp slot for Cell ID*/
 		String _id = null;
 		
-		/*Temp slot for variable value*/
-		Long _value = null;
+		/*Temp slot for Cell value*/
+		Float _value = null;
 		
-		/*Temp slot for variable description*/
+		/*Temp slot for Cell description*/
 		String _description = null;
 		
-		/*Temp slot for variable format*/
+		/*Temp slot for Cell format*/
 		ArrayList<String> _format = null;
 		
-		/*Temp slot for variable requiresInput*/
+		/*Temp slot for Cell requiresInput*/
 		boolean _requiresInput = false;
 		
 		/*Temp output object holder*/
-		IVariable<Long> v;
+		ICell<Float> v;
 		
 		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
@@ -77,12 +78,12 @@ public class LongVariableDeserializer
 		}
 		
 		// If the object has an ID, then we grab it
-		if( o.has("ID") )
+		if( o.has("ID") ) 
 			_id = o.get("ID").getAsString();
 		
 		//If the object has a value, then we grab it
 		if(o.has("Value")) {
-			_value = o.get("Value").getAsLong();
+			_value = o.get("Value").getAsFloat();
 		}
 		
 		//If the object has a description, then we grab it
@@ -106,15 +107,16 @@ public class LongVariableDeserializer
 					}
 				}
 		
-		// Build the Variable object to return
-		v = new Variable<Long>(	_name, 
-								_id, 
-								_requiresInput, 
-								_description, 
-								_format,
-								_value
-							  );
-		// Return the constructed variable object	
+		// Build the Cell object to return
+		v = new Cell<Float>(  _name,
+								  _id, 
+								  _requiresInput, 
+								  _description,
+								  _format,
+								  _value 
+							   );
+
+		// Return the constructed Cell object	
 		return v;
 	}
 }

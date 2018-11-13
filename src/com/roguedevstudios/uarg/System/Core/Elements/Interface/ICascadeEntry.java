@@ -8,5 +8,5 @@ public interface ICascadeEntry {
 	List<String> GetInputVariableIDList();
 	String GetFormulaID();
 	String GetDescription();
-	void Shake(IVariables vars, IFormuli formulas);
+	void Shake(ICells vars, IFormuli formulas);
 }

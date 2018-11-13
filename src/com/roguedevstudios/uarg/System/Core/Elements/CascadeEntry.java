@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICells;
 
 /**
  * Cascade Entry implementation representing a single load
@@ -49,17 +49,17 @@ public class CascadeEntry implements ICascadeEntry {
 
 	/**
 	 * Gathers the requested variables by the internal ID list from the
-	 * given IVariables container
-	 * @param vars Variables container given to work against.
-	 * @return IVariable<?>[] Gathered variables from the Variables container
+	 * given ICells container
+	 * @param vars Cells container given to work against.
+	 * @return IVariable<?>[] Gathered variables from the Cells container
 	 * @author Christopher Howard
 	 */
-	private IVariable<?>[] _getVariables( IVariables vars ) 
+	private ICell<?>[] _getVariables( ICells vars ) 
 	{
 		// Setup the output variables container
-		IVariable<?>[] varsOut = new IVariable<?>[ this._inputIDList.size() ];
+		ICell<?>[] varsOut = new ICell<?>[ this._inputIDList.size() ];
 		
-		// Get each variable from the Variables container using the correct Getter
+		// Get each variable from the Cells container using the correct Getter
 		for( int i = 0;
 			     i <= this._inputIDList.size() - 1;
 				 i++
@@ -111,14 +111,14 @@ public class CascadeEntry implements ICascadeEntry {
 	
 	/**
 	 * Detects null value variable wrappers
-	 * @param vars IVariables compliant container object
+	 * @param vars ICells compliant container object
 	 * @return Null value detected in input set
 	 */
-	private boolean _shakeProtect( IVariables vars ) 
+	private boolean _shakeProtect( ICells vars ) 
 	{
-		IVariable<?>[] varsList = this._getVariables(vars);
+		ICell<?>[] varsList = this._getVariables(vars);
 		
-		for( IVariable<?> var: varsList ) 
+		for( ICell<?> var: varsList ) 
 		{
 			if( var.GetValue() == null )
 				return true;
@@ -130,11 +130,11 @@ public class CascadeEntry implements ICascadeEntry {
 	 * Calls the processing command in the formula with the proper variables
 	 * by calling the forumla, input variables, and output variable from the given
 	 * containers to work against.
-	 * @param vars Variables container to work against
+	 * @param vars Cells container to work against
 	 * @param formulas Formuli container to work against
 	 * @author Christopher Howard
 	 */
-	public void Shake( IVariables vars, 
+	public void Shake( ICells vars, 
 					   IFormuli formulas
 					   ) 
 		   throws IllegalStateException 
@@ -159,7 +159,7 @@ public class CascadeEntry implements ICascadeEntry {
 									this._formulaID
 									).
 							CalculateToInteger(
-									(IVariable<? extends Number>[]) this._getVariables(
+									(ICell<? extends Number>[]) this._getVariables(
 														vars
 														)
 									)
@@ -176,7 +176,7 @@ public class CascadeEntry implements ICascadeEntry {
 								this._formulaID
 								).
 						CalculateToFloat(
-								(IVariable<? extends Number>[]) this._getVariables(
+								(ICell<? extends Number>[]) this._getVariables(
 													vars
 													)
 								)
@@ -193,7 +193,7 @@ public class CascadeEntry implements ICascadeEntry {
 								this._formulaID
 								).
 						CalculateToDouble(
-								(IVariable<? extends Number>[]) this._getVariables(
+								(ICell<? extends Number>[]) this._getVariables(
 													vars
 													)
 								)
@@ -210,7 +210,7 @@ public class CascadeEntry implements ICascadeEntry {
 								this._formulaID
 								).
 						CalculateToLong(
-								(IVariable<? extends Number>[]) this._getVariables(
+								(ICell<? extends Number>[]) this._getVariables(
 													vars
 													)
 								)

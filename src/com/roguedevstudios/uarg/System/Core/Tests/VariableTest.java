@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+import com.roguedevstudios.uarg.System.Core.Elements.Cell;
 
 import java.lang.reflect.*;
 
@@ -43,8 +43,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Integer> testVarNoValue = new Variable<Integer>(name, id, requiresInput, description, format);
-				Variable<Integer> testVarWithValue = new Variable<Integer>(name, id, requiresInput, description, format, value);
+				Cell<Integer> testVarNoValue = new Cell<Integer>(name, id, requiresInput, description, format);
+				Cell<Integer> testVarWithValue = new Cell<Integer>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -93,7 +93,7 @@ public class VariableTest{
 		
 		
 		//Set up a valid test variable with a value 
-		Variable<Integer> testVarValueUpdate = new Variable<Integer>(name, id, requiresInput, description, format, value);
+		Cell<Integer> testVarValueUpdate = new Cell<Integer>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -129,7 +129,7 @@ public class VariableTest{
 		//Set value of variable to null
 		Integer value = null;
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<Integer> testNullValue = new Variable<Integer>("TEST", "TEST", false, "TEST", format,value);
+		Cell<Integer> testNullValue = new Cell<Integer>("TEST", "TEST", false, "TEST", format,value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -151,7 +151,7 @@ public class VariableTest{
 		
 		
 		//Set up a valid test variable with a value 
-		Variable<Integer> nullIntegerObjectVariable = new Variable<Integer>(name, id, requiresInput, description, format, value);
+		Cell<Integer> nullIntegerObjectVariable = new Cell<Integer>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -177,7 +177,7 @@ public class VariableTest{
 	@Test
 	public void setPrimitiveIntoIntegerObjectType() {
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<Integer> testVarWithPrimitive = new Variable<Integer>("TEST", "TEST", false, "TEST", format, 5);
+		Cell<Integer> testVarWithPrimitive = new Cell<Integer>("TEST", "TEST", false, "TEST", format, 5);
 		assertEquals(5, (int) testVarWithPrimitive.GetValue());
 		
 	}
@@ -204,8 +204,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<String> testVarNoValue = new Variable<String>(name, id, requiresInput, description, format);
-				Variable<String> testVarWithValue = new Variable<String>(name, id, requiresInput, description, format, value);
+				Cell<String> testVarNoValue = new Cell<String>(name, id, requiresInput, description, format);
+				Cell<String> testVarWithValue = new Cell<String>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -254,7 +254,7 @@ public class VariableTest{
 		
 		
 		//Set up a valid test variable with a value 
-		Variable<String> testVarValueUpdate = new Variable<String>(name, id, requiresInput, description, format, value);
+		Cell<String> testVarValueUpdate = new Cell<String>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -289,7 +289,7 @@ public class VariableTest{
 		//Set value of variable to null
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		String value = null;
-		Variable<String> testNullValue = new Variable<String>("TEST", "TEST", false, "TEST", format, value);
+		Cell<String> testNullValue = new Cell<String>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -312,7 +312,7 @@ public class VariableTest{
 		
 		
 		//Set up a valid test variable with a value 
-		Variable<String> nullIntegerObjectVariable = new Variable<String>(name, id, requiresInput, description, format, value);
+		Cell<String> nullIntegerObjectVariable = new Cell<String>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -338,7 +338,7 @@ public class VariableTest{
 	@Test
 	public void setPrimitiveIntoStringObjectType() {
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<String> testVarWithPrimitive = new Variable<String>("TEST", "TEST", false, "TEST", format, "A");
+		Cell<String> testVarWithPrimitive = new Cell<String>("TEST", "TEST", false, "TEST", format, "A");
 		assertEquals("A", (String) testVarWithPrimitive.GetValue());
 		
 	}
@@ -363,8 +363,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Double> testVarNoValue = new Variable<Double>(name, id, requiresInput, description, format );
-				Variable<Double> testVarWithValue = new Variable<Double>(name, id, requiresInput, description, format, value);
+				Cell<Double> testVarNoValue = new Cell<Double>(name, id, requiresInput, description, format );
+				Cell<Double> testVarWithValue = new Cell<Double>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -412,7 +412,7 @@ public class VariableTest{
 		Double newValue = 5.4;
 		
 		//Set up a valid test variable with a value 
-		Variable<Double> testVarValueUpdate = new Variable<Double>(name, id, requiresInput, description, format, value);
+		Cell<Double> testVarValueUpdate = new Cell<Double>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -447,7 +447,7 @@ public class VariableTest{
 		//Set value of variable to null
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Double value = null;
-		Variable<Double> testNullValue = new Variable<Double>("TEST", "TEST", false, "TEST", format, value);
+		Cell<Double> testNullValue = new Cell<Double>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -468,7 +468,7 @@ public class VariableTest{
 		Double value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Double> nullIntegerObjectVariable = new Variable<Double>(name, id, requiresInput, description, format, value);
+		Cell<Double> nullIntegerObjectVariable = new Cell<Double>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -495,7 +495,7 @@ public class VariableTest{
 	public void setPrimitiveIntoDoubleObjectType() {
 		
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<Double> testVarWithPrimitive = new Variable<Double>("TEST", "TEST", false, "TEST", format, 1e-15);
+		Cell<Double> testVarWithPrimitive = new Cell<Double>("TEST", "TEST", false, "TEST", format, 1e-15);
 		assertEquals(1e-15, (double) testVarWithPrimitive.GetValue(), 0);
 		
 	}
@@ -520,8 +520,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Long> testVarNoValue = new Variable<Long>(name, id, requiresInput, description, format);
-				Variable<Long> testVarWithValue = new Variable<Long>(name, id, requiresInput, description, format, value);
+				Cell<Long> testVarNoValue = new Cell<Long>(name, id, requiresInput, description, format);
+				Cell<Long> testVarWithValue = new Cell<Long>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -569,7 +569,7 @@ public class VariableTest{
 		Long newValue = 68L;
 		
 		//Set up a valid test variable with a value 
-		Variable<Long> testVarValueUpdate = new Variable<Long>(name, id, requiresInput, description, format, value);
+		Cell<Long> testVarValueUpdate = new Cell<Long>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -604,7 +604,7 @@ public class VariableTest{
 		//Set value of variable to null
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Long value = null;
-		Variable<Long> testNullValue = new Variable<Long>("TEST", "TEST", false, "TEST", format, value);
+		Cell<Long> testNullValue = new Cell<Long>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -625,7 +625,7 @@ public class VariableTest{
 		Long value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Long> nullIntegerObjectVariable = new Variable<Long>(name, id, requiresInput, description,format, value);
+		Cell<Long> nullIntegerObjectVariable = new Cell<Long>(name, id, requiresInput, description,format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -651,7 +651,7 @@ public class VariableTest{
 	@Test
 	public void setPrimitiveIntoLongObjectType() {
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<Long> testVarWithPrimitive = new Variable<Long>("TEST", "TEST", false, "TEST", format, 300L);
+		Cell<Long> testVarWithPrimitive = new Cell<Long>("TEST", "TEST", false, "TEST", format, 300L);
 		assertEquals(300L, (long) testVarWithPrimitive.GetValue());
 		
 	}
@@ -676,8 +676,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Float> testVarNoValue = new Variable<Float>(name, id, requiresInput, description, format);
-				Variable<Float> testVarWithValue = new Variable<Float>(name, id, requiresInput, description, format, value);
+				Cell<Float> testVarNoValue = new Cell<Float>(name, id, requiresInput, description, format);
+				Cell<Float> testVarWithValue = new Cell<Float>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -725,7 +725,7 @@ public class VariableTest{
 		Float newValue = 6.8F;
 		
 		//Set up a valid test variable with a value 
-		Variable<Float> testVarValueUpdate = new Variable<Float>(name, id, requiresInput, description, format, value);
+		Cell<Float> testVarValueUpdate = new Cell<Float>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -760,7 +760,7 @@ public class VariableTest{
 		//Set value of variable to null
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Float value = null;
-		Variable<Float> testNullValue = new Variable<Float>("TEST", "TEST", false, "TEST", format, value);
+		Cell<Float> testNullValue = new Cell<Float>("TEST", "TEST", false, "TEST", format, value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -781,7 +781,7 @@ public class VariableTest{
 		Float value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Float> nullIntegerObjectVariable = new Variable<Float>(name, id, requiresInput, description, format, value);
+		Cell<Float> nullIntegerObjectVariable = new Cell<Float>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -809,7 +809,7 @@ public class VariableTest{
 	public void setPrimitiveIntoFloatObjectType() {
 		
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<Float> testVarWithPrimitive = new Variable<Float>("TEST", "TEST", false, "TEST", format, 3.28F);
+		Cell<Float> testVarWithPrimitive = new Cell<Float>("TEST", "TEST", false, "TEST", format, 3.28F);
 		assertEquals(3.28F, (float) testVarWithPrimitive.GetValue(), 0);
 		
 	}
@@ -834,8 +834,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Boolean> testVarNoValue = new Variable<Boolean>(name, id, requiresInput, description, format);
-				Variable<Boolean> testVarWithValue = new Variable<Boolean>(name, id, requiresInput, description, format, value);
+				Cell<Boolean> testVarNoValue = new Cell<Boolean>(name, id, requiresInput, description, format);
+				Cell<Boolean> testVarWithValue = new Cell<Boolean>(name, id, requiresInput, description, format, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -883,7 +883,7 @@ public class VariableTest{
 		Boolean newValue = false;
 		
 		//Set up a valid test variable with a value 
-		Variable<Boolean> testVarValueUpdate = new Variable<Boolean>(name, id, requiresInput, description,format, value);
+		Cell<Boolean> testVarValueUpdate = new Cell<Boolean>(name, id, requiresInput, description,format, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -918,7 +918,7 @@ public class VariableTest{
 		//Set value of variable to null
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
 		Boolean value = false;
-		Variable<Boolean> testNullValue = new Variable<Boolean>("TEST", "TEST", false, "TEST", format, value);
+		Cell<Boolean> testNullValue = new Cell<Boolean>("TEST", "TEST", false, "TEST", format, value);
 		assertEquals(value, testNullValue.GetValue());
 
 	}
@@ -939,7 +939,7 @@ public class VariableTest{
 		Boolean value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Boolean> nullIntegerObjectVariable = new Variable<Boolean>(name, id, requiresInput, description, format, value);
+		Cell<Boolean> nullIntegerObjectVariable = new Cell<Boolean>(name, id, requiresInput, description, format, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -965,7 +965,7 @@ public class VariableTest{
 	@Test
 	public void setPrimitiveIntoBooleanObjectType() {
 		ArrayList<String> format = new ArrayList <String> (Arrays.asList("TEST"));
-		Variable<Boolean> testVarWithPrimitive = new Variable<Boolean>("TEST", "TEST", false, "TEST", format, false);
+		Cell<Boolean> testVarWithPrimitive = new Cell<Boolean>("TEST", "TEST", false, "TEST", format, false);
 		assertEquals(false, (boolean) testVarWithPrimitive.GetValue());
 		
 	}

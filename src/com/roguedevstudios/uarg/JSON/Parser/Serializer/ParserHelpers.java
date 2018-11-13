@@ -13,32 +13,32 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.BooleanArrayVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.BooleanVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.DoubleArrayVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.DoubleVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.FloatArrayVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.FloatVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.IntegerArrayVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.LongArrayVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.LongVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.StringArrayVariableDeserializer;
-import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.StringVariableDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.BooleanArrayCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.BooleanCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.DoubleArrayCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.DoubleCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.FloatArrayCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.FloatCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.IntegerArrayCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.LongArrayCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.LongCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.StringArrayCellDeserializer;
+import com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete.StringCellDeserializer;
 import com.roguedevstudios.uarg.JSON.Parser.Serializer.CascadeEntryDeserializer; //TODO: Alter CascadeEntryDeserializer to concrete?
 import com.roguedevstudios.uarg.System.Core.Elements.Formula;
 import com.roguedevstudios.uarg.System.Core.Elements.FormulaSet;
 import com.roguedevstudios.uarg.System.Core.Elements.Formuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Variables;
+import com.roguedevstudios.uarg.System.Core.Elements.Cell;
+import com.roguedevstudios.uarg.System.Core.Elements.Cells;
 import com.roguedevstudios.uarg.System.Core.Elements.CascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.CascadeMap;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormula;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICell;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICells;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeMap;
-import com.roguedevstudios.uarg.System.Core.Enum.VariableType;
+import com.roguedevstudios.uarg.System.Core.Enum.CellType;
 
 /**
  * Helper class for static parsing methods
@@ -315,21 +315,21 @@ public class ParserHelpers {
 	//***** INTEGER SECTION ******\\
 
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Integer>
-				  ParseIntegerVariable(
+	public static ICell<Integer>
+				  ParseIntegerCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Integer> > IVariableDeserializer,
-						  				Class<? extends IVariable<Integer>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Integer> > ICellDeserializer,
+						  				Class<? extends ICell<Integer>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -340,20 +340,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Integer> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Integer> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -371,18 +371,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Integer> > 
-			      ParseIntegerVariableSection(
+				  TreeMap<String, ICell<Integer> > 
+			      ParseIntegerCellsection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Integer> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Integer>> IVariableConcrete,
+			    		  JsonDeserializer<? extends ICell<Integer> > ICellDeserializer,
+			    		  Class<? extends ICell<Integer>> ICellConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -392,20 +392,20 @@ public class ParserHelpers {
 	{
 		try {
 			
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Integer> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Integer> > map = new TreeMap<>();
 			
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 					ParserHelpers.
-						ParseIntegerVariable( entry.getValue(),
+						ParseIntegerCell( entry.getValue(),
 												 entry.getKey(),
-												 IVariableDeserializer,
-												 IVariableConcrete,
+												 ICellDeserializer,
+												 ICellConcrete,
 												 gsonBuilder
 												 )
 					);
@@ -421,21 +421,21 @@ public class ParserHelpers {
 	}
 	
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Integer[]>
-				  ParseIntegerArrayVariable(
+	public static ICell<Integer[]>
+				  ParseIntegerArrayCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Integer[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Integer[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Integer[]> > ICellDeserializer,
+						  				Class<? extends ICell<Integer[]>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -446,20 +446,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Integer[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Integer[]> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -477,18 +477,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Integer[]> > 
-				ParseIntegerArrayVariableSection(
+	  			TreeMap<String, ICell<Integer[]> > 
+				ParseIntegerArrayCellsection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Integer[]> > IVariableDeserializer,
-						Class<? extends IVariable<Integer[]>> IVariableConcrete,
+						JsonDeserializer<? extends ICell<Integer[]> > ICellDeserializer,
+						Class<? extends ICell<Integer[]>> ICellConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -498,20 +498,20 @@ public class ParserHelpers {
 	{
 		try {
 							
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Integer[]> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Integer[]> > map = new TreeMap<>();
 					
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 						ParserHelpers.
-							ParseIntegerArrayVariable( entry.getValue(),
+							ParseIntegerArrayCell( entry.getValue(),
 													 entry.getKey(),
-													 IVariableDeserializer,
-													 IVariableConcrete,
+													 ICellDeserializer,
+													 ICellConcrete,
 													 gsonBuilder
 													 )
 				);
@@ -529,21 +529,21 @@ public class ParserHelpers {
 	
 	//***** STRING SECTION *****\\
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<String>
-				  ParseStringVariable(
+	public static ICell<String>
+				  ParseStringCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<String> > IVariableDeserializer,
-						  				Class<? extends IVariable<String>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<String> > ICellDeserializer,
+						  				Class<? extends ICell<String>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -554,20 +554,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<String> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<String> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -585,18 +585,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<String> > 
-				ParseStringVariableSection(
+	  			TreeMap<String, ICell<String> > 
+				ParseStringCellsection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<String> > IVariableDeserializer,
-						Class<? extends IVariable<String>> IVariableConcrete,
+						JsonDeserializer<? extends ICell<String> > ICellDeserializer,
+						Class<? extends ICell<String>> ICellConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -606,20 +606,20 @@ public class ParserHelpers {
 	{
 		try {
 							
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<String> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<String> > map = new TreeMap<>();
 					
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 						ParserHelpers.
-							ParseStringVariable( entry.getValue(),
+							ParseStringCell( entry.getValue(),
 													 entry.getKey(),
-													 IVariableDeserializer,
-													 IVariableConcrete,
+													 ICellDeserializer,
+													 ICellConcrete,
 													 gsonBuilder
 													 )
 				);
@@ -636,21 +636,21 @@ public class ParserHelpers {
 					
 	
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<String[]>
-				  ParseStringArrayVariable(
+	public static ICell<String[]>
+				  ParseStringArrayCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<String[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<String[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<String[]> > ICellDeserializer,
+						  				Class<? extends ICell<String[]>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -661,20 +661,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<String[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<String[]> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -692,18 +692,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<String[]> > 
-			      ParseStringArrayVariableSection(
+				  TreeMap<String, ICell<String[]> > 
+			      ParseStringArrayCellsection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<String[]> > IVariableDeserializer,
-			    		  Class<? extends IVariable<String[]>> IVariableConcrete,
+			    		  JsonDeserializer<? extends ICell<String[]> > ICellDeserializer,
+			    		  Class<? extends ICell<String[]>> ICellConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -713,20 +713,20 @@ public class ParserHelpers {
 	{
 		try {
 			
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<String[]> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<String[]> > map = new TreeMap<>();
 			
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 					ParserHelpers.
-						ParseStringArrayVariable( entry.getValue(),
+						ParseStringArrayCell( entry.getValue(),
 												 entry.getKey(),
-												 IVariableDeserializer,
-												 IVariableConcrete,
+												 ICellDeserializer,
+												 ICellConcrete,
 												 gsonBuilder
 												 )
 					);
@@ -744,21 +744,21 @@ public class ParserHelpers {
 	//***** DOUBLE SECTION *****\\
 
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Double>
-				  ParseDoubleVariable(
+	public static ICell<Double>
+				  ParseDoubleCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Double> > IVariableDeserializer,
-						  				Class<? extends IVariable<Double>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Double> > ICellDeserializer,
+						  				Class<? extends ICell<Double>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -769,20 +769,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Double> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Double> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -800,18 +800,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Double> > 
-			      ParseDoubleVariableSection(
+				  TreeMap<String, ICell<Double> > 
+			      ParseDoubleCellsection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Double> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Double>> IVariableConcrete,
+			    		  JsonDeserializer<? extends ICell<Double> > ICellDeserializer,
+			    		  Class<? extends ICell<Double>> ICellConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -821,20 +821,20 @@ public class ParserHelpers {
 	{
 		try {
 			
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Double> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Double> > map = new TreeMap<>();
 			
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 					ParserHelpers.
-						ParseDoubleVariable( entry.getValue(),
+						ParseDoubleCell( entry.getValue(),
 												 entry.getKey(),
-												 IVariableDeserializer,
-												 IVariableConcrete,
+												 ICellDeserializer,
+												 ICellConcrete,
 												 gsonBuilder
 												 )
 					);
@@ -850,21 +850,21 @@ public class ParserHelpers {
 	}
 	
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Double[]>
-				  ParseDoubleArrayVariable(
+	public static ICell<Double[]>
+				  ParseDoubleArrayCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Double[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Double[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Double[]> > ICellDeserializer,
+						  				Class<? extends ICell<Double[]>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -875,20 +875,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Double[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Double[]> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -906,18 +906,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Double[]> > 
-				ParseDoubleArrayVariableSection(
+	  			TreeMap<String, ICell<Double[]> > 
+				ParseDoubleArrayCellsection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Double[]> > IVariableDeserializer,
-						Class<? extends IVariable<Double[]>> IVariableConcrete,
+						JsonDeserializer<? extends ICell<Double[]> > ICellDeserializer,
+						Class<? extends ICell<Double[]>> ICellConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -927,20 +927,20 @@ public class ParserHelpers {
 	{
 		try {
 							
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Double[]> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Double[]> > map = new TreeMap<>();
 					
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 						ParserHelpers.
-							ParseDoubleArrayVariable( entry.getValue(),
+							ParseDoubleArrayCell( entry.getValue(),
 													 entry.getKey(),
-													 IVariableDeserializer,
-													 IVariableConcrete,
+													 ICellDeserializer,
+													 ICellConcrete,
 													 gsonBuilder
 													 )
 				);
@@ -957,21 +957,21 @@ public class ParserHelpers {
 	
 	//***** LONG SECTION *****\\
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Long>
-				  ParseLongVariable(
+	public static ICell<Long>
+				  ParseLongCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Long> > IVariableDeserializer,
-						  				Class<? extends IVariable<Long>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Long> > ICellDeserializer,
+						  				Class<? extends ICell<Long>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -982,20 +982,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Long> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Long> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1013,18 +1013,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Long> > 
-			      ParseLongVariableSection(
+				  TreeMap<String, ICell<Long> > 
+			      ParseLongCellsection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Long> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Long>> IVariableConcrete,
+			    		  JsonDeserializer<? extends ICell<Long> > ICellDeserializer,
+			    		  Class<? extends ICell<Long>> ICellConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -1034,20 +1034,20 @@ public class ParserHelpers {
 	{
 		try {
 			
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Long> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Long> > map = new TreeMap<>();
 			
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 					ParserHelpers.
-						ParseLongVariable( entry.getValue(),
+						ParseLongCell( entry.getValue(),
 												 entry.getKey(),
-												 IVariableDeserializer,
-												 IVariableConcrete,
+												 ICellDeserializer,
+												 ICellConcrete,
 												 gsonBuilder
 												 )
 					);
@@ -1063,21 +1063,21 @@ public class ParserHelpers {
 	}
 	
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Long[]>
-				  ParseLongArrayVariable(
+	public static ICell<Long[]>
+				  ParseLongArrayCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Long[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Long[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Long[]> > ICellDeserializer,
+						  				Class<? extends ICell<Long[]>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1088,20 +1088,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Long[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Long[]> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1119,18 +1119,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Long[]> > 
-				ParseLongArrayVariableSection(
+	  			TreeMap<String, ICell<Long[]> > 
+				ParseLongArrayCellsection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Long[]> > IVariableDeserializer,
-						Class<? extends IVariable<Long[]>> IVariableConcrete,
+						JsonDeserializer<? extends ICell<Long[]> > ICellDeserializer,
+						Class<? extends ICell<Long[]>> ICellConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -1140,20 +1140,20 @@ public class ParserHelpers {
 	{
 		try {
 							
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Long[]> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Long[]> > map = new TreeMap<>();
 					
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 						ParserHelpers.
-							ParseLongArrayVariable( entry.getValue(),
+							ParseLongArrayCell( entry.getValue(),
 													 entry.getKey(),
-													 IVariableDeserializer,
-													 IVariableConcrete,
+													 ICellDeserializer,
+													 ICellConcrete,
 													 gsonBuilder
 													 )
 				);
@@ -1170,21 +1170,21 @@ public class ParserHelpers {
 	
 	//***** FLOAT SECTION *****\\
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Float>
-				  ParseFloatVariable(
+	public static ICell<Float>
+				  ParseFloatCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Float> > IVariableDeserializer,
-						  				Class<? extends IVariable<Float>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Float> > ICellDeserializer,
+						  				Class<? extends ICell<Float>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1195,20 +1195,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Float> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Float> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1226,18 +1226,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Float> > 
-			      ParseFloatVariableSection(
+				  TreeMap<String, ICell<Float> > 
+			      ParseFloatCellsection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Float> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Float>> IVariableConcrete,
+			    		  JsonDeserializer<? extends ICell<Float> > ICellDeserializer,
+			    		  Class<? extends ICell<Float>> ICellConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -1247,20 +1247,20 @@ public class ParserHelpers {
 	{
 		try {
 			
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Float> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Float> > map = new TreeMap<>();
 			
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 					ParserHelpers.
-						ParseFloatVariable( entry.getValue(),
+						ParseFloatCell( entry.getValue(),
 												 entry.getKey(),
-												 IVariableDeserializer,
-												 IVariableConcrete,
+												 ICellDeserializer,
+												 ICellConcrete,
 												 gsonBuilder
 												 )
 					);
@@ -1276,21 +1276,21 @@ public class ParserHelpers {
 	}
 	
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Float[]>
-				  ParseFloatArrayVariable(
+	public static ICell<Float[]>
+				  ParseFloatArrayCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Float[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Float[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Float[]> > ICellDeserializer,
+						  				Class<? extends ICell<Float[]>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1301,20 +1301,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Float[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Float[]> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1332,18 +1332,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Float[]> > 
-				ParseFloatArrayVariableSection(
+	  			TreeMap<String, ICell<Float[]> > 
+				ParseFloatArrayCellsection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Float[]> > IVariableDeserializer,
-						Class<? extends IVariable<Float[]>> IVariableConcrete,
+						JsonDeserializer<? extends ICell<Float[]> > ICellDeserializer,
+						Class<? extends ICell<Float[]>> ICellConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -1353,20 +1353,20 @@ public class ParserHelpers {
 	{
 		try {
 							
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Float[]> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Float[]> > map = new TreeMap<>();
 					
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 						ParserHelpers.
-							ParseFloatArrayVariable( entry.getValue(),
+							ParseFloatArrayCell( entry.getValue(),
 													 entry.getKey(),
-													 IVariableDeserializer,
-													 IVariableConcrete,
+													 ICellDeserializer,
+													 ICellConcrete,
 													 gsonBuilder
 													 )
 				);
@@ -1383,21 +1383,21 @@ public class ParserHelpers {
 	
 	//***** BOOLEAN SECTION *****\\
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Boolean>
-				  ParseBooleanVariable(
+	public static ICell<Boolean>
+				  ParseBooleanCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Boolean> > IVariableDeserializer,
-						  				Class<? extends IVariable<Boolean>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Boolean> > ICellDeserializer,
+						  				Class<? extends ICell<Boolean>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1408,20 +1408,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Boolean> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Boolean> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1439,18 +1439,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Boolean> > 
-			      ParseBooleanVariableSection(
+				  TreeMap<String, ICell<Boolean> > 
+			      ParseBooleanCellsection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Boolean> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Boolean>> IVariableConcrete,
+			    		  JsonDeserializer<? extends ICell<Boolean> > ICellDeserializer,
+			    		  Class<? extends ICell<Boolean>> ICellConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -1460,20 +1460,20 @@ public class ParserHelpers {
 	{
 		try {
 			
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Boolean> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Boolean> > map = new TreeMap<>();
 			
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 					ParserHelpers.
-						ParseBooleanVariable( entry.getValue(),
+						ParseBooleanCell( entry.getValue(),
 												 entry.getKey(),
-												 IVariableDeserializer,
-												 IVariableConcrete,
+												 ICellDeserializer,
+												 ICellConcrete,
 												 gsonBuilder
 												 )
 					);
@@ -1489,21 +1489,21 @@ public class ParserHelpers {
 	}
 	
 	/**
-	 * Parses a variable into a Variable<> object
-	 * @param JsonElement JsonElement Representation of this Variable
-	 * @param ID String ID of this Variable
-	 * @param Type VariableType of this Variable
-	 * @return Variable<> The non-type specific Variable object of this variable
+	 * Parses a Cell into a Cell<> object
+	 * @param JsonElement JsonElement Representation of this Cell
+	 * @param ID String ID of this Cell
+	 * @param Type CellType of this Cell
+	 * @return Cell<> The non-type specific Cell object of this Cell
 	 * @author Terry Roberson
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Boolean[]>
-				  ParseBooleanArrayVariable(
+	public static ICell<Boolean[]>
+				  ParseBooleanArrayCell(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Boolean[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Boolean[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends ICell<Boolean[]> > ICellDeserializer,
+						  				Class<? extends ICell<Boolean[]>> ICellConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1514,20 +1514,20 @@ public class ParserHelpers {
 		// Check for null values in params
 		if(	json == null || 
 			ID == null || 
-			IVariableDeserializer == null || 
-			IVariableConcrete == null || 
+			ICellDeserializer == null || 
+			ICellConcrete == null || 
 			gsonBuilder == null )
 			throw new NullPointerException( "All parameters given must be initialized.");
 
 		try {
 			// Register the deserializer
-			gsonBuilder.registerTypeAdapter( IVariableConcrete, IVariableDeserializer );
+			gsonBuilder.registerTypeAdapter( ICellConcrete, ICellDeserializer );
 			
 			//Initialize our custom Gson object
 			Gson customGson = gsonBuilder.create();
 			
-			// Deserialize the object to a Variable<String> object
-			IVariable<Boolean[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			// Deserialize the object to a Cell<String> object
+			ICell<Boolean[]> retVar = customGson.fromJson( json, ICellConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1545,18 +1545,18 @@ public class ParserHelpers {
 	}
 	
 	/**		
-	 * Parses a Variable<> Object into a Variable TreeMap
+	 * Parses a Cell<> Object into a Cell TreeMap
 	 * @return map
 	 * @author Terry Roberson 
 	 * 
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Boolean[]> > 
-				ParseBooleanArrayVariableSection(
+	  			TreeMap<String, ICell<Boolean[]> > 
+				ParseBooleanArrayCellsection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Boolean[]> > IVariableDeserializer,
-						Class<? extends IVariable<Boolean[]>> IVariableConcrete,
+						JsonDeserializer<? extends ICell<Boolean[]> > ICellDeserializer,
+						Class<? extends ICell<Boolean[]>> ICellConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -1566,20 +1566,20 @@ public class ParserHelpers {
 	{
 		try {
 							
-			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Boolean[]> > map = new TreeMap<>();
+			// Start up the tree map for these Cells
+			TreeMap<String, ICell<Boolean[]> > map = new TreeMap<>();
 					
-			// Loop through the variables
+			// Loop through the Cells
 			for( Map.Entry<String,JsonElement> entry: 
 											   json.getAsJsonObject().entrySet())
 			{
-			// Construct the variable and put it in the tree map
+			// Construct the Cell and put it in the tree map
 			map.put( entry.getKey(), 
 						ParserHelpers.
-							ParseBooleanArrayVariable( entry.getValue(),
+							ParseBooleanArrayCell( entry.getValue(),
 													 entry.getKey(),
-													 IVariableDeserializer,
-													 IVariableConcrete,
+													 ICellDeserializer,
+													 ICellConcrete,
 													 gsonBuilder
 													 )
 				);
@@ -1595,36 +1595,36 @@ public class ParserHelpers {
 	}
 
 	/**		
-	 * Parses a Variable sections into the Variables container
+	 * Parses a Cell sections into the Cells container
 	 * @return map
 	 * @author Terry Roberson 
 	 * @author Christopher Howard
 	 * @since 1.0
 	 */
-	public static <T extends IVariables>
+	public static <T extends ICells>
 				   T
-				   ParseVariables(
+				   ParseCells(
 											JsonElement JSON,
-											Map<VariableType, JsonDeserializer<? extends IVariable<?>>> IVariableDeserializersConcretes,
-											Map<VariableType, Class<? extends IVariable<?>>> IVariableConcretes,
-											T IVariablesContainer,
+											Map<CellType, JsonDeserializer<? extends ICell<?>>> ICellDeserializersConcretes,
+											Map<CellType, Class<? extends ICell<?>>> ICellConcretes,
+											T ICellsContainer,
 											GsonBuilder gsonBuilder
 										  )
 	{
 		
-		// Initialize 12 temp treemaps to match req treemaps for variables.java constructor
-		TreeMap<String, IVariable< Integer   > > 	intMap 			= new TreeMap<>();
-		TreeMap<String, IVariable< Integer[] > > 	intArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< String    > >	stringMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< String[]  > > 	stringArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Float     > >	floatMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Float[]   > > 	floatArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Long      > >	longMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Long[]    > >	longArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Double    > >	doubleMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Double[]  > > 	doubleArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Boolean   > > 	boolMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Boolean[] > > 	boolArrayMap 	= new TreeMap<>();
+		// Initialize 12 temp treemaps to match req treemaps for Cells.java constructor
+		TreeMap<String, ICell< Integer   > > 	intMap 			= new TreeMap<>();
+		TreeMap<String, ICell< Integer[] > > 	intArrayMap 	= new TreeMap<>();
+		TreeMap<String, ICell< String    > >	stringMap 		= new TreeMap<>();
+		TreeMap<String, ICell< String[]  > > 	stringArrayMap 	= new TreeMap<>();
+		TreeMap<String, ICell< Float     > >	floatMap 		= new TreeMap<>();
+		TreeMap<String, ICell< Float[]   > > 	floatArrayMap 	= new TreeMap<>();
+		TreeMap<String, ICell< Long      > >	longMap 		= new TreeMap<>();
+		TreeMap<String, ICell< Long[]    > >	longArrayMap 	= new TreeMap<>();
+		TreeMap<String, ICell< Double    > >	doubleMap 		= new TreeMap<>();
+		TreeMap<String, ICell< Double[]  > > 	doubleArrayMap 	= new TreeMap<>();
+		TreeMap<String, ICell< Boolean   > > 	boolMap 		= new TreeMap<>();
+		TreeMap<String, ICell< Boolean[] > > 	boolArrayMap 	= new TreeMap<>();
 		
 		// Loop over entries in the jsonobjects entry sets 
 		for(Map.Entry<String, JsonElement> sectionEntry: JSON.getAsJsonObject().entrySet()) 
@@ -1639,24 +1639,24 @@ public class ParserHelpers {
 			// Case Integer for all possible variations of input
 			case "INTEGER":
 			case "INTEGERS":
-				Class<? extends IVariable<Integer>> IVi = 
-					(Class<? extends IVariable<Integer>>) 
-					IVariableConcretes.
+				Class<? extends ICell<Integer>> IVi = 
+					(Class<? extends ICell<Integer>>) 
+					ICellConcretes.
 						get(
-								VariableType.INTEGER
+								CellType.INTEGER
 							);
 				
-				JsonDeserializer<? extends IVariable<Integer>> IVDi = 
-					(JsonDeserializer<? extends IVariable<Integer>>)
-					IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Integer>> IVDi = 
+					(JsonDeserializer<? extends ICell<Integer>>)
+					ICellDeserializersConcretes.
 						get(
-								VariableType.INTEGER
+								CellType.INTEGER
 							);
 				
 				// Take the previous temp map created from previous section parser and loop over its entries
-				for(Map.Entry<String, IVariable<Integer>> variableEntry: 
+				for(Map.Entry<String, ICell<Integer>> CellEntry: 
 														  ParserHelpers.
-														  ParseIntegerVariableSection(
+														  ParseIntegerCellsection(
 																  					  sectionEntry.getValue(),
 																  					  IVDi,
 																  					  IVi,
@@ -1665,7 +1665,7 @@ public class ParserHelpers {
 					) 
 				{
 					// Call the first temp integer map from top and put key and value as this entries value
-					intMap.put(variableEntry.getKey(), variableEntry.getValue());
+					intMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1679,23 +1679,23 @@ public class ParserHelpers {
 			case "INTEGER ARRAYS":
 			case "INTEGERS ARRAYS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Integer[]>> IVsa = 
-				(Class<? extends IVariable<Integer[]>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Integer[]>> IVsa = 
+				(Class<? extends ICell<Integer[]>>) 
+				ICellConcretes.
 					get(
-							VariableType.INTEGERARRAY
+							CellType.INTEGERARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Integer[]>> IVDsa = 
-				(JsonDeserializer<? extends IVariable<Integer[]>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Integer[]>> IVDsa = 
+				(JsonDeserializer<? extends ICell<Integer[]>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.INTEGERARRAY
+							CellType.INTEGERARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Integer[]>> variableEntry: 
+				for(Map.Entry<String, ICell<Integer[]>> CellEntry: 
 					  ParserHelpers.
-					  ParseIntegerArrayVariableSection(
+					  ParseIntegerArrayCellsection(
 							  					  sectionEntry.getValue(),
 							  					  IVDsa,
 							  					  IVsa,
@@ -1704,7 +1704,7 @@ public class ParserHelpers {
 						)
 				{
 					// Call the first temp String[] map from top and put key and value as this entries value
-					intArrayMap.put(variableEntry.getKey(), variableEntry.getValue());
+					intArrayMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1712,23 +1712,23 @@ public class ParserHelpers {
 			case "STRING":
 			case "STRINGS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<String>> IVs = 
-				(Class<? extends IVariable<String>>) 
-				IVariableConcretes.
+				Class<? extends ICell<String>> IVs = 
+				(Class<? extends ICell<String>>) 
+				ICellConcretes.
 					get(
-							VariableType.STRING
+							CellType.STRING
 						);
 			
-				JsonDeserializer<? extends IVariable<String>> IVDs = 
-				(JsonDeserializer<? extends IVariable<String>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<String>> IVDs = 
+				(JsonDeserializer<? extends ICell<String>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.STRING
+							CellType.STRING
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<String>> variableEntry: 
+				for(Map.Entry<String, ICell<String>> CellEntry: 
 					  ParserHelpers.
-					  ParseStringVariableSection(
+					  ParseStringCellsection(
 							  					  sectionEntry.getValue(),
 							  					  IVDs,
 							  					  IVs,
@@ -1737,7 +1737,7 @@ public class ParserHelpers {
 						)				
 				{
 					// Call the first temp String map from the top and put key and value as this entries value
-					stringMap.put(variableEntry.getKey(), variableEntry.getValue());
+					stringMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1751,23 +1751,23 @@ public class ParserHelpers {
 			case "STRING ARRAYS":
 			case "STRINGS ARRAYS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<String[]>> SVsa = 
-				(Class<? extends IVariable<String[]>>) 
-				IVariableConcretes.
+				Class<? extends ICell<String[]>> SVsa = 
+				(Class<? extends ICell<String[]>>) 
+				ICellConcretes.
 					get(
-							VariableType.STRINGARRAY
+							CellType.STRINGARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<String[]>> SVDsa = 
-				(JsonDeserializer<? extends IVariable<String[]>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<String[]>> SVDsa = 
+				(JsonDeserializer<? extends ICell<String[]>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.STRINGARRAY
+							CellType.STRINGARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<String[]>> variableEntry: 
+				for(Map.Entry<String, ICell<String[]>> CellEntry: 
 					  ParserHelpers.
-					  ParseStringArrayVariableSection(
+					  ParseStringArrayCellsection(
 							  					  sectionEntry.getValue(),
 							  					  SVDsa,
 							  					  SVsa,
@@ -1776,7 +1776,7 @@ public class ParserHelpers {
 						)
 				{
 					// Call the first temp String[] map from top and put key and value as this entries value
-					stringArrayMap.put(variableEntry.getKey(), variableEntry.getValue());
+					stringArrayMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 			
@@ -1785,23 +1785,23 @@ public class ParserHelpers {
 			case "FLOATS":
 				// Take the previous temp map created from previous section parser and loop over its entries
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Float>> IVf = 
-				(Class<? extends IVariable<Float>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Float>> IVf = 
+				(Class<? extends ICell<Float>>) 
+				ICellConcretes.
 					get(
-							VariableType.FLOAT
+							CellType.FLOAT
 						);
 			
-				JsonDeserializer<? extends IVariable<Float>> IVDf = 
-				(JsonDeserializer<? extends IVariable<Float>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Float>> IVDf = 
+				(JsonDeserializer<? extends ICell<Float>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.FLOAT
+							CellType.FLOAT
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Float>> variableEntry: 
+				for(Map.Entry<String, ICell<Float>> CellEntry: 
 					  ParserHelpers.
-					  ParseFloatVariableSection(
+					  ParseFloatCellsection(
 							  					  sectionEntry.getValue(),
 							  					  IVDf,
 							  					  IVf,
@@ -1810,7 +1810,7 @@ public class ParserHelpers {
 						) 
 				{
 					// Call the first temp Float map from the tope and put key and value as this entries value
-					floatMap.put(variableEntry.getKey(), variableEntry.getValue());
+					floatMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1823,23 +1823,23 @@ public class ParserHelpers {
 			case "FLOATS ARRAY":
 			case "FLOAT ARRAYS":
 			case "FLOATS ARRAYS":
-				Class<? extends IVariable<Float[]>> IVfa = 
-				(Class<? extends IVariable<Float[]>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Float[]>> IVfa = 
+				(Class<? extends ICell<Float[]>>) 
+				ICellConcretes.
 					get(
-							VariableType.FLOATARRAY
+							CellType.FLOATARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Float[]>> IVDfa = 
-				(JsonDeserializer<? extends IVariable<Float[]>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Float[]>> IVDfa = 
+				(JsonDeserializer<? extends ICell<Float[]>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.FLOATARRAY
+							CellType.FLOATARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Float[]>> variableEntry: 
+				for(Map.Entry<String, ICell<Float[]>> CellEntry: 
 					  ParserHelpers.
-					  ParseFloatArrayVariableSection(
+					  ParseFloatArrayCellsection(
 							  					  sectionEntry.getValue(),
 							  					  IVDfa,
 							  					  IVfa,
@@ -1848,7 +1848,7 @@ public class ParserHelpers {
 						) 
 				{
 				// Call the first temp Float[] map from top and put key and value as this entries value
-					floatArrayMap.put(variableEntry.getKey(), variableEntry.getValue());
+					floatArrayMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1856,23 +1856,23 @@ public class ParserHelpers {
 			case "LONG":
 			case "LONGS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Long>> IVl = 
-				(Class<? extends IVariable<Long>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Long>> IVl = 
+				(Class<? extends ICell<Long>>) 
+				ICellConcretes.
 					get(
-							VariableType.LONG
+							CellType.LONG
 						);
 			
-				JsonDeserializer<? extends IVariable<Long>> IVDl = 
-				(JsonDeserializer<? extends IVariable<Long>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Long>> IVDl = 
+				(JsonDeserializer<? extends ICell<Long>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.LONG
+							CellType.LONG
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Long>> variableEntry: 
+				for(Map.Entry<String, ICell<Long>> CellEntry: 
 					  ParserHelpers.
-					  ParseLongVariableSection(
+					  ParseLongCellsection(
 							  					  sectionEntry.getValue(),
 							  					  IVDl,
 							  					  IVl,
@@ -1881,7 +1881,7 @@ public class ParserHelpers {
 						) 
 				{
 					// call the first temp long map from top and put key and value as this entries value
-					longMap.put(variableEntry.getKey(), variableEntry.getValue());
+					longMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1894,23 +1894,23 @@ public class ParserHelpers {
 			case "LONGS ARRAY":
 			case "LONG ARRAYS":
 			case "LONGS ARRAYS":
-				Class<? extends IVariable<Long[]>> IVla = 
-				(Class<? extends IVariable<Long[]>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Long[]>> IVla = 
+				(Class<? extends ICell<Long[]>>) 
+				ICellConcretes.
 					get(
-							VariableType.LONGARRAY
+							CellType.LONGARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Long[]>> IVDla = 
-				(JsonDeserializer<? extends IVariable<Long[]>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Long[]>> IVDla = 
+				(JsonDeserializer<? extends ICell<Long[]>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.LONGARRAY
+							CellType.LONGARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Long[]>> variableEntry: 
+				for(Map.Entry<String, ICell<Long[]>> CellEntry: 
 					  ParserHelpers.
-					  ParseLongArrayVariableSection(
+					  ParseLongArrayCellsection(
 							  					  sectionEntry.getValue(),
 							  					  IVDla,
 							  					  IVla,
@@ -1918,7 +1918,7 @@ public class ParserHelpers {
 							  					 ).entrySet()
 						) 
 				{						// Call the first temp Integer[] map from top and put key and value as this entries value
-						longArrayMap.put(variableEntry.getKey(), variableEntry.getValue());
+						longArrayMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1926,23 +1926,23 @@ public class ParserHelpers {
 			case "DOUBLE":
 			case "DOUBLES":
 			// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Double>> DVl = 
-				(Class<? extends IVariable<Double>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Double>> DVl = 
+				(Class<? extends ICell<Double>>) 
+				ICellConcretes.
 					get(
-							VariableType.DOUBLE
+							CellType.DOUBLE
 						);
 							
-				JsonDeserializer<? extends IVariable<Double>> DVDl = 
-				(JsonDeserializer<? extends IVariable<Double>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Double>> DVDl = 
+				(JsonDeserializer<? extends ICell<Double>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.DOUBLE
+							CellType.DOUBLE
 						);
 			// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Double>> variableEntry: 
+				for(Map.Entry<String, ICell<Double>> CellEntry: 
 					  ParserHelpers.
-					  ParseDoubleVariableSection(
+					  ParseDoubleCellsection(
 							  					  sectionEntry.getValue(),
 							  					  DVDl,
 							  					  DVl,
@@ -1951,7 +1951,7 @@ public class ParserHelpers {
 						) 
 				{
 			// call the first temp long map from top and put key and value as this entries value
-					doubleMap.put(variableEntry.getKey(), variableEntry.getValue());
+					doubleMap.put(CellEntry.getKey(), CellEntry.getValue());
 								}
 								break;
 
@@ -1966,23 +1966,23 @@ public class ParserHelpers {
 			case "DOUBLE ARRAYS":
 			case "DOUBLES ARRAYS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Double[]>> DVda = 
-				(Class<? extends IVariable<Double[]>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Double[]>> DVda = 
+				(Class<? extends ICell<Double[]>>) 
+				ICellConcretes.
 					get(
-							VariableType.DOUBLEARRAY
+							CellType.DOUBLEARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Double[]>> DVDda = 
-				(JsonDeserializer<? extends IVariable<Double[]>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Double[]>> DVDda = 
+				(JsonDeserializer<? extends ICell<Double[]>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.DOUBLEARRAY
+							CellType.DOUBLEARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Double[]>> variableEntry: 
+				for(Map.Entry<String, ICell<Double[]>> CellEntry: 
 					  ParserHelpers.
-					  ParseDoubleArrayVariableSection(
+					  ParseDoubleArrayCellsection(
 							  					  sectionEntry.getValue(),
 							  					  DVDda,
 							  					  DVda,
@@ -1991,7 +1991,7 @@ public class ParserHelpers {
 						) 
 				{
 					// Call the first temp double[] map from top and put key and value as this entries value
-					doubleArrayMap.put(variableEntry.getKey(), variableEntry.getValue());
+					doubleArrayMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -1999,23 +1999,23 @@ public class ParserHelpers {
 			case "BOOLEAN":
 			case "BOOLEANS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Boolean>> BVb = 
-				(Class<? extends IVariable<Boolean>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Boolean>> BVb = 
+				(Class<? extends ICell<Boolean>>) 
+				ICellConcretes.
 					get(
-							VariableType.BOOLEAN
+							CellType.BOOLEAN
 						);
 			
-				JsonDeserializer<? extends IVariable<Boolean>> BVDb = 
-				(JsonDeserializer<? extends IVariable<Boolean>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Boolean>> BVDb = 
+				(JsonDeserializer<? extends ICell<Boolean>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.BOOLEAN
+							CellType.BOOLEAN
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Boolean>> variableEntry: 
+				for(Map.Entry<String, ICell<Boolean>> CellEntry: 
 					  ParserHelpers.
-					  ParseBooleanVariableSection(
+					  ParseBooleanCellsection(
 							  					  sectionEntry.getValue(),
 							  					  BVDb,
 							  					  BVb,
@@ -2024,7 +2024,7 @@ public class ParserHelpers {
 						) 
 				{
 					// Call the first temp Boolean map from top and put key and value as this entries value		
-					boolMap.put(variableEntry.getKey(), variableEntry.getValue());
+					boolMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 			
@@ -2037,23 +2037,23 @@ public class ParserHelpers {
 			case "BOOLEANS ARRAY":
 			case "BOOLEAN ARRAYS":
 			case "BOOLEANS ARRAYS":
-				Class<? extends IVariable<Boolean[]>> BVba = 
-				(Class<? extends IVariable<Boolean[]>>) 
-				IVariableConcretes.
+				Class<? extends ICell<Boolean[]>> BVba = 
+				(Class<? extends ICell<Boolean[]>>) 
+				ICellConcretes.
 					get(
-							VariableType.BOOLEANARRAY
+							CellType.BOOLEANARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Boolean[]>> BVDba = 
-				(JsonDeserializer<? extends IVariable<Boolean[]>>)
-				IVariableDeserializersConcretes.
+				JsonDeserializer<? extends ICell<Boolean[]>> BVDba = 
+				(JsonDeserializer<? extends ICell<Boolean[]>>)
+				ICellDeserializersConcretes.
 					get(
-							VariableType.BOOLEANARRAY
+							CellType.BOOLEANARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Boolean[]>> variableEntry: 
+				for(Map.Entry<String, ICell<Boolean[]>> CellEntry: 
 					  ParserHelpers.
-					  ParseBooleanArrayVariableSection(
+					  ParseBooleanArrayCellsection(
 							  					  sectionEntry.getValue(),
 							  					  BVDba,
 							  					  BVba,
@@ -2062,7 +2062,7 @@ public class ParserHelpers {
 						) 
 				{
 				// Call the first temp Boolean[] map from top and put key and value as this entries value				
-					boolArrayMap.put(variableEntry.getKey(), variableEntry.getValue());
+					boolArrayMap.put(CellEntry.getKey(), CellEntry.getValue());
 				}
 				break;
 				
@@ -2072,13 +2072,13 @@ public class ParserHelpers {
 			}
 		
 		}
-		// Build the Variables Object 
-				IVariablesContainer.SetMaps(intMap,intArrayMap,stringMap,stringArrayMap,
+		// Build the Cells Object 
+				ICellsContainer.SetMaps(intMap,intArrayMap,stringMap,stringArrayMap,
 											floatMap, floatArrayMap, longMap, longArrayMap,
 											doubleMap, doubleArrayMap, boolMap, boolArrayMap
 											);
 				
-				return IVariablesContainer;
+				return ICellsContainer;
 				
 	}
 }

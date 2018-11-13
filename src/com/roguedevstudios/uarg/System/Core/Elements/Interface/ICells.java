@@ -1,18 +1,18 @@
 //TODO: Cleanup #2
 package com.roguedevstudios.uarg.System.Core.Elements.Interface;
 /********************************
-*   IVariables Interface        *
-*   File Name: IVariables.java  *
+*   ICells Interface        *
+*   File Name: ICells.java  *
 *                               *
 *   Inversion of Control for 	*
-*   Variables.java				*
+*   Cells.java				*
 *                               *
 *  ©2017 Rogue Dev Studios, LLC *
 ********************************/
 
 import java.util.List;
 
-import com.roguedevstudios.uarg.System.Core.Enum.VariableType;
+import com.roguedevstudios.uarg.System.Core.Enum.CellType;
 //import section 
 
 /**
@@ -21,7 +21,7 @@ import com.roguedevstudios.uarg.System.Core.Enum.VariableType;
  * @author Terry Roberson
  * @since 1.0
  */
-public interface IVariables {
+public interface ICells {
 	
 	/**
 	 * Gets the id for _booleanMap
@@ -29,7 +29,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Boolean> GetBoolean(String key);
+	ICell<Boolean> GetBoolean(String key);
 	
 	/**
 	 * 
@@ -38,7 +38,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Boolean[]> GetBooleanArray(String key);
+	ICell<Boolean[]> GetBooleanArray(String key);
 	
 	/**
 	 * Gets the id for _doubleMap
@@ -46,7 +46,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Double> GetDouble(String key);
+	ICell<Double> GetDouble(String key);
 	
 	/**
 	 * Gets the id for _doubleArrayMap
@@ -54,7 +54,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Double[]> GetDoubleArray(String key);
+	ICell<Double[]> GetDoubleArray(String key);
 	
 	/**
 	 * Gets the id for _floatMap
@@ -62,7 +62,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Float> GetFloat(String key);
+	ICell<Float> GetFloat(String key);
 	
 	/**
 	 * Gets the id for _floatArrayMap
@@ -70,7 +70,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Float[]> GetFloatArray(String key);
+	ICell<Float[]> GetFloatArray(String key);
 	
 	/**
 	 * Gets the id for _integerMap
@@ -78,14 +78,14 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Integer> GetInteger(String key);
+	ICell<Integer> GetInteger(String key);
 	
 	/**
 	 * Gets the id for _integerArrayMap
 	 * @param id	 the id associated with the map
 	 * @since 1.0
 	 */
-	IVariable<Integer[]> GetIntegerArray(String key);
+	ICell<Integer[]> GetIntegerArray(String key);
 	
 	/**
 	 * Gets the id for _longMap
@@ -93,7 +93,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Long> GetLong(String key);
+	ICell<Long> GetLong(String key);
 	
 	/**
 	 * Gets the id for _longArrayMap
@@ -101,7 +101,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Long[]> GetLongArray(String key);
+	ICell<Long[]> GetLongArray(String key);
 	
 	/**
 	 * Gets the id for _stringMap
@@ -109,7 +109,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<String> GetString(String key);
+	ICell<String> GetString(String key);
 	
 	/**
 	 * Gets the id for _stringArrayMap
@@ -117,7 +117,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<String[]> GetStringArray(String key);
+	ICell<String[]> GetStringArray(String key);
 	
 	/**
 	 * Determines the value type for a Variable
@@ -125,7 +125,7 @@ public interface IVariables {
 	 * @param variable
 	 * @param Type
 	 */
-	void SetVariable(String key, IVariable<?> variable, VariableType Type);
+	void SetVariable(String key, ICell<?> variable, CellType Type);
 	
 	/**
 	 * updates the value of a boolean variable
@@ -223,10 +223,10 @@ public interface IVariables {
 	 */
 	void UpdateValue(String key, String[] value);
 	
-	VariableType GetVariableType(String ID);
+	CellType GetVariableType(String ID);
 	int GetIntegerCount();
-	IVariable<?> GetVariable(String ID);
-	List<IVariable<?>> GetVariables(List<String> IDSet);
+	ICell<?> GetVariable(String ID);
+	List<ICell<?>> GetVariables(List<String> IDSet);
 	List<String> GetMasterIDList();
 	
 }

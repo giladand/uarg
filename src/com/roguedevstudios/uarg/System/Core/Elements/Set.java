@@ -3,7 +3,6 @@ package com.roguedevstudios.uarg.System.Core.Elements;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ISet;
 
@@ -17,7 +16,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.ISet;
  * 
  * @since 1.0
  */
-public class Set implements ISet{
+public class Set implements ISet {
 	
 	/* Declare empty hash maps to hold the row and column sets */
 	private HashMap<String, List<String>> _setMap;

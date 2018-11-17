@@ -20,9 +20,9 @@ import javafx.util.Duration;
  * @since 1.0
  */
 
-public class SpashScreen
+public class SplashScreen
 {
-	public static final String APPLICATION_ICON = "/com/roguedevstudios/uarg/System/UI/Resources/Uarg Splash.jpg";
+	public static final String APPLICATION_ICON = "/com/roguedevstudios/uarg/System/UI/Resources/Uarg Icon.jpg";
 	public static final String SPLASH_IMAGE = "/com/roguedevstudios/uarg/System/UI/Resources/Uarg Splash.jpg";
 	public static final int SPLASH_WIDTH = 256;
 	public static final int SPLASH_HEIGHT = 256;
@@ -58,7 +58,7 @@ public class SpashScreen
 		SplashLayout.setStyle("-fx-padding: 5; " + "-fx-background-color: cornsilk; " + "-fx-border-width:5; " + "-fx-border-color: " + "linear-gradient("
 				+ "to bottom, " + "chocolate, " + "derive(chocolate, 50%)" + ");");
 		SplashLayout.setEffect(new DropShadow());
-		MainStage.getIcons().add(new Image("/com/roguedevstudios/uarg/System/UI/Resources/Uarg Icon.jpg"));
+		MainStage.getIcons().add(new Image(APPLICATION_ICON));
 	}
 
 	/**

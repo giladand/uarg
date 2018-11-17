@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
 /**
- * The main class, where it all starts
+ * The main class, where the application starts.
  * 
  * @author Marko S. Bachynsky
  * @since 1.0
@@ -29,14 +29,14 @@ public class Main extends Application
 		try
 		{
 			// Splash Screen
-			SpashScreen.CreateSpashScreen();
+			SplashScreen.CreateSpashScreen();
 			// Main Program
 			primaryStage.setTitle("Untitled");
 			// Set Icon
-			primaryStage.getIcons().add(new Image("/com/roguedevstudios/uarg/System/UI/Resources/Uarg Icon.jpg"));
+			primaryStage.getIcons().add(new Image(SplashScreen.APPLICATION_ICON));
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/GUI.fxml"));
 			Scene scene = new Scene(root, 900, 700);
-			scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/Application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception error)

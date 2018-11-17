@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="Root" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.roguedevstudios.uarg.System.UI.SampleController">
+<BorderPane fx:id="Root" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.roguedevstudios.uarg.System.UI.GUIController">
   <center>
     <BorderPane fx:id="Root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <center>

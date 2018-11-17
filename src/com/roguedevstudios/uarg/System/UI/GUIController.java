@@ -10,8 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -31,7 +29,7 @@ import javafx.util.Callback;
  * @since 1.0
  */
 
-public class SampleController implements Initializable
+public class GUIController implements Initializable
 {
 	@FXML
 	public BorderPane Root;
@@ -59,20 +57,6 @@ public class SampleController implements Initializable
 	public MenuItem ViewHighContrastYellowOnBlack;
 	@FXML
 	public TableView<AttributeRow> ResidentialServiceLines;
-	@FXML
-	public TextField LastName;
-	@FXML
-	public TextField FirstName;
-	@FXML
-	public DatePicker Date;
-	@FXML
-	public TextField Cash;
-	@FXML
-	public TextField City;
-	@FXML
-	public TextField State;
-	@FXML
-	public Button AddEntry;
 
 	/**
 	 * 
@@ -165,8 +149,7 @@ public class SampleController implements Initializable
 	public void EditCutAction(ActionEvent event)
 	{
 		// TODO
-		Scene scene = LastName.getScene();
-		scene.getStylesheets().add(getClass().getResource("WhiteOnBlack.css").toExternalForm());
+		Scene scene = Root.getScene();
 		if (scene.focusOwnerProperty().get() instanceof TextField)
 		{
 			TextField selectedTextField = (TextField) scene.focusOwnerProperty().get();
@@ -183,7 +166,7 @@ public class SampleController implements Initializable
 	 */
 	public void EditCopyAction(ActionEvent event)
 	{
-		Scene scene = LastName.getScene();
+		Scene scene = Root.getScene();
 		if (scene.focusOwnerProperty().get() instanceof TextField)
 		{
 			TextField selectedTextField = (TextField) scene.focusOwnerProperty().get();
@@ -200,7 +183,7 @@ public class SampleController implements Initializable
 	 */
 	public void EditPasteAction(ActionEvent event)
 	{
-		Scene scene = LastName.getScene();
+		Scene scene = Root.getScene();
 		if (scene.focusOwnerProperty().get() instanceof TextField)
 		{
 			TextField selectedTextField = (TextField) scene.focusOwnerProperty().get();
@@ -218,9 +201,9 @@ public class SampleController implements Initializable
 	 */
 	public void ViewHighContrastWhiteOnBlackAction(ActionEvent event)
 	{
-		Scene scene = LastName.getScene();
+		Scene scene = Root.getScene();
 		scene.getStylesheets().clear();
-		scene.getStylesheets().add(getClass().getResource("WhiteOnBlack.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/WhiteOnBlack.css").toExternalForm());
 	}
 
 	/**
@@ -232,9 +215,9 @@ public class SampleController implements Initializable
 	 */
 	public void ViewHighContrastBlackOnWhiteAction(ActionEvent event)
 	{
-		Scene scene = LastName.getScene();
+		Scene scene = Root.getScene();
 		scene.getStylesheets().clear();
-		scene.getStylesheets().add(getClass().getResource("BlackOnWhite.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlackOnWhite.css").toExternalForm());
 	}
 
 	/**
@@ -246,9 +229,9 @@ public class SampleController implements Initializable
 	 */
 	public void ViewHighContrastYellowOnBlackAction(ActionEvent event)
 	{
-		Scene scene = LastName.getScene();
+		Scene scene = Root.getScene();
 		scene.getStylesheets().clear();
-		scene.getStylesheets().add(getClass().getResource("YellowOnBlack.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/YellowOnBlack.css").toExternalForm());
 	}
 
 	/**
@@ -274,7 +257,7 @@ public class SampleController implements Initializable
 	 */
 	public void AddColumnsToTableView()
 	{
-		
+
 		Callback<TableColumn<AttributeRow, String>, TableCell<AttributeRow, String>> cellFactory = new Callback<TableColumn<AttributeRow, String>, TableCell<AttributeRow, String>>()
 		{
 			public TableCell<AttributeRow, String> call(TableColumn<AttributeRow, String> arg)
@@ -282,7 +265,7 @@ public class SampleController implements Initializable
 				return new EditingCell();
 			}
 		};
-		
+
 		// create columns
 		List<String> columnList = Arrays.asList("Actual No. of Monthly Customers", "Service Frequencey Per Month", "Service Frequencey Per Year");
 		for (String column : columnList)

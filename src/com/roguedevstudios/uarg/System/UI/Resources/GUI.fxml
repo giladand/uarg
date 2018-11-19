@@ -14,6 +14,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
@@ -105,8 +106,8 @@
             <MenuItem fx:id="FileImport" mnemonicParsing="false" onAction="#FileImportAction" text="Import" />
             <MenuItem fx:id="FileSave" mnemonicParsing="false" onAction="#FileSaveAction" text="Save" />
             <MenuItem fx:id="FileSaveAs" mnemonicParsing="false" onAction="#FileSaveAsAction" text="Save as" />
-                  <MenuItem fx:id="FileNew1" mnemonicParsing="false" onAction="#FileNewAction" text="Open Configuration" />
-                  <MenuItem fx:id="FileNew11" mnemonicParsing="false" onAction="#FileNewAction" text="Close Configuration" />
+                  <MenuItem mnemonicParsing="false" onAction="#FileNewAction" text="Open Configuration" />
+                  <MenuItem mnemonicParsing="false" onAction="#FileNewAction" text="Close Configuration" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
@@ -125,9 +126,12 @@
                <items>
                   <Menu mnemonicParsing="false" text="High Contrast">
                     <items>
-                        <RadioMenuItem id="ViewHighContrastWhiteOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastWhiteOnBlackAction" text="White On Black" />
-                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" />
-                        <RadioMenuItem id="ViewHighContrastYellowOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" />
+                        <RadioMenuItem id="ViewHighContrastWhiteOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastWhiteOnBlackAction" text="White On Black">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="ToggleGroupHighContrast" />
+                           </toggleGroup></RadioMenuItem>
+                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" toggleGroup="$ToggleGroupHighContrast" />
+                        <RadioMenuItem id="ViewHighContrastYellowOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" toggleGroup="$ToggleGroupHighContrast" />
                     </items>
                   </Menu>
                </items>

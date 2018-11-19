@@ -22,7 +22,7 @@ import javafx.util.Duration;
 
 public class SplashScreen
 {
-	public static final String APPLICATION_ICON = "/com/roguedevstudios/uarg/System/UI/Resources/Uarg Icon.jpg";
+	public static final String APPLICATION_ICON = "/com/roguedevstudios/uarg/System/UI/Resources/Uarg Icon.png";
 	public static final String SPLASH_IMAGE = "/com/roguedevstudios/uarg/System/UI/Resources/Uarg Splash.jpg";
 	public static final int SPLASH_WIDTH = 256;
 	public static final int SPLASH_HEIGHT = 256;

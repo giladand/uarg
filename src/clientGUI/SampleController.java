@@ -15,6 +15,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -90,13 +92,6 @@ public class SampleController<V> implements Initializable {
     // Code Added: Print Function - Dylan 
     @FXML
     public Button Print;
-    
-   
-
-    // Added Code: Print Function - Dylan 
-    @FXML
-    public MenuItem FilePrint;
-
     
 
     // private Stack<Memento> _savedStates = new Stack<Memento>();
@@ -582,47 +577,7 @@ public class SampleController<V> implements Initializable {
 	// TextFieldTest.setFont(t.getFont());
     }
     
-    // Code Added: Print Function (11/13/2018) 
-    public void print() 
-    {
-    	final TextArea textArea = new TextArea();
-    	Print.setOnAction(new EventHandler<ActionEvent>() 
-    	{
-    	@Override
-    	public void handle(ActionEvent evt) 
-    	{
-    	//Get Default Printer
-    	Printer defaultprinter = Printer.getDefaultPrinter();
-    	if (defaultprinter != null)
-		{
-			String name = defaultprinter.getName();
-			textArea.appendText("Default printer name: " + name);
-		}
-		else
-		{
-			textArea.appendText("No printers installed.");
-
-		}
-    	
-    	// Code Added: Print Dialog Box - Dylan (11/06/2018)
-    				VBox root = new VBox(10);  
-    				root.getChildren().addAll(Print,textArea);
-    				root.setPrefSize(400, 250);
-    				root.setStyle("-fx-padding: 10;" +
-    				    		"-fx-border-style: solid inside;" +
-    				    		"-fx-border-width: 2;" +
-    				    		"-fx-border-insets: 5;" +
-    				    		"-fx-border-radius: 5;" +
-    				    		"-fx-border-color: blue;");
-    				Scene scene = new Scene(root);
-    				primaryStage.setScene(scene);
-    				
-    				primaryStage.setTitle("Show the default Printer");
-    				
-    				primaryStage.show();      
-    			}
-    	}
-    }
+    
 }
     		
 

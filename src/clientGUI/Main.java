@@ -5,8 +5,12 @@ import java.io.File;
 import java.util.Optional;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,6 +24,9 @@ import javafx.stage.WindowEvent;
  
 public class Main extends Application 
 { 
+	// Code Added: Print Table Function (11/18/2018)
+	@FXML
+	public Button Print;
 	// Test Code Added - Dylan (11/04/2018) 
 	private Stage mainStage; 
 	
@@ -52,7 +59,7 @@ public class Main extends Application
 	    Button closeButton = new Button("Save Document"); 
 	    closeButton.setOnAction(event -> 
 	    mainStage.fireEvent(new WindowEvent(mainStage,WindowEvent.WINDOW_CLOSE_REQUEST))); 
-	    }
+	}
 
 		private EventHandler<WindowEvent> confirmCloseEventHandler = event ->  
 		{ 
@@ -93,8 +100,30 @@ public class Main extends Application
         } 
         
         };
+        
+     // Printing Table @ Dylan Richardson (11/18/2018)
+        public void print(final Node node) 
+        {
+        	Print.setOnAction(new EventHandler<ActionEvent>() 
+        	{
+        	    @Override
+        	    public void handle(ActionEvent evt) 
+        	    {
+        	    	PrinterJob printerJob = PrinterJob.createPrinterJob();
+        	    	if(printerJob.showPrintDialog(mainStage.getOwner()) && printerJob.printPage(node))
+        	    		printerJob.endJob();
+        	    	
+        		
+        	    }
+        	});
+        	
+        }
+        
+        
+        
+        
 		
-		public static void main(String[] args) 
+		public void main(String[] args) 
 		{ 
 			Application.launch(args); 
 		}
@@ -103,7 +132,9 @@ public class Main extends Application
 
 
 	
+
 }
+
 
 
 	

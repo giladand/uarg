@@ -7,20 +7,26 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 /**
  * The controller class for GUI.FXML.
@@ -56,7 +62,7 @@ public class GUIController implements Initializable
 	@FXML
 	public MenuItem ViewHighContrastYellowOnBlack;
 	@FXML
-	public TableView<AttributeRow> ResidentialServiceLines;
+	public TableView<Data> ResidentialServiceLines;
 
 	/**
 	 * 
@@ -245,7 +251,58 @@ public class GUIController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		// Single Cell Selection Mode
+		ResidentialServiceLines.getSelectionModel().setCellSelectionEnabled(true);
+		ResidentialServiceLines.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		AddColumnsToTableView();
+		AddRowsToTableView(20);
+		
+		// Event for going into edit mode after key press and commit value on ENTER key
+		ResidentialServiceLines.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
+		{
+			@Override
+			public void handle(KeyEvent event)
+			{
+				if (event.getCode() == KeyCode.ENTER)
+				{
+					// event.consume(); Do not consume the event or else the values won't be updated
+					return;
+				}
+				if (event.getCode().isLetterKey() || event.getCode().isDigitKey())
+				{
+					TablePosition<Data, String> focusedCellPosition = ResidentialServiceLines.getFocusModel().getFocusedCell();
+					ResidentialServiceLines.edit(focusedCellPosition.getRow(), focusedCellPosition.getTableColumn());
+					ResidentialServiceLines.getFocusModel().focus(focusedCellPosition);
+				}
+			}
+		});
+
+	}
+
+	/**
+	 * Number cell factory which converts strings to numbers and vice versa.
+	 * 
+	 * @return
+	 */
+	private Callback<TableColumn<Data, String>, TableCell<Data, String>> createNumberCellFactory()
+	{
+
+		Callback<TableColumn<Data, String>, TableCell<Data, String>> factory = TextFieldTableCell.forTableColumn(new StringConverter<String>()
+		{
+
+			@Override
+			public String fromString(String string)
+			{
+				return string;
+			}
+
+			@Override
+			public String toString(String string)
+			{
+				return string;
+			}
+		});
+		return factory;
 	}
 
 	/**
@@ -257,38 +314,42 @@ public class GUIController implements Initializable
 	 */
 	public void AddColumnsToTableView()
 	{
-
-		Callback<TableColumn<AttributeRow, String>, TableCell<AttributeRow, String>> cellFactory = new Callback<TableColumn<AttributeRow, String>, TableCell<AttributeRow, String>>()
-		{
-			public TableCell<AttributeRow, String> call(TableColumn<AttributeRow, String> arg)
-			{
-				return new EditingCell();
-			}
-		};
-
 		// create columns
 		List<String> columnList = Arrays.asList("Actual No. of Monthly Customers", "Service Frequencey Per Month", "Service Frequencey Per Year");
 		for (String column : columnList)
 		{
-			TableColumn<AttributeRow, String> groupColumn = new TableColumn<>(column);
-			groupColumn.setCellFactory(cellFactory);
+			TableColumn<Data, String> groupColumn = new TableColumn<>(column);
+			groupColumn.setCellFactory(createNumberCellFactory());
 			groupColumn.setCellValueFactory(cellData -> cellData.getValue().SetValueByColumn(column));
-			groupColumn.setOnEditCommit((CellEditEvent<AttributeRow, String> cellEditEvent) ->
+			groupColumn.setOnEditCommit((CellEditEvent<Data, String> cellEditEvent) ->
 			{
-				TableView<AttributeRow> tableView = cellEditEvent.getTableView();
-				TablePosition<AttributeRow, String> tablePostion = cellEditEvent.getTablePosition();
+				TableView<Data> tableView = cellEditEvent.getTableView();
+				TablePosition<Data, String> tablePostion = cellEditEvent.getTablePosition();
 				int rowIndex = tablePostion.getRow();
 
-				ObservableList<AttributeRow> items = tableView.getItems();
-				((AttributeRow) items.get(rowIndex)).SetCellValue(cellEditEvent.getNewValue());
+				ObservableList<Data> items = tableView.getItems();
+				((Data) items.get(rowIndex)).SetCellValue(cellEditEvent.getNewValue());
 			});
 			ResidentialServiceLines.getColumns().add(groupColumn);
 		}
+	}
+
+	/**
+	 * 
+	 * Adds rows to TableView
+	 * 
+	 * @param rowCount	Integer value of the rows to be added  
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
+	public void AddRowsToTableView(int rowCount)
+	{
+		List<String> columnList = Arrays.asList("Actual No. of Monthly Customers", "Service Frequencey Per Month", "Service Frequencey Per Year");
 
 		// Add rows to the columns
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < rowCount; i++)
 		{
-			AttributeRow row = new AttributeRow(columnList);
+			Data row = new Data(columnList);
 			ResidentialServiceLines.getItems().add(row);
 		}
 	}

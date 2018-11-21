@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
  * @since 1.0
  */
 
-public class AttributeRow
+public class Data
 {
 	private final StringProperty CELL_PROPERTY = new SimpleStringProperty();
 	private Map<String, StringProperty> ValueByColumn = new HashMap<>();
@@ -25,7 +25,7 @@ public class AttributeRow
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
 	 */
-	public AttributeRow(List<String> columnValue)
+	public Data(List<String> columnValue)
 	{
 		for (String column : columnValue)
 		{

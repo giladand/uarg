@@ -252,7 +252,7 @@ public class GUIController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		// Single Cell Selection Mode
-		//ResidentialServiceLines.getSelectionModel().setCellSelectionEnabled(true);
+		ResidentialServiceLines.getSelectionModel().setCellSelectionEnabled(true);
 		ResidentialServiceLines.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		AddColumnsToTableView();
 		AddRowsToTableView(20);
@@ -281,7 +281,6 @@ public class GUIController implements Initializable
 
 	/**
 	 * Number cell factory which converts strings to numbers and vice versa.
-	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
 	 */

@@ -18,7 +18,7 @@ import java.util.List;
  * @author John Mai
  * @since 1.0
  */
-public interface ISet {
+public interface ISets {
 
 	void AddSet(String setID);
 	void AddArgsToSet(String setID, String argsID);

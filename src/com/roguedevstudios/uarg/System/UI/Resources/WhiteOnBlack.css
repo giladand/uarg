@@ -1,22 +1,26 @@
 /*******************************************************************************
  *                                                                             *
- * "Black on White" contrast theme.                                            *
+ * "White on Black" contrast theme.                                            *
  *                                                                             *
  ******************************************************************************/
 
+* {
+	-fx-font-family: arial;
+	-fx-font-size: 12;
+}
+
 .root {
-    -fx-base: white;
+    -fx-base: black;
     -fx-background: -fx-base;
     -fx-control-inner-background: -fx-base;
     -fx-control-inner-background-alt: -fx-base;
     -fx-faint-focus-color: -fx-accent;
-    -fx-hover-base: black;
-    -fx-pressed-base: derive(-fx-base, -8%);
+    -fx-hover-base: white;
+    -fx-pressed-base: derive(-fx-hover-base, -15%);
     -fx-box-border: -fx-hover-base;
     -fx-text-box-border: -fx-hover-base;
     -fx-shadow-highlight-color: -fx-base;
     -fx-outer-border: -fx-hover-base;
-    -fx-selection-bar-non-focused: -fx-pressed-base;
 }
 /*******************************************************************************
  *                                                                             *
@@ -37,11 +41,7 @@
  ******************************************************************************/
 .toggle-button:selected,
 .toggle-button:selected:focused {
-    -fx-mid-text-color: -fx-base;
-}
-.toggle-button:selected:armed,
-.toggle-button:selected:focused:armed {
-    -fx-mid-text-color: -fx-hover-base;
+    -fx-light-text-color: -fx-base;
 }
 .toggle-button:selected { 
     -fx-background-color: -fx-shadow-highlight-color, -fx-hover-base, -fx-hover-base;
@@ -61,10 +61,10 @@
  *                                                                             *
  ******************************************************************************/
 .slider .thumb {
-    -fx-background-color: -fx-hover-base, -fx-inner-border, -fx-body-color;
+    -fx-background-color: -fx-hover-base, -fx-hover-base, -fx-body-color;
 }
 .slider:focused .thumb {
-    -fx-background-color: -fx-focus-color, -fx-inner-border, -fx-body-color, -fx-faint-focus-color, -fx-body-color;
+    -fx-background-color: -fx-focus-color, -fx-hover-base, -fx-body-color, -fx-faint-focus-color, -fx-body-color;
 }
 /*******************************************************************************
  *                                                                             *
@@ -80,12 +80,10 @@
     -fx-background-color: -fx-outer-border, -fx-hover-base, -fx-hover-base;
 }
 .scroll-bar > .increment-button:hover > .increment-arrow, 
-.scroll-bar > .decrement-button:hover > .decrement-arrow {
-    -fx-background-color: -fx-base, -fx-base;
-}
+.scroll-bar > .decrement-button:hover > .decrement-arrow,
 .scroll-bar > .increment-button:hover:pressed > .increment-arrow, 
 .scroll-bar > .decrement-button:hover:pressed > .decrement-arrow {
-    -fx-background-color: -fx-hover-base, -fx-hover-base;
+    -fx-background-color: -fx-base, -fx-base;
 }
 .scroll-bar > .increment-button > .increment-arrow,
 .scroll-bar > .decrement-button > .decrement-arrow {
@@ -109,157 +107,131 @@
  * HTML Editor                                                                 *
  *                                                                             *
  ******************************************************************************/
-.html-editor-foreground,
-.html-editor-foreground:showing:hover {
-    -fx-graphic: url("HTMLEditor-Text-Color-Black.png");
-}
-.html-editor-background,
-.html-editor-background:showing:hover {
-    -fx-graphic: url("HTMLEditor-Background-Color-Black.png");
-}
-.html-editor-cut,
-.html-editor-cut:hover:armed {
-    -fx-graphic: url("HTMLEditor-Cut-Black.png");
-}
-.html-editor-copy,
-.html-editor-copy:hover:armed {
-    -fx-graphic: url("HTMLEditor-Copy-Black.png");
-}
-.html-editor-paste,
-.html-editor-paste:hover:armed {
-    -fx-graphic: url("HTMLEditor-Paste-Black.png");
-}
-.html-editor-align-left,
-.html-editor-align-left:hover:armed,
-.html-editor-align-left:selected:armed {
-    -fx-graphic: url("HTMLEditor-Left-Black.png");
-}
-.html-editor-align-center,
-.html-editor-align-center:hover:armed,
-.html-editor-align-center:selected:armed {
-    -fx-graphic: url("HTMLEditor-Center-Black.png");
-}
-.html-editor-align-right,
-.html-editor-align-right:hover:armed,
-.html-editor-align-right:selected:armed {
-    -fx-graphic: url("HTMLEditor-Right-Black.png");
-}
-.html-editor-align-justify,
-.html-editor-align-justify:hover:armed,
-.html-editor-align-justify:selected:armed {
-    -fx-graphic: url("HTMLEditor-Justify-Black.png");
-}
-.html-editor-outdent,
-.html-editor-outdent:hover:armed {
-    -fx-graphic: url("HTMLEditor-Outdent-Black.png");
-}
-.html-editor-indent,
-.html-editor-indent:hover:armed {
-    -fx-graphic: url("HTMLEditor-Indent-Black.png");
-}
-.html-editor-bullets,
-.html-editor-bullets:hover:armed,
-.html-editor-bullets:selected:armed {
-    -fx-graphic: url("HTMLEditor-Bullets-Black.png");
-}
-.html-editor-numbers,
-.html-editor-numbers:hover:armed,
-.html-editor-numbers:selected:armed {
-    -fx-graphic: url("HTMLEditor-Numbered-Black.png");
-}
-.html-editor-bold,
-.html-editor-bold:hover:armed,
-.html-editor-bold:selected:armed {
-    -fx-graphic: url("HTMLEditor-Bold-Black.png");
-}
-.html-editor-italic,
-.html-editor-italic:hover:armed,
-.html-editor-italic:selected:armed {
-    -fx-graphic: url("HTMLEditor-Italic-Black.png");
-}
-.html-editor-underline,
-.html-editor-underline:hover:armed,
-.html-editor-underline:selected:armed {
-    -fx-graphic: url("HTMLEditor-Underline-Black.png");
-}
-.html-editor-strike,
-.html-editor-strike:hover:armed,
-.html-editor-strike:selected:armed {
-    -fx-graphic: url("HTMLEditor-Strikethrough-Black.png");
-}
-.html-editor-hr,
-.html-editor-hr:hover:armed {
-    -fx-graphic: url("HTMLEditor-Break-Black.png");
-}
-.html-editor-foreground:hover {
+.html-editor-foreground{
     -fx-graphic: url("HTMLEditor-Text-Color-White.png");
 }
-.html-editor-background:hover {
+.html-editor-background {
     -fx-graphic: url("HTMLEditor-Background-Color-White.png");
 }
-.html-editor-cut:hover,
-.html-editor-cut:armed {
+.html-editor-cut {
     -fx-graphic: url("HTMLEditor-Cut-White.png");
 }
-.html-editor-copy:hover,
-.html-editor-copy:armed {
+.html-editor-copy {
     -fx-graphic: url("HTMLEditor-Copy-White.png");
 }
-.html-editor-paste:hover,
-.html-editor-paste:armed {
+.html-editor-paste {
     -fx-graphic: url("HTMLEditor-Paste-White.png");
+}
+.html-editor-align-left {
+    -fx-graphic: url("HTMLEditor-Left-White.png");
+}
+.html-editor-align-center {
+    -fx-graphic: url("HTMLEditor-Center-White.png");
+}
+.html-editor-align-right {
+    -fx-graphic: url("HTMLEditor-Right-White.png");
+}
+.html-editor-align-justify {
+    -fx-graphic: url("HTMLEditor-Justify-White.png");
+}
+.html-editor-outdent {
+    -fx-graphic: url("HTMLEditor-Outdent-White.png");
+}
+.html-editor-indent {
+    -fx-graphic: url("HTMLEditor-Indent-White.png");
+}
+.html-editor-bullets {
+    -fx-graphic: url("HTMLEditor-Bullets-White.png");
+}
+.html-editor-numbers {
+    -fx-graphic: url("HTMLEditor-Numbered-White.png");
+}
+.html-editor-bold {
+    -fx-graphic: url("HTMLEditor-Bold-White.png");
+}
+.html-editor-italic {
+    -fx-graphic: url("HTMLEditor-Italic-White.png");
+}
+.html-editor-underline {
+    -fx-graphic: url("HTMLEditor-Underline-White.png");
+}
+.html-editor-strike {
+    -fx-graphic: url("HTMLEditor-Strikethrough-White.png");
+}
+.html-editor-hr {
+    -fx-graphic: url("HTMLEditor-Break-White.png");
+}
+.html-editor-foreground:hover,
+.html-editor-foreground:showing {
+    -fx-graphic: url("HTMLEditor-Text-Color-Black.png");
+}
+.html-editor-background:hover,
+.html-editor-background:showing {
+    -fx-graphic: url("HTMLEditor-Background-Color-Black.png");
+}
+.html-editor-cut:hover,
+.html-editor-cut:selected {
+    -fx-graphic: url("HTMLEditor-Cut-Black.png");
+}
+.html-editor-copy:hover,
+.html-editor-copy:selected {
+    -fx-graphic: url("HTMLEditor-Copy-Black.png");
+}
+.html-editor-paste:hover,
+.html-editor-paste:selected {
+    -fx-graphic: url("HTMLEditor-Paste-Black.png");
 }
 .html-editor-align-left:hover,
 .html-editor-align-left:selected {
-    -fx-graphic: url("HTMLEditor-Left-White.png");
+    -fx-graphic: url("HTMLEditor-Left-Black.png");
 }
 .html-editor-align-center:hover,
 .html-editor-align-center:selected {
-    -fx-graphic: url("HTMLEditor-Center-White.png");
+    -fx-graphic: url("HTMLEditor-Center-Black.png");
 }
 .html-editor-align-right:hover,
 .html-editor-align-right:selected {
-    -fx-graphic: url("HTMLEditor-Right-White.png");
+    -fx-graphic: url("HTMLEditor-Right-Black.png");
 }
 .html-editor-align-justify:hover,
 .html-editor-align-justify:selected {
-    -fx-graphic: url("HTMLEditor-Justify-White.png");
+    -fx-graphic: url("HTMLEditor-Justify-Black.png");
 }
 .html-editor-outdent:hover,
 .html-editor-outdent:armed {
-    -fx-graphic: url("HTMLEditor-Outdent-White.png");
+    -fx-graphic: url("HTMLEditor-Outdent-Black.png");
 }
 .html-editor-indent:hover,
 .html-editor-indent:armed {
-    -fx-graphic: url("HTMLEditor-Indent-White.png");
+    -fx-graphic: url("HTMLEditor-Indent-Black.png");
 }
 .html-editor-bullets:hover,
 .html-editor-bullets:selected {
-    -fx-graphic: url("HTMLEditor-Bullets-White.png");
+    -fx-graphic: url("HTMLEditor-Bullets-Black.png");
 }
 .html-editor-numbers:hover,
 .html-editor-numbers:selected {
-    -fx-graphic: url("HTMLEditor-Numbered-White.png");
+    -fx-graphic: url("HTMLEditor-Numbered-Black.png");
 }
 .html-editor-bold:hover,
 .html-editor-bold:selected {
-    -fx-graphic: url("HTMLEditor-Bold-White.png");
+    -fx-graphic: url("HTMLEditor-Bold-Black.png");
 }
 .html-editor-italic:hover,
 .html-editor-italic:selected {
-    -fx-graphic: url("HTMLEditor-Italic-White.png");
+    -fx-graphic: url("HTMLEditor-Italic-Black.png");
 }
 .html-editor-underline:hover,
 .html-editor-underline:selected {
-    -fx-graphic: url("HTMLEditor-Underline-White.png");
+    -fx-graphic: url("HTMLEditor-Underline-Black.png");
 }
 .html-editor-strike:hover,
 .html-editor-strike:selected {
-    -fx-graphic: url("HTMLEditor-Strikethrough-White.png");
+    -fx-graphic: url("HTMLEditor-Strikethrough-Black.png");
 }
 .html-editor-hr:hover,
 .html-editor-hr:armed {
-    -fx-graphic: url("HTMLEditor-Break-White.png");
+    -fx-graphic: url("HTMLEditor-Break-Black.png");
 }
 /*******************************************************************************
  *                                                                             *
@@ -268,15 +240,10 @@
  ******************************************************************************/
 .context-menu {
     -fx-background-color: -fx-hover-base, -fx-control-inner-background;
-    -fx-text-fill: red;
 }
 .context-menu > .scroll-arrow > .menu-up-arrow,
 .context-menu > .scroll-arrow > .menu-down-arrow {
     -fx-background-color: -fx-hover-base;
-}
-.context-menu > .scroll-arrow:hover > .menu-up-arrow,
-.context-menu > .scroll-arrow:hover > .menu-down-arrow {
-    -fx-background-color: -fx-base;
 }
 /*******************************************************************************
  *                                                                             *
@@ -328,9 +295,6 @@
 .combo-box-popup > .list-view {
     -fx-background-color: -fx-outer-border, -fx-control-inner-background;
 }
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
-    -fx-text-fill: -fx-base;
-}
 /*******************************************************************************
  *                                                                             *
  * TitledPane                                                                  *
@@ -344,7 +308,7 @@
     -fx-background-insets: 0, 1, 4;    
 }
 .titled-pane > .title:hover {
-    -fx-color: -fx-pressed-base;
+    -fx-color: -fx-base;
 }
 .titled-pane > .title > .arrow-button > .arrow,
 .titled-pane:focused > .title > .arrow-button > .arrow {
@@ -353,7 +317,7 @@
     -fx-effect: null;
 }
 .titled-pane > .title:hover > .arrow-button > .arrow {
-    -fx-background-color: -fx-hover-base;
+    -fx-background-color: -fx-mark-highlight-color;
     -fx-background-insets: 0;
 }
 /*******************************************************************************
@@ -388,8 +352,14 @@
 .color-palette > .color-picker-grid > .color-square:selected {
     -fx-background-color: -fx-hover-base;
 }
+.custom-color-dialog .color-rect-pane .color-rect-border,
+.custom-color-dialog > .color-rect-pane > .color-bar,
+.custom-color-dialog .controls-pane .current-new-color-grid #current-new-color-border {
+    -fx-border-color: derive(-fx-hover-base, -20%);
+}
 .custom-color-dialog > .color-rect-pane #color-rect-indicator,
 .custom-color-dialog > .color-rect-pane > .color-bar > #color-bar-indicator {
+    -fx-border-color: -fx-hover-base;
     -fx-border-width: 2;
 }
 /*******************************************************************************
@@ -399,8 +369,17 @@
  ******************************************************************************/
 .pagination > .pagination-control > .control-box > .number-button:selected {   
     -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
+    -fx-text-fill: -fx-hover-base;
 }
-.pagination > .pagination-control > .control-box > .bullet-button:selected {   
+.pagination > .pagination-control > .control-box > .number-button:selected:hover:armed {   
+    -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
+}
+.pagination > .pagination-control > .control-box > .number-button:selected:hover {   
+    -fx-background-color: transparent, -fx-hover-base, -fx-hover-base, -fx-hover-base;
+    -fx-text-fill: -fx-dark-text-color;
+}
+.pagination > .pagination-control > .control-box > .bullet-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected:hover:armed {   
     -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
 }
 /*******************************************************************************
@@ -412,23 +391,23 @@
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
 .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box,
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
-    -fx-background-color: -fx-base, -fx-background;
+    -fx-background-color: -fx-hover-base, -fx-background;
 }
 .table-view > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
 .tree-table-view > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
 .table-view > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box,
 .tree-table-view > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
-    -fx-background-color: -fx-hover-base, -fx-background;
+    -fx-background-color: -fx-base, -fx-background;
 }
 /*******************************************************************************
-*                                                                              *
-* TableView                                                                    *
-*                                                                              *
-*******************************************************************************/
+ *                                                                             *
+ * TableView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
 .table-view,
 .tree-table-view {
-    /* Constants used throughout the tableview */
-    -fx-table-cell-border-color: derive(-fx-base, -30%);
+    -fx-table-cell-border-color: derive(-fx-hover-base,-30%);
 }
 /*******************************************************************************
  *                                                                             *
@@ -458,21 +437,21 @@
  *                                                                             *
  ******************************************************************************/
 .axis {
-    AXIS_COLOR: -fx-dark-text-color;
+    AXIS_COLOR: -fx-light-text-color;
     -fx-tick-label-fill: -fx-hover-base;
 }
 /*******************************************************************************
-*                                                                              *
-* ChartPlot                                                                    *
-*                                                                              *
-*******************************************************************************/
+ *                                                                             *
+ * ChartPlot                                                                   *
+ *                                                                             *
+ ******************************************************************************/
 .chart-vertical-grid-lines,
 .chart-horizontal-grid-lines {
-    -fx-stroke: derive(-fx-base, -30%);
+    -fx-stroke: derive(-fx-hover-base, -30%);
 }
 /*******************************************************************************
  *                                                                             *
- * ScatterChart, LineChart, AreaChart                                          *
+ * ScatterChart, LineChart, AreaChart, PieChart                                *
  *                                                                             *
  ******************************************************************************/
 .default-color5.chart-symbol, /* hollow circle */
@@ -506,4 +485,10 @@
 .default-color7.chart-series-area-fill { -fx-fill: CHART_COLOR_8_TRANS_20; }
 .area-legend-symbol {
     -fx-background-insets: 0, 2;
+}
+.chart-pie-label-line {
+    -fx-stroke: -fx-hover-base;
+}
+.chart-pie-label {
+    -fx-fill: -fx-hover-base;
 }

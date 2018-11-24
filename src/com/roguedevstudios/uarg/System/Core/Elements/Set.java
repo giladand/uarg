@@ -17,8 +17,31 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.ISet;
  * 
  * @since 1.0
  */
-public class Set implements ISet{
+public class Set<V> extends Variable<V> implements ISet{
 	
+	/**
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param value
+	 */
+	public Set(String name, String id, Boolean requiresInput, String description, V value) {
+		super(name, id, requiresInput, description, value);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 */
+	public Set(String name, String id, Boolean requiresInput, String description) {
+		super(name, id, requiresInput, description);
+		// TODO Auto-generated constructor stub
+	}
+
 	/* Declare empty hash maps to hold the row and column sets */
 	private HashMap<String, List<String>> _setMap;
 	

@@ -126,13 +126,15 @@
                <items>
                   <Menu mnemonicParsing="false" text="High Contrast">
                     <items>
-                        <RadioMenuItem id="ViewHighContrastWhiteOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastWhiteOnBlackAction" text="White On Black">
+                        <RadioMenuItem mnemonicParsing="false" onAction="#ViewHighContrastNoneAction" selected="true" text="None">
                            <toggleGroup>
                               <ToggleGroup fx:id="ToggleGroupHighContrast" />
-                           </toggleGroup></RadioMenuItem>
-                        <RadioMenuItem id="ViewHighContrastYellowOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" toggleGroup="$ToggleGroupHighContrast" />
-                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" toggleGroup="$ToggleGroupHighContrast" />
-                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlueOnYellowAction" text="Blue On Yellow" toggleGroup="$ToggleGroupHighContrast" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#ViewHighContrastWhiteOnBlackAction" text="White On Black" toggleGroup="$ToggleGroupHighContrast" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" toggleGroup="$ToggleGroupHighContrast" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" toggleGroup="$ToggleGroupHighContrast" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#ViewHighContrastBlueOnYellowAction" text="Blue On Yellow" toggleGroup="$ToggleGroupHighContrast" />
                     </items>
                   </Menu>
                </items>

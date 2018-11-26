@@ -244,6 +244,20 @@ public class GUIController implements Initializable
 	
 	/**
 	 * 
+	 * Switches to the BlueOnYellow.css
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
+	public void ViewHighContrastBlueOnYellowAction(ActionEvent event)
+	{
+		Scene scene = Root.getScene();
+		scene.getStylesheets().clear();
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlueOnYellow.css").toExternalForm());
+	}
+	
+	/**
+	 * 
 	 * Calls the method to add columns to TableView, and a update listener to
 	 * TableView
 	 * 

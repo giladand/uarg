@@ -56,11 +56,13 @@ public class GUIController implements Initializable
 	@FXML
 	public MenuItem EditPaste;
 	@FXML
-	public MenuItem ViewHighContrastWhiteOnBlack;
-	@FXML
 	public MenuItem ViewHighContrastBlackOnWhite;
 	@FXML
+	public MenuItem ViewHighContrastBlueOnYellow;
+	@FXML
 	public MenuItem ViewHighContrastYellowOnBlack;
+	@FXML
+	public MenuItem ViewHighContrastWhiteOnBlack;
 	@FXML
 	public TableView<Data> ResidentialServiceLines;
 
@@ -200,35 +202,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Switches to the WhiteonBlack .css file
-	 * 
-	 * @since 1.0
-	 * @author Marko S. Bachynsky
-	 */
-	public void ViewHighContrastWhiteOnBlackAction(ActionEvent event)
-	{
-		Scene scene = Root.getScene();
-		scene.getStylesheets().clear();
-		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/WhiteOnBlack.css").toExternalForm());
-	}
-
-	/**
-	 * 
-	 * Switches to the BlackOnWhite .css file
-	 * 
-	 * @since 1.0
-	 * @author Marko S. Bachynsky
-	 */
-	public void ViewHighContrastBlackOnWhiteAction(ActionEvent event)
-	{
-		Scene scene = Root.getScene();
-		scene.getStylesheets().clear();
-		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlackOnWhite.css").toExternalForm());
-	}
-
-	/**
-	 * 
-	 * Switches to the YellowOnBlack .css file
+	 * Switches to the YellowOnBlack.css
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -240,6 +214,34 @@ public class GUIController implements Initializable
 		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/YellowOnBlack.css").toExternalForm());
 	}
 
+	/**
+	 * 
+	 * Switches to the WhiteOnBlack.css
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
+	public void ViewHighContrastWhiteOnBlackAction(ActionEvent event)
+	{
+		Scene scene = Root.getScene();
+		scene.getStylesheets().clear();
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/WhiteOnBlack.css").toExternalForm());
+	}
+	
+	/**
+	 * 
+	 * Switches to the BlackOnWhite.css
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
+	public void ViewHighContrastBlackOnWhiteAction(ActionEvent event)
+	{
+		Scene scene = Root.getScene();
+		scene.getStylesheets().clear();
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlackOnWhite.css").toExternalForm());
+	}
+	
 	/**
 	 * 
 	 * Calls the method to add columns to TableView, and a update listener to

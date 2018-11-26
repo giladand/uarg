@@ -56,14 +56,6 @@ public class GUIController implements Initializable
 	@FXML
 	public MenuItem EditPaste;
 	@FXML
-	public MenuItem ViewHighContrastBlackOnWhite;
-	@FXML
-	public MenuItem ViewHighContrastBlueOnYellow;
-	@FXML
-	public MenuItem ViewHighContrastYellowOnBlack;
-	@FXML
-	public MenuItem ViewHighContrastWhiteOnBlack;
-	@FXML
 	public TableView<Data> ResidentialServiceLines;
 
 	/**
@@ -200,6 +192,20 @@ public class GUIController implements Initializable
 
 	}
 
+	/**
+	 * 
+	 * Switches to the Application.css
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
+	public void ViewHighContrastNoneAction(ActionEvent event)
+	{
+		Scene scene = Root.getScene();
+		scene.getStylesheets().clear();
+		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/Application.css").toExternalForm());
+	}
+	
 	/**
 	 * 
 	 * Switches to the YellowOnBlack.css

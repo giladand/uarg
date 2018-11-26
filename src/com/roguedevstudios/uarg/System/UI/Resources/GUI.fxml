@@ -130,8 +130,13 @@
                            <toggleGroup>
                               <ToggleGroup fx:id="ToggleGroupHighContrast" />
                            </toggleGroup></RadioMenuItem>
-                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" toggleGroup="$ToggleGroupHighContrast" />
                         <RadioMenuItem id="ViewHighContrastYellowOnBlack" mnemonicParsing="false" onAction="#ViewHighContrastYellowOnBlackAction" text="Yellow On Black" toggleGroup="$ToggleGroupHighContrast" />
+                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlackOnWhiteAction" text="Black On White" toggleGroup="$ToggleGroupHighContrast" />
+                        <RadioMenuItem id="ViewHighContrastBlackOnWhite" mnemonicParsing="false" onAction="#ViewHighContrastBlueOnYellowAction" text="Blue On Yellow">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="ToggleGroupHighContrast1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
                     </items>
                   </Menu>
                </items>

@@ -40,7 +40,7 @@ public class SplashScreen
 
 	/**
 	 * 
-	 * Initializes all fields, and sets the style of the splash layout
+	 * Initializes all fields, and sets the style of the splash layout.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -63,7 +63,7 @@ public class SplashScreen
 
 	/**
 	 * 
-	 * Creates the starting message for the splash screen
+	 * Creates the starting message for the splash screen.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -101,7 +101,7 @@ public class SplashScreen
 
 	/**
 	 * 
-	 * Reveals the splash screen
+	 * Reveals the splash screen.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky

@@ -1,23 +1,25 @@
 /*******************************************************************************
  *                                                                             *
- * "black on Black" contrast theme.                                           *
+ * "White on Black" contrast theme.                                           *
  *                                                                             *
  ******************************************************************************/
 
 * {
+	primary-contrast-color: white;
+	secondary-contrast-color: black;
 	-fx-font-family: arial;
 	-fx-font-size: 12.0;
-	-fx-text-fill: white;
+	-fx-text-fill: primary-contrast-color;
 }
 
 .root {
-	
-    -fx-base: black;
+
+    -fx-base: secondary-contrast-color;
     -fx-background: -fx-base;
     -fx-control-inner-background: -fx-base;
     -fx-control-inner-background-alt: -fx-base;
     -fx-faint-focus-color: -fx-accent;
-    -fx-hover-base: white;
+    -fx-hover-base: primary-contrast-color;
     -fx-pressed-base: derive(-fx-hover-base, -18.0%);
     -fx-box-border: -fx-hover-base;
     -fx-text-box-border: -fx-hover-base;
@@ -25,9 +27,6 @@
     -fx-outer-border: -fx-hover-base;
     -fx-light-text-color: -fx-hover-base;
     -fx-mark-color: -fx-hover-base;
-    -fx-selection-bar-non-focused: derive(-fx-hover-base, -80.0%);
-    -fx-contrast-color: black;
-    
 }
 /*******************************************************************************
  *                                                                             *
@@ -146,7 +145,7 @@
 }
 .context-menu > .scroll-arrow:hover > .menu-up-arrow,
 .context-menu > .scroll-arrow:hover > .menu-down-arrow {
-    -fx-background-color: -fx-contrast-color;
+    -fx-background-color: secondary-contrast-color;
 }
 /*******************************************************************************
  *                                                                             *
@@ -160,7 +159,7 @@
 .menu-bar > .container > .menu-button:hover > .label,
 .menu-bar > .container > .menu-button:focused > .label,
 .menu-bar > .container > .menu-button:showing  > .label {
-    -fx-text-fill: -fx-contrast-color !important;
+    -fx-text-fill: secondary-contrast-color !important;
 }
 /*******************************************************************************
  *                                                                             *
@@ -168,7 +167,7 @@
  *                                                                             *
  ******************************************************************************/
 .menu:focused > .right-container > .arrow {
-    -fx-background-color: -fx-contrast-color;
+    -fx-background-color: secondary-contrast-color;
 }
 .menu-up-arrow, .menu-down-arrow {
     -fx-effect: null;
@@ -179,11 +178,11 @@
  *                                                                             *
  ******************************************************************************/
 .menu-item:focused > .label {
-    -fx-text-fill: -fx-contrast-color;
+    -fx-text-fill: secondary-contrast-color;
 }
 .radio-menu-item:focused:checked > .left-container > .radio,
 .check-menu-item:focused:checked > .left-container > .check {
-    -fx-background-color: -fx-contrast-color;
+    -fx-background-color: secondary-contrast-color;
 }
 /*******************************************************************************
  *                                                                             *
@@ -192,6 +191,9 @@
  ******************************************************************************/
 .tab-header-area {
     -fx-text-box-border: -fx-base;
+}
+.tab-pane{
+	-fx-hover-base: derive(secondary-contrast-color, 100.0%);
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:selected:hover {
     -fx-background-color: -fx-hover-base;
@@ -222,7 +224,7 @@
     -fx-text-fill: -fx-hover-base;
 }
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
-    -fx-text-fill: -fx-contrast-color;
+    -fx-text-fill: secondary-contrast-color;
 }
 /*******************************************************************************
  *                                                                             *
@@ -298,7 +300,7 @@
  ******************************************************************************/
 .pagination > .pagination-control > .control-box > .number-button:selected {   
     -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
-    -fx-text-fill: -fx-contrast-color;
+    -fx-text-fill: secondary-contrast-color;
 }
 .pagination > .pagination-control > .control-box > .number-button:selected:hover:armed {   
     -fx-background-color: transparent, -fx-hover-base, -fx-inner-border, -fx-body-color;
@@ -323,7 +325,7 @@
 .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell .table-cell:filled:selected,
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected,
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell .tree-table-cell:filled:selected {
-    -fx-text-fill: -fx-contrast-color;
+    -fx-text-fill: secondary-contrast-color;
 }
 /*******************************************************************************
 *                                                                              *
@@ -332,7 +334,7 @@
 *******************************************************************************/
 .tree-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-cell:filled:selected > .tree-disclosure-node > .arrow,
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .tree-disclosure-node > .arrow {
-    -fx-background-color: -fx-contrast-color;
+    -fx-background-color: secondary-contrast-color;
 }
 /*******************************************************************************   
 *                                                                              *
@@ -341,6 +343,7 @@
 *******************************************************************************/
 .table-view,
 .tree-table-view {
+	-fx-hover-base: primary-contrast-color;
     -fx-table-cell-border-color: derive(-fx-hover-base, -30.0%);
 }
 /*******************************************************************************
@@ -352,7 +355,7 @@
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
 .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box,
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
-    -fx-background-color: -fx-contrast-color, -fx-background;
+    -fx-background-color: secondary-contrast-color, -fx-background;
 }
 .table-view > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
 .tree-table-view > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
@@ -362,7 +365,7 @@
 }
 .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box:selected > .box > .mark,
 .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell > .table-cell:filled:selected > .check-box-table-cell > .check-box:selected > .box > .mark {
-    -fx-background-color: -fx-contrast-color !important;
+    -fx-background-color: secondary-contrast-color !important;
 }
 /*******************************************************************************
  *                                                                             *

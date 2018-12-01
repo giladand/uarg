@@ -60,7 +60,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Clears all inputs
+	 * Clears all inputs.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -72,7 +72,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Opens a XBRL file, filling inputs with given data
+	 * Opens a XBRL file, filling inputs with given data.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -91,7 +91,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Imports a supported file, filling inputs with given data
+	 * Imports a supported file, filling inputs with given data.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -110,7 +110,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Saves all data to a .xbrl file to the current file
+	 * Saves all data to a .xbrl file to the current file.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -122,7 +122,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Saves all data to a .xbrl file, lets the user select a file to save to
+	 * Saves all data to a .xbrl file, lets the user select a file to save to.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -141,7 +141,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Cuts the selected text
+	 * Cuts the selected text.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -159,7 +159,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Copies the selected text
+	 * Copies the selected text.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -176,7 +176,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Pastes into the selected text or position
+	 * Pastes into the selected text or position.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -194,7 +194,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Switches to the Application.css
+	 * Switches to the Application.css.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -208,7 +208,7 @@ public class GUIController implements Initializable
 	
 	/**
 	 * 
-	 * Switches to the YellowOnBlack.css
+	 * Switches to the YellowOnBlack.css.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -222,7 +222,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Switches to the WhiteOnBlack.css
+	 * Switches to the WhiteOnBlack.css.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -236,7 +236,7 @@ public class GUIController implements Initializable
 	
 	/**
 	 * 
-	 * Switches to the BlackOnWhite.css
+	 * Switches to the BlackOnWhite.css.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -250,7 +250,7 @@ public class GUIController implements Initializable
 	
 	/**
 	 * 
-	 * Switches to the BlueOnYellow.css
+	 * Switches to the BlueOnYellow.css.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -265,7 +265,7 @@ public class GUIController implements Initializable
 	/**
 	 * 
 	 * Calls the method to add columns to TableView, and a update listener to
-	 * TableView
+	 * TableView.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -329,7 +329,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Adds columns to TableView
+	 * Adds columns to TableView.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -358,7 +358,7 @@ public class GUIController implements Initializable
 
 	/**
 	 * 
-	 * Adds rows to TableView
+	 * Adds rows to TableView.
 	 * 
 	 * @param rowCount	Integer value of the rows to be added  
 	 * @since 1.0

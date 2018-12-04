@@ -11,6 +11,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
@@ -18,10 +20,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -57,7 +61,11 @@ public class GUIController implements Initializable
 	public MenuItem EditPaste;
 	@FXML
 	public TableView<Data> ResidentialServiceLines;
-
+	@FXML
+	public Accordion AccordionServices;
+	@FXML
+	public Button AddService;
+	
 	/**
 	 * 
 	 * Clears all inputs.
@@ -205,7 +213,7 @@ public class GUIController implements Initializable
 		scene.getStylesheets().clear();
 		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/Application.css").toExternalForm());
 	}
-	
+
 	/**
 	 * 
 	 * Switches to the YellowOnBlack.css.
@@ -233,7 +241,7 @@ public class GUIController implements Initializable
 		scene.getStylesheets().clear();
 		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/WhiteOnBlack.css").toExternalForm());
 	}
-	
+
 	/**
 	 * 
 	 * Switches to the BlackOnWhite.css.
@@ -247,7 +255,7 @@ public class GUIController implements Initializable
 		scene.getStylesheets().clear();
 		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlackOnWhite.css").toExternalForm());
 	}
-	
+
 	/**
 	 * 
 	 * Switches to the BlueOnYellow.css.
@@ -261,7 +269,15 @@ public class GUIController implements Initializable
 		scene.getStylesheets().clear();
 		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlueOnYellow.css").toExternalForm());
 	}
-	
+
+	public void AddServiceAction(ActionEvent event)
+	{
+
+		TitledPane testpane = new TitledPane("wow", AccordionServices);
+		AccordionServices.getPanes().add(testpane);
+		System.out.println("Clicked");
+	}
+
 	/**
 	 * 
 	 * Calls the method to add columns to TableView, and a update listener to
@@ -278,7 +294,7 @@ public class GUIController implements Initializable
 		ResidentialServiceLines.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		AddColumnsToTableView();
 		AddRowsToTableView(20);
-		
+
 		// Event for going into edit mode after key press and commit value on ENTER key
 		ResidentialServiceLines.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
 		{
@@ -298,11 +314,13 @@ public class GUIController implements Initializable
 				}
 			}
 		});
-
+		
+		AccordionServices = new Accordion();
 	}
 
 	/**
 	 * Number cell factory which converts strings to numbers and vice versa.
+	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
 	 */
@@ -360,7 +378,7 @@ public class GUIController implements Initializable
 	 * 
 	 * Adds rows to TableView.
 	 * 
-	 * @param rowCount	Integer value of the rows to be added  
+	 * @param rowCount Integer value of the rows to be added
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
 	 */

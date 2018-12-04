@@ -27,11 +27,10 @@ public class Sets<V>
 		extends Variable<V> 
 			implements ISets, IVariable<V>{
 	
-	Set<String> _set;
-	List<String> _args;
+	Set<Sets> _set;
 	
 	/**
-	 * This is the set constructor used to create a set with a value argument
+	 * This is the set constructor used to create a Sets object with a value argument
 	 * 
 	 * @param name
 	 * @param id
@@ -56,11 +55,11 @@ public class Sets<V>
 				requiresInput, 
 				description, 
 				value);
-		this._buildSet(_args);
+		this._buildSet();
 	}
 
 	/**
-	 * This is the set constructor used create a set with no value argument 
+	 * This is the set constructor used create a Set object with no value argument 
 	 * 
 	 * @param name
 	 * @param id
@@ -83,62 +82,134 @@ public class Sets<V>
 				requiresInput, 
 				description, 
 				null);
-		this._buildSet(_args);
+		this._buildSet();
 	}
 	
 	/**
-	 * Construct initial hash set for the each set object
+	 * This is the set constructor used to create a Sets object with a value argument
 	 * 
-	 * @param args
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param value
+	 * @param set
+	 * 
+	 * @author Tristan Falcon
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Sets(
+			String name, 
+			String id, 
+			Boolean requiresInput, 
+			String description, 
+			V value,
+			Sets set) {
+		super(
+				name, 
+				id, 
+				requiresInput, 
+				description, 
+				value);
+		this._buildSet(set);
+	}
+	
+	/**
+	 * This is the set constructor used create a Set object with no value argument 
+	 * 
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param set
+	 * 
+	 * @author Tristan Falcon
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Sets(
+			String name, 
+			String id, 
+			Boolean requiresInput, 
+			String description,
+			Sets set) {
+		super(
+				name, 
+				id, 
+				requiresInput, 
+				description, 
+				null);
+		this._buildSet(set);
+	}
+	
+	/**
+	 * Initialize empty hash set for object 
 	 * 
 	 * @author Tristan Falcon
 	 * 
 	 * @since 1.0
 	 */
-	private void _buildSet(List<String> args) {
-		this._set = new HashSet<String>();
-		
-		for(String arg : args) {
-			this._set.add(arg);
-		}
-	}
-	
-	public void unionSets(HashSet<String> firstSet, HashSet<String> secondSet) {
-		
+	private void _buildSet() {
+		this._set = new HashSet<>();	
 	}
 	
 	/**
-	 * Method used to return the set of arguments for a set
+	 * Initialize hash set from passed set 
 	 * 
-	 * @param setID
+	 * @param set
 	 * 
 	 * @author Tristan Falcon
 	 * 
 	 * @since 1.0
 	 */
-	public List<String> getSet(HashSet<String> set) {
-		Iterator<String> iterator = set.iterator();
-		List<String> args = null;
+	private void _buildSet(Sets set) {
+		this._set = new HashSet<>();
 		
-		while(iterator.hasNext()) {
-			args.add(iterator.next());
-		}
-		
-		return args;		
+		this.addSet(set);
+	}
+	
+	/**
+	 * Add a set to a sets object 
+	 * 
+	 * @param sets
+	 * 
+	 * @since 1.0
+	 */
+	public void addSet(Sets set) {
+		this._set.add(set);
+	}
+	
+	/**
+	 * 
+	 * @return Set<Sets>
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public Set<Sets> getSet() {
+		return this._set;
 	}
 	
 	/**
 	 * ISet method used to get final value of a set
 	 * 
-	 * @param setID
 	 * @return Double
 	 * 
 	 * @author Tristan Falcon
 	 * 
 	 * @since 1.0
 	 */
-	public Double GetSetValue(String setID) {
-		return null;
+	public Double getSetValue() {
+		if(this.GetValue() != null) {
+			return (Double) this.GetValue();
+		}
+		
+		else {
+			
+		}
 	}
-
 }

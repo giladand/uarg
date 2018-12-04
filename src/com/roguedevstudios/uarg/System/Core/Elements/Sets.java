@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ISets;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 
 
 /**
@@ -27,7 +28,8 @@ public class Sets<V>
 		extends Variable<V> 
 			implements ISets, IVariable<V>{
 	
-	Set<Sets> _set;
+	public Set<Sets<V>> _set;
+	IVariable<? extends Number>[] varContainer;
 	
 	/**
 	 * This is the set constructor used to create a Sets object with a value argument
@@ -106,7 +108,7 @@ public class Sets<V>
 			Boolean requiresInput, 
 			String description, 
 			V value,
-			Sets set) {
+			Sets<V> set) {
 		super(
 				name, 
 				id, 
@@ -135,7 +137,7 @@ public class Sets<V>
 			String id, 
 			Boolean requiresInput, 
 			String description,
-			Sets set) {
+			Sets<V> set) {
 		super(
 				name, 
 				id, 
@@ -165,7 +167,7 @@ public class Sets<V>
 	 * 
 	 * @since 1.0
 	 */
-	private void _buildSet(Sets set) {
+	private void _buildSet(Sets<V> set) {
 		this._set = new HashSet<>();
 		
 		this.addSet(set);
@@ -190,7 +192,7 @@ public class Sets<V>
 	 * 
 	 * @since 1.0
 	 */
-	public Set<Sets> getSet() {
+	public Set<Sets<V>> getSet() {
 		return this._set;
 	}
 	
@@ -204,12 +206,24 @@ public class Sets<V>
 	 * @since 1.0
 	 */
 	public Double getSetValue() {
+		
+		
+		int containerSize = this._set.size();
+		varContainer = (IVariable<? extends Number>[]) new IVariable<?>[containerSize];
+		
+		for(Sets set : this._set) {
+		
+		}
+		
 		if(this.GetValue() != null) {
 			return (Double) this.GetValue();
 		}
 		
 		else {
-			
+			for(int i = 0; i < containerSize; i++)
+			{
+				varContainer[i] = (IVariable<? extends Number>[]) ;
+			}
 		}
 	}
 }

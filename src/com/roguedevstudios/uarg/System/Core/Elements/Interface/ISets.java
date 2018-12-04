@@ -18,11 +18,16 @@ import com.roguedevstudios.uarg.System.Core.Elements.Sets;
 /**
  * Interface representing requirements for Set class
  * 
+ * 
  * @author John Mai
+ * 
+ * @param <V>
+ * 
  * @since 1.0
  */
-public interface ISets {
-	void addSet(Sets set);
-	Set<Sets> getSet();
+
+public interface ISets<V> {
+	void addSet(Sets<V> set);
+	Set<Sets<V>> getSet();
 	Double getSetValue();
 }

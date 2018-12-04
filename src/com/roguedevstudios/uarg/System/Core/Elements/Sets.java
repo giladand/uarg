@@ -25,10 +25,9 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  */
 public class Sets<V> 
 		extends Variable<V> 
-			implements ISets, IVariable<V>{
+			implements ISets<V>, IVariable<V>{
 	
-	Set<String> _set;
-	List<String> _args;
+	Set<Sets<V>> _set;
 	
 	/**
 	 * This is the set constructor used to create a set with a value argument
@@ -49,14 +48,15 @@ public class Sets<V>
 			String id, 
 			Boolean requiresInput, 
 			String description, 
-			V value) {
+			V value,
+			Set<String> set) {
 		super(
 				name, 
 				id, 
 				requiresInput, 
 				description, 
 				value);
-		this._buildSet(_args);
+		this._buildSet();
 	}
 
 	/**
@@ -76,55 +76,72 @@ public class Sets<V>
 			String name, 
 			String id, 
 			Boolean requiresInput, 
-			String description) {
+			String description,
+			Set<String> set) {
 		super(
 				name, 
 				id, 
 				requiresInput, 
 				description, 
 				null);
-		this._buildSet(_args);
+		this._buildSet();
 	}
 	
 	/**
-	 * Construct initial hash set for the each set object
-	 * 
-	 * @param args
+	 * Initialize empty hash set for object 
 	 * 
 	 * @author Tristan Falcon
 	 * 
 	 * @since 1.0
 	 */
-	private void _buildSet(List<String> args) {
-		this._set = new HashSet<String>();
-		
-		for(String arg : args) {
-			this._set.add(arg);
-		}
-	}
-	
-	public void unionSets(HashSet<String> firstSet, HashSet<String> secondSet) {
-		
+	private void _buildSet() {
+		this._set = new HashSet<>();	
 	}
 	
 	/**
-	 * Method used to return the set of arguments for a set
+	 * Add a set to a sets object 
 	 * 
-	 * @param setID
+	 * @param sets
+	 * 
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	
+	public void addSets(Sets<V> set) {
+		this._set.add(set);
+	}
+	
+	/**
+	 * @return the _set
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Set<Sets<V>> get_set() {
+		return this._set;
+	}
+
+	/**
+	 * @param _set the _set to set
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public void set_set(Set<Sets<V>> _set) {
+		this._set = _set;
+	}
+
+	/**
+	 * 
+	 * @return Set<Sets>
 	 * 
 	 * @author Tristan Falcon
 	 * 
 	 * @since 1.0
 	 */
-	public List<String> getSet(HashSet<String> set) {
-		Iterator<String> iterator = set.iterator();
-		List<String> args = null;
-		
-		while(iterator.hasNext()) {
-			args.add(iterator.next());
-		}
-		
-		return args;		
+	public Set<Sets<V>> getSet() {
+		return this._set;
 	}
 	
 	/**
@@ -137,7 +154,7 @@ public class Sets<V>
 	 * 
 	 * @since 1.0
 	 */
-	public Double GetSetValue(String setID) {
+	public Double getSetValue() {
 		return null;
 	}
 

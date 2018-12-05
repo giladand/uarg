@@ -26,7 +26,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
  */
 public class Sets<V> 
 		extends Variable<V> 
-			implements ISets, IVariable<V>{
+			implements ISets<V>, IVariable<V>{
 	
 	public Set<Sets<V>> _set;
 	IVariable<? extends Number>[] varContainer;
@@ -170,7 +170,7 @@ public class Sets<V>
 	private void _buildSet(Sets<V> set) {
 		this._set = new HashSet<>();
 		
-		this.addSet(set);
+		this.addSets(set);
 	}
 	
 	/**
@@ -180,7 +180,7 @@ public class Sets<V>
 	 * 
 	 * @since 1.0
 	 */
-	public void addSet(Sets set) {
+	public void addSets(Sets<V> set) {
 		this._set.add(set);
 	}
 	
@@ -206,24 +206,13 @@ public class Sets<V>
 	 * @since 1.0
 	 */
 	public Double getSetValue() {
-		
-		
-		int containerSize = this._set.size();
-		varContainer = (IVariable<? extends Number>[]) new IVariable<?>[containerSize];
-		
-		for(Sets set : this._set) {
-		
-		}
-		
 		if(this.GetValue() != null) {
 			return (Double) this.GetValue();
 		}
 		
-		else {
-			for(int i = 0; i < containerSize; i++)
-			{
-				varContainer[i] = (IVariable<? extends Number>[]) ;
-			}
+		else
+		{
+			varContainer = (IVariable<? extends Number>[]) this._set.toArray(new Sets[this._set.size()]);
 		}
 	}
 }

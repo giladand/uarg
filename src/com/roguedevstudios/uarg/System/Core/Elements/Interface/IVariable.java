@@ -1,4 +1,7 @@
 package com.roguedevstudios.uarg.System.Core.Elements.Interface;
+
+import com.roguedevstudios.uarg.System.Core.Elements.Formula;
+
 /********************************
 *   IVariable Interface		    *
 *   File Name: IVariable.java   *
@@ -58,6 +61,18 @@ public interface IVariable<V>
 	
 	/**
 	 * 
+	 * Gets the Formula object of this Variable
+	 * 
+	 * @return RequiresInput
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	Formula GetFormula();
+	
+	/**
+	 * 
 	 * Checks if variable is independent
 	 * 
 	 * @return RequiresInput
@@ -109,4 +124,16 @@ public interface IVariable<V>
 	 * @since 1.0
 	 */
 	void SetValue( V value );
+	
+	/**
+	 * 
+	 * Sets the formula of this variable
+	 * 
+	 * @param formula, Formula object referenced by this variable
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	void SetFormula( Formula formula );
 }

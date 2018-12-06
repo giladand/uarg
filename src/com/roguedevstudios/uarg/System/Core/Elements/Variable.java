@@ -14,6 +14,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
 
 /**
  * A representation of variables implementing IVariable with added metadata.
+ * @author Tristan Falcon
  * @author Terry Roberson
  * @author Christopher E. Howard
  * @since 1.0
@@ -36,6 +37,8 @@ public class Variable<V>
 	
 	/* Whether this Variable is independent or dependent */
 	private Boolean _requiresInput;
+	
+	private Formula _formula;
 
 	/**
 	 * 
@@ -87,7 +90,81 @@ public class Variable<V>
 					 
 	{
 			// Call the build method with null as the value
-			this._build(name, id, requiresInput, description, null);
+			this._build(name, 
+						id, 
+						requiresInput, 
+						description, 
+						null);
+		
+	}
+	
+	/**
+	 * 
+	 * Constructs a Variable object with a known value and a formula
+	 * 
+	 * @param name	String name of this variable   
+	 * @param id	String ID of this variable
+	 * @param requiresInput	Whether this variable is dependent         
+	 * @param description	Description of this variable
+	 * @param value	Initial value of this variable
+	 * @param formula, Formula object, representing formula of this variable
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public Variable(
+					 String name, 
+					 String id, 
+					 Boolean requiresInput, 
+					 String description, 
+					 V value,
+					 Formula formula
+				   ) 
+	{
+
+		this._build(
+					name, 
+					id, 
+					requiresInput, 
+					description, 
+					value,
+					formula
+				  );
+
+	}
+
+	/**
+	 * 
+	 * Constructs a Variable object with an unknown value and a formula
+	 * 
+	 * @param name String name of this variable
+	 * @param id String ID of this variable
+	 * @param requiresInput Whether this variable is dependent
+	 * @param description Description of this variable
+	 * @param formula, Formula object, representing the formula of this variable
+	 * @throws Exception Passes back unknown exceptions in case of incompatible null typing of Generic
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public Variable(
+					 String name, 
+					 String id, 
+					 Boolean requiresInput, 
+					 String description,
+					 Formula formula
+					) 
+					 
+	{
+			// Call the build method with null as the value
+			this._build(name, 
+						id, 
+						requiresInput, 
+						description, 
+						null, 
+						formula);
 		
 	}
 
@@ -140,6 +217,34 @@ public class Variable<V>
 		this._value = value;
 		this._description = description;
 		
+	}
+	
+	/**
+	 * 
+	 * Builds the Variable object internals with initial values with a Formula
+	 * 
+	 * @param name String name of this variable
+	 * @param id String ID of this variable
+	 * @param requiresInput Whether this variable is independent
+	 * @param description Description of this variable
+	 * @param value Initial value of this variable
+	 * @since 1.0
+	 */
+	private void _build(
+						 String name, 
+						 String id, 
+						 Boolean requiresInput, 
+						 String description, 
+						 V value,
+						 Formula formula)
+	{
+		
+		this._name = name;
+		this._id = id;
+		this._requiresInput = requiresInput;
+		this._value = value;
+		this._description = description;
+		this._formula = formula;
 	}
 
 	/**
@@ -206,6 +311,22 @@ public class Variable<V>
 		return this._requiresInput;
 		
 	}
+	
+	/**
+	 * 
+	 * Gets the Formula of a Variable
+	 * 
+	 * @return Value
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public Formula GetFormula() {
+		
+		return this._formula;
+		
+	}
 
 	/**
 	 * 
@@ -269,6 +390,22 @@ public class Variable<V>
 	public void SetValue( V value ) {
 		
 		this._value = value;
+		
+	}
+	
+	/**
+	 * 
+	 * Sets the formula of this Variable
+	 * 
+	 * @param formula
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	public void SetFormula(Formula formula) {
+		
+		this._formula = formula;
 		
 	}
 

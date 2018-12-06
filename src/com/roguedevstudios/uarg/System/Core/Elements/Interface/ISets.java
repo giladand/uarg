@@ -29,5 +29,5 @@ import com.roguedevstudios.uarg.System.Core.Elements.Sets;
 public interface ISets<V> {
 	void addSets(Sets<V> set);
 	Set<Sets<V>> getSet();
-	Double getSetValue();
+	void setSets(Set<Sets<V>> set);
 }

@@ -11,13 +11,12 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.ISets;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 
-
 /**
  * This is the Sets class. This class implements ISets and models the sets of rows,
  * containing formulas and their respective variables, 
  * and also the sets of columns containing formula sets and their respective formulas. 
  * 
- * Extended Variable and the Interface as well as making Set a generic type of V
+ * Sets extendeds Variable, implements IVariable as well as making Set a generic type of V
  * 
  * @author Tristan Falcon
  * @author John Mai
@@ -178,6 +177,8 @@ public class Sets<V>
 	 * 
 	 * @param sets
 	 * 
+	 * @author Tristan Falcon
+	 * 
 	 * @since 1.0
 	 */
 	public void addSets(Sets<V> set) {
@@ -185,6 +186,7 @@ public class Sets<V>
 	}
 	
 	/**
+	 * gets the set of a sets object
 	 * 
 	 * @return Set<Sets>
 	 * 
@@ -197,22 +199,15 @@ public class Sets<V>
 	}
 	
 	/**
-	 * ISet method used to get final value of a set
+	 * changes the set of a sets object
 	 * 
-	 * @return Double
+	 * @param set
 	 * 
 	 * @author Tristan Falcon
 	 * 
 	 * @since 1.0
 	 */
-	public Double getSetValue() {
-		if(this.GetValue() != null) {
-			return (Double) this.GetValue();
-		}
-		
-		else
-		{
-			varContainer = (IVariable<? extends Number>[]) this._set.toArray(new Sets[this._set.size()]);
-		}
+	public void setSets(Set<Sets<V>> set) {
+		this._set = set;
 	}
 }

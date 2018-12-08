@@ -31,7 +31,7 @@ public class Sets<V>
 	IVariable<? extends Number>[] varContainer;
 	
 	/**
-	 * This is the set constructor used to create a Sets object with a value argument
+	 * This is the set constructor used to create a Sets object with a value, and a Sets reference
 	 * 
 	 * @param name
 	 * @param id
@@ -60,7 +60,7 @@ public class Sets<V>
 	}
 
 	/**
-	 * This is the set constructor used create a Set object with no value argument 
+	 * This is the set constructor used create a Set object with no value, and not Sets reference 
 	 * 
 	 * @param name
 	 * @param id
@@ -81,13 +81,73 @@ public class Sets<V>
 				name, 
 				id, 
 				requiresInput, 
-				description, 
-				null);
+				description);
 		this._buildSet();
 	}
 	
 	/**
-	 * This is the set constructor used to create a Sets object with a value argument
+	 * This is the set constructor used to create a Sets object with a value, formula reference, and no Sets reference
+	 * 
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param value
+	 * @param formulaID
+	 * 
+	 * @author Tristan Falcon
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Sets(
+			String name, 
+			String id, 
+			Boolean requiresInput, 
+			String description, 
+			V value,
+			String formulaID) {
+		super(
+				name, 
+				id, 
+				requiresInput, 
+				description, 
+				value,
+				formulaID);
+		this._buildSet();
+	}
+	
+	/**
+	 * This is the set constructor used create a Set object with no value, a formula reference, and no Sets referene
+	 * 
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param formulaID
+	 * 
+	 * @author Tristan Falcon
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Sets(
+			String name, 
+			String id, 
+			Boolean requiresInput, 
+			String description,
+			String formulaID) {
+		super(
+				name, 
+				id, 
+				requiresInput, 
+				description,
+				formulaID);
+		this._buildSet();
+	}
+	
+	/**
+	 * This is the set constructor used to create a Sets object with a value, and Sets reference
 	 * 
 	 * @param name
 	 * @param id
@@ -118,7 +178,7 @@ public class Sets<V>
 	}
 	
 	/**
-	 * This is the set constructor used create a Set object with no value argument 
+	 * This is the set constructor used create a Set object with no value, and Sets reference
 	 * 
 	 * @param name
 	 * @param id
@@ -141,9 +201,115 @@ public class Sets<V>
 				name, 
 				id, 
 				requiresInput, 
-				description, 
-				null);
+				description);
 		this._buildSet(set);
+	}
+	
+	/**
+	 * This is the set constructor used to create a Sets object with a value, formula reference, and sets reference
+	 * 
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param value
+	 * @param formulaID
+	 * @param set
+	 * 
+	 * @author Tristan Falcon
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Sets(
+			String name, 
+			String id, 
+			Boolean requiresInput, 
+			String description, 
+			V value,
+			String formulaID,
+			Sets<V> set) {
+		super(
+				name, 
+				id, 
+				requiresInput, 
+				description, 
+				value,
+				formulaID);
+		this._buildSet(set);
+	}
+	
+	/**
+	 * This is the set constructor used to create a Sets object with no value, formula reference, and sets reference
+	 * 
+	 * @param name
+	 * @param id
+	 * @param requiresInput
+	 * @param description
+	 * @param value
+	 * @param formulaID
+	 * @param set
+	 * 
+	 * @author Tristan Falcon
+	 * @author John Mai
+	 * 
+	 * @since 1.0
+	 */
+	public Sets(
+			String name, 
+			String id, 
+			Boolean requiresInput, 
+			String description, 
+			String formulaID,
+			Sets<V> set) {
+		super(
+				name, 
+				id, 
+				requiresInput, 
+				description, 
+				formulaID);
+		this._buildSet(set);
+	}
+	
+	/**
+	 * Over write to string method to display the meta-data of a Sets object
+	 * 
+	 * @author Tristan Falcon
+	 * 
+	 * @since 1.0
+	 */
+	@Override
+	public String toString() {
+		String _name = this.GetName();
+		String _id = this.GetId();
+		Boolean _requiresInput = this.IsRequiredInput();
+		String _description = this.GetDescription();
+		
+		String val;
+		if(this.GetValue().getClass().isArray()) {
+			val = "( Array of "+ this.GetValue().getClass().getComponentType()+" )[ ";
+			int i = 0;
+			if(((Object[])this.GetValue()).length>0) {
+			for(Object o : (Object[])this.GetValue()){
+				if(o == null)
+					break;
+				val = val + o.toString();
+				i++;
+				if(i != ((Object[])this.GetValue()).length)
+					val = val + ", ";
+			}
+			}
+			val = val + " ]";
+		}else {
+			val = this.GetValue().toString();
+		}
+		
+		return "name= " + _name +
+				", id= " + _id + 
+				", value= " + val + 
+				", requires input= " + _requiresInput +
+				", description= " + _description +
+				", set= " + _set;
 	}
 	
 	/**
@@ -186,7 +352,7 @@ public class Sets<V>
 	}
 	
 	/**
-	 * gets the set of a sets object
+	 * Gets the set of a sets object
 	 * 
 	 * @return Set<Sets>
 	 * 
@@ -199,7 +365,7 @@ public class Sets<V>
 	}
 	
 	/**
-	 * changes the set of a sets object
+	 * Changes the set of a sets object
 	 * 
 	 * @param set
 	 * 

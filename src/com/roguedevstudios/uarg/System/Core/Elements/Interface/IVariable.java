@@ -69,7 +69,7 @@ public interface IVariable<V>
 	 * 
 	 * @since 1.0
 	 */
-	Formula GetFormula();
+	String GetFormula();
 	
 	/**
 	 * 
@@ -135,5 +135,5 @@ public interface IVariable<V>
 	 * 
 	 * @since 1.0
 	 */
-	void SetFormula( Formula formula );
+	void SetFormula( String formulaID );
 }

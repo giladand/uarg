@@ -14,9 +14,11 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
 
 /**
  * A representation of variables implementing IVariable with added metadata.
+ * 
  * @author Tristan Falcon
  * @author Terry Roberson
  * @author Christopher E. Howard
+ * 
  * @since 1.0
  */
 public class Variable<V> 
@@ -38,7 +40,8 @@ public class Variable<V>
 	/* Whether this Variable is independent or dependent */
 	private Boolean _requiresInput;
 	
-	private Formula _formula;
+	/* The formula id for the Formula object referenced by the Variable */
+	private String _formulaID;
 
 	/**
 	 * 
@@ -49,6 +52,7 @@ public class Variable<V>
 	 * @param requiresInput	Whether this variable is dependent         
 	 * @param description	Description of this variable
 	 * @param value	Initial value of this variable
+	 * 
 	 * @since 1.0
 	 */
 	public Variable(
@@ -79,6 +83,7 @@ public class Variable<V>
 	 * @param requiresInput Whether this variable is dependent
 	 * @param description Description of this variable
 	 * @throws Exception Passes back unknown exceptions in case of incompatible null typing of Generic
+	 * 
 	 * @since 1.0
 	 */
 	public Variable(
@@ -100,7 +105,7 @@ public class Variable<V>
 	
 	/**
 	 * 
-	 * Constructs a Variable object with a known value and a formula
+	 * Constructs a Variable object with a known value and a formula reference
 	 * 
 	 * @param name	String name of this variable   
 	 * @param id	String ID of this variable
@@ -119,7 +124,7 @@ public class Variable<V>
 					 Boolean requiresInput, 
 					 String description, 
 					 V value,
-					 Formula formula
+					 String formulaID
 				   ) 
 	{
 
@@ -129,14 +134,14 @@ public class Variable<V>
 					requiresInput, 
 					description, 
 					value,
-					formula
+					formulaID
 				  );
 
 	}
 
 	/**
 	 * 
-	 * Constructs a Variable object with an unknown value and a formula
+	 * Constructs a Variable object with an unknown value and a formula reference
 	 * 
 	 * @param name String name of this variable
 	 * @param id String ID of this variable
@@ -154,7 +159,7 @@ public class Variable<V>
 					 String id, 
 					 Boolean requiresInput, 
 					 String description,
-					 Formula formula
+					 String formulaID
 					) 
 					 
 	{
@@ -164,7 +169,7 @@ public class Variable<V>
 						requiresInput, 
 						description, 
 						null, 
-						formula);
+						formulaID);
 		
 	}
 
@@ -236,7 +241,7 @@ public class Variable<V>
 						 Boolean requiresInput, 
 						 String description, 
 						 V value,
-						 Formula formula)
+						 String formulaID)
 	{
 		
 		this._name = name;
@@ -244,7 +249,7 @@ public class Variable<V>
 		this._requiresInput = requiresInput;
 		this._value = value;
 		this._description = description;
-		this._formula = formula;
+		this._formulaID = formulaID;
 	}
 
 	/**
@@ -322,9 +327,9 @@ public class Variable<V>
 	 * 
 	 * @since 1.0
 	 */
-	public Formula GetFormula() {
+	public String GetFormula() {
 		
-		return this._formula;
+		return this._formulaID;
 		
 	}
 
@@ -403,9 +408,9 @@ public class Variable<V>
 	 * 
 	 * @since 1.0
 	 */
-	public void SetFormula(Formula formula) {
+	public void SetFormula(String formulaID) {
 		
-		this._formula = formula;
+		this._formulaID = formulaID;
 		
 	}
 

@@ -28,7 +28,6 @@ public class Sets<V>
 			implements ISets<V>, IVariable<V>{
 	
 	public Set<Sets<V>> _set;
-	IVariable<? extends Number>[] varContainer;
 	
 	/**
 	 * This is the set constructor used to create a Sets object with a value, and a Sets reference

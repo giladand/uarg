@@ -16,6 +16,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Formula;
  * 
  * Interface representing Variable requirements
  * 
+ * @author Tristan Falcon
  * @author Christopher E. Howard
  * @author Terry Roberson
  * @since 1.0

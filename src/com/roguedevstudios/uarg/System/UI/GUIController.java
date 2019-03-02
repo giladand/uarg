@@ -270,12 +270,18 @@ public class GUIController implements Initializable
 		scene.getStylesheets().add(getClass().getResource("/com/roguedevstudios/uarg/System/UI/Resources/BlueOnYellow.css").toExternalForm());
 	}
 
+	/**
+	 * 
+	 * Adds a new service to the AccordionServices Object.
+	 * 
+	 * @since 1.0
+	 * @author Marko S. Bachynsky
+	 */
 	public void AddServiceAction(ActionEvent event)
 	{
-
-		TitledPane testpane = new TitledPane("wow", AccordionServices);
-		AccordionServices.getPanes().add(testpane);
-		System.out.println("Clicked");
+		Service serviceObject = new Service();
+		TitledPane tbPane = serviceObject.createService();
+		AccordionServices.getPanes().addAll(tbPane);
 	}
 
 	/**
@@ -315,7 +321,6 @@ public class GUIController implements Initializable
 			}
 		});
 		
-		AccordionServices = new Accordion();
 	}
 
 	/**

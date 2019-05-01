@@ -6,7 +6,7 @@ import org.junit.*;
 import java.util.*;
 import com.google.gson.*;
 import com.roguedevstudios.uarg.JSON.Parser.Serializer.ParserHelpers;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 /**
  * <p>
@@ -531,7 +531,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse IntX from the Integers section into an IVariable<Integer> compliant container
-		IVariable<Integer> testVar = ParserHelpers.
+		IFact<Integer> testVar = ParserHelpers.
 										ParseIntegerVariable(
 												this.getVariableCondition(
 														"Integers", "IntX"), 
@@ -566,7 +566,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse IntX from the Integers section into an IVariable<Integer> compliant container
-		IVariable<Integer[]> testVar = ParserHelpers.
+		IFact<Integer[]> testVar = ParserHelpers.
 										ParseIntegerArrayVariable(
 												this.getVariableCondition(
 														"IntegerArrays", "Int[]X"), 
@@ -609,7 +609,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Integer Section into a TreeMap
-		TreeMap<String, IVariable<Integer>> section = ParserHelpers.
+		TreeMap<String, IFact<Integer>> section = ParserHelpers.
 														ParseIntegerVariableSection(
 																this.getSectionCondition(
 																		"Integers"));
@@ -625,7 +625,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Integer Section into a TreeMap
-		TreeMap<String, IVariable<Integer[]>> section = ParserHelpers.
+		TreeMap<String, IFact<Integer[]>> section = ParserHelpers.
 														ParseIntegerArrayVariableSection(
 																this.getSectionCondition(
 																		"IntegerArrays"));
@@ -642,7 +642,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse StringX, StringY, StringZ from the Strings section into an IVariable<String> compliant container
-		IVariable<String> testVar = ParserHelpers.
+		IFact<String> testVar = ParserHelpers.
 										ParseStringVariable(
 												this.getVariableCondition(
 														"Strings", "StringX"), 
@@ -675,7 +675,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse StringX from the Strings section into an IVariable<String> compliant container
-		IVariable<String[]> testVar = ParserHelpers.
+		IFact<String[]> testVar = ParserHelpers.
 										ParseStringArrayVariable(
 												this.getVariableCondition(
 														"StringArrays", "String[]X"), 
@@ -718,7 +718,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse String Section into a TreeMap
-		TreeMap<String, IVariable<String>> section = ParserHelpers.
+		TreeMap<String, IFact<String>> section = ParserHelpers.
 														ParseStringVariableSection(
 																this.getSectionCondition(
 																		"Strings"));
@@ -735,7 +735,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse String Section into a TreeMap
-		TreeMap<String, IVariable<String[]>> section = ParserHelpers.
+		TreeMap<String, IFact<String[]>> section = ParserHelpers.
 														ParseStringArrayVariableSection(
 																this.getSectionCondition(
 																		"StringArrays"));
@@ -752,7 +752,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse DoubleX from the Doubles section into an IVariable<Double> compliant container
-		IVariable<Double> testVar = ParserHelpers.
+		IFact<Double> testVar = ParserHelpers.
 										ParseDoubleVariable(
 												this.getVariableCondition(
 														"Doubles", "DoubleX"), 
@@ -786,7 +786,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse IntX from the Doubles section into an IVariable<Double> compliant container
-		IVariable<Double[]> testVar = ParserHelpers.
+		IFact<Double[]> testVar = ParserHelpers.
 										ParseDoubleArrayVariable(
 												this.getVariableCondition(
 														"DoubleArrays", "Double[]X"), 
@@ -830,7 +830,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Double Section into a TreeMap
-		TreeMap<String, IVariable<Double>> section = ParserHelpers.
+		TreeMap<String, IFact<Double>> section = ParserHelpers.
 														ParseDoubleVariableSection(
 																this.getSectionCondition(
 																		"Doubles"));
@@ -847,7 +847,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Double Section into a TreeMap
-		TreeMap<String, IVariable<Double[]>> section = ParserHelpers.
+		TreeMap<String, IFact<Double[]>> section = ParserHelpers.
 														ParseDoubleArrayVariableSection(
 																this.getSectionCondition(
 																		"DoubleArrays"));
@@ -864,7 +864,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse LongX from the Longs section into an IVariable<Long> compliant container
-		IVariable<Long> testVar = ParserHelpers.
+		IFact<Long> testVar = ParserHelpers.
 										ParseLongVariable(
 												this.getVariableCondition(
 														"Longs", "LongX"), 
@@ -899,7 +899,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse LongX from the Longs section into an IVariable<Long> compliant container
-		IVariable<Long[]> testVar = ParserHelpers.
+		IFact<Long[]> testVar = ParserHelpers.
 										ParseLongArrayVariable(
 												this.getVariableCondition(
 														"LongArrays", "Long[]X"), 
@@ -942,7 +942,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Long Section into a TreeMap
-		TreeMap<String, IVariable<Long>> section = ParserHelpers.
+		TreeMap<String, IFact<Long>> section = ParserHelpers.
 														ParseLongVariableSection(
 																this.getSectionCondition(
 																		"Longs"));
@@ -959,7 +959,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Long Section into a TreeMap
-		TreeMap<String, IVariable<Long[]>> section = ParserHelpers.
+		TreeMap<String, IFact<Long[]>> section = ParserHelpers.
 														ParseLongArrayVariableSection(
 																this.getSectionCondition(
 																		"LongArrays"));
@@ -976,7 +976,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse FloatX from the Floats section into an IVariable<Float> compliant container
-		IVariable<Float> testVar = ParserHelpers.
+		IFact<Float> testVar = ParserHelpers.
 										ParseFloatVariable(
 												this.getVariableCondition(
 														"Floats", "FloatX"), 
@@ -1011,7 +1011,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse Floats section into an IVariable<Float> compliant container
-		IVariable<Float[]> testVar = ParserHelpers.
+		IFact<Float[]> testVar = ParserHelpers.
 										ParseFloatArrayVariable(
 												this.getVariableCondition(
 														"FloatArrays", "Float[]X"), 
@@ -1054,7 +1054,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Float Section into a TreeMap
-		TreeMap<String, IVariable<Float>> section = ParserHelpers.
+		TreeMap<String, IFact<Float>> section = ParserHelpers.
 														ParseFloatVariableSection(
 																this.getSectionCondition(
 																		"Floats"));
@@ -1071,7 +1071,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Float Section into a TreeMap
-		TreeMap<String, IVariable<Float[]>> section = ParserHelpers.
+		TreeMap<String, IFact<Float[]>> section = ParserHelpers.
 														ParseFloatArrayVariableSection(
 																this.getSectionCondition(
 																		"FloatArrays"));
@@ -1088,7 +1088,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse BoolX from the Booleans section into an IVariable<Boolean> compliant container
-		IVariable<Boolean> testVar = ParserHelpers.
+		IFact<Boolean> testVar = ParserHelpers.
 										ParseBooleanVariable(
 												this.getVariableCondition(
 														"Booleans", "BoolX"), 
@@ -1123,7 +1123,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();	
 		// Parse BoolX from the Booleans section into an IVariable<Boolean> compliant container
-		IVariable<Boolean[]> testVar = ParserHelpers.
+		IFact<Boolean[]> testVar = ParserHelpers.
 										ParseBooleanArrayVariable(
 												this.getVariableCondition(
 														"BooleanArrays", "Bool[]X"), 
@@ -1166,7 +1166,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Boolean Section into a TreeMap
-		TreeMap<String, IVariable<Boolean>> section = ParserHelpers.
+		TreeMap<String, IFact<Boolean>> section = ParserHelpers.
 														ParseBooleanVariableSection(
 																this.getSectionCondition(
 																		"Booleans"));
@@ -1183,7 +1183,7 @@ public class ParserHelpersTests {
 		// Convert elements to a JsonTree
 		Gson g = new Gson();
 		// Parse Boolean Section into a TreeMap
-		TreeMap<String, IVariable<Boolean[]>> section = ParserHelpers.
+		TreeMap<String, IFact<Boolean[]>> section = ParserHelpers.
 														ParseBooleanArrayVariableSection(
 																this.getSectionCondition(
 																		"BooleanArrays"));

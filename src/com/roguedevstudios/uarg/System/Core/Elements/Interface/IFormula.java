@@ -25,8 +25,8 @@ public interface IFormula {
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Integer CalculateToInteger(IVariable<? extends Number>[] vars);
-	Integer[] CalculateToInteger(IVariable<?>[] vars, boolean ArrayPresent);
+	Integer CalculateToInteger(IFact<? extends Number>[] vars);
+	Integer[] CalculateToInteger(IFact<?>[] vars, boolean ArrayPresent);
 	/**
 	 * Takes in an array of Number based Variables and
 	 * processes them through this formula returning a
@@ -34,8 +34,8 @@ public interface IFormula {
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Double CalculateToDouble(IVariable<? extends Number>[] vars);
-	Double[] CalculateToDouble(IVariable<?>[] vars, boolean ArrayPresent);
+	Double CalculateToDouble(IFact<? extends Number>[] vars);
+	Double[] CalculateToDouble(IFact<?>[] vars, boolean ArrayPresent);
 	/**
 	 * Takes in an array of Number based Variables and
 	 * processes them through this formula returning a
@@ -43,8 +43,8 @@ public interface IFormula {
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Float CalculateToFloat(IVariable<? extends Number>[] vars);
-	Float[] CalculateToFloat(IVariable<?>[] vars, boolean ArrayPresent);
+	Float CalculateToFloat(IFact<? extends Number>[] vars);
+	Float[] CalculateToFloat(IFact<?>[] vars, boolean ArrayPresent);
 	/**
 	 * Takes in an array of Number based Variables and
 	 * processes them through this formula returning a
@@ -52,8 +52,8 @@ public interface IFormula {
 	 * @param vars	An array of Variable objects.
 	 * @return
 	 */
-	Long CalculateToLong(IVariable<? extends Number>[] vars);
-	Long[] CalculateToLong(IVariable<?>[] vars, boolean ArrayPresent);
+	Long CalculateToLong(IFact<? extends Number>[] vars);
+	Long[] CalculateToLong(IFact<?>[] vars, boolean ArrayPresent);
 	/**
 	 * Gets the array size expected when passing arguments
 	 * to be processed by this formula.

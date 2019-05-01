@@ -29,7 +29,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Boolean> GetBoolean(String key);
+	IFact<Boolean> GetBoolean(String key);
 	
 	/**
 	 * 
@@ -38,7 +38,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Boolean[]> GetBooleanArray(String key);
+	IFact<Boolean[]> GetBooleanArray(String key);
 	
 	/**
 	 * Gets the id for _doubleMap
@@ -46,7 +46,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Double> GetDouble(String key);
+	IFact<Double> GetDouble(String key);
 	
 	/**
 	 * Gets the id for _doubleArrayMap
@@ -54,7 +54,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Double[]> GetDoubleArray(String key);
+	IFact<Double[]> GetDoubleArray(String key);
 	
 	/**
 	 * Gets the id for _floatMap
@@ -62,7 +62,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Float> GetFloat(String key);
+	IFact<Float> GetFloat(String key);
 	
 	/**
 	 * Gets the id for _floatArrayMap
@@ -70,7 +70,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Float[]> GetFloatArray(String key);
+	IFact<Float[]> GetFloatArray(String key);
 	
 	/**
 	 * Gets the id for _integerMap
@@ -78,14 +78,14 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Integer> GetInteger(String key);
+	IFact<Integer> GetInteger(String key);
 	
 	/**
 	 * Gets the id for _integerArrayMap
 	 * @param id	 the id associated with the map
 	 * @since 1.0
 	 */
-	IVariable<Integer[]> GetIntegerArray(String key);
+	IFact<Integer[]> GetIntegerArray(String key);
 	
 	/**
 	 * Gets the id for _longMap
@@ -93,7 +93,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Long> GetLong(String key);
+	IFact<Long> GetLong(String key);
 	
 	/**
 	 * Gets the id for _longArrayMap
@@ -101,7 +101,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<Long[]> GetLongArray(String key);
+	IFact<Long[]> GetLongArray(String key);
 	
 	/**
 	 * Gets the id for _stringMap
@@ -109,7 +109,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<String> GetString(String key);
+	IFact<String> GetString(String key);
 	
 	/**
 	 * Gets the id for _stringArrayMap
@@ -117,7 +117,7 @@ public interface IVariables {
 	 * @return id
 	 * @since 1.0
 	 */
-	IVariable<String[]> GetStringArray(String key);
+	IFact<String[]> GetStringArray(String key);
 	
 	/**
 	 * Determines the value type for a Variable
@@ -125,7 +125,7 @@ public interface IVariables {
 	 * @param variable
 	 * @param Type
 	 */
-	void SetVariable(String key, IVariable<?> variable, VariableType Type);
+	void SetVariable(String key, IFact<?> variable, VariableType Type);
 	
 	/**
 	 * updates the value of a boolean variable
@@ -225,8 +225,8 @@ public interface IVariables {
 	
 	VariableType GetVariableType(String ID);
 	int GetIntegerCount();
-	IVariable<?> GetVariable(String ID);
-	List<IVariable<?>> GetVariables(List<String> IDSet);
+	IFact<?> GetVariable(String ID);
+	List<IFact<?>> GetVariables(List<String> IDSet);
 	List<String> GetMasterIDList();
 	
 }

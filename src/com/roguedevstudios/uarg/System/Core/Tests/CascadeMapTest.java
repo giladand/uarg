@@ -12,11 +12,11 @@ import com.roguedevstudios.uarg.System.Core.Elements.CascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.CascadeMap;
 import com.roguedevstudios.uarg.System.Core.Elements.Formula;
 import com.roguedevstudios.uarg.System.Core.Elements.Formuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
 import com.roguedevstudios.uarg.System.Core.Elements.Variables;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 import com.roguedevstudios.uarg.System.Core.Enum.VariableType;
 
@@ -37,7 +37,7 @@ public class CascadeMapTest {
 		this.formuli.AddFormula("BaseArea", new Formula("BaseArea","Area of an items Base","BaseArea","_WIDTH_*_DEPTH_"));
 		
 		this.vars.SetVariable( "Building Base Width", 
-								new Variable<Integer>( "Building Base Width", 
+								new Fact<Integer>( "Building Base Width", 
 													   "Building Base Width", 
 													    true, 
 													    "The width of a building base", 
@@ -45,7 +45,7 @@ public class CascadeMapTest {
 								VariableType.INTEGER
 							 );
 		this.vars.SetVariable( "Week Day Multiplier", 
-				new Variable<Double[]>( "Week Day Multiplier", 
+				new Fact<Double[]>( "Week Day Multiplier", 
 									   "Week Day Multiplier", 
 									    true, 
 									    "Week Day Multiplier", 
@@ -53,7 +53,7 @@ public class CascadeMapTest {
 				VariableType.DOUBLEARRAY
 			 );
 		this.vars.SetVariable( "Weeks in Year", 
-				new Variable<Integer>( "Weeks in Year", 
+				new Fact<Integer>( "Weeks in Year", 
 									   "Weeks in Year", 
 									    true, 
 									    "Weeks in Year", 
@@ -61,7 +61,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Months in Year", 
-				new Variable<Integer>( "Months in Year", 
+				new Fact<Integer>( "Months in Year", 
 									   "Months in Year", 
 									    true, 
 									    "Months in Year", 
@@ -69,7 +69,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 1", 
-				new Variable<Integer>( "Pickup Unit 1", 
+				new Fact<Integer>( "Pickup Unit 1", 
 									   "Pickup Unit 1", 
 									    true, 
 									    "Pickup Unit 1", 
@@ -77,7 +77,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 2", 
-				new Variable<Integer>( "Pickup Unit 2", 
+				new Fact<Integer>( "Pickup Unit 2", 
 									   "Pickup Unit 2", 
 									    true, 
 									    "Pickup Unit 2",
@@ -86,7 +86,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 3", 
-				new Variable<Integer>( "Pickup Unit 3", 
+				new Fact<Integer>( "Pickup Unit 3", 
 									   "Pickup Unit 3", 
 									    true, 
 									    "Pickup Unit 3",
@@ -95,7 +95,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 4", 
-				new Variable<Integer>( "Pickup Unit 4", 
+				new Fact<Integer>( "Pickup Unit 4", 
 									   "Pickup Unit 4", 
 									    true, 
 									    "Pickup Unit 4",
@@ -104,7 +104,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 5", 
-				new Variable<Integer>( "Pickup Unit 5", 
+				new Fact<Integer>( "Pickup Unit 5", 
 									   "Pickup Unit 5", 
 									    true, 
 									    "Pickup Unit 5",
@@ -113,7 +113,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 6", 
-				new Variable<Integer>( "Pickup Unit 6", 
+				new Fact<Integer>( "Pickup Unit 6", 
 									   "Pickup Unit 6", 
 									    true, 
 									    "Pickup Unit 6",
@@ -122,7 +122,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "Pickup Unit 7", 
-				new Variable<Integer>( "Pickup Unit 7", 
+				new Fact<Integer>( "Pickup Unit 7", 
 									   "Pickup Unit 7", 
 									    true, 
 									    "Pickup Unit 7",
@@ -131,7 +131,7 @@ public class CascadeMapTest {
 				VariableType.INTEGER
 			 );
 		this.vars.SetVariable( "PickupFactor 1", 
-				new Variable<Double[]>( "PickupFactor 1", 
+				new Fact<Double[]>( "PickupFactor 1", 
 									   "PickupFactor 1", 
 									    true, 
 									    "PickupFactor 1",
@@ -140,7 +140,7 @@ public class CascadeMapTest {
 				VariableType.DOUBLEARRAY
 			 );
 		this.vars.SetVariable( "PickupFactor 2", 
-				new Variable<Double[]>( "PickupFactor 2", 
+				new Fact<Double[]>( "PickupFactor 2", 
 									   "PickupFactor 2", 
 									    true, 
 									    "PickupFactor 2",
@@ -149,7 +149,7 @@ public class CascadeMapTest {
 				VariableType.DOUBLEARRAY
 			 );
 		this.vars.SetVariable( "PickupFactor 3", 
-				new Variable<Double[]>( "PickupFactor 3", 
+				new Fact<Double[]>( "PickupFactor 3", 
 									   "PickupFactor 3", 
 									    true, 
 									    "PickupFactor 3",
@@ -158,7 +158,7 @@ public class CascadeMapTest {
 				VariableType.DOUBLEARRAY
 			 );
 		this.vars.SetVariable( "PickupFactor 4", 
-				new Variable<Integer[]>( "PickupFactor 4", 
+				new Fact<Integer[]>( "PickupFactor 4", 
 									   "PickupFactor 4", 
 									    true, 
 									    "PickupFactor 4",
@@ -167,7 +167,7 @@ public class CascadeMapTest {
 				VariableType.INTEGERARRAY
 			 );
 		this.vars.SetVariable( "PickupFactor 5", 
-				new Variable<Integer[]>( "PickupFactor 5", 
+				new Fact<Integer[]>( "PickupFactor 5", 
 									   "PickupFactor 5", 
 									    true, 
 									    "PickupFactor 5",
@@ -176,7 +176,7 @@ public class CascadeMapTest {
 				VariableType.INTEGERARRAY
 			 );
 		this.vars.SetVariable( "PickupFactor 6", 
-				new Variable<Integer[]>( "PickupFactor 6", 
+				new Fact<Integer[]>( "PickupFactor 6", 
 									   "PickupFactor 6", 
 									    true, 
 									    "PickupFactor 6",
@@ -185,7 +185,7 @@ public class CascadeMapTest {
 				VariableType.INTEGERARRAY
 			 );
 		this.vars.SetVariable( "PickupFactor 7", 
-				new Variable<Integer[]>( "PickupFactor 7", 
+				new Fact<Integer[]>( "PickupFactor 7", 
 									   "PickupFactor 7", 
 									    true, 
 									    "PickupFactor 7",
@@ -231,7 +231,7 @@ public class CascadeMapTest {
 			CM.ShakeTree("Week Day Multiplier", this.vars, this.formuli);
 			
 			for(String ID: this.vars.GetMasterIDList()) {
-				IVariable<?> var = this.vars.GetVariable(ID);
+				IFact<?> var = this.vars.GetVariable(ID);
 				System.out.println(var.toString());
 			}
 			

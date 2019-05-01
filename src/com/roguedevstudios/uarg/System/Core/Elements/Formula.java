@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormula;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 import java.util.TreeMap;
 import java.util.ArrayList;
@@ -205,7 +205,7 @@ public class Formula implements IFormula
     * @author Chelsea Hunter
     * @author Christopher E. Howard
     */
-    private double _calculateExpression( IVariable<? extends Number>[] vars ) 
+    private double _calculateExpression( IFact<? extends Number>[] vars ) 
     		throws IllegalArgumentException 
     
     {
@@ -295,7 +295,7 @@ public class Formula implements IFormula
      * @throws IllegalArgumentException	If the evaluation of the formula's expression fails.
      * @author Chelsea Hunter
      */
-    public Double CalculateToDouble( IVariable<? extends Number>[] vars )
+    public Double CalculateToDouble( IFact<? extends Number>[] vars )
 		   throws IllegalArgumentException
 	    {
 	    	try {
@@ -318,7 +318,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @author Christopher Howard
      */
-    public Double[] CalculateToDouble( IVariable<?>[] vars, 
+    public Double[] CalculateToDouble( IFact<?>[] vars, 
     								   boolean ArrayPresent
     								   ) 
     	   throws ClassCastException,
@@ -336,7 +336,7 @@ public class Formula implements IFormula
     		
     		try {
     			
-    			ret[0] = CalculateToDouble( ( (IVariable<? extends Number>[]) vars ) );
+    			ret[0] = CalculateToDouble( ( (IFact<? extends Number>[]) vars ) );
     			
     		}catch ( ClassCastException eCCE ) {
     			
@@ -356,7 +356,7 @@ public class Formula implements IFormula
     	int len = -1;
     	
     	// Find the first array and grab it's length value
-    	for(IVariable<?> var: vars) {
+    	for(IFact<?> var: vars) {
     		
     		if( var.GetValue().getClass().isArray() ) 
     		{
@@ -377,7 +377,7 @@ public class Formula implements IFormula
     	Integer order = 0;
     	
     	// Detect and handle the setup of arrays for matrix processing
-    	for(IVariable<?> var: vars) 
+    	for(IFact<?> var: vars) 
     	{
     		
     		// Array Detection
@@ -581,7 +581,7 @@ public class Formula implements IFormula
      * @return Integer	The result of calculating the Formula object's Expression in Integer format.
      * @throws IllegalArgumentException	If the evaluation of the formula's expression fails.
      */
-    public Integer CalculateToInteger( IVariable<? extends Number>[] vars ) 
+    public Integer CalculateToInteger( IFact<? extends Number>[] vars ) 
     	   throws IllegalArgumentException
     {
     	try {
@@ -606,7 +606,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @author Christopher Howard
      */
-    public Integer[] CalculateToInteger( IVariable<?>[] vars, 
+    public Integer[] CalculateToInteger( IFact<?>[] vars, 
 						   				 boolean ArrayPresent
 						   			   ) 
 			throws  ClassCastException,
@@ -647,7 +647,7 @@ public class Formula implements IFormula
      * @return Float	The result of calculating the Formula object's Expression in Float format.
      * @throws IllegalArgumentException If the evaluation of the formula's expression fails.
      */
-    public Float CalculateToFloat(IVariable<? extends Number>[] vars)
+    public Float CalculateToFloat(IFact<? extends Number>[] vars)
 		   throws IllegalArgumentException
 	    {
 	    	try {
@@ -671,7 +671,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @return
      */
-    public Float[] CalculateToFloat( IVariable<?>[] vars, 
+    public Float[] CalculateToFloat( IFact<?>[] vars, 
 								 	 boolean ArrayPresent
     							   ) 
     	   throws   ClassCastException,
@@ -711,7 +711,7 @@ public class Formula implements IFormula
      * @throws IllegalArgumentException	If the evaluation of the formula's expression fails.
      * @author Chelsea Hunter
      */
-    public Long CalculateToLong(IVariable<? extends Number>[] vars)
+    public Long CalculateToLong(IFact<? extends Number>[] vars)
 		   throws IllegalArgumentException
 	    {
 	    	try {
@@ -735,7 +735,7 @@ public class Formula implements IFormula
      * @throws IndexOutOfBoundsException	If, when making an argument matrix, there is some error with the indices. 
      * @author Christopher Howard
      */
-    public Long[] CalculateToLong( IVariable<?>[] vars, 
+    public Long[] CalculateToLong( IFact<?>[] vars, 
 		 	 					   boolean ArrayPresent
 			   				     ) 
 		   throws   ClassCastException,
@@ -775,13 +775,13 @@ public class Formula implements IFormula
     * @throws IndexOutOfBoundsException	If there is an error in the temporary input array's indices.
     * @author Christopher E. Howard
     */
-    private void _tempArrayDoubleConversion( IVariable<? extends Number>[] vars ) 
+    private void _tempArrayDoubleConversion( IFact<? extends Number>[] vars ) 
     		throws NullPointerException, IndexOutOfBoundsException 
     {
    
         int i = 0;
         try{
-        	for( IVariable<? extends Number> var: 
+        	for( IFact<? extends Number> var: 
         									 vars
         		)
         	{

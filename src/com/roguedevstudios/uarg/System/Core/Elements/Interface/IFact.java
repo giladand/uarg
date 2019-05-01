@@ -17,7 +17,7 @@ package com.roguedevstudios.uarg.System.Core.Elements.Interface;
  * @author Terry Roberson
  * @since 1.0
  */
-public interface IVariable<V>
+public interface IFact<V>
 {
 	
 	/**

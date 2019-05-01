@@ -7,10 +7,10 @@ import org.junit.Test;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Formula;
 import com.roguedevstudios.uarg.System.Core.Elements.Formuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
 import com.roguedevstudios.uarg.System.Core.Elements.Variables;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 import com.roguedevstudios.uarg.System.Core.Enum.VariableType;
 
@@ -38,51 +38,51 @@ public class FormulaTest {
 			this.formuli = new Formuli();
 			this.formuli.AddFormula("Multiply", new Formula("T","T","T","_VAR1_ * _VAR2_"));
 			this.vars.SetVariable("IntegerArrayVariable1",
-					new Variable<Integer[]>("TI1","TI1",false,"TI1", new Integer[] {1,2,3}),
+					new Fact<Integer[]>("TI1","TI1",false,"TI1", new Integer[] {1,2,3}),
 					VariableType.INTEGERARRAY
 					);
 			this.vars.SetVariable("IntegerArrayVariable2",
-					new Variable<Integer[]>("TI2","TI2",false,"TI2", new Integer[] {4,5,6}),
+					new Fact<Integer[]>("TI2","TI2",false,"TI2", new Integer[] {4,5,6}),
 					VariableType.INTEGERARRAY
 					);
 			this.vars.SetVariable("FloatArrayVariable1",
-					new Variable<Float[]>("TF1","TF1",false,"TF1", new Float[] {1.2f,2.5f,3.7f}),
+					new Fact<Float[]>("TF1","TF1",false,"TF1", new Float[] {1.2f,2.5f,3.7f}),
 					VariableType.FLOATARRAY
 					);
 			this.vars.SetVariable("FloatArrayVariable2",
-					new Variable<Float[]>("TF2","TF2",false,"TF2", new Float[] {4.7f,5.8f,6.3f}),
+					new Fact<Float[]>("TF2","TF2",false,"TF2", new Float[] {4.7f,5.8f,6.3f}),
 					VariableType.FLOATARRAY
 					);
 			this.vars.SetVariable("DoubleArrayVariable1",
-					new Variable<Double[]>("TD1","TD1",false,"TD1", new Double[] {10d,20d,30d}),
+					new Fact<Double[]>("TD1","TD1",false,"TD1", new Double[] {10d,20d,30d}),
 					VariableType.DOUBLEARRAY
 					);
 			this.vars.SetVariable("DoubleArrayVariable2",
-					new Variable<Double[]>("TD2","TD2",false,"TD2", new Double[] {4d,5d,6d}),
+					new Fact<Double[]>("TD2","TD2",false,"TD2", new Double[] {4d,5d,6d}),
 					VariableType.DOUBLEARRAY
 					);
 			this.vars.SetVariable("LongArrayVariable1",
-					new Variable<Long[]>("TL1","TL1",false,"TL1", new Long[] {100l,200l,300l}),
+					new Fact<Long[]>("TL1","TL1",false,"TL1", new Long[] {100l,200l,300l}),
 					VariableType.LONGARRAY
 					);
 			this.vars.SetVariable("LongArrayVariable2",
-					new Variable<Long[]>("TL2","TL2",false,"TL2", new Long[] {4l,5l,6l}),
+					new Fact<Long[]>("TL2","TL2",false,"TL2", new Long[] {4l,5l,6l}),
 					VariableType.LONGARRAY
 					);
 			this.vars.SetVariable("IntegerArrayResult",
-					new Variable<Integer[]>("TI","TI",false,"TI", new Integer[2]),
+					new Fact<Integer[]>("TI","TI",false,"TI", new Integer[2]),
 					VariableType.INTEGERARRAY
 					);
 			this.vars.SetVariable("FloatArrayResult",
-					new Variable<Float[]>("TF","TF",false,"TF", new Float[2]),
+					new Fact<Float[]>("TF","TF",false,"TF", new Float[2]),
 					VariableType.FLOATARRAY
 					);
 			this.vars.SetVariable("DoubleArrayResult",
-					new Variable<Double[]>("TD","TD",false,"TD", new Double[2]),
+					new Fact<Double[]>("TD","TD",false,"TD", new Double[2]),
 					VariableType.DOUBLEARRAY
 					);
 			this.vars.SetVariable("LongArrayResult",
-					new Variable<Long[]>("TL","TL",false,"TL", new Long[2]),
+					new Fact<Long[]>("TL","TL",false,"TL", new Long[2]),
 					VariableType.LONGARRAY
 					);
 			
@@ -146,18 +146,18 @@ public class FormulaTest {
 		Formula formulaD = new Formula("T", "T", "T", formulaDivision);
 		Formula formulaA = new Formula("T", "T", "T", formulaAdd);
 		Formula formulaS = new Formula("T", "T", "T", formulaSub);
-		IVariable<Integer> vi1 = new Variable<Integer>("T", "T", false, "T", 10);
-		IVariable<Integer> vi2 = new Variable<Integer>("T","T",false,"T", 5);
-		IVariable<Float> vf1 = new Variable<Float>("T", "T", false, "T", 5.4F);
-		IVariable<Float> vf2 = new Variable<Float>("T", "T", false, "T", 12.3F);
-		IVariable<Double> vd1 = new Variable<Double>("T", "T", false, "T", 80.5);
-		IVariable<Double> vd2 = new Variable<Double>("T","T",false,"T", 10.2);
-		IVariable<Long> vl1 = new Variable<Long>("T", "T", false, "T", 50L);
-		IVariable<Long> vl2 = new Variable<Long>("T", "T", false, "T", 5L);
-		IVariable<? extends Number>[] vi = (IVariable<? extends Number>[]) new IVariable<?>[2];
-		IVariable<? extends Number>[] vf = (IVariable<? extends Number>[]) new IVariable<?>[2];
-		IVariable<? extends Number>[] vd = (IVariable<? extends Number>[]) new IVariable<?>[2];
-		IVariable<? extends Number>[] vl = (IVariable<? extends Number>[]) new IVariable<?>[2];
+		IFact<Integer> vi1 = new Fact<Integer>("T", "T", false, "T", 10);
+		IFact<Integer> vi2 = new Fact<Integer>("T","T",false,"T", 5);
+		IFact<Float> vf1 = new Fact<Float>("T", "T", false, "T", 5.4F);
+		IFact<Float> vf2 = new Fact<Float>("T", "T", false, "T", 12.3F);
+		IFact<Double> vd1 = new Fact<Double>("T", "T", false, "T", 80.5);
+		IFact<Double> vd2 = new Fact<Double>("T","T",false,"T", 10.2);
+		IFact<Long> vl1 = new Fact<Long>("T", "T", false, "T", 50L);
+		IFact<Long> vl2 = new Fact<Long>("T", "T", false, "T", 5L);
+		IFact<? extends Number>[] vi = (IFact<? extends Number>[]) new IFact<?>[2];
+		IFact<? extends Number>[] vf = (IFact<? extends Number>[]) new IFact<?>[2];
+		IFact<? extends Number>[] vd = (IFact<? extends Number>[]) new IFact<?>[2];
+		IFact<? extends Number>[] vl = (IFact<? extends Number>[]) new IFact<?>[2];
 		
 		vi[0] = vi1;
 		vi[1] = vi2;
@@ -183,7 +183,7 @@ public class FormulaTest {
 	@Test 
 	public void TestVariableArray() {	
 			for(String ID: this.vars.GetMasterIDList()) {
-				IVariable<?extends Number>[] retIntArr = (IVariable<? extends Number>[]) new IVariable<?>[2];
+				IFact<?extends Number>[] retIntArr = (IFact<? extends Number>[]) new IFact<?>[2];
 				this.vars.GetIntegerArray("IntegerArray1");
 				
 				}
@@ -194,8 +194,8 @@ public class FormulaTest {
 	public void testFormulaProcessingLog() {
 		String formulaExpression = "log(_var_)";
 		Formula formula = new Formula("T","T","T",formulaExpression);
-		Variable<Integer> v1 = new Variable<Integer>("T","T",false,"T",4);
-		Variable<? extends Number>[] v = (Variable<? extends Number>[]) new Variable<?>[1];
+		Fact<Integer> v1 = new Fact<Integer>("T","T",false,"T",4);
+		Fact<? extends Number>[] v = (Fact<? extends Number>[]) new Fact<?>[1];
 		v[0] = v1;
 		Double out = formula.CalculateToDouble(v);
 		Double outCheck = Math.log(4);
@@ -208,16 +208,16 @@ public class FormulaTest {
 	public void testFormulaCrazy() {
 		String formulaExpression = "_var1_ + _var2_ + 1000 * _var3_ - ( _var4_ + _var5_ + _var6_ * _var8_ ) + _var9_ + _var7_";
 		Formula formula = new Formula("T","T","T",formulaExpression);
-		Variable<Integer> v1 = new Variable<Integer>("T","T",false,"T",4);
-		Variable<Double> v3 = new Variable<Double>("T","T",false,"T",5d);
-		Variable<Float> v2 = new Variable<Float>("T","T",false,"T",4.0f);
-		Variable<Long> v4 = new Variable<Long>("T","T",false,"T",25L);
-		Variable<Integer> v5 = new Variable<Integer>("T","T",false,"T",40);
-		Variable<Integer> v6 = new Variable<Integer>("T","T",false,"T",9);
-		Variable<Integer> v7 = new Variable<Integer>("T","T",false,"T",7);
-		Variable<Integer> v8 = new Variable<Integer>("T","T",false,"T",32);
-		Variable<Integer> v9 = new Variable<Integer>("T","T",false,"T",14);
-		Variable<? extends Number>[] v = (Variable<? extends Number>[]) new Variable<?>[9];
+		Fact<Integer> v1 = new Fact<Integer>("T","T",false,"T",4);
+		Fact<Double> v3 = new Fact<Double>("T","T",false,"T",5d);
+		Fact<Float> v2 = new Fact<Float>("T","T",false,"T",4.0f);
+		Fact<Long> v4 = new Fact<Long>("T","T",false,"T",25L);
+		Fact<Integer> v5 = new Fact<Integer>("T","T",false,"T",40);
+		Fact<Integer> v6 = new Fact<Integer>("T","T",false,"T",9);
+		Fact<Integer> v7 = new Fact<Integer>("T","T",false,"T",7);
+		Fact<Integer> v8 = new Fact<Integer>("T","T",false,"T",32);
+		Fact<Integer> v9 = new Fact<Integer>("T","T",false,"T",14);
+		Fact<? extends Number>[] v = (Fact<? extends Number>[]) new Fact<?>[9];
 		
 		v[0] = v1;
 		v[1] = v2;
@@ -283,10 +283,10 @@ public class FormulaTest {
 		Integer C = new Integer(10);
 		String E = "_A_ * _B_ * _C_";
 		Formula F = new Formula("T","T","T",E);
-		Variable<Integer[]> vA = new Variable<>("T","T",false,"T",A);
-		Variable<Integer[]> vB = new Variable<>("T","T",false,"T",B);
-		Variable<Integer> vC = new Variable<>("T","T",false,"T",C);
-		IVariable<?>[] v = new Variable<?>[] {vA,vB,vC};
+		Fact<Integer[]> vA = new Fact<>("T","T",false,"T",A);
+		Fact<Integer[]> vB = new Fact<>("T","T",false,"T",B);
+		Fact<Integer> vC = new Fact<>("T","T",false,"T",C);
+		IFact<?>[] v = new Fact<?>[] {vA,vB,vC};
 		Double[] d = F.CalculateToDouble(v, true);
 		for(Double di: d) {
 			System.err.println("Output: "+di);

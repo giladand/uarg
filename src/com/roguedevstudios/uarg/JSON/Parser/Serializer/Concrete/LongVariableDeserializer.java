@@ -14,8 +14,8 @@ package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 import java.lang.reflect.Type;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 /**
  * 
@@ -26,7 +26,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @since 1.0
  */
 public class LongVariableDeserializer 
-	   implements JsonDeserializer<IVariable<Long>> 
+	   implements JsonDeserializer<IFact<Long>> 
 {
 	/**
 	 * Deserializes into a Variable<Long> type
@@ -36,7 +36,7 @@ public class LongVariableDeserializer
 	 * @param JsonDeserializationContext
 	 * @return Variable<Long>
 	 */
-	public IVariable<Long> deserialize(
+	public IFact<Long> deserialize(
 										JsonElement json, 
 										Type typeOfT, 
 										JsonDeserializationContext context
@@ -60,7 +60,7 @@ public class LongVariableDeserializer
 		boolean _requiresInput = false;
 		
 		/*Temp output object holder*/
-		IVariable<Long> v;
+		IFact<Long> v;
 		
 		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
@@ -85,7 +85,7 @@ public class LongVariableDeserializer
 		}
 		
 		// Build the Variable object to return
-		v = new Variable<Long>(	_name, 
+		v = new Fact<Long>(	_name, 
 								_id, 
 								_requiresInput, 
 								_description, 

@@ -28,13 +28,13 @@ import com.roguedevstudios.uarg.JSON.Parser.Serializer.CascadeEntryDeserializer;
 import com.roguedevstudios.uarg.System.Core.Elements.Formula;
 import com.roguedevstudios.uarg.System.Core.Elements.FormulaSet;
 import com.roguedevstudios.uarg.System.Core.Elements.Formuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
 import com.roguedevstudios.uarg.System.Core.Elements.Variables;
 import com.roguedevstudios.uarg.System.Core.Elements.CascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.CascadeMap;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormula;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeMap;
@@ -324,12 +324,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Integer>
+	public static IFact<Integer>
 				  ParseIntegerVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Integer> > IVariableDeserializer,
-						  				Class<? extends IVariable<Integer>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Integer> > IVariableDeserializer,
+						  				Class<? extends IFact<Integer>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -353,7 +353,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Integer> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Integer> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -378,11 +378,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Integer> > 
+				  TreeMap<String, IFact<Integer> > 
 			      ParseIntegerVariableSection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Integer> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Integer>> IVariableConcrete,
+			    		  JsonDeserializer<? extends IFact<Integer> > IVariableDeserializer,
+			    		  Class<? extends IFact<Integer>> IVariableConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -393,7 +393,7 @@ public class ParserHelpers {
 		try {
 			
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Integer> > map = new TreeMap<>();
+			TreeMap<String, IFact<Integer> > map = new TreeMap<>();
 			
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -430,12 +430,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Integer[]>
+	public static IFact<Integer[]>
 				  ParseIntegerArrayVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Integer[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Integer[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Integer[]> > IVariableDeserializer,
+						  				Class<? extends IFact<Integer[]>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -459,7 +459,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Integer[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Integer[]> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -484,11 +484,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Integer[]> > 
+	  			TreeMap<String, IFact<Integer[]> > 
 				ParseIntegerArrayVariableSection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Integer[]> > IVariableDeserializer,
-						Class<? extends IVariable<Integer[]>> IVariableConcrete,
+						JsonDeserializer<? extends IFact<Integer[]> > IVariableDeserializer,
+						Class<? extends IFact<Integer[]>> IVariableConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -499,7 +499,7 @@ public class ParserHelpers {
 		try {
 							
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Integer[]> > map = new TreeMap<>();
+			TreeMap<String, IFact<Integer[]> > map = new TreeMap<>();
 					
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -538,12 +538,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<String>
+	public static IFact<String>
 				  ParseStringVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<String> > IVariableDeserializer,
-						  				Class<? extends IVariable<String>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<String> > IVariableDeserializer,
+						  				Class<? extends IFact<String>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -567,7 +567,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<String> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<String> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -592,11 +592,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<String> > 
+	  			TreeMap<String, IFact<String> > 
 				ParseStringVariableSection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<String> > IVariableDeserializer,
-						Class<? extends IVariable<String>> IVariableConcrete,
+						JsonDeserializer<? extends IFact<String> > IVariableDeserializer,
+						Class<? extends IFact<String>> IVariableConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -607,7 +607,7 @@ public class ParserHelpers {
 		try {
 							
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<String> > map = new TreeMap<>();
+			TreeMap<String, IFact<String> > map = new TreeMap<>();
 					
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -645,12 +645,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<String[]>
+	public static IFact<String[]>
 				  ParseStringArrayVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<String[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<String[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<String[]> > IVariableDeserializer,
+						  				Class<? extends IFact<String[]>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -674,7 +674,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<String[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<String[]> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -699,11 +699,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<String[]> > 
+				  TreeMap<String, IFact<String[]> > 
 			      ParseStringArrayVariableSection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<String[]> > IVariableDeserializer,
-			    		  Class<? extends IVariable<String[]>> IVariableConcrete,
+			    		  JsonDeserializer<? extends IFact<String[]> > IVariableDeserializer,
+			    		  Class<? extends IFact<String[]>> IVariableConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -714,7 +714,7 @@ public class ParserHelpers {
 		try {
 			
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<String[]> > map = new TreeMap<>();
+			TreeMap<String, IFact<String[]> > map = new TreeMap<>();
 			
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -753,12 +753,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Double>
+	public static IFact<Double>
 				  ParseDoubleVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Double> > IVariableDeserializer,
-						  				Class<? extends IVariable<Double>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Double> > IVariableDeserializer,
+						  				Class<? extends IFact<Double>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -782,7 +782,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Double> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Double> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -807,11 +807,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Double> > 
+				  TreeMap<String, IFact<Double> > 
 			      ParseDoubleVariableSection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Double> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Double>> IVariableConcrete,
+			    		  JsonDeserializer<? extends IFact<Double> > IVariableDeserializer,
+			    		  Class<? extends IFact<Double>> IVariableConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -822,7 +822,7 @@ public class ParserHelpers {
 		try {
 			
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Double> > map = new TreeMap<>();
+			TreeMap<String, IFact<Double> > map = new TreeMap<>();
 			
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -859,12 +859,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Double[]>
+	public static IFact<Double[]>
 				  ParseDoubleArrayVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Double[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Double[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Double[]> > IVariableDeserializer,
+						  				Class<? extends IFact<Double[]>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -888,7 +888,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Double[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Double[]> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -913,11 +913,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Double[]> > 
+	  			TreeMap<String, IFact<Double[]> > 
 				ParseDoubleArrayVariableSection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Double[]> > IVariableDeserializer,
-						Class<? extends IVariable<Double[]>> IVariableConcrete,
+						JsonDeserializer<? extends IFact<Double[]> > IVariableDeserializer,
+						Class<? extends IFact<Double[]>> IVariableConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -928,7 +928,7 @@ public class ParserHelpers {
 		try {
 							
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Double[]> > map = new TreeMap<>();
+			TreeMap<String, IFact<Double[]> > map = new TreeMap<>();
 					
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -966,12 +966,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Long>
+	public static IFact<Long>
 				  ParseLongVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Long> > IVariableDeserializer,
-						  				Class<? extends IVariable<Long>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Long> > IVariableDeserializer,
+						  				Class<? extends IFact<Long>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -995,7 +995,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Long> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Long> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1020,11 +1020,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Long> > 
+				  TreeMap<String, IFact<Long> > 
 			      ParseLongVariableSection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Long> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Long>> IVariableConcrete,
+			    		  JsonDeserializer<? extends IFact<Long> > IVariableDeserializer,
+			    		  Class<? extends IFact<Long>> IVariableConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -1035,7 +1035,7 @@ public class ParserHelpers {
 		try {
 			
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Long> > map = new TreeMap<>();
+			TreeMap<String, IFact<Long> > map = new TreeMap<>();
 			
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -1072,12 +1072,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Long[]>
+	public static IFact<Long[]>
 				  ParseLongArrayVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Long[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Long[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Long[]> > IVariableDeserializer,
+						  				Class<? extends IFact<Long[]>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1101,7 +1101,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Long[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Long[]> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1126,11 +1126,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Long[]> > 
+	  			TreeMap<String, IFact<Long[]> > 
 				ParseLongArrayVariableSection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Long[]> > IVariableDeserializer,
-						Class<? extends IVariable<Long[]>> IVariableConcrete,
+						JsonDeserializer<? extends IFact<Long[]> > IVariableDeserializer,
+						Class<? extends IFact<Long[]>> IVariableConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -1141,7 +1141,7 @@ public class ParserHelpers {
 		try {
 							
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Long[]> > map = new TreeMap<>();
+			TreeMap<String, IFact<Long[]> > map = new TreeMap<>();
 					
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -1179,12 +1179,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Float>
+	public static IFact<Float>
 				  ParseFloatVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Float> > IVariableDeserializer,
-						  				Class<? extends IVariable<Float>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Float> > IVariableDeserializer,
+						  				Class<? extends IFact<Float>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1208,7 +1208,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Float> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Float> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1233,11 +1233,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Float> > 
+				  TreeMap<String, IFact<Float> > 
 			      ParseFloatVariableSection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Float> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Float>> IVariableConcrete,
+			    		  JsonDeserializer<? extends IFact<Float> > IVariableDeserializer,
+			    		  Class<? extends IFact<Float>> IVariableConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -1248,7 +1248,7 @@ public class ParserHelpers {
 		try {
 			
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Float> > map = new TreeMap<>();
+			TreeMap<String, IFact<Float> > map = new TreeMap<>();
 			
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -1285,12 +1285,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Float[]>
+	public static IFact<Float[]>
 				  ParseFloatArrayVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Float[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Float[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Float[]> > IVariableDeserializer,
+						  				Class<? extends IFact<Float[]>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1314,7 +1314,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Float[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Float[]> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1339,11 +1339,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Float[]> > 
+	  			TreeMap<String, IFact<Float[]> > 
 				ParseFloatArrayVariableSection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Float[]> > IVariableDeserializer,
-						Class<? extends IVariable<Float[]>> IVariableConcrete,
+						JsonDeserializer<? extends IFact<Float[]> > IVariableDeserializer,
+						Class<? extends IFact<Float[]>> IVariableConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -1354,7 +1354,7 @@ public class ParserHelpers {
 		try {
 							
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Float[]> > map = new TreeMap<>();
+			TreeMap<String, IFact<Float[]> > map = new TreeMap<>();
 					
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -1392,12 +1392,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Boolean>
+	public static IFact<Boolean>
 				  ParseBooleanVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Boolean> > IVariableDeserializer,
-						  				Class<? extends IVariable<Boolean>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Boolean> > IVariableDeserializer,
+						  				Class<? extends IFact<Boolean>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1421,7 +1421,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Boolean> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Boolean> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1446,11 +1446,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-				  TreeMap<String, IVariable<Boolean> > 
+				  TreeMap<String, IFact<Boolean> > 
 			      ParseBooleanVariableSection(
 			    		  JsonElement json,
-			    		  JsonDeserializer<? extends IVariable<Boolean> > IVariableDeserializer,
-			    		  Class<? extends IVariable<Boolean>> IVariableConcrete,
+			    		  JsonDeserializer<? extends IFact<Boolean> > IVariableDeserializer,
+			    		  Class<? extends IFact<Boolean>> IVariableConcrete,
 			    		  GsonBuilder gsonBuilder			    		  
 			    		  )
 			      throws NullPointerException,
@@ -1461,7 +1461,7 @@ public class ParserHelpers {
 		try {
 			
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Boolean> > map = new TreeMap<>();
+			TreeMap<String, IFact<Boolean> > map = new TreeMap<>();
 			
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -1498,12 +1498,12 @@ public class ParserHelpers {
 	 * @author Christopher E. Howard
 	 * @since 1.0
 	 */
-	public static IVariable<Boolean[]>
+	public static IFact<Boolean[]>
 				  ParseBooleanArrayVariable(
 						  				JsonElement json, 
 						  				String ID,
-						  				JsonDeserializer<? extends IVariable<Boolean[]> > IVariableDeserializer,
-						  				Class<? extends IVariable<Boolean[]>> IVariableConcrete,
+						  				JsonDeserializer<? extends IFact<Boolean[]> > IVariableDeserializer,
+						  				Class<? extends IFact<Boolean[]>> IVariableConcrete,
 						  				GsonBuilder gsonBuilder
 						  			   )
 				  throws NullPointerException,
@@ -1527,7 +1527,7 @@ public class ParserHelpers {
 			Gson customGson = gsonBuilder.create();
 			
 			// Deserialize the object to a Variable<String> object
-			IVariable<Boolean[]> retVar = customGson.fromJson( json, IVariableConcrete );
+			IFact<Boolean[]> retVar = customGson.fromJson( json, IVariableConcrete );
 			
 			// Manually set the ID as deserializer can not do so normally
 			retVar.SetId(ID);
@@ -1552,11 +1552,11 @@ public class ParserHelpers {
 	 * @since 1.0
 	 */
 	public static 
-	  			TreeMap<String, IVariable<Boolean[]> > 
+	  			TreeMap<String, IFact<Boolean[]> > 
 				ParseBooleanArrayVariableSection(
 						JsonElement json,
-						JsonDeserializer<? extends IVariable<Boolean[]> > IVariableDeserializer,
-						Class<? extends IVariable<Boolean[]>> IVariableConcrete,
+						JsonDeserializer<? extends IFact<Boolean[]> > IVariableDeserializer,
+						Class<? extends IFact<Boolean[]>> IVariableConcrete,
 						GsonBuilder gsonBuilder			    		  
 						)
 				throws NullPointerException,
@@ -1567,7 +1567,7 @@ public class ParserHelpers {
 		try {
 							
 			// Start up the tree map for these variables
-			TreeMap<String, IVariable<Boolean[]> > map = new TreeMap<>();
+			TreeMap<String, IFact<Boolean[]> > map = new TreeMap<>();
 					
 			// Loop through the variables
 			for( Map.Entry<String,JsonElement> entry: 
@@ -1605,26 +1605,26 @@ public class ParserHelpers {
 				   T
 				   ParseVariables(
 											JsonElement JSON,
-											Map<VariableType, JsonDeserializer<? extends IVariable<?>>> IVariableDeserializersConcretes,
-											Map<VariableType, Class<? extends IVariable<?>>> IVariableConcretes,
+											Map<VariableType, JsonDeserializer<? extends IFact<?>>> IVariableDeserializersConcretes,
+											Map<VariableType, Class<? extends IFact<?>>> IVariableConcretes,
 											T IVariablesContainer,
 											GsonBuilder gsonBuilder
 										  )
 	{
 		
 		// Initialize 12 temp treemaps to match req treemaps for variables.java constructor
-		TreeMap<String, IVariable< Integer   > > 	intMap 			= new TreeMap<>();
-		TreeMap<String, IVariable< Integer[] > > 	intArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< String    > >	stringMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< String[]  > > 	stringArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Float     > >	floatMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Float[]   > > 	floatArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Long      > >	longMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Long[]    > >	longArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Double    > >	doubleMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Double[]  > > 	doubleArrayMap 	= new TreeMap<>();
-		TreeMap<String, IVariable< Boolean   > > 	boolMap 		= new TreeMap<>();
-		TreeMap<String, IVariable< Boolean[] > > 	boolArrayMap 	= new TreeMap<>();
+		TreeMap<String, IFact< Integer   > > 	intMap 			= new TreeMap<>();
+		TreeMap<String, IFact< Integer[] > > 	intArrayMap 	= new TreeMap<>();
+		TreeMap<String, IFact< String    > >	stringMap 		= new TreeMap<>();
+		TreeMap<String, IFact< String[]  > > 	stringArrayMap 	= new TreeMap<>();
+		TreeMap<String, IFact< Float     > >	floatMap 		= new TreeMap<>();
+		TreeMap<String, IFact< Float[]   > > 	floatArrayMap 	= new TreeMap<>();
+		TreeMap<String, IFact< Long      > >	longMap 		= new TreeMap<>();
+		TreeMap<String, IFact< Long[]    > >	longArrayMap 	= new TreeMap<>();
+		TreeMap<String, IFact< Double    > >	doubleMap 		= new TreeMap<>();
+		TreeMap<String, IFact< Double[]  > > 	doubleArrayMap 	= new TreeMap<>();
+		TreeMap<String, IFact< Boolean   > > 	boolMap 		= new TreeMap<>();
+		TreeMap<String, IFact< Boolean[] > > 	boolArrayMap 	= new TreeMap<>();
 		
 		// Loop over entries in the jsonobjects entry sets 
 		for(Map.Entry<String, JsonElement> sectionEntry: JSON.getAsJsonObject().entrySet()) 
@@ -1639,22 +1639,22 @@ public class ParserHelpers {
 			// Case Integer for all possible variations of input
 			case "INTEGER":
 			case "INTEGERS":
-				Class<? extends IVariable<Integer>> IVi = 
-					(Class<? extends IVariable<Integer>>) 
+				Class<? extends IFact<Integer>> IVi = 
+					(Class<? extends IFact<Integer>>) 
 					IVariableConcretes.
 						get(
 								VariableType.INTEGER
 							);
 				
-				JsonDeserializer<? extends IVariable<Integer>> IVDi = 
-					(JsonDeserializer<? extends IVariable<Integer>>)
+				JsonDeserializer<? extends IFact<Integer>> IVDi = 
+					(JsonDeserializer<? extends IFact<Integer>>)
 					IVariableDeserializersConcretes.
 						get(
 								VariableType.INTEGER
 							);
 				
 				// Take the previous temp map created from previous section parser and loop over its entries
-				for(Map.Entry<String, IVariable<Integer>> variableEntry: 
+				for(Map.Entry<String, IFact<Integer>> variableEntry: 
 														  ParserHelpers.
 														  ParseIntegerVariableSection(
 																  					  sectionEntry.getValue(),
@@ -1679,21 +1679,21 @@ public class ParserHelpers {
 			case "INTEGER ARRAYS":
 			case "INTEGERS ARRAYS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Integer[]>> IVsa = 
-				(Class<? extends IVariable<Integer[]>>) 
+				Class<? extends IFact<Integer[]>> IVsa = 
+				(Class<? extends IFact<Integer[]>>) 
 				IVariableConcretes.
 					get(
 							VariableType.INTEGERARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Integer[]>> IVDsa = 
-				(JsonDeserializer<? extends IVariable<Integer[]>>)
+				JsonDeserializer<? extends IFact<Integer[]>> IVDsa = 
+				(JsonDeserializer<? extends IFact<Integer[]>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.INTEGERARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Integer[]>> variableEntry: 
+				for(Map.Entry<String, IFact<Integer[]>> variableEntry: 
 					  ParserHelpers.
 					  ParseIntegerArrayVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1712,21 +1712,21 @@ public class ParserHelpers {
 			case "STRING":
 			case "STRINGS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<String>> IVs = 
-				(Class<? extends IVariable<String>>) 
+				Class<? extends IFact<String>> IVs = 
+				(Class<? extends IFact<String>>) 
 				IVariableConcretes.
 					get(
 							VariableType.STRING
 						);
 			
-				JsonDeserializer<? extends IVariable<String>> IVDs = 
-				(JsonDeserializer<? extends IVariable<String>>)
+				JsonDeserializer<? extends IFact<String>> IVDs = 
+				(JsonDeserializer<? extends IFact<String>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.STRING
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<String>> variableEntry: 
+				for(Map.Entry<String, IFact<String>> variableEntry: 
 					  ParserHelpers.
 					  ParseStringVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1751,21 +1751,21 @@ public class ParserHelpers {
 			case "STRING ARRAYS":
 			case "STRINGS ARRAYS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<String[]>> SVsa = 
-				(Class<? extends IVariable<String[]>>) 
+				Class<? extends IFact<String[]>> SVsa = 
+				(Class<? extends IFact<String[]>>) 
 				IVariableConcretes.
 					get(
 							VariableType.STRINGARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<String[]>> SVDsa = 
-				(JsonDeserializer<? extends IVariable<String[]>>)
+				JsonDeserializer<? extends IFact<String[]>> SVDsa = 
+				(JsonDeserializer<? extends IFact<String[]>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.STRINGARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<String[]>> variableEntry: 
+				for(Map.Entry<String, IFact<String[]>> variableEntry: 
 					  ParserHelpers.
 					  ParseStringArrayVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1785,21 +1785,21 @@ public class ParserHelpers {
 			case "FLOATS":
 				// Take the previous temp map created from previous section parser and loop over its entries
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Float>> IVf = 
-				(Class<? extends IVariable<Float>>) 
+				Class<? extends IFact<Float>> IVf = 
+				(Class<? extends IFact<Float>>) 
 				IVariableConcretes.
 					get(
 							VariableType.FLOAT
 						);
 			
-				JsonDeserializer<? extends IVariable<Float>> IVDf = 
-				(JsonDeserializer<? extends IVariable<Float>>)
+				JsonDeserializer<? extends IFact<Float>> IVDf = 
+				(JsonDeserializer<? extends IFact<Float>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.FLOAT
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Float>> variableEntry: 
+				for(Map.Entry<String, IFact<Float>> variableEntry: 
 					  ParserHelpers.
 					  ParseFloatVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1823,21 +1823,21 @@ public class ParserHelpers {
 			case "FLOATS ARRAY":
 			case "FLOAT ARRAYS":
 			case "FLOATS ARRAYS":
-				Class<? extends IVariable<Float[]>> IVfa = 
-				(Class<? extends IVariable<Float[]>>) 
+				Class<? extends IFact<Float[]>> IVfa = 
+				(Class<? extends IFact<Float[]>>) 
 				IVariableConcretes.
 					get(
 							VariableType.FLOATARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Float[]>> IVDfa = 
-				(JsonDeserializer<? extends IVariable<Float[]>>)
+				JsonDeserializer<? extends IFact<Float[]>> IVDfa = 
+				(JsonDeserializer<? extends IFact<Float[]>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.FLOATARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Float[]>> variableEntry: 
+				for(Map.Entry<String, IFact<Float[]>> variableEntry: 
 					  ParserHelpers.
 					  ParseFloatArrayVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1856,21 +1856,21 @@ public class ParserHelpers {
 			case "LONG":
 			case "LONGS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Long>> IVl = 
-				(Class<? extends IVariable<Long>>) 
+				Class<? extends IFact<Long>> IVl = 
+				(Class<? extends IFact<Long>>) 
 				IVariableConcretes.
 					get(
 							VariableType.LONG
 						);
 			
-				JsonDeserializer<? extends IVariable<Long>> IVDl = 
-				(JsonDeserializer<? extends IVariable<Long>>)
+				JsonDeserializer<? extends IFact<Long>> IVDl = 
+				(JsonDeserializer<? extends IFact<Long>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.LONG
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Long>> variableEntry: 
+				for(Map.Entry<String, IFact<Long>> variableEntry: 
 					  ParserHelpers.
 					  ParseLongVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1894,21 +1894,21 @@ public class ParserHelpers {
 			case "LONGS ARRAY":
 			case "LONG ARRAYS":
 			case "LONGS ARRAYS":
-				Class<? extends IVariable<Long[]>> IVla = 
-				(Class<? extends IVariable<Long[]>>) 
+				Class<? extends IFact<Long[]>> IVla = 
+				(Class<? extends IFact<Long[]>>) 
 				IVariableConcretes.
 					get(
 							VariableType.LONGARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Long[]>> IVDla = 
-				(JsonDeserializer<? extends IVariable<Long[]>>)
+				JsonDeserializer<? extends IFact<Long[]>> IVDla = 
+				(JsonDeserializer<? extends IFact<Long[]>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.LONGARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Long[]>> variableEntry: 
+				for(Map.Entry<String, IFact<Long[]>> variableEntry: 
 					  ParserHelpers.
 					  ParseLongArrayVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1926,21 +1926,21 @@ public class ParserHelpers {
 			case "DOUBLE":
 			case "DOUBLES":
 			// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Double>> DVl = 
-				(Class<? extends IVariable<Double>>) 
+				Class<? extends IFact<Double>> DVl = 
+				(Class<? extends IFact<Double>>) 
 				IVariableConcretes.
 					get(
 							VariableType.DOUBLE
 						);
 							
-				JsonDeserializer<? extends IVariable<Double>> DVDl = 
-				(JsonDeserializer<? extends IVariable<Double>>)
+				JsonDeserializer<? extends IFact<Double>> DVDl = 
+				(JsonDeserializer<? extends IFact<Double>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.DOUBLE
 						);
 			// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Double>> variableEntry: 
+				for(Map.Entry<String, IFact<Double>> variableEntry: 
 					  ParserHelpers.
 					  ParseDoubleVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1966,21 +1966,21 @@ public class ParserHelpers {
 			case "DOUBLE ARRAYS":
 			case "DOUBLES ARRAYS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Double[]>> DVda = 
-				(Class<? extends IVariable<Double[]>>) 
+				Class<? extends IFact<Double[]>> DVda = 
+				(Class<? extends IFact<Double[]>>) 
 				IVariableConcretes.
 					get(
 							VariableType.DOUBLEARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Double[]>> DVDda = 
-				(JsonDeserializer<? extends IVariable<Double[]>>)
+				JsonDeserializer<? extends IFact<Double[]>> DVDda = 
+				(JsonDeserializer<? extends IFact<Double[]>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.DOUBLEARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Double[]>> variableEntry: 
+				for(Map.Entry<String, IFact<Double[]>> variableEntry: 
 					  ParserHelpers.
 					  ParseDoubleArrayVariableSection(
 							  					  sectionEntry.getValue(),
@@ -1999,21 +1999,21 @@ public class ParserHelpers {
 			case "BOOLEAN":
 			case "BOOLEANS":
 				// Take the previous temp map created from previous section parser and loop over its entries
-				Class<? extends IVariable<Boolean>> BVb = 
-				(Class<? extends IVariable<Boolean>>) 
+				Class<? extends IFact<Boolean>> BVb = 
+				(Class<? extends IFact<Boolean>>) 
 				IVariableConcretes.
 					get(
 							VariableType.BOOLEAN
 						);
 			
-				JsonDeserializer<? extends IVariable<Boolean>> BVDb = 
-				(JsonDeserializer<? extends IVariable<Boolean>>)
+				JsonDeserializer<? extends IFact<Boolean>> BVDb = 
+				(JsonDeserializer<? extends IFact<Boolean>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.BOOLEAN
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Boolean>> variableEntry: 
+				for(Map.Entry<String, IFact<Boolean>> variableEntry: 
 					  ParserHelpers.
 					  ParseBooleanVariableSection(
 							  					  sectionEntry.getValue(),
@@ -2037,21 +2037,21 @@ public class ParserHelpers {
 			case "BOOLEANS ARRAY":
 			case "BOOLEAN ARRAYS":
 			case "BOOLEANS ARRAYS":
-				Class<? extends IVariable<Boolean[]>> BVba = 
-				(Class<? extends IVariable<Boolean[]>>) 
+				Class<? extends IFact<Boolean[]>> BVba = 
+				(Class<? extends IFact<Boolean[]>>) 
 				IVariableConcretes.
 					get(
 							VariableType.BOOLEANARRAY
 						);
 			
-				JsonDeserializer<? extends IVariable<Boolean[]>> BVDba = 
-				(JsonDeserializer<? extends IVariable<Boolean[]>>)
+				JsonDeserializer<? extends IFact<Boolean[]>> BVDba = 
+				(JsonDeserializer<? extends IFact<Boolean[]>>)
 				IVariableDeserializersConcretes.
 					get(
 							VariableType.BOOLEANARRAY
 						);
 				// Take the previous temp map created from previous section parser and loop over its entries 
-				for(Map.Entry<String, IVariable<Boolean[]>> variableEntry: 
+				for(Map.Entry<String, IFact<Boolean[]>> variableEntry: 
 					  ParserHelpers.
 					  ParseBooleanArrayVariableSection(
 							  					  sectionEntry.getValue(),

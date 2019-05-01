@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.ICascadeEntry;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFormuli;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariables;
 
 /**
@@ -54,10 +54,10 @@ public class CascadeEntry implements ICascadeEntry {
 	 * @return IVariable<?>[] Gathered variables from the Variables container
 	 * @author Christopher Howard
 	 */
-	private IVariable<?>[] _getVariables( IVariables vars ) 
+	private IFact<?>[] _getVariables( IVariables vars ) 
 	{
 		// Setup the output variables container
-		IVariable<?>[] varsOut = new IVariable<?>[ this._inputIDList.size() ];
+		IFact<?>[] varsOut = new IFact<?>[ this._inputIDList.size() ];
 		
 		// Get each variable from the Variables container using the correct Getter
 		for( int i = 0;
@@ -116,9 +116,9 @@ public class CascadeEntry implements ICascadeEntry {
 	 */
 	private boolean _shakeProtect( IVariables vars ) 
 	{
-		IVariable<?>[] varsList = this._getVariables(vars);
+		IFact<?>[] varsList = this._getVariables(vars);
 		
-		for( IVariable<?> var: varsList ) 
+		for( IFact<?> var: varsList ) 
 		{
 			if( var.GetValue() == null )
 				return true;
@@ -159,7 +159,7 @@ public class CascadeEntry implements ICascadeEntry {
 									this._formulaID
 									).
 							CalculateToInteger(
-									(IVariable<? extends Number>[]) this._getVariables(
+									(IFact<? extends Number>[]) this._getVariables(
 														vars
 														)
 									)
@@ -176,7 +176,7 @@ public class CascadeEntry implements ICascadeEntry {
 								this._formulaID
 								).
 						CalculateToFloat(
-								(IVariable<? extends Number>[]) this._getVariables(
+								(IFact<? extends Number>[]) this._getVariables(
 													vars
 													)
 								)
@@ -193,7 +193,7 @@ public class CascadeEntry implements ICascadeEntry {
 								this._formulaID
 								).
 						CalculateToDouble(
-								(IVariable<? extends Number>[]) this._getVariables(
+								(IFact<? extends Number>[]) this._getVariables(
 													vars
 													)
 								)
@@ -210,7 +210,7 @@ public class CascadeEntry implements ICascadeEntry {
 								this._formulaID
 								).
 						CalculateToLong(
-								(IVariable<? extends Number>[]) this._getVariables(
+								(IFact<? extends Number>[]) this._getVariables(
 													vars
 													)
 								)

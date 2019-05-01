@@ -10,7 +10,7 @@
 package com.roguedevstudios.uarg.System.Core.Elements;
 
 // Import Section
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 /**
  * A representation of variables implementing IVariable with added metadata.
@@ -18,8 +18,8 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @author Christopher E. Howard
  * @since 1.0
  */
-public class Variable<V> 
-	   implements IVariable<V> 
+public class Fact<V> 
+	   implements IFact<V> 
 {
 	
 	/* The name meta of this Variable */
@@ -48,7 +48,7 @@ public class Variable<V>
 	 * @param value	Initial value of this variable
 	 * @since 1.0
 	 */
-	public Variable(
+	public Fact(
 					 String name, 
 					 String id, 
 					 Boolean requiresInput, 
@@ -78,7 +78,7 @@ public class Variable<V>
 	 * @throws Exception Passes back unknown exceptions in case of incompatible null typing of Generic
 	 * @since 1.0
 	 */
-	public Variable(
+	public Fact(
 					 String name, 
 					 String id, 
 					 Boolean requiresInput, 

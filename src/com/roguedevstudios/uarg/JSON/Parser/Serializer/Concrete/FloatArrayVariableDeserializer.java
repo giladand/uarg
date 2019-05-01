@@ -15,8 +15,8 @@ import java.lang.reflect.Type;
 import java.util.Iterator;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 /**
  * <p>
@@ -26,7 +26,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @author Terry Roberson
  * @since 1.0
  */
-public class FloatArrayVariableDeserializer implements JsonDeserializer<IVariable<Float[]>> {
+public class FloatArrayVariableDeserializer implements JsonDeserializer<IFact<Float[]>> {
 
 	/**
 	 * Deserializes into a Variable<Float> type
@@ -37,7 +37,7 @@ public class FloatArrayVariableDeserializer implements JsonDeserializer<IVariabl
 	 * @return Variable<Float>
 	 */
 	
-	public IVariable<Float[]> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+	public IFact<Float[]> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
 		/*Temp slot for variable name*/
 		String _name = null;
@@ -50,7 +50,7 @@ public class FloatArrayVariableDeserializer implements JsonDeserializer<IVariabl
 		/*Temp slot for variable requiresInput*/
 		boolean _requiresInput = false;
 		/*Temp output object holder*/
-		IVariable<Float[]> v;
+		IFact<Float[]> v;
 		
 		/* Convert JsonElement into JsonObject */
 		JsonObject o = json.getAsJsonObject();
@@ -88,7 +88,7 @@ public class FloatArrayVariableDeserializer implements JsonDeserializer<IVariabl
 		}
 		
 		//Build the Variable object to return
-		v = new Variable<Float[]>(_name, _id, _requiresInput, _description, _value);
+		v = new Fact<Float[]>(_name, _id, _requiresInput, _description, _value);
 			
 		return v;
 	}

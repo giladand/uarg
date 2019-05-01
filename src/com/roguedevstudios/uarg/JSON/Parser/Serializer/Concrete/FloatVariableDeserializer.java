@@ -14,8 +14,8 @@ package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 import java.lang.reflect.Type;
 
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 /**
  * 
@@ -26,7 +26,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @since 1.0
  */
 public class FloatVariableDeserializer 
-	   implements JsonDeserializer<IVariable<Float>> 
+	   implements JsonDeserializer<IFact<Float>> 
 {
 
 	/**
@@ -37,7 +37,7 @@ public class FloatVariableDeserializer
 	 * @param JsonDeserializationContext
 	 * @return Variable<Float>
 	 */
-	public IVariable<Float> deserialize(
+	public IFact<Float> deserialize(
 										JsonElement json, 
 										Type typeOfT, 
 										JsonDeserializationContext context
@@ -61,7 +61,7 @@ public class FloatVariableDeserializer
 		boolean _requiresInput = false;
 		
 		/*Temp output object holder*/
-		IVariable<Float> v;
+		IFact<Float> v;
 		
 		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
@@ -86,7 +86,7 @@ public class FloatVariableDeserializer
 		}
 		
 		// Build the Variable object to return
-		v = new Variable<Float>(  _name,
+		v = new Fact<Float>(  _name,
 								  _id, 
 								  _requiresInput, 
 								  _description,

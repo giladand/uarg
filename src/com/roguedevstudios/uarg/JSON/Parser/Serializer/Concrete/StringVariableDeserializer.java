@@ -13,8 +13,8 @@ package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 
 import java.lang.reflect.Type;
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 /**
  * 
@@ -25,7 +25,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @since 1.0
  */
 public class StringVariableDeserializer 
-	   implements JsonDeserializer<IVariable<String>> 
+	   implements JsonDeserializer<IFact<String>> 
 {
 	/**
 	 * Deserializes into a Variable<String> type
@@ -35,7 +35,7 @@ public class StringVariableDeserializer
 	 * @param JsonDeserializationContext
 	 * @return Variable<String>
 	 */
-	public IVariable<String> deserialize(  JsonElement json, 
+	public IFact<String> deserialize(  JsonElement json, 
 										  Type typeOfT, 
 										  JsonDeserializationContext context
 									   )
@@ -58,7 +58,7 @@ public class StringVariableDeserializer
 		boolean _requiresInput = false;
 		
 		/*Temp output object holder*/
-		IVariable<String> v;
+		IFact<String> v;
 		
 		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
@@ -83,7 +83,7 @@ public class StringVariableDeserializer
 		}
 		
 		// Build the Variable object to return
-		v = new Variable<String>(  _name, 
+		v = new Fact<String>(  _name, 
 								   _id, 
 								   _requiresInput, 
 								   _description, 

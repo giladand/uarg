@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
 
 import java.lang.reflect.*;
 
@@ -41,8 +41,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Integer> testVarNoValue = new Variable<Integer>(name, id, requiresInput, description);
-				Variable<Integer> testVarWithValue = new Variable<Integer>(name, id, requiresInput, description, value);
+				Fact<Integer> testVarNoValue = new Fact<Integer>(name, id, requiresInput, description);
+				Fact<Integer> testVarWithValue = new Fact<Integer>(name, id, requiresInput, description, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -85,7 +85,7 @@ public class VariableTest{
 		Integer newValue = 5;
 		
 		//Set up a valid test variable with a value 
-		Variable<Integer> testVarValueUpdate = new Variable<Integer>(name, id, requiresInput, description, value);
+		Fact<Integer> testVarValueUpdate = new Fact<Integer>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -117,7 +117,7 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		Integer value = null;
-		Variable<Integer> testNullValue = new Variable<Integer>("TEST", "TEST", false, "TEST", value);
+		Fact<Integer> testNullValue = new Fact<Integer>("TEST", "TEST", false, "TEST", value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -137,7 +137,7 @@ public class VariableTest{
 		Integer value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Integer> nullIntegerObjectVariable = new Variable<Integer>(name, id, requiresInput, description, value);
+		Fact<Integer> nullIntegerObjectVariable = new Fact<Integer>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -159,7 +159,7 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoIntegerObjectType() {
-		Variable<Integer> testVarWithPrimitive = new Variable<Integer>("TEST", "TEST", false, "TEST", 5);
+		Fact<Integer> testVarWithPrimitive = new Fact<Integer>("TEST", "TEST", false, "TEST", 5);
 		assertEquals(5, (int) testVarWithPrimitive.GetValue());
 		
 	}
@@ -183,8 +183,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<String> testVarNoValue = new Variable<String>(name, id, requiresInput, description);
-				Variable<String> testVarWithValue = new Variable<String>(name, id, requiresInput, description, value);
+				Fact<String> testVarNoValue = new Fact<String>(name, id, requiresInput, description);
+				Fact<String> testVarWithValue = new Fact<String>(name, id, requiresInput, description, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -227,7 +227,7 @@ public class VariableTest{
 		String newValue = "B";
 		
 		//Set up a valid test variable with a value 
-		Variable<String> testVarValueUpdate = new Variable<String>(name, id, requiresInput, description, value);
+		Fact<String> testVarValueUpdate = new Fact<String>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -258,7 +258,7 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		String value = null;
-		Variable<String> testNullValue = new Variable<String>("TEST", "TEST", false, "TEST", value);
+		Fact<String> testNullValue = new Fact<String>("TEST", "TEST", false, "TEST", value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -278,7 +278,7 @@ public class VariableTest{
 		String value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<String> nullIntegerObjectVariable = new Variable<String>(name, id, requiresInput, description, value);
+		Fact<String> nullIntegerObjectVariable = new Fact<String>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -300,7 +300,7 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoStringObjectType() {
-		Variable<String> testVarWithPrimitive = new Variable<String>("TEST", "TEST", false, "TEST", "A");
+		Fact<String> testVarWithPrimitive = new Fact<String>("TEST", "TEST", false, "TEST", "A");
 		assertEquals("A", (String) testVarWithPrimitive.GetValue());
 		
 	}
@@ -324,8 +324,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Double> testVarNoValue = new Variable<Double>(name, id, requiresInput, description);
-				Variable<Double> testVarWithValue = new Variable<Double>(name, id, requiresInput, description, value);
+				Fact<Double> testVarNoValue = new Fact<Double>(name, id, requiresInput, description);
+				Fact<Double> testVarWithValue = new Fact<Double>(name, id, requiresInput, description, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -368,7 +368,7 @@ public class VariableTest{
 		Double newValue = 5.4;
 		
 		//Set up a valid test variable with a value 
-		Variable<Double> testVarValueUpdate = new Variable<Double>(name, id, requiresInput, description, value);
+		Fact<Double> testVarValueUpdate = new Fact<Double>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -399,7 +399,7 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		Double value = null;
-		Variable<Double> testNullValue = new Variable<Double>("TEST", "TEST", false, "TEST", value);
+		Fact<Double> testNullValue = new Fact<Double>("TEST", "TEST", false, "TEST", value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -419,7 +419,7 @@ public class VariableTest{
 		Double value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Double> nullIntegerObjectVariable = new Variable<Double>(name, id, requiresInput, description, value);
+		Fact<Double> nullIntegerObjectVariable = new Fact<Double>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -441,7 +441,7 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoDoubleObjectType() {
-		Variable<Double> testVarWithPrimitive = new Variable<Double>("TEST", "TEST", false, "TEST", 1e-15);
+		Fact<Double> testVarWithPrimitive = new Fact<Double>("TEST", "TEST", false, "TEST", 1e-15);
 		assertEquals(1e-15, (double) testVarWithPrimitive.GetValue(), 0);
 		
 	}
@@ -465,8 +465,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Long> testVarNoValue = new Variable<Long>(name, id, requiresInput, description);
-				Variable<Long> testVarWithValue = new Variable<Long>(name, id, requiresInput, description, value);
+				Fact<Long> testVarNoValue = new Fact<Long>(name, id, requiresInput, description);
+				Fact<Long> testVarWithValue = new Fact<Long>(name, id, requiresInput, description, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -509,7 +509,7 @@ public class VariableTest{
 		Long newValue = 68L;
 		
 		//Set up a valid test variable with a value 
-		Variable<Long> testVarValueUpdate = new Variable<Long>(name, id, requiresInput, description, value);
+		Fact<Long> testVarValueUpdate = new Fact<Long>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -540,7 +540,7 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		Long value = null;
-		Variable<Long> testNullValue = new Variable<Long>("TEST", "TEST", false, "TEST", value);
+		Fact<Long> testNullValue = new Fact<Long>("TEST", "TEST", false, "TEST", value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -560,7 +560,7 @@ public class VariableTest{
 		Long value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Long> nullIntegerObjectVariable = new Variable<Long>(name, id, requiresInput, description, value);
+		Fact<Long> nullIntegerObjectVariable = new Fact<Long>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -582,7 +582,7 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoLongObjectType() {
-		Variable<Long> testVarWithPrimitive = new Variable<Long>("TEST", "TEST", false, "TEST", 300L);
+		Fact<Long> testVarWithPrimitive = new Fact<Long>("TEST", "TEST", false, "TEST", 300L);
 		assertEquals(300L, (long) testVarWithPrimitive.GetValue());
 		
 	}
@@ -606,8 +606,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Float> testVarNoValue = new Variable<Float>(name, id, requiresInput, description);
-				Variable<Float> testVarWithValue = new Variable<Float>(name, id, requiresInput, description, value);
+				Fact<Float> testVarNoValue = new Fact<Float>(name, id, requiresInput, description);
+				Fact<Float> testVarWithValue = new Fact<Float>(name, id, requiresInput, description, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -650,7 +650,7 @@ public class VariableTest{
 		Float newValue = 6.8F;
 		
 		//Set up a valid test variable with a value 
-		Variable<Float> testVarValueUpdate = new Variable<Float>(name, id, requiresInput, description, value);
+		Fact<Float> testVarValueUpdate = new Fact<Float>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -681,7 +681,7 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		Float value = null;
-		Variable<Float> testNullValue = new Variable<Float>("TEST", "TEST", false, "TEST", value);
+		Fact<Float> testNullValue = new Fact<Float>("TEST", "TEST", false, "TEST", value);
 		assertNull(testNullValue.GetValue());
 
 	}
@@ -701,7 +701,7 @@ public class VariableTest{
 		Float value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Float> nullIntegerObjectVariable = new Variable<Float>(name, id, requiresInput, description, value);
+		Fact<Float> nullIntegerObjectVariable = new Fact<Float>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -724,7 +724,7 @@ public class VariableTest{
 	
 	@Test
 	public void setPrimitiveIntoFloatObjectType() {
-		Variable<Float> testVarWithPrimitive = new Variable<Float>("TEST", "TEST", false, "TEST", 3.28F);
+		Fact<Float> testVarWithPrimitive = new Fact<Float>("TEST", "TEST", false, "TEST", 3.28F);
 		assertEquals(3.28F, (float) testVarWithPrimitive.GetValue(), 0);
 		
 	}
@@ -748,8 +748,8 @@ public class VariableTest{
 		//Wrap in Try/Catch for exception handling
 		try {
 				//Setup a valid test variable both with and without a value
-				Variable<Boolean> testVarNoValue = new Variable<Boolean>(name, id, requiresInput, description);
-				Variable<Boolean> testVarWithValue = new Variable<Boolean>(name, id, requiresInput, description, value);
+				Fact<Boolean> testVarNoValue = new Fact<Boolean>(name, id, requiresInput, description);
+				Fact<Boolean> testVarWithValue = new Fact<Boolean>(name, id, requiresInput, description, value);
 		
 				//Test the name is correct
 				assertEquals(name, testVarNoValue.GetName());
@@ -792,7 +792,7 @@ public class VariableTest{
 		Boolean newValue = false;
 		
 		//Set up a valid test variable with a value 
-		Variable<Boolean> testVarValueUpdate = new Variable<Boolean>(name, id, requiresInput, description, value);
+		Fact<Boolean> testVarValueUpdate = new Fact<Boolean>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertEquals(name, testVarValueUpdate.GetName());
@@ -823,7 +823,7 @@ public class VariableTest{
 		
 		//Set value of variable to null
 		Boolean value = false;
-		Variable<Boolean> testNullValue = new Variable<Boolean>("TEST", "TEST", false, "TEST", value);
+		Fact<Boolean> testNullValue = new Fact<Boolean>("TEST", "TEST", false, "TEST", value);
 		assertEquals(value, testNullValue.GetValue());
 
 	}
@@ -843,7 +843,7 @@ public class VariableTest{
 		Boolean value = null;
 		
 		//Set up a valid test variable with a value 
-		Variable<Boolean> nullIntegerObjectVariable = new Variable<Boolean>(name, id, requiresInput, description, value);
+		Fact<Boolean> nullIntegerObjectVariable = new Fact<Boolean>(name, id, requiresInput, description, value);
 		
 		//Test the name is correct
 		assertNull(nullIntegerObjectVariable.GetName());
@@ -865,7 +865,7 @@ public class VariableTest{
 	 */
 	@Test
 	public void setPrimitiveIntoBooleanObjectType() {
-		Variable<Boolean> testVarWithPrimitive = new Variable<Boolean>("TEST", "TEST", false, "TEST", false);
+		Fact<Boolean> testVarWithPrimitive = new Fact<Boolean>("TEST", "TEST", false, "TEST", false);
 		assertEquals(false, (boolean) testVarWithPrimitive.GetValue());
 		
 	}

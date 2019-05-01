@@ -13,8 +13,8 @@ package com.roguedevstudios.uarg.JSON.Parser.Serializer.Concrete;
 
 import java.lang.reflect.Type;
 import com.google.gson.*;
-import com.roguedevstudios.uarg.System.Core.Elements.Variable;
-import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
+import com.roguedevstudios.uarg.System.Core.Elements.Fact;
+import com.roguedevstudios.uarg.System.Core.Elements.Interface.IFact;
 
 /**
  * 
@@ -25,7 +25,7 @@ import com.roguedevstudios.uarg.System.Core.Elements.Interface.IVariable;
  * @since 1.0
  */
 public class BooleanVariableDeserializer 
-	   implements JsonDeserializer<IVariable<Boolean>> 
+	   implements JsonDeserializer<IFact<Boolean>> 
 {
 	
 	/**
@@ -36,7 +36,7 @@ public class BooleanVariableDeserializer
 	 * @param JsonDeserializationContext
 	 * @return Variable<Boolean>
 	 */
-	public IVariable<Boolean> deserialize( 
+	public IFact<Boolean> deserialize( 
 										  JsonElement json, 
 										  Type typeOfT, 
 										  JsonDeserializationContext context
@@ -61,7 +61,7 @@ public class BooleanVariableDeserializer
 		boolean _requiresInput = false;
 		
 		/*Temp output object holder*/
-		IVariable<Boolean> v;
+		IFact<Boolean> v;
 		
 		// Convert JsonElement into JsonObject
 		JsonObject o = json.getAsJsonObject();
@@ -86,7 +86,7 @@ public class BooleanVariableDeserializer
 		}
 		
 		// Build the Variable object to return
-		v = new Variable<Boolean>(  _name,
+		v = new Fact<Boolean>(  _name,
 									_id, 
 									_requiresInput, 
 									_description,
